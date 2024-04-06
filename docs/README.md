@@ -3,14 +3,14 @@
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![PostGres](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 
-Prison Trade  é um jogo de estratégia e simulação com foco em resolver quebra-cabeças e trocas como elemento central. Nele, você assume o papel de um prisioneiro em uma prisão isolada, cada uma com seus próprios desafios e obstáculos. O objetivo principal é escapar da prisão, mas ao invés de simplesmente encontrar uma saída, você precisa resolver puzzles  para obter os itens necessários e criar os planos de fuga.
+Prison Trading  é um jogo de estratégia e simulação com foco em resolver quebra-cabeças e trocas como elemento central. Nele, você assume o papel de um prisioneiro em uma prisão isolada, cada uma com seus próprios desafios e obstáculos. O objetivo principal é escapar da prisão, mas ao invés de simplesmente encontrar uma saída, você precisa resolver puzzles  para obter os itens necessários e criar os planos de fuga.
 
 A troca de itens é crucial para o sucesso, já que você precisa negociar com outros prisioneiros(ou guardas) para conseguir os recursos necessários para seus planos. Isso adiciona uma camada estratégica ao jogo, pois você deve gerenciar seus recursos de forma inteligente e negociar com habilidade para obter o que precisa.
 
-Além disso, você também precisa estar atento aos guardas e às rotinas da prisão, evitando chamar atenção enquanto trabalha em sua fuga. Combinando elementos de quebra-cabeças, estratégia e negociação, Prison Trade  oferece uma experiência desafiadora e envolvente para os jogadores que buscam um desafio intelectual e criativo.
+Além disso, você também precisa estar atento aos guardas e às rotinas da prisão, evitando chamar atenção enquanto trabalha em sua fuga. Combinando elementos de quebra-cabeças, estratégia e negociação, Prison Trading  oferece uma experiência desafiadora e envolvente para os jogadores que buscam um desafio intelectual e criativo.
 
 <div align="center">
-<div align="center"><img src= "docs/Images/img.png" height="230" width="auto"/></div>
+<div align="center"><img src= "./Images/img.png" height="230" width="auto"/></div>
 </div>
 
 ## 👨‍🎓 Contribuidores
