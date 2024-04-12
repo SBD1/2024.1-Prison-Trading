@@ -47,4 +47,4 @@ O modelo Entidade-Relacionamento tem como principal função, descrever itens, e
 |:------:|:--------:|-----------|-------|
 | 10/04/2024 | `1.0` | Criação da primeira versão. | [João Antonio G.](https://github.com/joaoseisei)
 | 10/04/2024 | `1.1` | Segunda Versão. | [Fernando Gabriel](https://github.com/show-dawn),      [Julio Cesar](https://github.com/julio1099)
-| 11/04/2024 | `1.2` | Criação da terceira versão. | [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099),     [Fernando Gabriel](https://github.com/show-dawn),         [Breno Alexandre](https://github.com/brenoalexandre0)
+| 11/04/2024 | `1.2` | Criação da terceira versão. | [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099),[Fernando Gabriel](https://github.com/show-dawn),         [Breno Alexandre](https://github.com/brenoalexandre0)
