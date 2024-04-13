@@ -1,10 +1,6 @@
 # Modelo Entidade-Relacionamento
 
-O modelo Entidade-Relacionamento tem como principal função, descrever itens, em outras palavras entidades, que são utilizadas para representar participantes de um cenário em um problema que deseja ser resolvido mediante utilização de um banco de dados.
-
-<div align="center">
-<div align="center"><img src= "https://github.com/SBD1/2024.1-Prison-Trading/blob/main/docs/Images/MER.png?raw=true"/></div>
-</div>
+> O modelo Entidade-Relacionamento tem como principal função, descrever itens, em outras palavras entidades, que são utilizadas para representar participantes de um cenário em um problema que deseja ser resolvido mediante utilização de um banco de dados.
 
 ## Entidades 
 
@@ -92,9 +88,9 @@ O modelo Entidade-Relacionamento tem como principal função, descrever itens, e
 
 # Histórico de versão 
 
-| Data | Versão | Descrição | Autores |
-|:------:|:--------:|-----------|-------|
-| 10/04/2024 | `1.0` | Criação da primeira versão. | [João Antonio G.](https://github.com/joaoseisei)
-| 10/04/2024 | `1.1` | Segunda Versão. | [Fernando Gabriel](https://github.com/show-dawn),      [Julio Cesar](https://github.com/julio1099)
-| 11/04/2024 | `1.2` | Criação da terceira versão. | [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), [Fernando Gabriel](https://github.com/show-dawn),         [Breno Alexandre](https://github.com/brenoalexandre0)
-| 13/04/2024 | `1.3` | Criação da terceira versão. | [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), [Fernando Gabriel](https://github.com/show-dawn),         [Breno Alexandre](https://github.com/brenoalexandre0)
+| Data | Versão | Descrição | Autores                                                                                                                                                                                                  |
+|:------:|:--------:|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 10/04/2024 | `1.0` | Criação da primeira versão. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                         |
+| 10/04/2024 | `1.1` | Segunda Versão. | [Fernando Gabriel](https://github.com/show-dawn), [Julio Cesar](https://github.com/julio1099)                                                                                                            |
+| 11/04/2024 | `1.2` | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
+| 13/04/2024 | `1.3` | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
