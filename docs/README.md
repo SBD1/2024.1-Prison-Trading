@@ -49,9 +49,13 @@ Além disso, você também precisa estar atento aos guardas e às rotinas da pri
 
 ## 📅 Entregas
 
+<div style="text-align:center;">
+
 | Módulo   | Data de entrega do Módulo | Entrega                                                                                     |
 | -------- |---------------------------|---------------------------------------------------------------------------------------------|
 | Módulo 1 | 13/04/2024                | [Modelagem do projeto](https://github.com/SBD1/2024.1-Prison-Trading/#/Modulo-1/Modulo1)                    |
 | Modulo 2 | --/--/2024                | [DDL + DML (parcial)](https://github.com/SBD1/2024.1-Prison-Trading)                        |
 | Módulo 3 | --/--/2024                | [Triggers, stored procedures e transactions](https://github.com/SBD1/2024.1-Prison-Trading) |
 | Módulo 4 | --/--/2024                | [Apresentação final](https://github.com/SBD1/2024.1-Prison-Trading)                         |
+
+</div>
