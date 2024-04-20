@@ -9,9 +9,6 @@ A troca de itens é crucial para o sucesso, já que você precisa negociar com o
 
 Além disso, você também precisa estar atento aos guardas e às rotinas da prisão, evitando chamar atenção enquanto trabalha em sua fuga. Combinando elementos de quebra-cabeças, estratégia e negociação, Prison Trading  oferece uma experiência desafiadora e envolvente para os jogadores que buscam um desafio intelectual e criativo.
 
-<div align="center">
-<div align="center"><img src= "./Images/img.png" height="230" width="auto"/></div>
-</div>
 
 ## 👨‍🎓 Contribuidores
 

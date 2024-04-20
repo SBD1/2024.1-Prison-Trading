@@ -1,4 +1,7 @@
-* [Home](/)
+<a href="/" style="text-decoration: none;">
+    <img alt="Brasao" src="assets/img.png" style="border-radius: 20%; padding: 20px">
+</a>
+
 
 * Planejamento
     - [Heatmap](Planejamento/Heatmap.md)
