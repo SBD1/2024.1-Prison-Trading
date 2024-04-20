@@ -18,6 +18,8 @@
 
 </div>
 
+---
+
 <center>
 
 # Histórico de versão
