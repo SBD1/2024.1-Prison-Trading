@@ -12,7 +12,7 @@
 - Lugar
 - Gangue
 - Negociação
-
+ 
 ## Atributos
 - Pessoa: <ins>id_pessoa</ins>, nome, item(multivalorado), lugar, tipo
   - Policial: grau_corrupcao
