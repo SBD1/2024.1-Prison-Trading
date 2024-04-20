@@ -1,4 +1,11 @@
+<center>
+
 # Modelo Entidade-Relacionamento
+
+</center>
+
+---
+
 
 > O modelo Entidade-Relacionamento tem como principal função, descrever itens, em outras palavras entidades, que são utilizadas para representar participantes de um cenário em um problema que deseja ser resolvido mediante utilização de um banco de dados.
 
@@ -86,7 +93,13 @@
 
 ---
 
-# Histórico de versão 
+<center>
+
+# Histórico de versão
+
+</center>
+
+<div style="margin: 0 auto; width: fit-content;">
 
 | Data | Versão | Descrição | Autores                                                                                                                                                                                                  |
 |:------:|:--------:|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -94,3 +107,5 @@
 | 10/04/2024 | `1.1` | Segunda Versão. | [Fernando Gabriel](https://github.com/show-dawn), [Julio Cesar](https://github.com/julio1099)                                                                                                            |
 | 11/04/2024 | `1.2` | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
 | 13/04/2024 | `1.3` | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
+
+</div>
