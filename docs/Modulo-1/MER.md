@@ -24,7 +24,7 @@
 - Pessoa: <ins>id_pessoa</ins>, nome, item(multivalorado), lugar, tipo
   - Policial: grau_corrupcao
   - Prisioneiro: antecedentes_criminais(multivalorado), gangue
-    - Jogador: <ins>r</ins>e<ins>s</ins>p<ins>e</ins>it<ins>o</ins>, tempo_vida
+    - Jogador: tempo_vida, <ins>r</ins>e<ins>s</ins>p<ins>e</ins>it<ins>o</ins>
 - Item: <ins>nome</ins>, utilizavel, lugar
 - Lugar: <ins>nome</ins>, nivel_seguranca
 - Gangue: <ins>nome</ins>, lider, gangue_rival(multivalorada), prisioneiros(multivalorado)
@@ -35,7 +35,7 @@
 
 - Pessoa - *Possui* - Item
   - Cardinalidade: N - 0-N
-  - Papel: Possui - É possuído
+  - Papel: Possui - É posse
 
 ---
 
@@ -48,18 +48,6 @@
 - Item - *Está* - Lugar
   - Cardinalidade: 0-N - 1
   - Papel: Está - Acomodam
-
----
-
-- Jogador - *Entra* - Gangue
-  - Cardinalidade: 0-1 - 0-1
-  - Papel: Entra - Possui
-
----
-
-- Prisioneiro - *Está* - Gangue
-  - Cardinalidade: N - N  
-  -  Papel: Está - Possui
 
 ---
 
@@ -78,6 +66,18 @@
 - Negociação - *Realiza* - Lugar
   - Cardinalidade: 1-N - 1-N
   - Papel: É Realizado - São Realizadas
+
+---
+
+- Jogador - *Entra* - Gangue
+  - Cardinalidade: 0-1 - 0-1
+  - Papel: Entra - Possui
+
+---
+
+- Prisioneiro - *Está* - Gangue
+  - Cardinalidade: N - 1  
+  -  Papel: Está - Possui
 
 ---
 

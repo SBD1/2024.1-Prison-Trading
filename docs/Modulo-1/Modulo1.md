@@ -31,75 +31,74 @@
 
 ## Atributos
 - Pessoa: <ins>id_pessoa</ins>, nome, item(multivalorado), lugar, tipo
-    - Policial: grau_corrupcao
-    - Prisioneiro: antecedentes_criminais(multivalorado), gangue
-        - Jogador: <ins>r</ins>e<ins>s</ins>p<ins>e</ins>it<ins>o</ins>, tempo_vida
+  - Policial: grau_corrupcao
+  - Prisioneiro: antecedentes_criminais(multivalorado), gangue
+    - Jogador: tempo_vida, <ins>r</ins>e<ins>s</ins>p<ins>e</ins>it<ins>o</ins>
 - Item: <ins>nome</ins>, utilizavel, lugar
 - Lugar: <ins>nome</ins>, nivel_seguranca
 - Gangue: <ins>nome</ins>, lider, gangue_rival(multivalorada), prisioneiros(multivalorado)
 - Negociaçao: data, lugar, itens (multivalorado)
 
----
 
 ## Relacionamento
 
 - Pessoa - *Possui* - Item
-    - Cardinalidade: N - 0-N
-    - Papel: Possui - É Possuido
+  - Cardinalidade: N - 0-N
+  - Papel: Possui - É posse
 
 ---
 
 - Pessoa - *Está* - Lugar
-    - Cardinalidade: 0-N - 1
-    - Papel: Está - Acomodam
+  - Cardinalidade: 0-N - 1
+  - Papel: Está - Acomodam
 
 ---
 
 - Item - *Está* - Lugar
-    - Cardinalidade: 0-N - 1
-    - Papel: Está - Acomodam
-
----
-
-- Jogador - *Entra* - Gangue
-    - Cardinalidade: 0-1 - 0-1
-    - Papel: Entra - Possui
-
----
-
-- Prisioneiro - *Esta* - Gangue
-    -  Cardinalidade: N - N
-    -  Papel: Está - Possui
+  - Cardinalidade: 0-N - 1
+  - Papel: Está - Acomodam
 
 ---
 
 - Jogador - *Troca* - Pessoa
-    - Cardinalidade: 1 - 1-N
-    - Papel: Troca - Troca
+  - Cardinalidade: 1 - 1-N
+  - Papel: Troca - Troca
 
 ---
 
 - Negociação - *Envolve* - Item
-    - Cardinalidade: 1-N - N
-    - Papel: Envolve - Está Envolvido
+  - Cardinalidade: 1-N - N
+  - Papel: Envolve - Está Envolvido
 
 ---
 
 - Negociação - *Realiza* - Lugar
-    - Cardinalidade: 1-N - 1-N
-    - Papel: É Realizado - São Realizadas
+  - Cardinalidade: 1-N - 1-N
+  - Papel: É Realizado - São Realizadas
 
 ---
 
-- Gangue - *É Liderada* - Prisioneiro
-    - cardinalidade: 1 - 1
-    - Papel: É Liderada - Lidera
+- Jogador - *Entra* - Gangue
+  - Cardinalidade: 0-1 - 0-1
+  - Papel: Entra - Possui
+
+---
+
+- Prisioneiro - *Está* - Gangue
+  - Cardinalidade: N - 1  
+  -  Papel: Está - Possui
+
+---
+
+- Gangue - *É liderada* - Prisioneiro
+  - Cardinalidade: 1 - 1
+  - Papel: É Liderada - Lidera
 
 ---
 
 - Gangue - *Rivaliza* - Gangue
-    - cardinalidade: 1-N - 1-N
-    - Papel: Rivaliza - É Rival
+  - Cardinalidade: 1-N - 1-N
+  - Papel: Rivaliza - É Rival
 
 ---
 
