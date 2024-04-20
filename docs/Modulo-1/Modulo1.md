@@ -1,5 +1,10 @@
+<center>
+
 # Módulo 1
 
+</center>
+
+---
 
 ## Cenário
 > Prison Trade é um jogo de estratégia e simulação com foco em trocas como elemento central. Nele, você assume o papel de um prisioneiro em uma prisão isolada, cada uma com seus próprios desafios e obstáculos. O objetivo principal é escapar da prisão, mas ao invés de simplesmente encontrar uma saída, você precisa realizar trocas para obter os itens necessários e criar os planos de fuga.
@@ -103,13 +108,20 @@
 > Um diagrama Entidade-Relacionamento (ER) é uma representação visual de entidades (objetos ou conceitos) e suas relações em um sistema de informação. Ele é usado principalmente para descrever a estrutura dos dados e como eles se relacionam entre si. Esses diagramas são úteis para visualizar e projetar a estrutura de um banco de dados de forma clara e compreensível.
 
 <div align="center">
-<div align="center"><img src= "https://github.com/SBD1/2024.1-Prison-Trading/blob/main/docs/Images/DER.png?raw=true"/></div>
+<div align="center"><img src= "assets/DER.png"/></div>
 </div>
 
 ---
+<center>
 
 # Histórico de versão
+
+</center>
+
+<div style="margin: 0 auto; width: fit-content;">
 
 |    Data    | Versão | Descrição                   | Autores |
 |:----------:|:------:|-----------------------------|-------|
 | 13/04/2024 | `1.0`  | Criação da primeira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
+
+</div>
