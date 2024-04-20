@@ -1,0 +1,115 @@
+# Módulo 1
+
+
+## Cenário
+> Prison Trade é um jogo de estratégia e simulação com foco em trocas como elemento central. Nele, você assume o papel de um prisioneiro em uma prisão isolada, cada uma com seus próprios desafios e obstáculos. O objetivo principal é escapar da prisão, mas ao invés de simplesmente encontrar uma saída, você precisa realizar trocas para obter os itens necessários e criar os planos de fuga.
+
+---
+## Modelo Entidade Relacionamento
+
+
+> O modelo Entidade-Relacionamento tem como principal função, descrever itens, em outras palavras entidades, que são utilizadas para representar participantes de um cenário em um problema que deseja ser resolvido mediante utilização de um banco de dados.
+
+
+## Entidades
+
+- Pessoa
+    - Policial
+    - Prisioneiro
+        - Jogador
+- Item
+- Lugar
+- Gangue
+- Negociação
+
+---
+
+## Atributos
+- Pessoa: <ins>id_pessoa</ins>, nome, item(multivalorado), lugar, tipo
+    - Policial: grau_corrupcao
+    - Prisioneiro: antecedentes_criminais(multivalorado), gangue
+        - Jogador: <ins>r</ins>e<ins>s</ins>p<ins>e</ins>it<ins>o</ins>, tempo_vida
+- Item: <ins>nome</ins>, utilizavel, lugar
+- Lugar: <ins>nome</ins>, nivel_seguranca
+- Gangue: <ins>nome</ins>, lider, gangue_rival(multivalorada), prisioneiros(multivalorado)
+- Negociaçao: data, lugar, itens (multivalorado)
+
+---
+
+## Relacionamento
+
+- Pessoa - *Possui* - Item
+    - Cardinalidade: N - 0-N
+    - Papel: Possui - É Possuido
+
+---
+
+- Pessoa - *Está* - Lugar
+    - Cardinalidade: 0-N - 1
+    - Papel: Está - Acomodam
+
+---
+
+- Item - *Está* - Lugar
+    - Cardinalidade: 0-N - 1
+    - Papel: Está - Acomodam
+
+---
+
+- Jogador - *Entra* - Gangue
+    - Cardinalidade: 0-1 - 0-1
+    - Papel: Entra - Possui
+
+---
+
+- Prisioneiro - *Esta* - Gangue
+    -  Cardinalidade: N - N
+    -  Papel: Está - Possui
+
+---
+
+- Jogador - *Troca* - Pessoa
+    - Cardinalidade: 1 - 1-N
+    - Papel: Troca - Troca
+
+---
+
+- Negociação - *Envolve* - Item
+    - Cardinalidade: 1-N - N
+    - Papel: Envolve - Está Envolvido
+
+---
+
+- Negociação - *Realiza* - Lugar
+    - Cardinalidade: 1-N - 1-N
+    - Papel: É Realizado - São Realizadas
+
+---
+
+- Gangue - *É Liderada* - Prisioneiro
+    - cardinalidade: 1 - 1
+    - Papel: É Liderada - Lidera
+
+---
+
+- Gangue - *Rivaliza* - Gangue
+    - cardinalidade: 1-N - 1-N
+    - Papel: Rivaliza - É Rival
+
+---
+
+## Diagrama Entidade Relacionamento
+
+> Um diagrama Entidade-Relacionamento (ER) é uma representação visual de entidades (objetos ou conceitos) e suas relações em um sistema de informação. Ele é usado principalmente para descrever a estrutura dos dados e como eles se relacionam entre si. Esses diagramas são úteis para visualizar e projetar a estrutura de um banco de dados de forma clara e compreensível.
+
+<div align="center">
+<div align="center"><img src= "https://github.com/SBD1/2024.1-Prison-Trading/blob/main/docs/Images/DER.png?raw=true"/></div>
+</div>
+
+---
+
+# Histórico de versão
+
+|    Data    | Versão | Descrição                   | Autores |
+|:----------:|:------:|-----------------------------|-------|
+| 13/04/2024 | `1.0`  | Criação da primeira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
