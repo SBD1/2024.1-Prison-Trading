@@ -89,7 +89,7 @@
 
 - Gangue - *Rivaliza* - Gangue
   - Cardinalidade: 1-N - 1-N
-  - Papel: Rivaliza - É Rival
+  - Papel: Rivaliza - É Rival 
 
 ---
 
