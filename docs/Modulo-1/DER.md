@@ -20,8 +20,6 @@
 
 </center>
 
----
-
 <div style="margin: 0 auto; width: fit-content;">
 
 |    Data    | Versão | Descrição                   | Autores |
