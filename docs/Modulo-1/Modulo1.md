@@ -119,8 +119,9 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão | Descrição                   | Autores |
-|:----------:|:------:|-----------------------------|-------|
-| 13/04/2024 | `1.0`  | Criação da primeira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
+| Data       | Versão | Descrição                   | Autores                                                                                                                                                                                                 |
+|:----------:|:------:|:---------------------------:| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 13/04/2024 | `1.0`  | Criação da primeira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 20/04/2024 | `1.1`  | Criação da quarta versão.   | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 
 </div>

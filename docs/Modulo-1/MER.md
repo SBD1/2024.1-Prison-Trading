@@ -101,11 +101,12 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-| Data | Versão | Descrição | Autores                                                                                                                                                                                                  |
-|:------:|:--------:|-----------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 10/04/2024 | `1.0` | Criação da primeira versão. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                         |
-| 10/04/2024 | `1.1` | Segunda Versão. | [Fernando Gabriel](https://github.com/show-dawn), [Julio Cesar](https://github.com/julio1099)                                                                                                            |
-| 11/04/2024 | `1.2` | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
-| 13/04/2024 | `1.3` | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
+| Data       | Versão | Descrição                   | Autores                                                                                                                                                                                                 |
+|:----------:|:------:|:---------------------------:| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 10/04/2024 | `1.0`  | Criação da primeira versão. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
+| 10/04/2024 | `1.1`  | Segunda Versão.             | [Fernando Gabriel](https://github.com/show-dawn), [Julio Cesar](https://github.com/julio1099)                                                                                                           |
+| 11/04/2024 | `1.2`  | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 13/04/2024 | `1.3`  | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 20/04/2024 | `1.4`  | Criação da quarta versão.   | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 
 </div>
