@@ -28,7 +28,7 @@
 - Item: <ins>nome</ins>, utilizavel, lugar
 - Lugar: <ins>nome</ins>, nivel_seguranca
 - Gangue: <ins>nome</ins>, lider, gangue_rival(multivalorada), prisioneiros(multivalorado)
-- Negociaçao: data, lugar, itens (multivalorado)
+- Negociaçao: <ins>id_jogador</ins>, <ins>id_Pessoa</ins>, <ins>data</ins>, lugar, itens (multivalorado)
 
 
 ## Relacionamento
