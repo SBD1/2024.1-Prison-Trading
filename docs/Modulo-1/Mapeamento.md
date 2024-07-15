@@ -78,6 +78,7 @@ Item será utilizado por pessoas para realizaçao de trocas e o mesmo faz parte 
 
 
 
+
 ## Prisioneiro {nome, utilizavel, descricao}
 ## Jogador {nome, utilizavel, descricao}
 ## Policial {nome, utilizavel, descricao}
