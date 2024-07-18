@@ -9,9 +9,16 @@
   - [Ferramentas utilizadas](Planejamento/Ferramentas.md)
 
 * Módulo 1
-  - [Geral](Modulo-1/Modulo1.md)
-  - [MER](Modulo-1/MER.md)
-  - [DER](Modulo-1/DER.md)
-  - [Dicionário de Dados](Modulo-1/dicionario)
+  - [Diagrama Entidade-Relacionamento](Modulo-1/DER.md)
+  - [Modelo Entidade-Relacionamento](Modulo-1/MER.md)
+    * [O que é?]()
+  - [Modelo Relacional](Modulo-1/MER.md)
+  - [Dicionário de Dados](Modulo-1/dicionario2)
+    * [O que é?]()
+    * a
+    * a
+    * a
+    * a
+  - [Apresentação](Modulo-1/Modulo1.md)
 
 
