@@ -15,12 +15,12 @@
 - **Regiao**
 - **Lugar**
 - **Pessoa**
-- **Prisioneiro**
-- **Policial**
-- **Informante**
-- **Jogador**
-- **Inventário**
-- **Instância_Item**
+  - **Prisioneiro**
+  - **Policial**
+  - **Informante**
+  - **Jogador**
+- **Inventario**
+- **Instancia_Item**
 - **Item**
   - **Item_Fabricavel**
     - **Ferramenta**
@@ -29,22 +29,22 @@
     - **Comida**
     - **Medicamento**
     - **Utilizavel**
-- **Fabricação**
-- **Livro_Fabricações**
+- **Fabricacao**
+- **Livro_Fabricacoes**
 - **Missao**
 
 ## 2. Atributos
 
 - **Prisao**: <ins>id_prisao</ins>, nome
-- **Regiao**: <ins>nome_regiao</ins>, descricao_regiao, prisao
-- **Lugar**: <ins>nome_lugar</ins>, descricao_lugar, regiao, lugar_anterior
-- **Pessoa**: <ins>id_pessoa</ins>, nome_pessoa, tipo_pessoa, lugar
-- **Prisioneiro**: habilidade_briga_prisioneiro, vida_prisioneiro, forca_prisioneiro, gangue_prisioneiro
-- **Policial**: policial_corrupto
-- **Informante**: dano_informante
-- **Jogador**: habilidade_briga_jogador, vida_jogador, forca_jogador, respeito_jogador, tempo_vida_jogador, gangue_jogador, missao 
-- **Inventário**: <ins>id_inventario</ins>, tamanho_inventario, inventario_ocupado, pessoa
-- **Instância_Item**: <ins>nome_inst</ins>, item, lugar, inventario, fabricacao
+- **Regiao**: <ins>nome_regiao</ins>, descricao_regiao
+- **Lugar**: <ins>nome_lugar</ins>, descricao_lugar
+- **Pessoa**: <ins>id_pessoa</ins>, nome_pessoa, tipo_pessoa
+  - **Prisioneiro**: habilidade_briga_prisioneiro, vida_prisioneiro, forca_prisioneiro, gangue_prisioneiro
+  - **Policial**: policial_corrupto
+  - **Informante**: dano_informante
+  - **Jogador**: habilidade_briga_jogador, vida_jogador, forca_jogador, respeito_jogador, tempo_vida_jogador, gangue_jogador
+- **Inventario**: <span style="text-decoration: underline; text-decoration-style: dotted;">id_inventario</span>, tamanho_inventario, inventario_ocupado
+- **Instancia_Item**: <span style="text-decoration: underline; text-decoration-style: dotted;">nome_inst</span>
 - **Item**: <ins>nome_item</ins>, tipo_item, tamanho_item, descricao_item
   - **Item_Fabricavel**: tipo_fabricavel
     - **Ferramenta**: utilidade_ferramenta
@@ -53,15 +53,15 @@
     - **Comida**: quantidade_comida, qualidade_comida
     - **Medicamento**: cura_medicamento, qualidade_medicamento
     - **Utilizavel**: efeito_Utilizavel
-- **Fabricação**: <ins>nome_fabri</ins>, item_fabricacao, livro_fabricacoes
-- **Livro_Fabricações**: <ins>nome_livro_fabri</ins>
-- **Missao**: <ins>id_missao</ins>, nome_missao, descricao_missao, lugar, item_nao_fab
+- **Fabricacao**: <span style="text-decoration: underline; text-decoration-style: dotted;">nome_fabri</span>
+- **Livro_Fabricacoes**: <ins>nome_livro_fabri</ins>
+- **Missao**: <ins>id_missao</ins>, nome_missao, descricao_missao
 
 ## 3. Relacionamentos
 
 **Prisao _Possui_ Regiao**
 
-- Prisao possui nenhuma ou várias regiões (0,N)
+- Prisao possui uma ou várias regiões (1,N)
 - Regiao pertence a apenas uma única prisão (1,1)
 
 **Regiao _Possui_ Lugar**
@@ -71,12 +71,12 @@
 
 **Lugar _Conecta_ Lugar**
 
-- Lugar pode conectar a nenhum ou quatro outros lugares (1,4)
+- Lugar pode conectar a um ou quatro outros lugares (1,4)
 - Outro Lugar pode ser conectado por um ou quatro lugares (1,4)
 
 **Missao _Está disponivel em_ Lugar**
 
-- Missão está disponível em um ou vários lugares (1,N)
+- Missão está disponível em nenhum ou um lugar (0,1)
 - Lugar possui nenhuma ou várias missões (0,N)
 
 **Pessoa _Está_ em Lugar**
@@ -84,37 +84,37 @@
 - Pessoa está em apenas um único lugar (1,1)
 - Lugar acomoda nenhuma ou várias pessoas (0,N)
 
-**Instância_Item _Está_ em Lugar**
+**Instancia_Item _Está_ em Lugar**
 
-- Instância_Item está em um único lugar (1,1)
-- Lugar acomoda nenhuma ou várias pessoas (0,N)
+- Instância de Item está em um único lugar (1,1)
+- Lugar acomoda nenhuma ou várias Instancias de itens (0,N)
 
-**Pessoa _Possui_ Inventário**
+**Pessoa _Possui_ Inventario**
 
 - Pessoa possui apenas um único inventário (1,1)
 - Inventário pertence a uma ou várias pessoas (1,N)
 
-**Inventário _Possui_ Instância_Item**
+**Inventario _Possui_ Instancia_Item**
 
 - Inventário possui nenhuma ou várias instâncias de itens (0,N)
 - Instância de Item pertence a apenas um único inventário (1,1)
 
-**Instância_Item _Possui_ Item**
+**Item _Possui_ Instancia_Item**
 
-- Item pode estar em uma ou várias instâncias de itens (1,N)
+- Item possui uma ou várias instâncias de itens (1,N)
 - Instância de Item petence a apenas um único item (1,1)
 
-**Instância_Item _É feita_ Fabricação**
+**Fabricacao _É feita_ Instancia_Item**
 
 - Fabricação é feita de uma ou várias instancias de itens (1,N)
 - Instancia de item está em nenhuma ou várias fabricações (0,N)
 
-**Fabricação _Resulta_ Item_Fabricavel**
+**Fabricacao _Resulta_ Item_Fabricavel**
 
 - Fabricação resulta em apenas um item fabricado (1,1)
 - Item Fabricável é resultado por apenas uma única fabricação (1,1)
 
-**Livro_Fabricações _Possui_ Fabricação**
+**Livro_Fabricacoes _Possui_ Fabricao**
 
 - Livro de Fabricações possui nenhuma ou várias fabricações (0,N)
 - Fabricação pertence a apenas um único livro de fabricações (1,1)
@@ -124,10 +124,10 @@
 - Jogador realiza nenhuma ou várias missões (0,N)
 - Missão é realizada por um ou vários jogadores (1,N)
 
-**Missao _Droppa_ Item_Nao_Fabricavel**
+**Missao _Dropa_ Item_Nao_Fabricavel**
 
-- Missão droppa um item não fabricável (1,1)
-- Item Não Fabricável é droppado por uma missão (1,1)
+- Missão dropa apenas um item não fabricável (1,1)
+- Item Não Fabricável é dropado por uma ou várias missões (1,N)
 
 
 <div style="margin: 0 auto; width: fit-content;">
