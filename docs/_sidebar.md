@@ -10,15 +10,13 @@
 
 * Módulo 1
   - [Diagrama Entidade-Relacionamento](Modulo-1/DER.md)
+    * [O que é?]()
   - [Modelo Entidade-Relacionamento](Modulo-1/MER.md)
     * [O que é?]()
   - [Modelo Relacional](Modulo-1/MER.md)
-  - [Dicionário de Dados](Modulo-1/dicionario2)
     * [O que é?]()
-    * a
-    * a
-    * a
-    * a
+  - [Dicionário de Dados](Modulo-1/dicionario.md)
+    * [O que é?]()
   - [Apresentação](Modulo-1/Modulo1.md)
 
 
