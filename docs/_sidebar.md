@@ -46,6 +46,9 @@
     * [Tabela Jogador](Modulo-1/DD#tabela-jogador)
     * [Tabela Missao](Modulo-1/DD#tabela-missao)
     * [Histórico de versão](Modulo-1/DD#histórico-de-versão)
+  - [Normalização](Modulo-1/NORM.md)
+    * [O que é?](Modulo-1/NORM.md#o-que-é)
+    * [Histórico de versão](Modulo-1/NORM.md#histórico-de-versão)
   - [Apresentação](Modulo-1/Modulo1.md)
 
 

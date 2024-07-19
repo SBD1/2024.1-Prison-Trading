@@ -1,6 +1,6 @@
 <center>
 
-# Modelo Relacional
+# Normalização
 
 </center>
 
@@ -12,18 +12,9 @@
 
 </center>
 
-> O modelo relacional....
+> Normalização....
 
 
-<center>
-
-#### Versão atual - 1.0 - Criação do documento.
-
-</center>
-
-<div align="center">
-<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/MERLV1-0.png?raw=true"/></div>
-</div>
 
 ---
 <center>
