@@ -6,203 +6,407 @@
 
 Este documento serve como a documentação para o dicionário de dados do sistema.
 
-#### Atalhos:
-
-* [Item](#item--insnomeins-utilizavel-descricao-)
-* [Instancia_Item](#instancia_item--insnome-nome_inst-id_inventario-nome_lugarins-)
-* [Pessoa](#pessoa--insid_pessoa-nome_lugarins-nome_pessoa-tipo_pessoa-)
-
 ---
-### Item { <ins>nome_item</ins>, descricao_item, tamanho_item, tipo_item }
 
-> Item é uma tabela para guardar informações de itens presentes no jogo.
+# Tabela Item
 
-|      Nome      |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|:---------------------:|
-|   nome_item    | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |     CHAR (20) [a-z, A-Z]     |      PRIMARY KEY      |
-| descricao_item |         Atributo que descreve um breve resumo da função do item mencionado          |    CHAR (150) [a-z, A-Z]     |       NOT NULL        |
-|  tamanho_item  |            Atributo que define o espaço ocupado pelo item no inventário             |             INT              |  NOT NULL, DEFAULT 1  |
-|   tipo_item    |         Atributo que define o tipo do item (utilizável, arma ou consumível)         | ENUM('util', 'arma', 'cons') |       NOT NULL        |
+|                 |                                                                                                               |   
+|-----------------|---------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Item que será utilizado no jogo. Serve como origem para as tabelas `Item_Fabricavel` e `Item_Nao_Fabricavel`. |
+| **Observações** | Não possui chaves estrangeiras.                                                                               | 
+
+|      Nome      |                                  Definição Lógica                                   | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|   nome_item    | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+|   tipo_item    |    Atributo que define o tipo do item (fabr = fabricável, nfab = não fabricável)    |  ENUM('fabr', 'nfab')  | -       |       NOT NULL        |
+|  tamanho_item  |            Atributo que define o espaço que o item ocupará no inventário            |          INT           | -       |  NOT NULL, DEFAULT 1  |
+| descricao_item |         Atributo que descreve um breve resumo da função do item mencionado          |          TEXT          | -       |       NOT NULL        |
 
 ---
 
-### Consumivel { <ins>nome_item</ins>, descricao_item, tamanho_item, quantidade_consumivel, efeito_consumivel }
+# Tabela Instancia_Item
 
-> Consumivel é uma tabela para guardar informações sobre itens que podem ser consumidos no jogo.
+|                 |                                                                                                                          |   
+|-----------------|--------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Instancia_item é uma entidade fraca que é usada instanciar itens, a mesma é utilizada em Lugar, Inventario e Fabricacao. |
+| **Observações** | Possui as chaves estrangeiras da entidade `Lugar`, `Inventario` e `Fabricacao`.                                          | 
 
-|         Nome          |                                  Definição Lógica                                   | Tipo e Formato de Dado | Restrições de Domínio |
-|:---------------------:|:-----------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
-|       nome_item       | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |  CHAR (20) [a-z, A-Z]  |      PRIMARY KEY      |
-|    descricao_item     |         Atributo que descreve um breve resumo da função do item mencionado          | CHAR (150) [a-z, A-Z]  |       NOT NULL        |
-|     tamanho_item      |            Atributo que define o espaço ocupado pelo item no inventário             |          INT           |  NOT NULL, DEFAULT 1  |
-| quantidade_consumivel |           Atributo que define a quantidade do item que pode ser consumido           |          INT           |  NOT NULL, DEFAULT 1  |
-|   efeito_consumivel   |              Atributo que descreve o efeito causado ao consumir o item              |  CHAR (30) [a-z, A-Z]  |       NOT NULL        |
-
----
-
-### Arma { <ins>nome_item</ins>, descricao_item, tamanho_item,  }
-
-> Arma é uma tabela para guardar informações sobre itens que podem ser utilizados como armas no jogo.
-
-|      Nome      |                                  Definição Lógica                                   | Tipo e Formato de Dado | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
-|   nome_item    | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |  CHAR (20) [a-z, A-Z]  |      PRIMARY KEY      |
-| descricao_item |         Atributo que descreve um breve resumo da função do item mencionado          | CHAR (150) [a-z, A-Z]  |       NOT NULL        |
-|  tamanho_item  |            Atributo que define o espaço ocupado pelo item no inventário             |          INT           |  NOT NULL, DEFAULT 1  |
-|   dano_arma    |            Atributo que define a quantidade de dano causado por uma arma            |          INT           |       NOT NULL        |
-| arma_equipada  |              Atributo que indica se a arma está equipada pelo jogador               |        BOOLEAN         |       NOT NULL        |
+|      Nome      |                                                 Definição Lógica                                                 | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:--------------:|:----------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+| nome_ist, item | Chave composta de nome_inst e item, item é chave primária da tabela Item, ambas sem caracteres especiais (~Ç@!)) |    CHAR [a-z, A-Z]     | 50      |      PRIMARY KEY      |
+|     lugar      |               Chave estrangeira referenciando a tabela Lugar, Lugar onde a instância de item está                |    CHAR [a-z, A-Z]     | -       |      FOREIGN KEY      |
+|   inventario   |          Chave estrangeira referenciando a tabela Inventário, Inventário onde a instância de item está           |         SERIAL         | -       |      FOREIGN KEY      |
+|   fabricacao   |       Chave estrangeira referenciando a tabela Fabricação, Fabricação onde a instância de item é utilizada       |    CHAR [a-z, A-Z]     | 25      |      FOREIGN KEY      |
 
 ---
 
-### Utilizavel
+# Tabela Caracterizador_Item
 
-> Utilizavel é uma tabela para guardar informações sobre itens que podem ser utilizados no jogo.
+|                 |                                                                                                                           |   
+|-----------------|---------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela usada para caracterizar um Item, criada a partir do mapeamento de uma abstração e generalizaçao total e exclusiva. |
+| **Observações** | Tipo possui os valores `fabr` para `Item_Fabricavel` e `nfab` para `Item_Nao_Fabricavel`.                                 | 
 
-|       Nome        |                                  Definição Lógica                                   | Tipo e Formato de Dado | Restrições de Domínio |
-|:-----------------:|:-----------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
-|     nome_item     | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |  CHAR (20) [a-z, A-Z]  |      PRIMARY KEY      |
-|  descricao_item   |         Atributo que descreve um breve resumo da função do item mencionado          | CHAR (150) [a-z, A-Z]  |       NOT NULL        |
-|   tamanho_item    |            Atributo que define o espaço ocupado pelo item no inventário             |          INT           |  NOT NULL, DEFAULT 1  |
-| efeito_utilizavel |              Atributo que descreve o efeito causado ao utilizar o item              |  CHAR (30) [a-z, A-Z]  |       NOT NULL        |
-
----
-### Instancia_Item { <ins>nome_inst, nome_item, id_inventario, nome_lugar</ins> }
-
-> Instancia_Item será utilizado por pessoas para realização de trocas e o mesmo faz parte do inventário de toda pessoa.
->
-> Observação importante: a instância de item ou estará em um inventário ou em um lucal, nunca os dois ao mesmo tempo e nunca com as duas chaves estrangeiras nulas, ou uma vai estar nula ou outra vai estar.
-
-|         Nome         |                                                        Definição Lógica                                                        | Tipo e Formato de Dado | Restrições de Domínio |
-|:--------------------:|:------------------------------------------------------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
-| nome_inst, nome_item | Chave composta de nome_inst e nome_item, nome_item vem da chave primaria da tabela Item, ambas sem caracteres especiais (~Ç@!) |  CHAR (20) [a-z, A-Z]  |      PRIMARY KEY      |
-|    id_inventario     |                   Chave estrangeira referenciando a tabela Inventario, inventário onde a Instancia_Item está                   |         SERIAL         |      FOREIGN KEY      |
-|      nome_lugar      |                        Chave estrangeira referenciando a tabela Lugar, lugar onde a Instancia_Item está                        |  CHAR (25) [a-z, A-Z]  |      FOREIGN KEY      |
+|   Nome    |                                  Definição Lógica                                   | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:---------:|:-----------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+| nome_item | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+| tipo_item |                         Atributo que define o tipo do item                          |  ENUM('fabr', 'nfab')  | -       |       NOT NULL        |
 
 ---
 
-### Fabricacao { <ins>nome_fabri, nome_item, nome_livro_fabri</ins> }
+# Tabela Item_Fabricavel
 
-> Fabricacao é uma tabela que registra os processos de fabricação de itens no jogo.
+|                 |                               |   
+|-----------------|-------------------------------| 
+| **Descrição**   | Tabela de itens fabricáveis.  |
+| **Observações** | Não possui chave estrangeira. | 
 
-|         Nome          |                                                        Definição Lógica                                                         | Tipo e Formato de Dado | Restrições de Domínio |
-|:---------------------:|:-------------------------------------------------------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
-| nome_fabri, nome_item | Chave composta de nome_fabri e nome_item, nome_item vem da chave primaria da tabela Item, ambas sem caracteres especiais (~Ç@!) |  CHAR (20) [a-z, A-Z]  |      PRIMARY KEY      |
-|   nome_livro_fabri    |                   Chave estrangeira referenciando a tabela Inventario, inventário onde a Instancia_Item está                    |  CHAR (20) [a-z, A-Z]  |      FOREIGN KEY      |
-
----
-
-### Livro_Fabricacoes { <ins>nome_livro_fabri</ins> }
-
-> Fabricacao é uma tabela que registra os processos de fabricação de itens no jogo.
-
-|         Nome          |                                                        Definição Lógica                                                         | Tipo e Formato de Dado | Restrições de Domínio |
-|:---------------------:|:-------------------------------------------------------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
-|   nome_livro_fabri    |                                   Chave primária onde armazena o nome do livro de fabricações                                   |  CHAR (20) [a-z, A-Z]  |      PRIMARY KEY      |
-
----
-### Inventario { <ins>id_pessoa, id_inventario</ins>, tamanho_inventario, inventario_ocupado }
-
-> Inventário é a tabela que contém as instâncias de item, cada inventário pertence exclusivamente a uma única pessoa.
-
-|           Nome           | Definição Lógica                                                              | Tipo e Formato de Dado | Restrições de Domínio |
-|:------------------------:|-------------------------------------------------------------------------------|:----------------------:|:---------------------:|
-| id_pessoa, id_inventario | Chave composta do id_pessoa e id_inventario                                   |         SERIAL         |      PRIMARY KEY      |
-|    tamanho_inventario    | Atributo que definirá o tamanho máximo de itens que podem estar no inventário |          INT           |  NOT NULL, DEFAULT 5  |
-|    inventario_ocupado    | Atributo que definirá quantos itens tem o inventário                          |          INT           |  NOT NULL, DEFAULT 0  |
-
----
-### Pessoa { <ins>id_pessoa, nome_lugar</ins>, nome_pessoa, tipo_pessoa }
-
-> Pessoa é uma Entidade Generica a mesma possui informações básicas de pessoas e irá se ramificar em Jogador, Prisioneiro e Policial.
->
-> Observação importante: a Pessoa sempre estará em um local, logo a chave estrangeira nome_lugar nunca deve ser nula.
-
-|    Nome     |                                     Definição Lógica                                     |    Tipo e Formato de Dado    | Restrições de Domínio  |
-|:-----------:|:----------------------------------------------------------------------------------------:|:----------------------------:|:----------------------:|
-|  id_pessoa  |                 Chave primária que terá um identificador único da pessoa                 |            SERIAL            |      PRIMARY KEY       |
-| nome_pessoa | Atributo que define o nome da pessoa completo mencionada sem caracteres especiais (~Ç@!) |     CHAR (60) [a-z, A-Z]     |        NOT NULL        |
-| tipo_pessoa |         Atributo que definirá o tipo da pessoa, tendo apenas 3 valores possiveis         | ENUM('POLI', 'JOGA', 'PRIS') |        NOT NULL        |
-| nome_lugar  |         Chave estrangeira referenciando a tabela Lugar, lugar onde a Pessoa está         |     CHAR (25) [a-z, A-Z]     | FOREIGN KEY, NOT NULL  |
-
----
-### Prisioneiro { <ins>id_pessoa, id_jogador</ins>, nome_pessoa, habilidade_briga_prisioneiro, vida_prisioneiro, forca_prisioneiro, gangue_prisioneiro }
-
-> Prisioneiro é uma tabela que contém informações sobre prisioneiros no jogo.
-
-|             Nome             |                                     Definição Lógica                                     | Tipo e Formato de Dado | Restrições de Domínio |
-|:----------------------------:|:----------------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
-|          id_pessoa           |                 Chave primária que terá um identificador único da pessoa                 |         SERIAL         |      PRIMARY KEY      |
-|         nome_pessoa          | Atributo que define o nome da pessoa completa mencionada sem caracteres especiais (~Ç@!) |  CHAR (60) [a-z, A-Z]  |       NOT NULL        |
-| habilidade_briga_prisioneiro |           Atributo que indica a habilidade de briga do prisioneiro em combate            |          INT           |  NOT NULL, DEFAULT 2  |
-|       vida_prisioneiro       |               Atributo que representa a quantidade de vida do prisioneiro                |          INT           | NOT NULL, DEFAULT 10  |
-|      forca_prisioneiro       |                  Atributo que define a força do prisioneiro em combate                   |          INT           |  NOT NULL, DEFAULT 2  |
-|      gangue_prisioneiro      |                Atributo que define a gangue a qual o prisioneiro pertence                |  CHAR (20) [a-z, A-Z]  |       NOT NULL        |
-|          id_jogador          |                   Chave estrangeira referenciando a tabela de jogador                    |         SERIAL         | FOREIGN KEY, NOT NULL |
+|      Nome       |                                  Definição Lógica                                   | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:---------------:|:-----------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|    nome_item    | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+|    tipo_item    |    Atributo que define o tipo do item (fabr = fabricável, nfab = não fabricável)    |  ENUM('fabr', 'nfab')  | -       |       NOT NULL        |
+|  tamanho_item   |            Atributo que define o espaço que o item ocupará no inventário            |          INT           | -       |  NOT NULL, DEFAULT 1  |
+| descricao_item  |         Atributo que descreve um breve resumo da função do item mencionado          |          TEXT          | -       |       NOT NULL        |
+| tipo_fabricavel | Atributo que define o tipo do item fabricável ('ferr' = ferramenta, 'arma' = arma)  |  ENUM('ferr', 'arma')  | -       |       NOT NULL        |
 
 ---
 
-### Jogador { <ins>id_pessoa</ins>, nome_pessoa, habilidade_briga_jogador, vida_jogador, forca_jogador, respeito_jogador, tempo_vida_jogador, gangue_jogador }
+# Tabela Caracterizador_Item_Fabricavel
 
-> Jogador é uma tabela que contém informações sobre os jogadores no jogo.
+|                 |                                                                                                                                      |   
+|-----------------|--------------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela usada para caracterizar um Item Fabricável, criada a partir do mapeamento de uma abstração e generalizaçao total e exclusiva. |
+| **Observações** | Tipo possui os valores `ferr` para `Ferramenta` e `arma` para `Arma`.                                                                | 
 
-|           Nome           |                                     Definição Lógica                                     | Tipo e Formato de Dado | Restrições de Domínio |
-|:------------------------:|:----------------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
-|        id_pessoa         |                 Chave primária que terá um identificador único da pessoa                 |         SERIAL         |      PRIMARY KEY      |
-|       nome_pessoa        | Atributo que define o nome da pessoa completa mencionada sem caracteres especiais (~Ç@!) |  CHAR (60) [a-z, A-Z]  |       NOT NULL        |
-| habilidade_briga_jogador |             Atributo que indica a habilidade de briga do jogador em combate              |          INT           |  NOT NULL, DEFAULT 2  |
-|       vida_jogador       |                 Atributo que representa a quantidade de vida do jogador                  |          INT           | NOT NULL, DEFAULT 10  |
-|      forca_jogador       |                    Atributo que define a força do jogador em combate                     |          INT           |  NOT NULL, DEFAULT 2  |
-|     respeito_jogador     |       Atributo que indica o nível de respeito do jogador entre outros personagens        |          INT           |       NOT NULL        |
-|    tempo_vida_jogador    |                  Atributo que indica o tempo de vida do jogador no jogo                  |          INT           |       NOT NULL        |
-|      gangue_jogador      |                  Atributo que define a gangue a qual o jogador pertence                  |  CHAR (20) [a-z, A-Z]  |       NOT NULL        |
+|      Nome       |                                  Definição Lógica                                   | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:---------------:|:-----------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|    nome_item    | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+| tipo_fabricavel |                    Atributo que define o tipo do item fabricável                    |  ENUM('ferr', 'arma')  | -       |       NOT NULL        |
 
 ---
 
-### Policial { <ins>id_pessoa</ins>, nome_pessoa, policial_corrupto }
+# Tabela Item_Nao_Fabricavel
 
-> Policial é uma tabela que contém informações sobre policiais no jogo.
+|                 |                                                                                                           |   
+|-----------------|-----------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela de itens que não podem ser fabricados e só são obtidos através de missão ou encontrando em lugares |
+| **Observações** |     Não possui chave estrangeira.                                                                         | 
 
-|       Nome        |                                     Definição Lógica                                     | Tipo e Formato de Dado | Restrições de Domínio |
-|:-----------------:|:----------------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
-|     id_pessoa     |                 Chave primária que terá um identificador único da pessoa                 |         SERIAL         |      PRIMARY KEY      |
-|    nome_pessoa    | Atributo que define o nome da pessoa completa mencionada sem caracteres especiais (~Ç@!) |  CHAR (60) [a-z, A-Z]  |       NOT NULL        |
-| policial_corrupto |            Atributo que indica se o policial é corrupto (verdadeiro ou falso)            |        BOOLEAN         |       NOT NULL        |
-
----
-
-### Informante { <ins>id_pessoa</ins>, nome_pessoa, dano_informante }
-
-> Informante é uma tabela que contém informações sobre informantes no jogo.
-
-|      Nome       |                                     Definição Lógica                                     | Tipo e Formato de Dado | Restrições de Domínio |
-|:---------------:|:----------------------------------------------------------------------------------------:|:----------------------:|:---------------------:|
-|    id_pessoa    |                 Chave primária que terá um identificador único da pessoa                 |         SERIAL         |      PRIMARY KEY      |
-|   nome_pessoa   | Atributo que define o nome da pessoa completa mencionada sem caracteres especiais (~Ç@!) |  CHAR (60) [a-z, A-Z]  |       NOT NULL        |
-| dano_informante |                 Atributo que indica o dano que o informante pode causar                  |          INT           |       NOT NULL        |
-
+|          Nome           |                                              Definição Lógica                                               |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
+|:-----------------------:|:-----------------------------------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
+|        nome_item        |             Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!)             |       CHAR [a-z, A-Z]        | 25      |      PRIMARY KEY      |
+|      tamanho_item       |                        Atributo que define o espaço que o item ocupará no inventário                        |             INT              | -       |  NOT NULL, DEFAULT 1  |
+|     descricao_item      |                     Atributo que descreve um breve resumo da função do item mencionado                      |             TEXT             | -       |       NOT NULL        |
+| raridade_nao_fabricavel | Atributo que define a raridade de um item, podendo ter 3 possiveis valores (0=normal, 1=raro e 2=ultrararo) |          INT [0-2]           | -       |  NOT NULL, DEFAULT 0  |
+|   tipo_nao_fabricavel   | Atributo que define o tipo do item fabricável ('comi' = comida, 'medi' = medicamento, 'util' = utilizavel)  | ENUM('comi', 'medi', 'util') | -       |       NOT NULL        |
 
 ---
 
-### Regiao { <ins>nome_regiao</ins>, descricao_regiao }
+# Tabela Caracterizador_Item_Nao_Fabricavel
 
-> Região é uma tabela que contém informações de cada região no jogo.
+|                 |                                                                                                                                          |   
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela usada para caracterizar um Item Não Fabricável, criada a partir do mapeamento de uma abstração e generalizaçao total e exclusiva. |
+| **Observações** | Tipo possui os valores `comi` para `Comida`, `medi` para `Medicamento` e `util` para `Utilizavel`.                                       | 
 
-|       Nome       |                                  Definição Lógica                                   | Tipo e Formato de Dado | Restrições de Domínio       |
-|:----------------:|:-----------------------------------------------------------------------------------:|:----------------------:|-----------------------------|
-|   nome_regiao    | Chave primaria contendo o nome da região mencionado sem caracteres especiais (~Ç@!) |  CHAR (15) [a-z, A-Z]  | PRIMARY KEY                 |
-| descricao_regiao |             Atributo contendo uma breve descrição da região mencionada              | CHAR (200) [a-z, A-Z]  | NOT NULL                    |
+|        Nome         |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
+|:-------------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
+|      nome_item      | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |       CHAR [a-z, A-Z]        | 25      |      PRIMARY KEY      |
+| tipo_nao_fabricavel |                    Atributo que define o tipo do item fabricável                    | ENUM('comi', 'medi', 'util') | -       |       NOT NULL        |
 
 ---
-### Lugar { <ins>nome_lugar, nome_regiao</ins>, descricao_especifica_lugar, lugar_anterior }
 
-> Lugar é uma tabela que contém informações de cada local, bem como uma descrição mais especifica.
+# Tabela Ferramenta
 
-|            Nome            |                                                     Definição Lógica                                                     | Tipo e Formato de Dado | Restrição             |
-|:--------------------------:|:------------------------------------------------------------------------------------------------------------------------:|:----------------------:|-----------------------|
-|         nome_lugar         |                         Chave primaria nome do lugar mencionado sem caracteres especiais (~Ç@!)                          |  CHAR (25) [a-z, A-Z]  | PRIMARY KEY           |
-| descricao_especifica_lugar | Atributo que contém uma descrição mais especifica de um lugar, como detalhes do ambiente sem caracteres especiais (~Ç@!) | CHAR (200) [a-z, A-Z]  | NOT NULL              |
-|       lugar_anterior       |                                  Atributo que contém o lugar de origem, sala de origem                                   |  CHAR (25) [a-z, A-Z]  | NOT NULL              |
-|        nome_regiao         |                       Chave estrangeira que contém o nome da região na qual aquele lugar pertence                        |  CHAR (15) [a-z, A-Z]  | FOREIGN KEY, NOT NULL |
+|                 |                                                  |   
+|-----------------|--------------------------------------------------| 
+| **Descrição**   | Tabela de ferramentas, que podem ser utilizadas. |
+| **Observações** | Não possui chave estrangeira.                    | 
+
+|         Nome         |                                     Definição Lógica                                      | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:--------------------:|:-----------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|      nome_item       | Chave primária que define o nome da ferramenta mencionada sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+|     tamanho_item     |               Atributo que define o espaço que o item ocupará no inventário               |          INT           | -       |  NOT NULL, DEFAULT 1  |
+|    descricao_item    |            Atributo que descreve um breve resumo da função do item mencionado             |          TEXT          | -       |       NOT NULL        |
+| utilidade_ferramenta |                      Atributo que descreve a utilidade da ferramenta                      |          TEXT          | -       |       NOT NULL        |
+
+---
+
+# Tabela Arma
+
+|                 |                                                                            |   
+|-----------------|----------------------------------------------------------------------------| 
+| **Descrição**   | Tabela de armas, que podem ser usadas para ferir prisioneiros e jogadores. |
+| **Observações** | Não possui chave estrangeira.                                              | 
+
+|      Nome       |                                       Definição Lógica                                       | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:---------------:|:--------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|    nome_item    |     Chave primária que define o nome da arma mencionada sem caracteres especiais (~Ç@!)      |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+|  tamanho_item   |                Atributo que define o espaço que o item ocupará no inventário                 |          INT           | -       |  NOT NULL, DEFAULT 1  |
+| descricao_item  |              Atributo que descreve um breve resumo da função do item mencionado              |          TEXT          | -       |       NOT NULL        |
+|    dano_arma    |                Atributo que define o dano que uma arma pode dar em uma pessoa                |          INT           | -       |       NOT NULL        |
+|  arma_equipada  | Atributo que define se um jogador está com a arma equipada na mão ou escondida no inventário |        BOOLEAN         | -       |       NOT NULL        |
+
+---
+
+# Tabela Comida
+
+|                 |                                                                                                                                                            |   
+|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela para armazenar comidas que podem eventualmente serem utilizados para curar o jogador, caso sejam utilizados a comida some do inventário do jogador. |
+| **Observações** | Não possui chave estrangeira.                                                                                                                              | 
+
+|          Nome           |                                                          Definição Lógica                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:-----------------------:|:----------------------------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|        nome_item        |                       Chave primária que define o nome da comida mencionada sem caracteres especiais (~Ç@!)                        |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+|      tamanho_item       |                                   Atributo que define o espaço que o item ocupará no inventário                                    |          INT           | -       |  NOT NULL, DEFAULT 1  |
+|     descricao_item      |                                 Atributo que descreve um breve resumo da função do item mencionado                                 |          TEXT          | -       |       NOT NULL        |
+| raridade_nao_fabricavel |             Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo              |       INT [0-2]        | -       |  NOT NULL, DEFAULT 0  |
+|    quantidade_comida    |                Atributo que define a quantidade disponivel de uma comida por espaço, (EX: 3 pães ocupam 1 tamanho)                 |          INT           | -       |       NOT NULL        |
+|    qualidade_comida     | Atributo que define a qualidade da comida, quanto mais qualidade mais vida a comida pode recuperar, (0=normal, 1=bom, 2=excelente) |       INT [0-2]        | -       |  NOT NULL, DEFAULT 0  |
+
+---
+
+# Tabela Medicamento
+
+|                 |                                                                                                                                                                      |   
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela para armazenar medicamentos que podem eventualmente serem utilizados para curar o jogador, caso sejam utilizados o medicamento some do inventário do jogador. |
+| **Observações** | Não possui chave estrangeira.                                                                                                                                        | 
+
+|          Nome           |                                                               Definição Lógica                                                               | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:-----------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|        nome_item        |                          Chave primária que define o nome do medicamento mencionado sem caracteres especiais (~Ç@!)                          |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+|      tamanho_item       |                                        Atributo que define o espaço que o item ocupará no inventário                                         |          INT           | -       |  NOT NULL, DEFAULT 1  |
+|     descricao_item      |                                      Atributo que descreve um breve resumo da função do item mencionado                                      |          TEXT          | -       |       NOT NULL        |
+| raridade_nao_fabricavel |                 Atributo que define a raridade de um item, podendo ter 3 possiveis valores (0=normal, 1=raro e 2=ultrararo)                  |       INT [0-2]        | -       |  NOT NULL, DEFAULT 0  |
+|    cura_medicamento     |                                       Atributo que define quanto de vida um medicamento pode recuperar                                       |          INT           | -       |       NOT NULL        |
+|  qualidade_medicamento  | Atributo que define a qualidade do medicamento, quanto mais qualidade mais vida o medicamento pode recuperar, (0=normal, 1=bom, 2=excelente) |       INT [0-2]        | -       |  NOT NULL, DEFAULT 0  |
+
+---
+
+# Tabela Utilizavel
+
+|                 |                                                                                                                                   |   
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela para armazenar itens que podem eventualmente serem utilizados, caso sejam utilizados o item some do inventário do jogador. |
+| **Observações** | Não possui chave estrangeira.                                                                                                     | 
+
+|          Nome           |                                              Definição Lógica                                               | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:-----------------------:|:-----------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|        nome_item        |       Chave primária que define o nome do item utilizavel mencionado sem caracteres especiais (~Ç@!)        |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+|      tamanho_item       |                        Atributo que define o espaço que o item ocupará no inventário                        |          INT           | -       |  NOT NULL, DEFAULT 1  |
+|     descricao_item      |                     Atributo que descreve um breve resumo da função do item mencionado                      |          TEXT          | -       |       NOT NULL        |
+| raridade_nao_fabricavel | Atributo que define a raridade de um item, podendo ter 3 possiveis valores (0=normal, 1=raro e 2=ultrararo) |       INT [0-2]        | -       |  NOT NULL, DEFAULT 0  |
+|    efeito_utilizavel    |                              Atributo que define o efeito do item utilizável.                               |          TEXT          | -       |       NOT NULL        |
+
+---
+
+# Tabela Fabricacao
+
+|                 |                                                                                                                               |   
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela para armazenar a fabricação de um item fabricável, é uma entidade fraca de Item_Fabricavel (todo item tem fabricação). |
+| **Observações** | Possui chave estrangeira de `Item_Fabricavel`.                                                                                | 
+
+|             Nome              |                                                                     Definição Lógica                                                                     | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:-----------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+| nome_fabri, livro_fabricacoes | Chave composta de nome_fabri e livro_fabricacoes, livro_fabricacoes é chave primária da tabela Livro_Fabricacoes, ambas sem caracteres especiais (~Ç@!)) |    CHAR [a-z, A-Z]     | 50      |      PRIMARY KEY      |
+|        item_fabricacao        |                                   Chave estrangeira referenciando a tabela Item_Fabricacao, Item_Fabricacao resultante                                   |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
+
+---
+
+# Tabela Livro_Fabricacoes
+
+|                 |                                                                |   
+|-----------------|----------------------------------------------------------------| 
+| **Descrição**   | É usado para armazenar fabricações (como os itens são feitos). |
+| **Observações** | Não possui chave estrangeira.                                  | 
+
+|       Nome       |                                     Definição Lógica                                     | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:----------------:|:----------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+| nome_livro_fabri | Chave primária que define o nome do Livro de Fabricações sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+
+---
+
+# Tabela Prisao
+
+|                 |                                                               |   
+|-----------------|---------------------------------------------------------------| 
+| **Descrição**   | Prisão é uma tabela que contém informações da prisão do jogo. |
+| **Observações** | Não possui chave estrangeira.                                 | 
+
+|    Nome     |                           Definição Lógica                           | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:-----------:|:--------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|  id_prisao  |    Chave primária que define o número de identificação da prisão     |         SERIAL         | -       |      PRIMARY KEY      |
+| nome_prisao | Atributo que define o nome da prisão sem caracteres especiais (~ç@!) |    CHAR [a-z, A-Z]     | 25      |       NOT NULL        |
+
+---
+
+# Tabela Regiao
+
+|                 |                                                                    |   
+|-----------------|--------------------------------------------------------------------| 
+| **Descrição**   | Região é uma tabela que contém informações de cada região no jogo. |
+| **Observações** | Possui chave estrangeira vindo de `Prisao`.                        |
+
+|       Nome       |                                  Definição Lógica                                   | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:----------------:|:-----------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|   nome_regiao    | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+| descricao_regiao |             Atributo contendo uma breve descrição da região mencionada              |          TEXT          | -       |       NOT NULL        |
+|      prisao      |                          Chave estrangeira vindo de prisão                          |         SERIAL         | -       | FOREIGN KEY, NOT NULL |
+
+---
+
+# Tabela Lugar
+
+|                 |                                                                                                  |   
+|-----------------|--------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Lugar é uma tabela que contém informações de cada local, bem como uma descrição mais especifica. |
+| **Observações** | Possui chave estrangeira vindo de `Regiao`.                                                      |
+
+|      Nome       |                                                     Definição Lógica                                                     | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:---------------:|:------------------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|   nome_lugar    |                         Chave primaria nome do lugar mencionado sem caracteres especiais  (~Ç@!)                         |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+| descricao_lugar | Atributo que contém uma descrição mais especifica de um lugar, como detalhes do ambiente sem caracteres especiais (~Ç@!) |          TEXT          | -       |       NOT NULL        |
+| lugar_anterior  |                                  Atributo que contém o lugar de origem, sala de origem                                   |    CHAR  [a-z, A-Z]    | 25      |       NOT NULL        |
+|     regiao      |                       Chave estrangeira que contém o nome da região na qual aquele lugar pertence                        |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
+
+---
+
+# Tabela Pessoa
+
+|                 |                                                                                  |   
+|-----------------|----------------------------------------------------------------------------------| 
+| **Descrição**   | Pessoa é uma tabela que contém informações generalizadas de cada pessoa no jogo. |
+| **Observações** | Possui chave estrangeira vindo de `Lugar`.                                       |
+
+|    Nome     |                                                                        Definição Lógica                                                                        |        Tipo e Formato de Dado        | Tamanho | Restrições de Domínio |
+|:-----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------:|---------|:---------------------:|
+|  id_pessoa  |                                          Chave primária que define o número de identificação do personagem mencionado                                          |                SERIAL                | -       |      PRIMARY KEY      |
+| nome_pessoa |                                                  Atributo que define o nome e sobrenome da pessoa mencionada                                                   |           CHAR [a-z, A-Z]            | 60      |       NOT NULL        |
+| tipo_pessoa | Atributo para identificação de qual tipo de classe o personagem mencionado participa. (poli = policial, pris = prisioneiro, info = informante, joga = jogador) | ENUM('poli', 'pris', 'info', 'joga') | -       |       NOT NULL        |
+|    lugar    |                                                                Chave estrangeira vindo de lugar                                                                |           CHAR  [a-z, A-Z]           | 25      | FOREIGN KEY, NOT NULL |
+
+---
+
+# Tabela Caracterizador_Pessoa
+
+|                 |                                                                                                                              |   
+|-----------------|------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela usada para caracterizar uma Pessoa, criada a partir do mapeamento de uma abstração e generalizaçao total e exclusiva. |
+| **Observações** | Tipo possui os valores `poli` para `Policial`, `pris` para `Prisioneiro`, `info` para `Informante` e `joga` para `Jogador`.  | 
+
+|    Nome     |                                                                        Definição Lógica                                                                        |        Tipo e Formato de Dado        | Tamanho | Restrições de Domínio |
+|:-----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------:|---------|:---------------------:|
+|  id_pessoa  |                                          Chave primária que define o número de identificação do personagem mencionado                                          |                SERIAL                | -       |      PRIMARY KEY      |
+| tipo_pessoa | atributo para identificação de qual tipo de classe o personagem mencionado participa. (poli = policial, pris = prisioneiro, info = informante, joga = jogador) | ENUM('poli', 'pris', 'info', 'joga') | -       |       NOT NULL        |
+
+---
+
+# Tabela Inventario
+
+|                 |                                                                            |   
+|-----------------|----------------------------------------------------------------------------| 
+| **Descrição**   | Inventário é uma tabela que contém informações de cada inventário no jogo. |
+| **Observações** | Possui chave estrangeira vindo de `Pessoa`.                                |
+
+|        Nome        |                               Definição Lógica                               | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:------------------:|:----------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|   id_inventario    | Chave primária que define o número de identificação do inventário mencionado |         SERIAL         | -       |      PRIMARY KEY      |
+| tamanho_inventario |        Atributo que define o  tamanho do inventário total do jogador         |       INT [1-5]        | -       |       NOT NULL        |
+| inventario ocupado |   Atributo derivado para a identificação se o inventário está cheio ou não   |        BOOLEAN         | -       |       NOT NULL        |
+|       pessoa       |                      Chave estrangeira vindo de pessoa                       |         SERIAL         | -       | FOREIGN KEY, NOT NULL |
+
+---
+
+# Tabela Prisioneiro
+
+|                 |                                                                                             |   
+|-----------------|---------------------------------------------------------------------------------------------| 
+| **Descrição**   | Prisioneiro é uma tabela que contém informações especializadas de cada prisioneiro no jogo. |
+| **Observações** | Possui chave estrangeira vindo de `Lugar`.                                                  |
+
+|             Nome             |                                                Definição Lógica                                                |        Tipo e Formato de Dado         | Tamanho | Restrições de Domínio |
+|:----------------------------:|:--------------------------------------------------------------------------------------------------------------:|:-------------------------------------:|---------|:---------------------:|
+|          id_pessoa           |                  Chave primária que define o número de identificação do personagem mencionado                  |                SERIAL                 | -       |      PRIMARY KEY      |
+|         nome_pessoa          |                          Atributo que define o nome e sobrenome da pessoa mencionada                           |            CHAR [a-z, A-Z]            | 60      |       NOT NULL        |
+|      gangue_prisioneiro      |          Atributo que determina qual gangue o prisioneiro é afiliado. tendo 2 opções, polvo e palhaço          |      ENUM ( 'polvo', 'palhaco')       | -       |       NOT NULL        |
+| habilidade_briga_prisioneiro | Atributo que define a possível habilidade de luta de um prisioneiro. Multiplica o dano junto do atributo força |              INT [1-10]               | -       |       NOT NULL        |
+|       vida_prisioneiro       |                     Atributo que determina a quantidade de vida que um prisioneiro possui                      |              INT [1-10]               | -       |       NOT NULL        |
+|      força_prisioneiro       |                     Atributo que determina a quantidade de força que um prisioneiro possui                     |              INT  [1-10]              | -       |       NOT NULL        |
+|            lugar             |                                        Chave estrangeira vindo de lugar                                        |                 CHAR                  | 25      | FOREIGN KEY, NOT NULL |
+
+---
+
+# Tabela Policial
+
+|                 |                                                                                       |   
+|-----------------|---------------------------------------------------------------------------------------| 
+| **Descrição**   | Policial é uma tabela que contém informações especializadas de cada policial no jogo. |
+| **Observações** | Possui chave estrangeira vindo de `Lugar`.                                            |
+
+|       Nome        |                               Definição Lógica                               |        Tipo e Formato de Dado        | Tamanho | Restrições de Domínio |
+|:-----------------:|:----------------------------------------------------------------------------:|:------------------------------------:|---------|:---------------------:|
+|     id_pessoa     | Chave primária que define o número de identificação do personagem mencionado |                SERIAL                | -       |      PRIMARY KEY      |
+|    nome_pessoa    |         Atributo que define o nome e sobrenome da pessoa mencionada          |           CHAR [a-z, A-Z]            | 60      |       NOT NULL        |
+| policial_corrupto |              Atributo denomina se um policial é corrupto ou não              |               BOOLEAN                | -       |       NOT NULL        |
+|       lugar       |                       Chave estrangeira vindo de lugar                       |          CHAR   [a-z, A-Z]           | 25      | FOREIGN KEY, NOT NULL |
+
+---
+
+# Tabela Informante
+
+|                 |                                                                                                                                           |   
+|-----------------|-------------------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Informante é uma classe que fica oculta, e quando um jogador tenta atacar ou negociar com o mesmo, sofre uma penalidade em tempo de vida. |
+| **Observações** | Possui chave estrangeira vindo de `Lugar`.                                                                                                |
+
+|    Nome     |                               Definição Lógica                               | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:-----------:|:----------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|  id_pessoa  | Chave primária que define o número de identificação do personagem mencionado |         SERIAL         | -       |      PRIMARY KEY      |
+| nome_pessoa |         Atributo que define o nome e sobrenome da pessoa mencionada          |    CHAR [a-z, A-Z]     | 60      |       NOT NULL        |
+|  dano_info  |          Atributo inteiro que irá matar instantaneamente um jogador          |          INT           | -       | NOT NULL, DEFAULT 200 |
+|    lugar    |                       Chave estrangeira vindo de lugar                       |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
+
+---
+
+# Tabela Jogador
+
+|                 |                                                                                |   
+|-----------------|--------------------------------------------------------------------------------| 
+| **Descrição**   | Jogador é uma tabela que contém informações especializadas do jogador no jogo. |
+| **Observações** | Possui chave estrangeira vindo de `Lugar` e `Missao`.                          |
+
+|           Nome           |                                                  Definição Lógica                                                  |   Tipo e Formato de Dado   | Tamanho | Restrições de Domínio |
+|:------------------------:|:------------------------------------------------------------------------------------------------------------------:|:--------------------------:|---------|:---------------------:|
+|        id_pessoa         |                    Chave primária que define o número de identificação do personagem mencionado                    |           SERIAL           | -       |      PRIMARY KEY      |
+|       nome_pessoa        |                            Atributo que define o nome e sobrenome da pessoa mencionada                             |      CHAR [a-z, A-Z]       | 60      |       NOT NULL        |
+| habilidade_briga_jogador | Atributo que define a possível habilidade de luta de um jogador. Ter conhecimento de boxe contaria como um exemplo |         INT [1-10]         | -       |       NOT NULL        |
+|       vida_jogador       |                         Atributo que determina a quantidade de vida que um jogador possui                          |         INT [1-10]         | -       |       NOT NULL        |
+|      força_jogador       |                         Atributo que determina a quantidade de força que um jogador possui                         |         INT [1-10]         | -       |       NOT NULL        |
+|     respeito_jogador     |                         Atributo derivado que determina quanto respeito um jogador possui                          |         INT [1-10]         | -       |       NOT NULL        |
+|    tempo_vida_jogador    |                       Atributo que determina quanto tempo de vida restante um jogador possui                       |         INT [1-10]         | -       |       NOT NULL        |
+|      gangue_jogador      |             Atributo que determina qual gangue o jogador é afiliado.  tendo 2 opções, polvo e palhaço              | ENUM  ('polvo', 'palhaco') | -       |       NOT NULL        |
+|          missao          |                               Atributo que determina qual a missão atual do jogador                                |      CHAR [a-z, A-Z]       | 25      | FOREIGN KEY, NOT NULL |
+|          lugar           |                                          Chave estrangeira vindo de lugar                                          |      CHAR [a-z, A-Z]       | 25      | FOREIGN KEY, NOT NULL |
+
+---
+
+# Tabela Missão
+
+|                 |                                                                                   |   
+|-----------------|-----------------------------------------------------------------------------------| 
+| **Descrição**   | Missão é uma tabela que contém informações especializadas de cada missão no jogo. |
+| **Observações** | Possui chave estrangeira vindo de `Lugar` e `Item_Nao_Fabricavel`.                |
+
+|        Nome         |                                              Definição Lógica                                               | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:-------------------:|:-----------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+|      id_missao      |                  Chave primária que define o número de identificação da missão mencionada.                  |         SERIAL         | -       |      PRIMARY KEY      |
+|     nome_missao     |                    Atributo que define o nome da missão sem caracteres especiais (~ç@!)                     |    CHAR [a-z, A-Z]     | 60      |       NOT NULL        |
+|  descricao_missao   |    Atributo que define uma descrição detalhando os objetivos necessários para completar a missão atual.     |          TEXT          | -       |       NOT NULL        |
+| Item_Nao_Fabricavel | Atributo determina qual a recompensa da missão. A recompensa de uma missão sempre é um item não fabricável. |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
+|        lugar        |                                      Chave estrangeira vindo de lugar                                       |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
 
 ---
 
@@ -221,203 +425,3 @@ Este documento serve como a documentação para o dicionário de dados do sistem
 | 17/07/2024 | `2.0`  |         Aumenta escopo do projeto.         | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
 
 </div>
-
-
-[//]: # (SUBLINHADO <ins>aaaaa</ins>)
-[//]: # (SUBLINHADO PONTILHADO <span style="text-decoration: underline; text-decoration-style: dotted;">texto sublinhado pontilhado</span>)
-
-[//]: # (---)
-
-[//]: # ()
-[//]: # ()
-[//]: # (## Item { <ins>nome</ins>, utilizavel, descricao })
-
-[//]: # (## Instancia_Item { <ins>nome, nome_inst, id_inventario, nome_lugar</ins> })
-
-[//]: # ()
-[//]: # ()
-[//]: # (## Pessoa { <ins>id_pessoa, nome_lugar</ins>, nome_pessoa, tipo_pessoa })
-
-[//]: # (## Inventario { <ins>id_pessoa, id_inventario</ins> })
-
-[//]: # ()
-[//]: # ()
-[//]: # (## Regiao { <ins>nome</ins>, descricao })
-
-[//]: # (## Lugar { <ins>nome, nome_regiao</ins>, descricao_especifica, lugar_anterior })
-
-[//]: # ()
-[//]: # ()
-[//]: # ()
-[//]: # ()
-[//]: # (## Prisioneiro { <ins>id_pessoa</ins>, nome_pessoa, gangue })
-
-[//]: # (## Jogador { <ins>id_pessoa</ins>, nome_pessoa, corrupto })
-
-[//]: # (## Policial { <ins>id_pessoa</ins>, nome_pessoa, tempo_vida, respeito, gangue })
-
-
-# Tabela Prisao 
-|                 |   |   
-|-----------------|---| 
-| **Descrição**   |Prisão é uma tabela que contém informações da prisão do jogo.|
-| **Observações** |  Não possui chave estrangeira. | 
-
-|      Nome      |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-|   id_prisao     |Chave primária que define o número de identificação da prisão |       SERIAL      |   -  |      PRIMARY KEY      |
-| nome_prisao  |        nome da prisão sem caracteres especiais (~ç@!)         |       CHAR [a-z, A-Z]        | 25     |       NOT NULL        |
----
-# Tabela Regiao
-
-|                 |   |   
-|-----------------|---| 
-| **Descrição**   | Região é uma tabela que contém informações de cada região no jogo. |
-| **Observações** |  Possui chave estrangeira vindo de `Prisao`. |
-
-|      Nome      |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-|  nome_regiao    | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |       CHAR [a-z, A-Z]        | 25     |      PRIMARY KEY      |
-|  descricao_regiao |         Atributo contendo uma breve descrição da região mencionada          |       TEXT         | -     |       NOT NULL        |
-|  prisao  |            Chave estrangeira vindo de prisão             |             SERIAL              | -       |  FOREIGN KEY, NOT NULL  |
----
-# Tabela Lugar 
-
-
-|                 |   |   
-|-----------------|---| 
-| **Descrição**   |  Lugar é uma tabela que contém informações de cada local, bem como uma descrição mais especifica.
-| **Observações** |  Possui chave estrangeira vindo de `Regiao`. |
-
-|      Nome      |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-|  nome_lugar    | Chave primaria nome do lugar mencionado sem caracteres especiais  (~Ç@!) |       CHAR [a-z, A-Z]        | 25     |      PRIMARY KEY      |
-|  descricao_lugar |         Atributo que contém uma descrição mais especifica de um lugar, como detalhes do ambiente sem caracteres especiais (~Ç@!)          |       TEXT        | -     |       NOT NULL        |
-|       lugar_anterior       |                                  Atributo que contém o lugar de origem, sala de origem                                   |  CHAR  [a-z, A-Z]| 25 | NOT NULL              |
-|  regiao  |            Chave estrangeira que contém o nome da região na qual aquele lugar pertence             |             CHAR [a-z, A-Z]              | 25       |  FOREIGN KEY, NOT NULL  |
----
-
-# Tabela Pessoa 
-
-|                 |   |   
-|-----------------|---| 
-| **Descrição**   |  Pessoa é uma tabela que contém informações generalizadas de cada pessoa no jogo.
-| **Observações** | Possui chave estrangeira vindo de `Lugar`.   |
-
-|      Nome      |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-|  id_pessoa    | Chave primária que define o número de identificação do personagem mencionado |       SERIAL        | -     |      PRIMARY KEY      |
-|  nome_pessoa |          Nome e sobrenome da pessoa mencionada          |      CHAR [a-z, A-Z]        |   60   |       NOT NULL        |
-|       tipo_pessoa       |                                 atributo para identificação de qual tipo de classe o personagem mencionado participa. (poli = policial, pris = prisioneiro, info = informante, joga = jogador)                                   |  ENUM('poli', 'pris', 'info', 'joga') | - | NOT NULL              |
-|  lugar  |            Chave estrangeira vindo de lugar            |             CHAR  [a-z, A-Z]            | 25       |  FOREIGN KEY, NOT NULL  |
----
-
-# Tabela Inventario 
-
-|                 |   |   
-|-----------------|---| 
-| **Descrição**   |  Inventário é uma tabela que contém informações de cada inventário no jogo.
-| **Observações** | Possui chave estrangeira vindo de `pessoa`.   |
-
-|      Nome      |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-| id_inventario    | Chave primária que define o número de identificação do inventário mencionado |       SERIAL        | -     |      PRIMARY KEY      |
-|  tamanho_inventario |   Atributo que define o  tamanho do inventário total do jogador          |      INT [1-5]       |   -  |       NOT NULL        |
-|       inventario ocupado       |                                 Atributo derivado para a identificação se o inventário está cheio ou não.                                   |  BOOLEAN | - | NOT NULL              |
-|  pessoa  |            Chave estrangeira vindo de pessoa            |             SERIAL              | -       |  FOREIGN KEY, NOT NULL  |
----
-
-# Tabela Prisioneiro 
-
-|                 |   |   
-|-----------------|---| 
-| **Descrição**   |  Prisioneiro é uma tabela que contém informações especializadas de cada prisioneiro no jogo.
-| **Observações** |  Possui chave estrangeira vindo de `Lugar`. |
-
-|      Nome      |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-|  id_pessoa    | Chave primária que define o número de identificação do personagem mencionado |       SERIAL        | -     |      PRIMARY KEY      |
-|  nome_pessoa |          Nome e sobrenome da pessoa mencionada          |      CHAR [a-z, A-Z]        |   60   |       NOT NULL        |
-|       tipo_pessoa       |                                 atributo para identificação de qual tipo de classe o personagem mencionado participa. (poli = policial, pris = prisioneiro, info = informante, joga = jogador)                                   |  ENUM ('poli', 'pris', 'info', 'joga') | - | NOT NULL              |
-|  gangue_prisioneiro |          atributo que determina qual gangue o prisioneiro é afiliado. tendo 2 opções, polvo e palhaço.          |      ENUM ( 'polvo', 'palhaco')       |  -   |       NOT NULL        |
-|  habilidade_briga_prisioneiro |          A possível habilidade de luta de um prisioneiro. Multiplica o dano junto do atributo força.          |      INT [1-10]     |   -  |       NOT NULL        |
-|  vida_prisioneiro |          atibuto que determina a quantidade de vida que um prisioneiro possui.          |      INT [1-10]      |   -   |       NOT NULL        |
-|  força_prisioneiro |         atibuto que determina a quantidade de força que um prisioneiro possui.          |      INT  [1-10]     |   -   |       NOT NULL        |
-|  lugar  |            chave estrangeira vindo de lugar            |             CHAR              | 25       |  FOREIGN KEY, NOT NULL  |
----
-
-# Tabela Policial 
-
-|                 |   |   
-|-----------------|---| 
-| **Descrição**   |  Policial é uma tabela que contém informações especializadas de cada policial no jogo.
-| **Observações** |  Possui chave estrangeira vindo de `Lugar`.  |
-
-|      Nome      |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-|  id_pessoa    | Chave primária que define o número de identificação do personagem mencionado |       SERIAL        | -     |      PRIMARY KEY      |
-|  nome_pessoa |          Nome e sobrenome da pessoa mencionada          |      CHAR [a-z, A-Z]        |   60   |       NOT NULL        |
-|       tipo_pessoa       |                                 atributo para identificação de qual tipo de classe o personagem mencionado participa. (poli = policial, pris = prisioneiro, info = informante, joga = jogador)                                   |  ENUM('poli', 'pris', 'info', 'joga') | - | NOT NULL              |
-|  policial_corrupto |          Esse atributo denomina se um policial é corrupto ou não.          |      BOOLEAN         |   -   |       NOT NULL        |
-|  lugar  |            Chave estrangeira vindo de lugar            |             CHAR   [a-z, A-Z]          | 25       |  FOREIGN KEY, NOT NULL  |
-
----
-
-# Tabela Informante 
-
-|                 |   |   
-|-----------------|---| 
-| **Descrição**   |  Informante é uma classe que fica oculta, e quando um jogador tenta atacar ou negociar com o mesmo, sofre uma penalidade em tempo de vida.
-| **Observações** |  Possui chave estrangeira vindo de `Lugar`.  |
-
-|      Nome      |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-|  id_pessoa    | Chave primária que define o número de identificação do personagem mencionado |       SERIAL        | -     |      PRIMARY KEY      |
-|  nome_pessoa |          Nome e sobrenome da pessoa mencionada          |      CHAR [a-z, A-Z]        |   60   |       NOT NULL        |
-|       tipo_pessoa       |                                 Atributo para identificação de qual tipo de classe o personagem mencionado participa. (poli = policial, pris = prisioneiro, info = informante, joga = jogador)                                   |  ENUM('poli', 'pris', 'info', 'joga') | - | NOT NULL              |
-|  dano_info |          Inteiro que irá matar instantaneamente um jogador          |      INT        |   -   |       NOT NULL, DEFAULT 200        |
-|  lugar  |            Chave estrangeira vindo de lugar            |             CHAR    [a-z, A-Z]          | 25       |  FOREIGN KEY, NOT NULL  |
-
----
-
-# Tabela Jogador 
-
-|                 |   |   
-|-----------------|---| 
-| **Descrição**   |  Jogador é uma tabela que contém informações especializadas do jogador no jogo.
-| **Observações** |  Possui chave estrangeira vindo de `Lugar`.  |
-
-
-|      Nome      |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-|  id_pessoa    | Chave primária que define o número de identificação do personagem mencionado |       SERIAL        | -     |      PRIMARY KEY      |
-|  nome_pessoa |          Nome e sobrenome da pessoa mencionada          |      CHAR [a-z, A-Z]        |   60   |       NOT NULL        |
-|       tipo_pessoa       |                                 Atributo para identificação de qual tipo de classe o personagem mencionado participa. (poli = policial, pris = prisioneiro, info = informante, joga = jogador)                                   |  ENUM('poli', 'pris', 'info', 'joga') | - | NOT NULL              |
-|   habilidade_briga_jogador |          A possível habilidade de luta de um jogador. Ter conhecimento de boxe contaria como um exemplo          |      INT        |   1-10   |       NOT NULL        |
-|  vida_jogador |          atibuto que determina a quantidade de vida que um jogador possui.          |      INT  [1-10]      |   -   |       NOT NULL        |
-|  força_jogador |          atibuto que determina a quantidade de força que um jogador possui.          |      INT   [1-10]     |   -  |       NOT NULL        |
-|  respeito_jogador |          atributo derivado que determina quanto respeito um jogador possui          |      INT   [1-10]     |   -  |       NOT NULL        |
-|  tempo_vida_jogador |          atibuto que determina quanto tempo de vida restante um jogador possui.          |      INT   [1-10]     |  -   |       NOT NULL        |
-|  gangue_jogador |          atributo que determina qual gangue o jogador é afiliado.  tendo 2 opções, polvo e palhaço.         |     ENUM  ('polvo', 'palhaco')      |   -   |       NOT NULL        |
-|  missao |         Atributo que determina qual a missão atual do jogador.          |      CHAR   [a-z, A-Z]      |   25   |   FOREIGN KEY,    NOT NULL        |
-|  lugar  |            chave estrangeira vindo de lugar            |             CHAR         [a-z, A-Z]     | 25       |  FOREIGN KEY, NOT NULL  |
-
----
-
-# Tabela Missão 
-
-|                 |   |   
-|-----------------|---| 
-| **Descrição**   | Missão é uma tabela que contém informações especializadas de cada missão no jogo.
-| **Observações** |  Possui chave estrangeira vindo de `Pessoa`.  |
-
-
-|      Nome      |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-| id_missao   | Chave primária que define o número de identificação da missão mencionada. |       SERIAL        | -     |      PRIMARY KEY      |
-|  nome_missao |          Nome da missão sem caracteres especiais (~ç@!)          |      CHAR   [a-z, A-Z]      |  60   |       NOT NULL        |
-|      descricao_missao       |                                 uma descrição detalhando os objetivos necessários para completar a missão atual.                                   |  TEXT | - | NOT NULL              |
-|  Item_Nao_Fabricavel  |            esse atributo determina qual a recompensa da missão. A recompensa de uma missão sempre é um item não fabricável.            |             CHAR [a-z, A-Z]              | 25       |  FOREIGN KEY, NOT NULL  |
-|  lugar  |            chave estrangeira vindo de lugar            |             CHAR         [a-z, A-Z]     | 25       |  FOREIGN KEY, NOT NULL  |
----
-
