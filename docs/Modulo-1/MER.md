@@ -6,10 +6,17 @@
 
 ---
 
+<center>
+
+# O que é?
+
+</center>
 
 > O modelo Entidade-Relacionamento tem como principal função, descrever itens, em outras palavras entidades, que são utilizadas para representar participantes de um cenário em um problema que deseja ser resolvido mediante utilização de um banco de dados.
 
-## 1. Entidades
+---
+
+# Entidades
 
 - **Prisao**
 - **Regiao**
@@ -33,7 +40,9 @@
 - **Livro_Fabricacoes**
 - **Missao**
 
-## 2. Atributos
+---
+
+# Atributos
 
 - **Prisao**: <ins>id_prisao</ins>, nome
 - **Regiao**: <ins>nome_regiao</ins>, descricao_regiao
@@ -57,7 +66,9 @@
 - **Livro_Fabricacoes**: <ins>nome_livro_fabri</ins>
 - **Missao**: <ins>id_missao</ins>, nome_missao, descricao_missao
 
-## 3. Relacionamentos
+---
+
+# Relacionamentos
 
 **Prisao _Possui_ Regiao**
 
@@ -129,16 +140,22 @@
 - Missão dropa apenas um item não fabricável (1,1)
 - Item Não Fabricável é dropado por uma ou várias missões (1,N)
 
+---
+<center>
+
+# Histórico de versão
+
+</center>
 
 <div style="margin: 0 auto; width: fit-content;">
 
-| Data       | Versão | Descrição                   | Autores                                                                                                                                                                                                 |
-|:----------:|:------:|:---------------------------:| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    Data    | Versão |          Descrição          | Autores                                                                                                                                                                                                 |
+|:----------:|:------:|:---------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 10/04/2024 | `1.0`  | Criação da primeira versão. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
-| 10/04/2024 | `1.1`  | Segunda Versão.             | [Fernando Gabriel](https://github.com/show-dawn), [Julio Cesar](https://github.com/julio1099)                                                                                                           |
+| 10/04/2024 | `1.1`  |       Segunda Versão.       | [Fernando Gabriel](https://github.com/show-dawn), [Julio Cesar](https://github.com/julio1099)                                                                                                           |
 | 11/04/2024 | `1.2`  | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 | 13/04/2024 | `1.3`  | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
-| 20/04/2024 | `1.4`  | Criação da quarta versão.   | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
-| 18/07/2024 | `1.5`  | Quinta Versão.             | [Julio Cesar](https://github.com/julio1099)                                     
+| 20/04/2024 | `1.4`  |  Criação da quarta versão.  | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 18/07/2024 | `1.5`  |       Quinta Versão.        | [Julio Cesar](https://github.com/julio1099)                                                                                                                                                             |
 
 </div>
