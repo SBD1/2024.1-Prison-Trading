@@ -10,7 +10,9 @@
 
 * Módulo 1
   - [Diagrama Entidade-Relacionamento](Modulo-1/DER.md)
-    * [O que é?]()
+    * [O que é?](Modulo-1/DER.md#o-que-é)
+    * [Versões anteriores](Modulo-1/DER.md#versões-anteriores)
+    * [Histórico de versão](Modulo-1/DER.md#histórico-de-versão)
   - [Modelo Entidade-Relacionamento](Modulo-1/MER.md)
     * [O que é?]()
   - [Modelo Relacional](Modulo-1/MER.md)

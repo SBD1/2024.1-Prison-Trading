@@ -7,16 +7,22 @@
 ---
 <center>
 
+# O que é?
+
+</center>
+
+> Um diagrama Entidade-Relacionamento (ER) é uma representação visual de entidades (objetos ou conceitos) e suas relações em um sistema de informação. Ele é usado principalmente para descrever a estrutura dos dados e como eles se relacionam entre si. Esses diagramas são úteis para visualizar e projetar a estrutura de um banco de dados de forma clara e compreensível.
+
+<center>
+
 #### Versão atual - 2.2 - Adiciona chaves estrangeiras no modelo.
 
 </center>
 
-
-> Um diagrama Entidade-Relacionamento (ER) é uma representação visual de entidades (objetos ou conceitos) e suas relações em um sistema de informação. Ele é usado principalmente para descrever a estrutura dos dados e como eles se relacionam entre si. Esses diagramas são úteis para visualizar e projetar a estrutura de um banco de dados de forma clara e compreensível.
-
 <div align="center">
 <div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/DERV2-2.png?raw=true"/></div>
 </div>
+
 
 ---
 
