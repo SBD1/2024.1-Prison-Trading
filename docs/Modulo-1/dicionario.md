@@ -4,23 +4,60 @@
 
 </center>
 
-Este documento serve como a documentação para o dicionário de dados do sistema.
+---
+
+<center>
+
+# O que é?
+
+</center>
+
+> Este documento serve como a documentação para o dicionário de dados do sistema. Ele descreve cada elemento de dados utilizado pelo sistema, explicando o que são, onde estão armazenados e como se relacionam.
+
+<div style="margin: 0 auto; width: fit-content;">
+
+| Tabelas                                            |
+|:---------------------------------------------------|
+| [Item](#tabela-item)                               |
+| [Instancia_Item](#tabela-instancia_item)           |
+| [Item_Fabricavel](#tabela-item_fabricavel)         |
+| [Item_Nao_Fabricavel](#tabela-item_nao_fabricavel) |
+| [Ferramenta](#tabela-ferramenta)                   |
+| [Arma](#tabela-arma)                               |
+| [Comida](#tabela-comida)                           |
+| [Medicamento](#tabela-medicamento)                 |
+| [Utilizavel](#tabela-utilizavel)                   |
+| [Fabricacao](#tabela-fabricacao)                   |
+| [Livro_Fabricacoes](#tabela-livro_fabricacoes)     |
+| [Prisao](#tabela-prisao)                           |
+| [Regiao](#tabela-regiao)                           |
+| [Lugar](#tabela-lugar)                             |
+| [Pessoa](#tabela-pessoa)                           |
+| [Inventario](#tabela-inventario)                   |
+| [Prisioneiro](#tabela-prisioneiro)                 |
+| [Policial](#tabela-policial)                       |
+| [Informante](#tabela-informante)                   |
+| [Jogador](#tabela-jogador)                         |
+| [Missao](#tabela-missao)                           |
+
+</div>
 
 ---
+<center>
 
 # Tabela Item
 
-|                 |                                                                                                               |   
-|-----------------|---------------------------------------------------------------------------------------------------------------| 
-| **Descrição**   | Item que será utilizado no jogo. Serve como origem para as tabelas `Item_Fabricavel` e `Item_Nao_Fabricavel`. |
-| **Observações** | Não possui chaves estrangeiras.                                                                               | 
+</center>
 
-|      Nome      |                                  Definição Lógica                                   | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
-|:--------------:|:-----------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
-|   nome_item    | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
-|   tipo_item    |    Atributo que define o tipo do item (fabr = fabricável, nfab = não fabricável)    |  ENUM('fabr', 'nfab')  | -       |       NOT NULL        |
-|  tamanho_item  |            Atributo que define o espaço que o item ocupará no inventário            |          INT           | -       |  NOT NULL, DEFAULT 1  |
-| descricao_item |         Atributo que descreve um breve resumo da função do item mencionado          |          TEXT          | -       |       NOT NULL        |
+|                 |                                                                                                                                   |   
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela usada para caracterizar um Item, criada a partir do mapeamento de uma abstração e generalizaçao total e exclusiva de Item. |
+| **Observações** | Tipo possui os valores `fabr` para `Item_Fabricavel` e `nfab` para `Item_Nao_Fabricavel`.                                         | 
+
+|   Nome    |                                  Definição Lógica                                   | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:---------:|:-----------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
+| nome_item | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+| tipo_item |                         Atributo que define o tipo do item                          |  ENUM('fabr', 'nfab')  | -       |       NOT NULL        |
 
 ---
 
@@ -38,45 +75,14 @@ Este documento serve como a documentação para o dicionário de dados do sistem
 |   inventario   |          Chave estrangeira referenciando a tabela Inventário, Inventário onde a instância de item está           |         SERIAL         | -       |      FOREIGN KEY      |
 |   fabricacao   |       Chave estrangeira referenciando a tabela Fabricação, Fabricação onde a instância de item é utilizada       |    CHAR [a-z, A-Z]     | 25      |      FOREIGN KEY      |
 
----
-
-# Tabela Caracterizador_Item
-
-|                 |                                                                                                                           |   
-|-----------------|---------------------------------------------------------------------------------------------------------------------------| 
-| **Descrição**   | Tabela usada para caracterizar um Item, criada a partir do mapeamento de uma abstração e generalizaçao total e exclusiva. |
-| **Observações** | Tipo possui os valores `fabr` para `Item_Fabricavel` e `nfab` para `Item_Nao_Fabricavel`.                                 | 
-
-|   Nome    |                                  Definição Lógica                                   | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
-|:---------:|:-----------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
-| nome_item | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
-| tipo_item |                         Atributo que define o tipo do item                          |  ENUM('fabr', 'nfab')  | -       |       NOT NULL        |
-
----
+--------
 
 # Tabela Item_Fabricavel
 
-|                 |                               |   
-|-----------------|-------------------------------| 
-| **Descrição**   | Tabela de itens fabricáveis.  |
-| **Observações** | Não possui chave estrangeira. | 
-
-|      Nome       |                                  Definição Lógica                                   | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
-|:---------------:|:-----------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
-|    nome_item    | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
-|    tipo_item    |    Atributo que define o tipo do item (fabr = fabricável, nfab = não fabricável)    |  ENUM('fabr', 'nfab')  | -       |       NOT NULL        |
-|  tamanho_item   |            Atributo que define o espaço que o item ocupará no inventário            |          INT           | -       |  NOT NULL, DEFAULT 1  |
-| descricao_item  |         Atributo que descreve um breve resumo da função do item mencionado          |          TEXT          | -       |       NOT NULL        |
-| tipo_fabricavel | Atributo que define o tipo do item fabricável ('ferr' = ferramenta, 'arma' = arma)  |  ENUM('ferr', 'arma')  | -       |       NOT NULL        |
-
----
-
-# Tabela Caracterizador_Item_Fabricavel
-
-|                 |                                                                                                                                      |   
-|-----------------|--------------------------------------------------------------------------------------------------------------------------------------| 
-| **Descrição**   | Tabela usada para caracterizar um Item Fabricável, criada a partir do mapeamento de uma abstração e generalizaçao total e exclusiva. |
-| **Observações** | Tipo possui os valores `ferr` para `Ferramenta` e `arma` para `Arma`.                                                                | 
+|                 |                                                                                                                                                         |   
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela usada para caracterizar um Item Fabricável, criada a partir do mapeamento de uma abstração e generalizaçao total e exclusiva de Item_Fabricavel. |
+| **Observações** | Tipo possui os valores `ferr` para `Ferramenta` e `arma` para `Arma`.                                                                                   | 
 
 |      Nome       |                                  Definição Lógica                                   | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
 |:---------------:|:-----------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
@@ -87,32 +93,15 @@ Este documento serve como a documentação para o dicionário de dados do sistem
 
 # Tabela Item_Nao_Fabricavel
 
-|                 |                                                                                                           |   
-|-----------------|-----------------------------------------------------------------------------------------------------------| 
-| **Descrição**   | Tabela de itens que não podem ser fabricados e só são obtidos através de missão ou encontrando em lugares |
-| **Observações** |     Não possui chave estrangeira.                                                                         | 
-
-|          Nome           |                                              Definição Lógica                                               |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
-|:-----------------------:|:-----------------------------------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-|        nome_item        |             Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!)             |       CHAR [a-z, A-Z]        | 25      |      PRIMARY KEY      |
-|      tamanho_item       |                        Atributo que define o espaço que o item ocupará no inventário                        |             INT              | -       |  NOT NULL, DEFAULT 1  |
-|     descricao_item      |                     Atributo que descreve um breve resumo da função do item mencionado                      |             TEXT             | -       |       NOT NULL        |
-| raridade_nao_fabricavel | Atributo que define a raridade de um item, podendo ter 3 possiveis valores (0=normal, 1=raro e 2=ultrararo) |          INT [0-2]           | -       |  NOT NULL, DEFAULT 0  |
-|   tipo_nao_fabricavel   | Atributo que define o tipo do item fabricável ('comi' = comida, 'medi' = medicamento, 'util' = utilizavel)  | ENUM('comi', 'medi', 'util') | -       |       NOT NULL        |
-
----
-
-# Tabela Caracterizador_Item_Nao_Fabricavel
-
-|                 |                                                                                                                                          |   
-|-----------------|------------------------------------------------------------------------------------------------------------------------------------------| 
-| **Descrição**   | Tabela usada para caracterizar um Item Não Fabricável, criada a partir do mapeamento de uma abstração e generalizaçao total e exclusiva. |
-| **Observações** | Tipo possui os valores `comi` para `Comida`, `medi` para `Medicamento` e `util` para `Utilizavel`.                                       | 
+|                 |                                                                                                                                                                 |   
+|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela usada para caracterizar um Item Não Fabricável, criada a partir do mapeamento de uma abstração e generalizaçao total e exclusiva de Item_Nao_Fabricavel. |
+| **Observações** | Tipo possui os valores `comi` para `Comida`, `medi` para `Medicamento` e `util` para `Utilizavel`.                                                              | 
 
 |        Nome         |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
 |:-------------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
 |      nome_item      | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |       CHAR [a-z, A-Z]        | 25      |      PRIMARY KEY      |
-| tipo_nao_fabricavel |                    Atributo que define o tipo do item fabricável                    | ENUM('comi', 'medi', 'util') | -       |       NOT NULL        |
+| tipo_nao_fabricavel |                  Atributo que define o tipo do item não fabricável                  | ENUM('comi', 'medi', 'util') | -       |       NOT NULL        |
 
 ---
 
@@ -204,10 +193,10 @@ Este documento serve como a documentação para o dicionário de dados do sistem
 
 # Tabela Fabricacao
 
-|                 |                                                                                                                               |   
-|-----------------|-------------------------------------------------------------------------------------------------------------------------------| 
-| **Descrição**   | Tabela para armazenar a fabricação de um item fabricável, é uma entidade fraca de Item_Fabricavel (todo item tem fabricação). |
-| **Observações** | Possui chave estrangeira de `Item_Fabricavel`.                                                                                | 
+|                 |                                                                                                                                 |   
+|-----------------|---------------------------------------------------------------------------------------------------------------------------------| 
+| **Descrição**   | Tabela para armazenar a fabricação de um item fabricável, é uma entidade fraca de `Item_Fabricavel` (todo item tem fabricação). |
+| **Observações** | Possui chave estrangeira de `Item_Fabricavel` e chave composta com `Item_Fabricavel`.                                           | 
 
 |             Nome              |                                                                     Definição Lógica                                                                     | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
 |:-----------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
@@ -258,12 +247,13 @@ Este documento serve como a documentação para o dicionário de dados do sistem
 
 ---
 
+[Regiao](#tabela-regiao)
 # Tabela Lugar
 
 |                 |                                                                                                  |   
 |-----------------|--------------------------------------------------------------------------------------------------| 
 | **Descrição**   | Lugar é uma tabela que contém informações de cada local, bem como uma descrição mais especifica. |
-| **Observações** | Possui chave estrangeira vindo de `Regiao`.                                                      |
+| **Observações** | Possui chave estrangeira vindo de `Regiao` [Regiao](#tabela-regiao).                             |
 
 |      Nome       |                                                     Definição Lógica                                                     | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
 |:---------------:|:------------------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
@@ -276,31 +266,15 @@ Este documento serve como a documentação para o dicionário de dados do sistem
 
 # Tabela Pessoa
 
-|                 |                                                                                  |   
-|-----------------|----------------------------------------------------------------------------------| 
-| **Descrição**   | Pessoa é uma tabela que contém informações generalizadas de cada pessoa no jogo. |
-| **Observações** | Possui chave estrangeira vindo de `Lugar`.                                       |
-
-|    Nome     |                                                                        Definição Lógica                                                                        |        Tipo e Formato de Dado        | Tamanho | Restrições de Domínio |
-|:-----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------:|---------|:---------------------:|
-|  id_pessoa  |                                          Chave primária que define o número de identificação do personagem mencionado                                          |                SERIAL                | -       |      PRIMARY KEY      |
-| nome_pessoa |                                                  Atributo que define o nome e sobrenome da pessoa mencionada                                                   |           CHAR [a-z, A-Z]            | 60      |       NOT NULL        |
-| tipo_pessoa | Atributo para identificação de qual tipo de classe o personagem mencionado participa. (poli = policial, pris = prisioneiro, info = informante, joga = jogador) | ENUM('poli', 'pris', 'info', 'joga') | -       |       NOT NULL        |
-|    lugar    |                                                                Chave estrangeira vindo de lugar                                                                |           CHAR  [a-z, A-Z]           | 25      | FOREIGN KEY, NOT NULL |
-
----
-
-# Tabela Caracterizador_Pessoa
-
 |                 |                                                                                                                              |   
 |-----------------|------------------------------------------------------------------------------------------------------------------------------| 
 | **Descrição**   | Tabela usada para caracterizar uma Pessoa, criada a partir do mapeamento de uma abstração e generalizaçao total e exclusiva. |
 | **Observações** | Tipo possui os valores `poli` para `Policial`, `pris` para `Prisioneiro`, `info` para `Informante` e `joga` para `Jogador`.  | 
 
-|    Nome     |                                                                        Definição Lógica                                                                        |        Tipo e Formato de Dado        | Tamanho | Restrições de Domínio |
-|:-----------:|:--------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------:|---------|:---------------------:|
-|  id_pessoa  |                                          Chave primária que define o número de identificação do personagem mencionado                                          |                SERIAL                | -       |      PRIMARY KEY      |
-| tipo_pessoa | atributo para identificação de qual tipo de classe o personagem mencionado participa. (poli = policial, pris = prisioneiro, info = informante, joga = jogador) | ENUM('poli', 'pris', 'info', 'joga') | -       |       NOT NULL        |
+|    Nome     |                                   Definição Lógica                                   |        Tipo e Formato de Dado        | Tamanho | Restrições de Domínio |
+|:-----------:|:------------------------------------------------------------------------------------:|:------------------------------------:|---------|:---------------------:|
+|  id_pessoa  |     Chave primária que define o número de identificação do personagem mencionado     |                SERIAL                | -       |      PRIMARY KEY      |
+| tipo_pessoa | atributo para identificação de qual tipo de classe o personagem mencionado participa | ENUM('poli', 'pris', 'info', 'joga') | -       |       NOT NULL        |
 
 ---
 
@@ -393,7 +367,7 @@ Este documento serve como a documentação para o dicionário de dados do sistem
 
 ---
 
-# Tabela Missão
+# Tabela Missao
 
 |                 |                                                                                   |   
 |-----------------|-----------------------------------------------------------------------------------| 
