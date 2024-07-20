@@ -44,7 +44,7 @@
 
 # Atributos
 
-- **Prisao**: <ins>id_prisao</ins>, nome
+- **Prisao**: <ins>id_prisao</ins>, nome_prisao
 - **Regiao**: <ins>nome_regiao</ins>, descricao_regiao
 - **Lugar**: <ins>nome_lugar</ins>, descricao_lugar
 - **Pessoa**: <ins>id_pessoa</ins>, nome_pessoa, tipo_pessoa
