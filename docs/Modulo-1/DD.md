@@ -70,7 +70,8 @@
 
 |      Nome      |                                                 Definição Lógica                                                 | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
 |:--------------:|:----------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
-| nome_ist, item | Chave composta de nome_inst e item, item é chave primária da tabela Item, ambas sem caracteres especiais (~Ç@!)) |    CHAR [a-z, A-Z]     | 50      |      PRIMARY KEY      |
+| nome_ist, item | Chave composta de nome_inst e item, item é chave primária da tabela Item, ambas sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 50      |      PRIMARY KEY      |
+|     item      |                Chave estrangeira referenciando a tabela Item, Item onde a instância de item está                |    CHAR [a-z, A-Z]     | 25       |      FOREIGN KEY,  NOT NULL      |
 |     lugar      |               Chave estrangeira referenciando a tabela Lugar, Lugar onde a instância de item está                |    CHAR [a-z, A-Z]     | -       |      FOREIGN KEY      |
 |   inventario   |          Chave estrangeira referenciando a tabela Inventário, Inventário onde a instância de item está           |         SERIAL         | -       |      FOREIGN KEY      |
 |   fabricacao   |       Chave estrangeira referenciando a tabela Fabricação, Fabricação onde a instância de item é utilizada       |    CHAR [a-z, A-Z]     | 25      |      FOREIGN KEY      |
@@ -86,7 +87,7 @@
 
 |      Nome       |                                  Definição Lógica                                   | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
 |:---------------:|:-----------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
-|    nome_item    | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+|    nome_item    | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY, FOREIGN KEY      |
 | tipo_fabricavel |                    Atributo que define o tipo do item fabricável                    |  ENUM('ferr', 'arma')  | -       |       NOT NULL        |
 
 ---
@@ -100,7 +101,7 @@
 
 |        Nome         |                                  Definição Lógica                                   |    Tipo e Formato de Dado    | Tamanho | Restrições de Domínio |
 |:-------------------:|:-----------------------------------------------------------------------------------:|:----------------------------:|---------|:---------------------:|
-|      nome_item      | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |       CHAR [a-z, A-Z]        | 25      |      PRIMARY KEY      |
+|      nome_item      | Chave primária que define o nome do item mencionado sem caracteres especiais (~Ç@!) |       CHAR [a-z, A-Z]        | 25      |      PRIMARY KEY, FOREIGN KEY      |
 | tipo_nao_fabricavel |                  Atributo que define o tipo do item não fabricável                  | ENUM('comi', 'medi', 'util') | -       |       NOT NULL        |
 
 ---
@@ -200,8 +201,9 @@
 
 |            Nome             |                                                                  Definição Lógica                                                                  | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
 |:---------------------------:|:--------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
-| nome_fabri, item_fabricavel | Chave composta de nome_fabri e item_fabricavel, item_fabricavel é chave primária da tabela Item_Fabricavel, ambas sem caracteres especiais (~Ç@!)) |    CHAR [a-z, A-Z]     | 50      |      PRIMARY KEY      |
-|      livro_fabricacao       |                             Chave estrangeira referenciando a tabela Livro_Fabricacoes, livro onde a fabricacao está.                              |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
+| nome_fabri, item_fabricavel | Chave composta de nome_fabri e item_fabricavel, item_fabricavel é chave primária da tabela Item_Fabricavel, ambas sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 50      |      PRIMARY KEY      |
+|       item_fabricavel       |                     Chave estrangeira que tem o valor da chave primária de Item_Fabricavel, usada para compor a chave composta                     |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
+|      livro_fabricacao       |                             Chave estrangeira referenciando a tabela Livro_Fabricacoes, livro onde a fabricacao está                              |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
 
 ---
 
@@ -257,6 +259,7 @@
 |        Nome        |                                                     Definição Lógica                                                     | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
 |:------------------:|:------------------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
 | nome_lugar, regiao |       Chave composta de nome_lugar e regiao, regiao é a chave primária de Regiao sem caracteres especiais  (~Ç@!)        |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
+|       regiao       |            Chave estrangeira que tem o valor da chave primária de regiao, usada para compor a chave composta             |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
 |  descricao_lugar   | Atributo que contém uma descrição mais especifica de um lugar, como detalhes do ambiente sem caracteres especiais (~Ç@!) |          TEXT          | -       |       NOT NULL        |
 |   lugar_anterior   |                                  Atributo que contém o lugar de origem, sala de origem                                   |    CHAR  [a-z, A-Z]    | 25      |       NOT NULL        |
 
@@ -286,6 +289,7 @@
 |         Nome          |                                                             Definição Lógica                                                             | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
 |:---------------------:|:----------------------------------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
 | id_inventario, pessoa | Chave composta de id_inventario e pessoa, pessoa é a chave primária de pessoa. Define o número de identificação do inventário mencionado |         SERIAL         | -       |      PRIMARY KEY      |
+|        pessoa         |                    Chave estrangeira que tem o valor da chave primária de pessoa, usada para compor a chave composta                     |         SERIAL         | -       | FOREIGN KEY, NOT NULL |
 |  tamanho_inventario   |                                      Atributo que define o  tamanho do inventário total do jogador                                       |       INT [1-5]        | -       |       NOT NULL        |
 |  inventario ocupado   |                                 Atributo derivado para a identificação se o inventário está cheio ou não                                 |        BOOLEAN         | -       |       NOT NULL        |
 
@@ -306,7 +310,7 @@
 | habilidade_briga_prisioneiro | Atributo que define a possível habilidade de luta de um prisioneiro. Multiplica o dano junto do atributo força |              INT [1-10]               | -       |         NOT NULL         |
 |       vida_prisioneiro       |                     Atributo que determina a quantidade de vida que um prisioneiro possui                      |              INT [1-10]               | -       |         NOT NULL         |
 |      força_prisioneiro       |                     Atributo que determina a quantidade de força que um prisioneiro possui                     |              INT  [1-10]              | -       |         NOT NULL         |
-|      gangue_prisioneiro      |          Atributo que determina qual gangue o prisioneiro é afiliado. tendo 2 opções, polvo e palhaço          |      ENUM ( 'polvo', 'palhaco')       | -       |         NOT NULL         |
+|      gangue_prisioneiro      |          Atributo que determina qual gangue o prisioneiro é afiliado. tendo 2 opções, polvo e palhaco          |      ENUM ( 'polvo', 'palhaco')       | -       |         NOT NULL         |
 
 ---
 
@@ -338,7 +342,7 @@
 |  id_pessoa  | Chave primária que define o número de identificação do personagem mencionado |         SERIAL         | -       | PRIMARY KEY, FOREIGN KEY |
 |    lugar    |                       Chave estrangeira vindo de lugar                       |    CHAR [a-z, A-Z]     | 25      |  FOREIGN KEY, NOT NULL   |
 | nome_pessoa |         Atributo que define o nome e sobrenome da pessoa mencionada          |    CHAR [a-z, A-Z]     | 60      |         NOT NULL         |
-|  dano_info  |          Atributo inteiro que irá matar instantaneamente um jogador          |          INT           | -       |  NOT NULL, DEFAULT 200   |
+|  dano_infomante  |          Atributo inteiro que irá matar instantaneamente um jogador          |          INT           | -       |  NOT NULL, DEFAULT 200   |
 
 ---
 
@@ -360,7 +364,7 @@
 |      força_jogador       |                         Atributo que determina a quantidade de força que um jogador possui                         |         INT [1-10]         | -       |         NOT NULL         |
 |     respeito_jogador     |                         Atributo derivado que determina quanto respeito um jogador possui                          |         INT [1-10]         | -       |         NOT NULL         |
 |    tempo_vida_jogador    |                       Atributo que determina quanto tempo de vida restante um jogador possui                       |         INT [1-10]         | -       |         NOT NULL         |
-|      gangue_jogador      |             Atributo que determina qual gangue o jogador é afiliado.  tendo 2 opções, polvo e palhaço              | ENUM  ('polvo', 'palhaco') | -       |         NOT NULL         |
+|      gangue_jogador      |             Atributo que determina qual gangue o jogador é afiliado.  tendo 2 opções, polvo e palhaco              | ENUM  ('polvo', 'palhaco') | -       |         NOT NULL         |
 
 ---
 
@@ -373,11 +377,11 @@
 
 |        Nome         |                                              Definição Lógica                                               | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
 |:-------------------:|:-----------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
-|      id_missao      |                  Chave primária que define o número de identificação da missão mencionada.                  |         SERIAL         | -       |      PRIMARY KEY      |
-| Item_Nao_Fabricavel | Atributo determina qual a recompensa da missão. A recompensa de uma missão sempre é um item não fabricável. |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
-|        lugar        |                                      Chave estrangeira vindo de lugar                                       |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
+|      id_missao      |                  Chave primária que define o número de identificação da missão mencionada                  |         SERIAL         | -       |      PRIMARY KEY      |
+| item_nao_fabricavel | Atributo determina qual a recompensa da missão. A recompensa de uma missão sempre é um item não fabricável |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
+|        lugar        |                                      Chave estrangeira vindo de lugar                                       |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY |
 |     nome_missao     |                    Atributo que define o nome da missão sem caracteres especiais (~ç@!)                     |    CHAR [a-z, A-Z]     | 60      |       NOT NULL        |
-|  descricao_missao   |    Atributo que define uma descrição detalhando os objetivos necessários para completar a missão atual.     |          TEXT          | -       |       NOT NULL        |
+|  descricao_missao   |    Atributo que define uma descrição detalhando os objetivos necessários para completar a missão atual     |          TEXT          | -       |       NOT NULL        |
 
 ---
 
@@ -395,5 +399,6 @@
 | 15/07/2024 | `1.1`  | Adiciona dicionário refatorado de pessoa. | [Fernando Gabriel](https://github.com/show-dawn) |
 | 15/07/2024 | `1.2`  |    Termina de refatorar o dicionário.     | [João Antonio G.](https://github.com/joaoseisei) |
 | 20/07/2024 | `1.3`  |    Corrige generalizações e abstrações    | [João Antonio G.](https://github.com/joaoseisei) |
+| 20/07/2024 | `1.4`  |    Correção dicionário    | [Júlio Cesar](https://github.com/Julio1099), [João Antonio G.](https://github.com/joaoseisei) |
 
 </div>
