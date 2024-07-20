@@ -15,12 +15,12 @@
 
 <center>
 
-#### Versão atual - 2.2 - Adiciona chaves estrangeiras no modelo.
+#### Versão atual - 2.3 - Corrige participação total de pessoa.
 
 </center>
 
 <div align="center">
-<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/DERV2-2.png?raw=true"/></div>
+<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/DERV2-3.png?raw=true"/></div>
 </div>
 
 
@@ -87,6 +87,15 @@
 
 </details>
 
+<details>
+  <summary>V2.2 - Corrige chaves estrangeiras e cardinalidade de missão.</summary>
+
+<div align="center">
+<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/DERV2-1.png?raw=true"/></div>
+</div>
+
+</details>
+
 ---
 <center>
 
@@ -105,5 +114,6 @@
 | 17/07/2024 | `2.0`  | Aumenta escopo do projeto.                             | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                         |
 | 17/07/2024 | `2.1`  | Adiciona chaves estrangeiras no modelo.                | [João Antonio G.](https://github.com/joaoseisei), [Fernando Gabriel](https://github.com/show-dawn)                                                                                                       |
 | 17/07/2024 | `2.2`  | Corrige chaves estrangeiras e cardinalidade de missão. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                         |
+| 20/07/2024 | `2.3`  | Corrige participação total de pessoa.                  | [João Antonio G.](https://github.com/joaoseisei), [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                                  |
 
 </div>
