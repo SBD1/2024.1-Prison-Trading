@@ -88,7 +88,7 @@
 
 * Não exista intersceção entre chaves compostas.
 
-> No nosso projeto não possuimos mais que uma chaves candidatas e não possuimos duas ou mais chaves candidatas compostas, também não existe intersceção entre chaves compostas, como o projeto já estava na 2ª. e 3ª forma normal e ele satisfaz as condições específicas de Boyce-Codd então ele está na forma normal de Boyce-Codd.
+> No nosso projeto não possuimos mais que uma chave candidata e não possuimos duas ou mais chaves candidatas compostas, também não existe intersceção entre chaves compostas, como o projeto já estava na 2ª. e 3ª forma normal e ele satisfaz as condições específicas de Boyce-Codd então ele está na forma normal de Boyce-Codd.
 
 ---
 
