@@ -76,7 +76,6 @@
 | nome_ist, item | Chave composta de nome_inst e item, item é chave primária da tabela Item, ambas sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 50      |      PRIMARY KEY       |
 |      item      |                Chave estrangeira referenciando a tabela Item, Item onde a instância de item está                |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY,  NOT NULL |
 |     lugar      |               Chave estrangeira referenciando a tabela Lugar, Lugar onde a instância de item está               |    CHAR [a-z, A-Z]     | -       |      FOREIGN KEY       |
-|   inventario   |          Chave estrangeira referenciando a tabela Inventário, Inventário onde a instância de item está          |         SERIAL         | -       |      FOREIGN KEY       |
 |   fabricacao   |      Chave estrangeira referenciando a tabela Fabricação, Fabricação onde a instância de item é utilizada       |    CHAR [a-z, A-Z]     | 25      |      FOREIGN KEY       |
 
 ---------
