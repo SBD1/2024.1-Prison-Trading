@@ -48,6 +48,11 @@
     * [Histórico de versão](Modulo-1/DD#histórico-de-versão)
   - [Normalização](Modulo-1/NORM.md)
     * [O que é?](Modulo-1/NORM.md#o-que-é)
+    * [Primeira Forma Normal](Modulo-1/NORM.md#primeira-forma-normal)
+    * [Segunda Forma Normal](Modulo-1/NORM.md#segunda-forma-normal)
+    * [Terceira Forma Normal](Modulo-1/NORM.md#terceira-forma-normal)
+    * [Forma Normal de Boyce-Codd](Modulo-1/NORM.md#forma-normal-de-boyce-codd)
+    * [Quarta Forma Normal](Modulo-1/NORM.md#quarta-forma-normal)
     * [Histórico de versão](Modulo-1/NORM.md#histórico-de-versão)
   - [Apresentação](Modulo-1/Modulo1.md)
 
