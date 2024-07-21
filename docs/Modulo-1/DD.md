@@ -306,7 +306,7 @@
 | id_inventario, pessoa | Chave composta de id_inventario e pessoa, pessoa é a chave primária de pessoa. Define o número de identificação do inventário mencionado |         SERIAL         | -       |      PRIMARY KEY      |
 |        pessoa         |                    Chave estrangeira que tem o valor da chave primária de pessoa, usada para compor a chave composta                     |         SERIAL         | -       | FOREIGN KEY, NOT NULL |
 |  tamanho_inventario   |                                      Atributo que define o  tamanho do inventário total do jogador                                       |          INT           | -       |  NOT NULL, DEFAULT 5  |
-|  inventario_ocupado   |                                 Atributo derivado para a identificação se o inventário está cheio ou não                                 |        BOOLEAN         | -       |       NOT NULL        |
+|  inventario_ocupado   |                                      Atributo derivado para definir quantos itens tem no invetário                                       |          INT           | -       |       NOT NULL        |
 
 ---
 
