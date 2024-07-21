@@ -100,7 +100,7 @@
 
 > Última forma normal, necessário está na forma normal de Boyce-Codd, além disso não pode ter dependência multivalorada.
 > 
-> Embora `Instancia_Item` possa parecer ferir essa forma normal isso não se aplica, pois as chaves estrangeiras da instancia possuem valores únicos, não é possível uma instancia está em um inventário e lugar ao mesmo tempo, isso garante a exclusividade.
+> Embora `Instancia_Item` possa parecer ferir essa forma normal isso não se aplica, pois as chaves estrangeiras da instancia possuem valores únicos, não é possível uma instancia está em uma fabricacao e lugar ao mesmo tempo, isso garante a exclusividade.
 > 
 > Nenhuma Tabela possui dependência multivalorada, logo o projeto está na 4ª forma normal.
 
