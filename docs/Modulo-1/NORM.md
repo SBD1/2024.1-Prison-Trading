@@ -68,7 +68,7 @@
 > 
 > Decidimos remover o respeito pois o mesmo era redundante, tempo_vida_jogador determinava respeito_jogador, preferimos remover esse elemento.
 > 
-> inventario_ocupado não possuia dependencia transivida de qualquer superchave.
+> inventario_ocupado não possuia dependencia transitida de qualquer superchave.
 > 
 > Além disso não existe outros atributos comuns com dependencias transitivas de qualquer superchave.
 
