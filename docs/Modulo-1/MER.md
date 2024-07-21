@@ -51,7 +51,7 @@
   - **Prisioneiro**: habilidade_briga_prisioneiro, vida_prisioneiro, forca_prisioneiro, gangue_prisioneiro
   - **Policial**: policial_corrupto
   - **Informante**: dano_informante
-  - **Jogador**: habilidade_briga_jogador, vida_jogador, forca_jogador, respeito_jogador, tempo_vida_jogador, gangue_jogador
+  - **Jogador**: habilidade_briga_jogador, vida_jogador, forca_jogador, tempo_vida_jogador, gangue_jogador
 - **Inventario**: <span style="text-decoration: underline; text-decoration-style: dotted;">id_inventario</span>, tamanho_inventario, inventario_ocupado
 - **Instancia_Item**: <span style="text-decoration: underline; text-decoration-style: dotted;">nome_inst</span>
 - **Item**: <ins>nome_item</ins>, tipo_item, tamanho_item, descricao_item
