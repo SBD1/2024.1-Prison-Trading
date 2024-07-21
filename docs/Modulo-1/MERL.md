@@ -61,6 +61,8 @@
 
 <center>
 
+---
+
 # Histórico de versão
 
 </center>
