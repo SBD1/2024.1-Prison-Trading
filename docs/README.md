@@ -95,7 +95,7 @@ Além disso, você também precisa estar atento aos guardas e às rotinas da pri
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|                                                                                                 |
+| Módulo 1                                                                                        |
 |:------------------------------------------------------------------------------------------------|
 | [Diagrama Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/DER) |
 | [Modelo Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/MER)   |
