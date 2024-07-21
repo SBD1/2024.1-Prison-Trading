@@ -58,5 +58,6 @@
     * [Quarta Forma Normal](Modulo-1/NORM.md#quarta-forma-normal)
     * [Histórico de versão](Modulo-1/NORM.md#histórico-de-versão)
   - [Apresentação](Modulo-1/Modulo1.md)
+    * [Histórico de versão](Modulo-1/Modulo1.md#histórico-de-versão)
 
 
