@@ -76,7 +76,7 @@
 |   inventario   |          Chave estrangeira referenciando a tabela Inventário, Inventário onde a instância de item está           |         SERIAL         | -       |      FOREIGN KEY      |
 |   fabricacao   |       Chave estrangeira referenciando a tabela Fabricação, Fabricação onde a instância de item é utilizada       |    CHAR [a-z, A-Z]     | 25      |      FOREIGN KEY      |
 
---------
+---------
 
 # Tabela Item_Fabricavel
 
@@ -261,7 +261,7 @@
 | nome_lugar, regiao |       Chave composta de nome_lugar e regiao, regiao é a chave primária de Regiao sem caracteres especiais  (~Ç@!)        |    CHAR [a-z, A-Z]     | 25      |      PRIMARY KEY      |
 |       regiao       |            Chave estrangeira que tem o valor da chave primária de regiao, usada para compor a chave composta             |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
 |  descricao_lugar   | Atributo que contém uma descrição mais especifica de um lugar, como detalhes do ambiente sem caracteres especiais (~Ç@!) |          TEXT          | -       |       NOT NULL        |
-|   lugar_anterior   |                                  Atributo que contém o lugar de origem, sala de origem                                   |    CHAR  [a-z, A-Z]    | 25      |       NOT NULL        |
+
 
 ---
 
@@ -290,8 +290,8 @@
 |:---------------------:|:----------------------------------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
 | id_inventario, pessoa | Chave composta de id_inventario e pessoa, pessoa é a chave primária de pessoa. Define o número de identificação do inventário mencionado |         SERIAL         | -       |      PRIMARY KEY      |
 |        pessoa         |                    Chave estrangeira que tem o valor da chave primária de pessoa, usada para compor a chave composta                     |         SERIAL         | -       | FOREIGN KEY, NOT NULL |
-|  tamanho_inventario   |                                      Atributo que define o  tamanho do inventário total do jogador                                       |       INT [1-5]        | -       |       NOT NULL        |
-|  inventario ocupado   |                                 Atributo derivado para a identificação se o inventário está cheio ou não                                 |        BOOLEAN         | -       |       NOT NULL        |
+|  tamanho_inventario   |                                      Atributo que define o  tamanho do inventário total do jogador                                       |       INT        | -       |       NOT NULL, DEFAULT 5        |
+|  inventario_ocupado   |                                 Atributo derivado para a identificação se o inventário está cheio ou não                                 |        BOOLEAN         | -       |       NOT NULL        |
 
 ---
 
@@ -362,7 +362,6 @@
 | habilidade_briga_jogador | Atributo que define a possível habilidade de luta de um jogador. Ter conhecimento de boxe contaria como um exemplo |         INT [1-10]         | -       |         NOT NULL         |
 |       vida_jogador       |                         Atributo que determina a quantidade de vida que um jogador possui                          |         INT [1-10]         | -       |         NOT NULL         |
 |      força_jogador       |                         Atributo que determina a quantidade de força que um jogador possui                         |         INT [1-10]         | -       |         NOT NULL         |
-|     respeito_jogador     |                         Atributo derivado que determina quanto respeito um jogador possui                          |         INT [1-10]         | -       |         NOT NULL         |
 |    tempo_vida_jogador    |                       Atributo que determina quanto tempo de vida restante um jogador possui                       |         INT [1-10]         | -       |         NOT NULL         |
 |      gangue_jogador      |             Atributo que determina qual gangue o jogador é afiliado.  tendo 2 opções, polvo e palhaco              | ENUM  ('polvo', 'palhaco') | -       |         NOT NULL         |
 
