@@ -19,8 +19,9 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão | Descrição                   | Autores                                                                                                                                                                                                 |
-|:----------:|:------:|:---------------------------:| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|    Data    | Versão |          Descrição          | Autores                                                                                                                                                                                                 |
+|:----------:|:------:|:---------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 20/07/2024 | `1.0`  | Criação da primeira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 21/07/2024 | `2.0`  |  Atualiza para a entrega.   | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 
 </div>
