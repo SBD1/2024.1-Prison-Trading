@@ -25,10 +25,6 @@ A troca de itens é crucial para o sucesso, já que você precisa negociar com o
 Além disso, você também precisa estar atento aos guardas e às rotinas da prisão, evitando chamar atenção enquanto trabalha em sua fuga. Combinando elementos de quebra-cabeças, estratégia e negociação, Prison Trading  oferece uma experiência desafiadora e envolvente para os jogadores que buscam um desafio intelectual e criativo.
 </p>
 
-<center>
-<img src="https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/img.png", style="border-radius: 10%">
-</center>
-
 ---
 
 <center>
@@ -74,17 +70,37 @@ Além disso, você também precisa estar atento aos guardas e às rotinas da pri
 
 <center>
 
+## 🎬 Apresentações
+
+</center>
+
+<div style="margin: 0 auto; width: fit-content;">
+
+| Módulo   | Data de entrega do Módulo | Entrega                                                                                 |
+|----------|---------------------------|-----------------------------------------------------------------------------------------|
+| Módulo 1 | 21/07/2024                | [Modelagem do projeto](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/Modulo1) |
+| Modulo 2 | --/--/2024                | DDL + DML (parcial)                                                                     |
+| Módulo 3 | --/--/2024                | Triggers, stored procedures e transactions                                              |
+| Módulo 4 | --/--/2024                | Apresentação final                                                                      |
+
+</div>
+
+---
+
+<center>
+
 ## 📅 Entregas
 
 </center>
 
 <div style="margin: 0 auto; width: fit-content;">
 
-| Módulo   | Data de entrega do Módulo | Entrega                                                                                     |
-| -------- |---------------------------|---------------------------------------------------------------------------------------------|
-| Módulo 1 | --/--/2024                | [Modelagem do projeto](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/Modulo1)                    |
-| Modulo 2 | --/--/2024                | [DDL + DML (parcial)](https://github.com/SBD1/2024.1-Prison-Trading)                        |
-| Módulo 3 | --/--/2024                | [Triggers, stored procedures e transactions](https://github.com/SBD1/2024.1-Prison-Trading) |
-| Módulo 4 | --/--/2024                | [Apresentação final](https://github.com/SBD1/2024.1-Prison-Trading)                         |
+| Módulo 1                                                                                        |
+|:------------------------------------------------------------------------------------------------|
+| [Diagrama Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/DER) |
+| [Modelo Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/MER)   |
+| [Modelo Relacional](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/MERL)               |
+| [Dicionário de Dados](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/DD)               |
+| [Normalização](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/NORM)                    |
 
 </div>
