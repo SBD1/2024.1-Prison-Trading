@@ -205,7 +205,7 @@
 |:---------------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------:|:----------------------:|---------|:---------------------:|
 | nome_fabri, item_fabricavel | Chave composta de nome_fabri e item_fabricavel, item_fabricavel é chave primária da tabela Item_Fabricavel, ambas sem caracteres especiais (~Ç@!) |    CHAR [a-z, A-Z]     | 50      |      PRIMARY KEY      |
 |       item_fabricavel       |                    Chave estrangeira que tem o valor da chave primária de Item_Fabricavel, usada para compor a chave composta                     |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
-|      livro_fabricacao       |                             Chave estrangeira referenciando a tabela Livro_Fabricacoes, livro onde a fabricacao está                              |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
+|      livro_fabricacoes      |                             Chave estrangeira referenciando a tabela Livro_Fabricacoes, livro onde a fabricacao está                              |    CHAR [a-z, A-Z]     | 25      | FOREIGN KEY, NOT NULL |
 
 ---
 
