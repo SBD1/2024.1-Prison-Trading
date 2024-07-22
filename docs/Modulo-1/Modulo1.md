@@ -8,7 +8,7 @@
 
 ## Apresentação
 
-<iframe width="700" height="800" src="a" title=" Prison Trading - Módulo 1/SBD1 " frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="400" height="800" src="https://www.youtube-nocookie.com/embed/QpoVMxMQLf0?si=E0Q7L4XBNqZTdb3s" title="Prison Trading - Módulo 1 - Versão 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 ---
 <center>
@@ -19,9 +19,10 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão |          Descrição          | Autores                                                                                                                                                                                                 |
-|:----------:|:------:|:---------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 20/07/2024 | `1.0`  | Criação da primeira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
-| 21/07/2024 | `2.0`  |  Atualiza para a entrega.   | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+|    Data    | Versão |          Descrição                   | Autores                                                                                                                                                                                                 |
+|:----------:|:------:|:------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 20/07/2024 | `1.0`  | Criação da primeira versão.          | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 21/07/2024 | `2.0`  |  Atualiza para a entrega.            | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 22/07/2024 | `3.0`  |  Adiciona a segunda versão do vídeo. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 
 </div>
