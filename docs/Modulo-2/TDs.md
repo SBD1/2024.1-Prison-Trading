@@ -32,6 +32,6 @@
 
 |    Data    | Versão | Descrição                                                | Autores                                               |
 |:----------:|:------:|----------------------------------------------------------|-------------------------------------------------------|
-| 26/07/2024 | `1.0`  | Criação do documento e da tabela `Prisão`.               | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 26/07/2024 | `1.0`  | Criação do documento e da tabela [`Prisão`](#Prisão).    | [Breno Alexandre](https://github.com/brenoalexandre0) |
 
 </div>
