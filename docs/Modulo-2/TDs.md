@@ -6,7 +6,7 @@
 
 ---
 
-> Introdução
+> Este documento visa monitorar e registrar os dados inseridos em cada uma das tabelas. É importante destacar que esses dados poderão ser atualizados ao longo do jogo conforme necessário.
 
 <center>
 
