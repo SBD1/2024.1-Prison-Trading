@@ -30,9 +30,12 @@
 
 </center>
 
-| nome_regiao | prisao  | descricao_regiao                                                       |
-|:-----------:|:-------:|:----------------------------------------------------------------------:|
-| celas       | Basilio | - |
+| nome_regiao | prisao  | descricao_regiao                                                                                     |
+|:-----------:|:-------:|:----------------------------------------------------------------------------------------------------:|
+| celas       | 01      | Local onde estão as celas e solitárias dos prisioneiros.                                             |
+| banheiros   | 01      | Local onde os prisioneiros se banham.                                                                |
+| refeitorio  | 01      | Local onde os prisioneiros fazem suas refeições.                                                     |
+| areaLazer   | 01      | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futebol e relaxar. |
 
 ---
 
@@ -44,6 +47,6 @@
 
 |    Data    | Versão | Descrição                                                | Autores                                               |
 |:----------:|:------:|----------------------------------------------------------|-------------------------------------------------------|
-| 26/07/2024 | `1.0`  | Criação do documento e da tabela [`Prisão`](#Prisão).    | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 26/07/2024 | `1.0`  | Criação do documento.                                    | [Breno Alexandre](https://github.com/brenoalexandre0) |
 
 </div>
