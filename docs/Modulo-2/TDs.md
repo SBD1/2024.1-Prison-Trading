@@ -18,7 +18,7 @@
 
 </center>
 
-| id_Prisao | nome_prisao |
+| id_prisao | nome_prisao |
 |:---------:|:-----------:|
 | 01        | Basilio     |
 
@@ -35,7 +35,7 @@
 | celas       | 01      | Local onde estão as celas e solitárias dos prisioneiros.                                             |
 | banheiros   | 01      | Local onde os prisioneiros se banham.                                                                |
 | refeitorio  | 01      | Local onde os prisioneiros fazem suas refeições.                                                     |
-| areaLazer   | 01      | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futebol e relaxar. |
+| patio       | 01      | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futebol e relaxar. |
 
 ---
 
@@ -45,17 +45,23 @@
 
 </center>
 
-| nome_lugar  | regiao  | descricao_lugar                                                                                     |
-|:-----------:|:-------:|:---------------------------------------------------------------------------------------------------:|
-| solitaraA   | celas   | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.              |
-| celaA       | celas   | Cela onde dormem os prisioneiros 1 e 2.                                                             |
-| celaB       | celas   | Cela onde dormem os prisioneiros 3 e 4.                                                             |
-| celaC       | celas   | Cela onde dormem os prisioneiros 5 e 6.                                                             |
-| celaD       | celas   | Cela onde dorme o jogador inicialmente.                                                             |
-| celaE       | celas   | Cela onde dormem os prisioneiros 7 e 8.                                                             |
-| celaF       | celas   | Cela onde dormem os prisioneiros 9 e 10.                                                            |
-| celaG       | celas   | Cela onde dormem os prisioneiros 11 e 12.                                                           |
-| solitariaB  | celas   | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.              |
+| nome_lugar   | *regiao*   | descricao_lugar                                                                                     |
+|:------------:|:----------:|:---------------------------------------------------------------------------------------------------:|
+| solitariaA   | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.              |
+| celaA        | celas      | Cela onde dormem os prisioneiros 1 e 2.                                                             |
+| celaB        | celas      | Cela onde dormem os prisioneiros 3 e 4.                                                             |
+| celaC        | celas      | Cela onde dormem os prisioneiros 5 e 6.                                                             |
+| celaD        | celas      | Cela onde dorme o jogador inicialmente.                                                             |
+| celaE        | celas      | Cela onde dormem os prisioneiros 7 e 8.                                                             |
+| celaF        | celas      | Cela onde dormem os prisioneiros 9 e 10.                                                            |
+| celaG        | celas      | Cela onde dormem os prisioneiros 11 e 12.                                                           |
+| solitariaB   | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.              |
+| banheiroA    | banheiros  | Banheiro onde os prisioneiros tomam banho.                                                          |
+| banheiroB    | banheiros  | Banheiro onde os prisioneiros tomam banho.                                                          |
+| banheiroC    | banheiros  | Banheiro onde os prisioneiros tomam banho.                                                          |
+| banheiroD    | banheiros  | Banheiro onde os prisioneiros tomam banho.                                                          |
+| mesaDireita  | refeitorio | Mesa onde a gangue 1 faz suas refeições.                                                            |
+| mesaEsquerda | refeitorio | Mesa onde a gangue 2 faz suas refeições.                                                            |
 
 ---
 
