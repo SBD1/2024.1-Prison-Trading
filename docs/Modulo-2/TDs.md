@@ -20,7 +20,7 @@
 
 | id_Prisao | nome_prisao | Descrição                                                              |
 |:---------:|:-----------:|:----------------------------------------------------------------------:|
-| 01        | Basílio     | Prisão de máxima segurança onde apenas pessoas condenadas a morte vão. |
+| 01        | Basilio     | Prisão de máxima segurança onde apenas pessoas condenadas a morte vão. |
 
 ---
 
