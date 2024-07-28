@@ -196,6 +196,88 @@
 
 ---
 
+## Personagem
+
+| IdPersonagem | cargo        | tipoP      |
+|--------------|--------------|------------|
+| 01           | Prisioneiro  | PJ         |
+| 02           | Prisioneiro  | PNJ        |
+| 03           | Prisioneiro  | PNJ        |
+| 04           | Prisioneiro  | PNJ        |
+| 05           | Prisioneiro  | PNJ        |
+| 06           | Prisioneiro  | PNJ        |
+| 07           | Prisioneiro  | PNJ        |
+| 08           | Prisioneiro  | PNJ        |
+| 09           | Prisioneiro  | PNJ        |
+| 10           | Prisioneiro  | PNJ        |
+| 11           | Prisioneiro  | PNJ        |
+| 12           | Prisioneiro  | PNJ        |
+| 13           | Prisioneiro  | PNJ        |
+| 14           | Policial     | PNJ        |
+| 15           | Policial     | PNJ        |
+| 16           | Policial     | PNJ        |
+| 17           | Policial     | PNJ        |
+| 18           | Policial     | PNJ        |
+| 19           | Informante   | PNJ        |
+
+---
+
+# Personagem Jogável
+
+| **idPersonagem** | **Nome** | **Habilidade de Briga** | **Vida** | **Força** | **Tempo de Vida** | **Gangue** |
+|------------------|----------|-------------------------|----------|-----------|-------------------|------------|
+| 01               | -    | 1                       | 10      | 1         | 1                 | -          |
+
+----
+
+# Prisioneiro
+
+| **idPersonagem** | **Nome**                | **Habilidade de Briga** | **Vida** | **Força** | **Gangue** |
+|------------------|-------------------------|-------------------------|----------|-----------|------------|
+| 02               | Rivas                 | 1                       | 10      | 1         | Palhaços   |
+| 03               | Filomano                | 1                       | 10      | 1         | Polvos   |
+| 04               | Fragas                | 1                       | 10      | 1         | Palhaços   |
+| 05               | Glaucão                | 1                       | 10      | 1         | Polvos   |
+| 06               | Ucraniano                 | 1                       | 10      | 1         | Palhaços     |
+| 07               | Rispomático                | 1                       | 10      | 1         | Polvos     |
+| 08               | Manogaz              | 1                       | 10      | 1         | Palhaços     |
+| 09               | Dado                  | 1                       | 10      | 1         | Polvos     |
+| 10               | Fabrilton                | 1                       | 10      | 1         | Palhaços          |
+| 11               | Eneido               | 1                       | 10      | 1         | Polvos          |
+| 12               | Carlos               | 1                       | 10      | 1         | Palhaços          |
+| 13               | Silvio serra    | 1                       | 10      | 1         | Polvos          |
+
+-----
+
+# Policial
+
+| **idPersonagem** | **Nome**                | **Nível de corrupção** |
+|------------------|-------------------------|-------------------------|
+| 14               | Italo Dimetrio                 | 0                       |
+| 15               | Sargento Nascimento                | 0                       |
+| 16               | Capitão Mathias                | 0                       |
+| 17               | Capitão Brad                | 0                       |
+| 18               | Lil Chico                 | 0                       |
+
+---
+
+# Informante
+
+| **idPersonagem** | **Nome** | **Dano Informante** |
+|------------------|----------|-------------------------|
+| 19               | Cubano    | 200                       |
+
+---
+
+# Inventário
+
+|                 |                  |             |           |            |            | 
+| --------------- | ------------------|---------|-------|-------|-------|
+| **idInventario**   |**inventário ocupado** | **tamanho inventário** | 
+| 1  | 0  | 5 |
+
+---
+
 <center>
 
 # Histórico de versão
