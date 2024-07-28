@@ -70,6 +70,19 @@
 | Coquetel Molotov | 'fabr'    |
 | Corda com Cerol  | 'fabr'    |
 | Garrafa Quebrada | 'fabr'    |
+| sabão            | 'nfabr'   |
+| pedra               | 'nfabr'    |
+| graveto          | 'nfabr'    |
+| linha         | 'nfabr'    |
+| pedaço pequeno de metal        | 'nfabr'   |
+| vidro            | 'nfabr'    |
+| pedaço grande de metal             | 'nfabr'    |
+| alcool          | 'nfabr'    |
+| tecido      | 'nfabr'    |
+| garrada de vidro       | 'nfabr'    |
+| plastico | 'nfabr'    |
+
+
 
 ---
 
@@ -90,6 +103,19 @@
 | Coquetel Molotov I | Coquetel Molotov | NULL      | NULL       |
 | Corda com Cerol I  | Corda com Cerol  | NULL      | NULL       |
 | Garrafa Quebrada I | Garrafa Quebrada | NULL      | NULL       |
+| Chave de Fenda I   | Chave de Fenda   | NULL      | NULL       |
+| Sabao I               | Sabao               | banheiro      | NULL       |
+| pedra I          | pedra         | patio      | NULL       |
+| graveto I         | graveto         | patio      | NULL       |
+| linha I        | linha        | enfermaria      | NULL       |
+| pedaço pequeno de metal I            | pedaço pequeno de metal            | NULL      | NULL       |
+| vidro             | vidro             | NULL | NULL       |
+| Agulha I           | Agulha           | NULL | NULL       |
+| pedaço grande de metal I      | pedaço grande de metal      | NULL      | NULL       |
+| Alcool I | Alcool | enfermaria      | NULL       |
+| tecido I | tecido  | enfermaria      | NULL       |
+| garrafa de vidro I | Garrafa de vidro | enfermaria      | NULL       |
+| plastico I   | plastico   | NULL      | NULL       |
 
 ---
 
