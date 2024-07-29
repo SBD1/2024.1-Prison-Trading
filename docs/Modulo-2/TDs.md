@@ -42,7 +42,7 @@
 | celaD                | celas      | Cela onde dormem os prisioneiros 7 e 8.                                                |
 | celaE                | celas      | Cela onde dormem os prisioneiros 9 e 10.                                               |
 | celaF                | celas      | Cela onde dormem os prisioneiros 11 e 12.                                              |
-| celaG                | celas      | Cela onde dormem o prisioneiro 13 e o jogador.                                         |
+| celaG                | celas      | Cela onde dormem o prisioneiro 13 e o prisioneiro 19.                                         |
 | solitariaLeste       | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
 | banheiroA            | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
 | banheiroB            | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
@@ -305,27 +305,28 @@
 
 | **idPessoa** | **Nome** | **Habilidade de Briga** | **Vida** | **Força** | **Tempo de Vida** | **Gangue** | **Lugar** | **missao** |
 |--------------|----------|-------------------------|----------|-----------|-------------------|------------|-----------|------------|
-| 01           | Carimbo  | 2                       | 5        | 3         | 10                 | -          | -         |  -         |
+| 01           | Carimbo  | 2                       | 5        | 3         | 10                 | -          | celaA         |  -         |
+
 
 
 ----
 
 # Prisioneiro
 
-| **idPessoa** | **Nome**     | **Habilidade de Briga** | **Vida** | **Força** | **Gangue** | **Lugar** |
-|--------------|--------------|-------------------------|----------|-----------|------------|-----------|
-| 02           | Rivas        | 4                       | 9        | 7         | Palhaços   |           |
-| 03           | Filomano     | 6                       | 7        | 4         | Polvos     |           |
-| 04           | Fragas       | 5                       | 11       | 5         | Palhaços   |           |
-| 05           | Glaucão      | 3                       | 6        | 8         | Polvos     |           |
-| 06           | Ucraniano    | 7                       | 5        | 6         | Palhaços   |           |
-| 07           | Rispomático  | 6                       | 12       | 6         | Polvos     |           |
-| 08           | Manogaz      | 4                       | 8        | 5         | Palhaços   |           |
-| 09           | Dado         | 5                       | 10       | 6         | Polvos     |           |
-| 10           | Fabrilton    | 4                       | 7        | 5         | Palhaços   |           |
-| 11           | Eneido       | 6                       | 6        | 6         | Polvos     |           |
-| 12           | Carlos       | 5                       | 9        | 7         | Palhaços   |           |
-| 13           | Silvio Serra | 6                       | 8        | 5         | Polvos     |           |
+| **idPessoa** | **Nome**     | **Habilidade de Briga** | **Vida** | **Força** | **Gangue** | **Lugar**            |
+|--------------|--------------|-------------------------|----------|-----------|------------|----------------------|
+| 02           | Rivas        | 4                       | 9        | 7         | Palhaços   | quadraDesportiva     |
+| 03           | Filomano     | 6                       | 7        | 4         | Polvos     | celaB                |
+| 04           | Fragas       | 5                       | 11       | 5         | Palhaços   | banheiroA            |
+| 05           | Glaucão      | 3                       | 6        | 8         | Polvos     | mesaEsquerda         |
+| 06           | Ucraniano    | 7                       | 5        | 6         | Palhaços   | celaC                |
+| 07           | Rispomático  | 6                       | 12       | 6         | Polvos     | academiaSimples      |
+| 08           | Manogaz      | 4                       | 8        | 5         | Palhaços   | celaG                |
+| 09           | Dado         | 5                       | 10       | 6         | Polvos     | banheiroB            |
+| 10           | Fabrilton    | 4                       | 7        | 5         | Palhaços   | mesaDireita          |
+| 11           | Eneido       | 6                       | 6        | 6         | Polvos     | solitariaOeste       |
+| 12           | Carlos       | 5                       | 9        | 7         | Palhaços   | arquibancada         |
+| 13           | Silvio Serra | 6                       | 8        | 5         | Polvos     | celaE                |
 
 
 
@@ -333,22 +334,22 @@
 
 # Policial
 
-| **idPersonagem** | **Nome**              | **Corrupto** |
-|------------------|-----------------------|--------------|
-| 14               | Italo Dimetrio        | SIM            |
-| 15               | Sargento Nascimento   | NÃO            |
-| 16               | Capitão Mathias       | NÃO            |
-| 17               | Capitão Brad          | SIM            |
-| 18               | Lil Chico             | SIM            |
+| **idPersonagem** | **Nome**              | **Lugar**        | **Corrupto** |
+|------------------|-----------------------|------------------|--------------|
+| 14               | Italo Dimetrio        | solitariaOeste   | SIM          |
+| 15               | Sargento Nascimento   | mesaDireita      | NÃO          |
+| 16               | Capitão Mathias       | quadraDesportiva | NÃO          |
+| 17               | Capitão Brad          | solitariaLeste   | SIM          |
+| 18               | Lil Chico             | arquibancada     | SIM          |
 
 
 ---
 
 # Informante
 
-| **idPersonagem** | **Nome** | **Dano Informante** | **Lugar**
-|------------------|----------|-------------------------|-----------|
-| 19               | Cubano    | 200                       | -          |
+| **idPersonagem** | **Nome** | **Dano Informante** | **Lugar**   |
+|------------------|----------|---------------------|-------------|
+| 19               | Cubano   | 200                 | banheiroC   |
 
 ---
 
@@ -376,8 +377,7 @@
 | 28/07/2024 | `1.2`  | Desenvolvimento algumas tabelas.                | [Fernando Gabriel](https://github.com/show-dawn)      |
 | 28/07/2024 | `1.3`  | Desenvolvimento algumas tabelas.                | [Julio Cesar](https://github.com/Julio1099)           |
 | 29/07/2024 | `1.4`  | Completa a tabela [`Lugar`](#Lugar)             | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 29/07/2024 | `1.5`  | Ajustes tabela Pessoa             | [Júlio](https://github.com/julio1099) |
-
-| 28/07/2024 | `1.6`  | Desenvolvimento algumas tabelas.                | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 29/07/2024 | `1.5`  | Ajustes tabela Pessoa             | [Júlio Cesar](https://github.com/julio1099) |
+| 29/07/2024 | `1.6`  | Desenvolvimento algumas tabelas.                | [Fernando Gabriel](https://github.com/show-dawn)      |
 
 </div>
