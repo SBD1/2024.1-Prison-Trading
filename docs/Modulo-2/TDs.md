@@ -293,9 +293,9 @@
 |    Data    | Versão | Descrição                                       | Autores                                               |
 |------------|--------|-------------------------------------------------|-------------------------------------------------------|
 | 26/07/2024 | `1.0`  | Criação do documento.                           | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 28/07/2024 | `1.1`  | Desenvolvimento de algumas tabelas e correções. | [Breno Alexandre](https://github.com/joaoseisei)      |
-| 28/07/2024 | `1.2`  | Desenvolvimento algumas tabelas.                | [Breno Alexandre](https://github.com/show-dawn)       |
+| 28/07/2024 | `1.1`  | Desenvolvimento de algumas tabelas e correções. | [João Antonio G.](https://github.com/joaoseisei)      |
+| 28/07/2024 | `1.2`  | Desenvolvimento algumas tabelas.                | [Fernando Gabriel](https://github.com/show-dawn)      |
 | 28/07/2024 | `1.3`  | Desenvolvimento algumas tabelas.                | [Breno Alexandre](https://github.com/Julio1099)       |
-| 29/07/2024 | `1.4`  | Completa a tabela [`Lugar`](#Lugar)             | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 29/07/2024 | `1.4`  | Completa a tabela [`Lugar`](#Lugar)             | [Julio Cesar](https://github.com/brenoalexandre0)     |
 
 </div>
