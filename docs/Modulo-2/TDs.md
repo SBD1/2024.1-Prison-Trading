@@ -35,7 +35,7 @@
 
 | nome_lugar           | *regiao*   | descricao_lugar                                                                        |
 |----------------------|------------|----------------------------------------------------------------------------------------|
-| solitariaA           | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
+| solitariaOeste       | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
 | celaA                | celas      | Cela onde dormem os prisioneiros 1 e 2.                                                |
 | celaB                | celas      | Cela onde dormem os prisioneiros 3 e 4.                                                |
 | celaC                | celas      | Cela onde dormem os prisioneiros 5 e 6.                                                |
@@ -43,7 +43,7 @@
 | celaE                | celas      | Cela onde dormem os prisioneiros 9 e 10.                                               |
 | celaF                | celas      | Cela onde dormem os prisioneiros 11 e 12.                                              |
 | celaG                | celas      | Cela onde dormem o prisioneiro 13 e o jogador.                                         |
-| solitariaB           | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
+| solitariaLeste       | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
 | banheiroA            | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
 | banheiroB            | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
 | banheiroC            | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
