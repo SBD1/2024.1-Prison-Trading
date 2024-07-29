@@ -200,7 +200,7 @@
 
 ---
 
-## Personagem
+## Pessoa
 
 | IdPersonagem | cargo        | tipoP      |
 |--------------|--------------|------------|
@@ -226,50 +226,54 @@
 
 ---
 
-# Personagem Jogável
+# Jogador
 
-| **idPersonagem** | **Nome** | **Habilidade de Briga** | **Vida** | **Força** | **Tempo de Vida** | **Gangue** |
-|------------------|----------|-------------------------|----------|-----------|-------------------|------------|
-| 01               | -    | 1                       | 10      | 1         | 1                 | -          |
+| **idPessoa** | **Nome** | **Habilidade de Briga** | **Vida** | **Força** | **Tempo de Vida** | **Gangue** | **Lugar** | **missao** |
+|--------------|----------|-------------------------|----------|-----------|-------------------|------------|-----------|------------|
+| 01           | Carimbo  | 2                       | 5        | 3         | 10                 | -          | -         |  -         |
+
 
 ----
 
 # Prisioneiro
 
-| **idPersonagem** | **Nome**                | **Habilidade de Briga** | **Vida** | **Força** | **Gangue** |
-|------------------|-------------------------|-------------------------|----------|-----------|------------|
-| 02               | Rivas                 | 1                       | 10      | 1         | Palhaços   |
-| 03               | Filomano                | 1                       | 10      | 1         | Polvos   |
-| 04               | Fragas                | 1                       | 10      | 1         | Palhaços   |
-| 05               | Glaucão                | 1                       | 10      | 1         | Polvos   |
-| 06               | Ucraniano                 | 1                       | 10      | 1         | Palhaços     |
-| 07               | Rispomático                | 1                       | 10      | 1         | Polvos     |
-| 08               | Manogaz              | 1                       | 10      | 1         | Palhaços     |
-| 09               | Dado                  | 1                       | 10      | 1         | Polvos     |
-| 10               | Fabrilton                | 1                       | 10      | 1         | Palhaços          |
-| 11               | Eneido               | 1                       | 10      | 1         | Polvos          |
-| 12               | Carlos               | 1                       | 10      | 1         | Palhaços          |
-| 13               | Silvio serra    | 1                       | 10      | 1         | Polvos          |
+| **idPessoa** | **Nome**     | **Habilidade de Briga** | **Vida** | **Força** | **Gangue** | **Lugar** |
+|--------------|--------------|-------------------------|----------|-----------|------------|-----------|
+| 02           | Rivas        | 4                       | 9        | 7         | Palhaços   |           |
+| 03           | Filomano     | 6                       | 7        | 4         | Polvos     |           |
+| 04           | Fragas       | 5                       | 11       | 5         | Palhaços   |           |
+| 05           | Glaucão      | 3                       | 6        | 8         | Polvos     |           |
+| 06           | Ucraniano    | 7                       | 5        | 6         | Palhaços   |           |
+| 07           | Rispomático  | 6                       | 12       | 6         | Polvos     |           |
+| 08           | Manogaz      | 4                       | 8        | 5         | Palhaços   |           |
+| 09           | Dado         | 5                       | 10       | 6         | Polvos     |           |
+| 10           | Fabrilton    | 4                       | 7        | 5         | Palhaços   |           |
+| 11           | Eneido       | 6                       | 6        | 6         | Polvos     |           |
+| 12           | Carlos       | 5                       | 9        | 7         | Palhaços   |           |
+| 13           | Silvio Serra | 6                       | 8        | 5         | Polvos     |           |
+
+
 
 -----
 
 # Policial
 
-| **idPersonagem** | **Nome**                | **Nível de corrupção** |
-|------------------|-------------------------|-------------------------|
-| 14               | Italo Dimetrio                 | 0                       |
-| 15               | Sargento Nascimento                | 0                       |
-| 16               | Capitão Mathias                | 0                       |
-| 17               | Capitão Brad                | 0                       |
-| 18               | Lil Chico                 | 0                       |
+| **idPersonagem** | **Nome**              | **Corrupto** |
+|------------------|-----------------------|--------------|
+| 14               | Italo Dimetrio        | SIM            |
+| 15               | Sargento Nascimento   | NÃO            |
+| 16               | Capitão Mathias       | NÃO            |
+| 17               | Capitão Brad          | SIM            |
+| 18               | Lil Chico             | SIM            |
+
 
 ---
 
 # Informante
 
-| **idPersonagem** | **Nome** | **Dano Informante** |
-|------------------|----------|-------------------------|
-| 19               | Cubano    | 200                       |
+| **idPersonagem** | **Nome** | **Dano Informante** | **Lugar**
+|------------------|----------|-------------------------|-----------|
+| 19               | Cubano    | 200                       | -          |
 
 ---
 
@@ -277,8 +281,8 @@
 
 |                 |                  |             |           |            |            | 
 | --------------- | ------------------|---------|-------|-------|-------|
-| **idInventario**   |**inventário ocupado** | **tamanho inventário** | 
-| 1  | 0  | 5 |
+| **idInventario**   | **Pessoa** |**inventário ocupado** | **tamanho inventário** | 
+| 1  | -  | 0  | 5 |
 
 ---
 
@@ -297,5 +301,6 @@
 | 28/07/2024 | `1.2`  | Desenvolvimento algumas tabelas.                | [Fernando Gabriel](https://github.com/show-dawn)      |
 | 28/07/2024 | `1.3`  | Desenvolvimento algumas tabelas.                | [Julio Cesar](https://github.com/Julio1099)           |
 | 29/07/2024 | `1.4`  | Completa a tabela [`Lugar`](#Lugar)             | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 29/07/2024 | `1.5`  | Ajustes tabela Pessoa             | [Júlio](https://github.com/julio1099) |
 
 </div>
