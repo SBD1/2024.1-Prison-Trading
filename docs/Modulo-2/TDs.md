@@ -15,7 +15,7 @@
 # Prisão
 
 | id_prisao | nome_prisao |
-|:----------|:------------|
+|-----------|-------------|
 | 01        | Basilio     |
 
 ---
@@ -23,33 +23,37 @@
 # Região
 
 | nome_regiao | prisao | descricao_regiao                                                                                     |
-|:------------|:-------|------------------------------------------------------------------------------------------------------|
+|-------------|--------|------------------------------------------------------------------------------------------------------|
 | celas       | 01     | Local onde estão as celas e solitárias dos prisioneiros.                                             |
 | banheiros   | 01     | Local onde os prisioneiros se banham.                                                                |
 | refeitorio  | 01     | Local onde os prisioneiros fazem suas refeições.                                                     |
-| patio       | 01     | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futebol e relaxar. |
+| patio       | 01     | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futsal e relaxar. |
 
 ---
 
 # Lugar
 
-| nome_lugar   | *regiao*   | descricao_lugar                                                                        |
-|:-------------|:-----------|:---------------------------------------------------------------------------------------|
-| solitariaA   | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
-| celaA        | celas      | Cela onde dormem os prisioneiros 1 e 2.                                                |
-| celaB        | celas      | Cela onde dormem os prisioneiros 3 e 4.                                                |
-| celaC        | celas      | Cela onde dormem os prisioneiros 5 e 6.                                                |
-| celaD        | celas      | Cela onde dorme o jogador inicialmente.                                                |
-| celaE        | celas      | Cela onde dormem os prisioneiros 7 e 8.                                                |
-| celaF        | celas      | Cela onde dormem os prisioneiros 9 e 10.                                               |
-| celaG        | celas      | Cela onde dormem os prisioneiros 11 e 12.                                              |
-| solitariaB   | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
-| banheiroA    | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
-| banheiroB    | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
-| banheiroC    | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
-| banheiroD    | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
-| mesaDireita  | refeitorio | Mesa onde a gangue 1 faz suas refeições.                                               |
-| mesaEsquerda | refeitorio | Mesa onde a gangue 2 faz suas refeições.                                               |
+| nome_lugar           | *regiao*   | descricao_lugar                                                                        |
+|----------------------|------------|----------------------------------------------------------------------------------------|
+| solitariaA           | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
+| celaA                | celas      | Cela onde dormem os prisioneiros 1 e 2.                                                |
+| celaB                | celas      | Cela onde dormem os prisioneiros 3 e 4.                                                |
+| celaC                | celas      | Cela onde dormem os prisioneiros 5 e 6.                                                |
+| celaD                | celas      | Cela onde dormem os prisioneiros 7 e 8.                                                |
+| celaE                | celas      | Cela onde dormem os prisioneiros 9 e 10.                                               |
+| celaF                | celas      | Cela onde dormem os prisioneiros 11 e 12.                                              |
+| celaG                | celas      | Cela onde dormem o prisioneiro 13 e o jogador.                                         |
+| solitariaB           | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
+| banheiroA            | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
+| banheiroB            | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
+| banheiroC            | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
+| banheiroD            | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
+| mesaDireita          | refeitorio | Mesa onde a gangue 1 faz suas refeições.                                               |
+| mesaEsquerda         | refeitorio | Mesa onde a gangue 2 faz suas refeições.                                               |
+| bancos               | patio      | Bancos onde os prisioneiros podem sentar e conversar.                                  |
+| academiaSimples      | patio      | Uma área com equipamentos simples de exercício.                                        |
+| arquibancada         | patio      | Arquibancada onde os prisioneiros podem conversar e assistir os jogos.                 |
+| quadraDesportiva     | patio      | Quadra onde os prisioneiros jogam basquete/futsal para se distrair e se exercitar.     |
 
 ---
 
@@ -286,8 +290,12 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão | Descrição             | Autores                                               |
-|:----------:|:------:|-----------------------|-------------------------------------------------------|
-| 26/07/2024 | `1.0`  | Criação do documento. | [Breno Alexandre](https://github.com/brenoalexandre0) |
+|    Data    | Versão | Descrição                                       | Autores                                               |
+|------------|--------|-------------------------------------------------|-------------------------------------------------------|
+| 26/07/2024 | `1.0`  | Criação do documento.                           | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 28/07/2024 | `1.1`  | Desenvolvimento de algumas tabelas e correções. | [Breno Alexandre](https://github.com/joaoseisei)      |
+| 28/07/2024 | `1.2`  | Desenvolvimento algumas tabelas.                | [Breno Alexandre](https://github.com/show-dawn)       |
+| 28/07/2024 | `1.3`  | Desenvolvimento algumas tabelas.                | [Breno Alexandre](https://github.com/Julio1099)       |
+| 29/07/2024 | `1.4`  | Completa a tabela [`Lugar`](#Lugar)             | [Breno Alexandre](https://github.com/brenoalexandre0) |
 
 </div>
