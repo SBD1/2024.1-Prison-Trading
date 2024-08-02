@@ -277,35 +277,35 @@
 
 ## Pessoa
 
-| IdPersonagem | cargo        | tipoP      |
-|--------------|--------------|------------|
-| 01           | Prisioneiro  | PJ         |
-| 02           | Prisioneiro  | PNJ        |
-| 03           | Prisioneiro  | PNJ        |
-| 04           | Prisioneiro  | PNJ        |
-| 05           | Prisioneiro  | PNJ        |
-| 06           | Prisioneiro  | PNJ        |
-| 07           | Prisioneiro  | PNJ        |
-| 08           | Prisioneiro  | PNJ        |
-| 09           | Prisioneiro  | PNJ        |
-| 10           | Prisioneiro  | PNJ        |
-| 11           | Prisioneiro  | PNJ        |
-| 12           | Prisioneiro  | PNJ        |
-| 13           | Prisioneiro  | PNJ        |
-| 14           | Policial     | PNJ        |
-| 15           | Policial     | PNJ        |
-| 16           | Policial     | PNJ        |
-| 17           | Policial     | PNJ        |
-| 18           | Policial     | PNJ        |
-| 19           | Informante   | PNJ        |
+| IdPersonagem | tipo_pessoa    | 
+|--------------|----------------|
+| 1            | 'Prisioneiro'  |
+| 2            | 'Prisioneiro'  |
+| 3            | 'Prisioneiro'  |
+| 4            | 'Prisioneiro'  |
+| 5            | 'Prisioneiro'  |
+| 6            | 'Prisioneiro'  |
+| 7            | 'Prisioneiro'  |
+| 8            | 'Prisioneiro'  |
+| 9            | 'Prisioneiro'  |
+| 10           | 'Prisioneiro'  |
+| 11           | 'Prisioneiro'  |
+| 12           | 'Prisioneiro'  |
+| 13           | 'Prisioneiro'  |
+| 14           | 'Policial'     |
+| 15           | 'Policial'     |
+| 16           | 'Policial'     |
+| 17           | 'Policial'     |
+| 18           | 'Policial'     |
+| 19           | 'Informante'   |
 
 ---
 
 # Jogador
 
-| **idPessoa** | **Nome** | **Habilidade de Briga** | **Vida** | **Força** | **Tempo de Vida** | **Gangue** | **Lugar** | **missao** |
+| **id_pessoa** | **nome_pessoa** | **habilidade_briga_jogador** | **vida_jogador** | **força_jogador** | **tempo_vida_jogador** | **gangue_jogador** | **lugar** | **missao** |
 |--------------|----------|-------------------------|----------|-----------|-------------------|------------|-----------|------------|
-| 01           | Carimbo  | 2                       | 5        | 3         | 10                 | -          | celaA         |  -         |
+| 01           | Carimbo  | 2                       | 5        | 3         | 10                 | null          | celaA         |  null         |
 
 
 
@@ -313,20 +313,20 @@
 
 # Prisioneiro
 
-| **idPessoa** | **Nome**     | **Habilidade de Briga** | **Vida** | **Força** | **Gangue** | **Lugar**            |
+| **id_pessoa** | **nome_pessoa**     | **habilidade_briga_prisioneiro** | **vida_prisioneiro** | **força_prisioneiro** | **gangue_prisioneiro** | **lugar**            |
 |--------------|--------------|-------------------------|----------|-----------|------------|----------------------|
-| 02           | Rivas        | 4                       | 9        | 7         | Palhaços   | quadraDesportiva     |
-| 03           | Filomano     | 6                       | 7        | 4         | Polvos     | celaB                |
-| 04           | Fragas       | 5                       | 11       | 5         | Palhaços   | banheiroA            |
-| 05           | Glaucão      | 3                       | 6        | 8         | Polvos     | mesaEsquerda         |
-| 06           | Ucraniano    | 7                       | 5        | 6         | Palhaços   | celaC                |
-| 07           | Rispomático  | 6                       | 12       | 6         | Polvos     | academiaSimples      |
-| 08           | Manogaz      | 4                       | 8        | 5         | Palhaços   | celaG                |
-| 09           | Dado         | 5                       | 10       | 6         | Polvos     | banheiroB            |
-| 10           | Fabrilton    | 4                       | 7        | 5         | Palhaços   | mesaDireita          |
-| 11           | Eneido       | 6                       | 6        | 6         | Polvos     | solitariaOeste       |
-| 12           | Carlos       | 5                       | 9        | 7         | Palhaços   | arquibancada         |
-| 13           | Silvio Serra | 6                       | 8        | 5         | Polvos     | celaE                |
+| 2           | Rivas        | 4                       | 9        | 7         | 'Palhaços'   | quadraDesportiva     |
+| 3           | Filomano     | 6                       | 7        | 4         | 'Polvos'     | celaB                |
+| 4           | Fragas       | 5                       | 11       | 5         | 'Palhaços'   | banheiroA            |
+| 5           | Glaucão      | 3                       | 6        | 8         | 'Polvos'     | mesaEsquerda         |
+| 6           | Ucraniano    | 7                       | 5        | 6         | 'Palhaços'   | celaC                |
+| 7           | Rispomático  | 6                       | 12       | 6         | 'Polvos'     | academiaSimples      |
+| 8           | Manogaz      | 4                       | 8        | 5         | 'Palhaços'   | celaG                |
+| 9           | Dado         | 5                       | 10       | 6         | 'Polvos'     | banheiroB            |
+| 10           | Fabrilton    | 4                       | 7        | 5         | 'Palhaços'   | mesaDireita          |
+| 11           | Eneido       | 6                       | 6        | 6         | 'Polvos'     | solitariaOeste       |
+| 12           | Carlos       | 5                       | 9        | 7         | 'Palhaços'   | arquibancada         |
+| 13           | Silvio Serra | 6                       | 8        | 5         | 'Polvos'     | celaE                |
 
 
 
@@ -334,20 +334,20 @@
 
 # Policial
 
-| **idPersonagem** | **Nome**              | **Lugar**        | **Corrupto** |
+| **id_pessoa** | **nome_pessoa**              | **lugar**        | **policial_corrupto** |
 |------------------|-----------------------|------------------|--------------|
-| 14               | Italo Dimetrio        | solitariaOeste   | SIM          |
-| 15               | Sargento Nascimento   | mesaDireita      | NÃO          |
-| 16               | Capitão Mathias       | quadraDesportiva | NÃO          |
-| 17               | Capitão Brad          | solitariaLeste   | SIM          |
-| 18               | Lil Chico             | arquibancada     | SIM          |
+| 14               | Italo Dimetrio        | solitariaOeste   | true          |
+| 15               | Sargento Nascimento   | mesaDireita      | false          |
+| 16               | Capitão Mathias       | quadraDesportiva | false          |
+| 17               | Capitão Brad          | solitariaLeste   | true          |
+| 18               | Lil Chico             | arquibancada     | true          |
 
 
 ---
 
 # Informante
 
-| **idPersonagem** | **Nome** | **Dano Informante** | **Lugar**   |
+| **id_pessoa** | **nome_pessoa** | **dano_infomante** | **lugar**   |
 |------------------|----------|---------------------|-------------|
 | 19               | Cubano   | 200                 | banheiroC   |
 
@@ -357,8 +357,26 @@
 
 |                 |                  |             |           |            |            | 
 | --------------- | ------------------|---------|-------|-------|-------|
-| **idInventario**   | **Pessoa** |**inventário ocupado** | **tamanho inventário** | 
-| 1  | -  | 0  | 5 |
+| **id_inventario**   | **pessoa** |**inventario_ocupado** | **tamanho_inventario** | 
+| 1   | 1  | 0  | 5 |
+| 2   | 2  | 0  | 5 |
+| 3   | 3  | 0  | 5 |
+| 4   | 4  | 0  | 5 |
+| 5   | 5  | 0  | 5 |
+| 6   | 6  | 0  | 5 |
+| 7   | 7  | 0  | 5 |
+| 8   | 8  | 0  | 5 |
+| 9   | 9  | 0  | 5 |
+| 10  | 10  | 0  | 5 |
+| 11  | 11  | 0  | 5 |
+| 12  | 12  | 0  | 5 |
+| 13  | 13  | 0  | 5 |
+| 14  | 14  | 0  | 5 |
+| 15  | 15  | 0  | 5 |
+| 16  | 16  | 0  | 5 |
+| 17  | 17  | 0  | 5 |
+| 18  | 18  | 0  | 5 |
+| 19  | 19  | 0  | 5 |
 
 ---
 
