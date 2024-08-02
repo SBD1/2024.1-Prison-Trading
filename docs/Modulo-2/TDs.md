@@ -315,17 +315,17 @@
 
 | **id_pessoa** | **nome_pessoa**     | **habilidade_briga_prisioneiro** | **vida_prisioneiro** | **força_prisioneiro** | **gangue_prisioneiro** | **lugar**            |
 |--------------|--------------|-------------------------|----------|-----------|------------|----------------------|
-| 2           | Rivas        | 4                       | 9        | 7         | 'Palhaços'   | quadraDesportiva     |
+| 2           | Rivas        | 4                       | 9        | 7         | 'Palhacos'   | quadraDesportiva     |
 | 3           | Filomano     | 6                       | 7        | 4         | 'Polvos'     | celaB                |
-| 4           | Fragas       | 5                       | 11       | 5         | 'Palhaços'   | banheiroA            |
+| 4           | Fragas       | 5                       | 11       | 5         | 'Palhacos'   | banheiroA            |
 | 5           | Glaucão      | 3                       | 6        | 8         | 'Polvos'     | mesaEsquerda         |
-| 6           | Ucraniano    | 7                       | 5        | 6         | 'Palhaços'   | celaC                |
+| 6           | Ucraniano    | 7                       | 5        | 6         | 'Palhacos'   | celaC                |
 | 7           | Rispomático  | 6                       | 12       | 6         | 'Polvos'     | academiaSimples      |
-| 8           | Manogaz      | 4                       | 8        | 5         | 'Palhaços'   | celaG                |
+| 8           | Manogaz      | 4                       | 8        | 5         | 'Palhacos'   | celaG                |
 | 9           | Dado         | 5                       | 10       | 6         | 'Polvos'     | banheiroB            |
-| 10           | Fabrilton    | 4                       | 7        | 5         | 'Palhaços'   | mesaDireita          |
+| 10           | Fabrilton    | 4                       | 7        | 5         | 'Palhacos'   | mesaDireita          |
 | 11           | Eneido       | 6                       | 6        | 6         | 'Polvos'     | solitariaOeste       |
-| 12           | Carlos       | 5                       | 9        | 7         | 'Palhaços'   | arquibancada         |
+| 12           | Carlos       | 5                       | 9        | 7         | 'Palhacos'   | arquibancada         |
 | 13           | Silvio Serra | 6                       | 8        | 5         | 'Polvos'     | celaE                |
 
 
