@@ -397,5 +397,6 @@
 | 29/07/2024 | `1.4`  | Completa a tabela [`Lugar`](#Lugar)             | [Breno Alexandre](https://github.com/brenoalexandre0) |
 | 29/07/2024 | `1.5`  | Ajustes tabela Pessoa             | [Júlio Cesar](https://github.com/julio1099) |
 | 29/07/2024 | `1.6`  | Desenvolvimento algumas tabelas.                | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 02/08/2024 | `1.7`  | Correção tabela Pessoa.                | [Júlio Cesar](https://github.com/Julio1099)      |
 
 </div>
