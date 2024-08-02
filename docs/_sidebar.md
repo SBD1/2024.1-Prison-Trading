@@ -60,5 +60,10 @@
   - [Apresentação](Modulo-1/Modulo1.md)
     * [Histórico de versão](Modulo-1/Modulo1.md#histórico-de-versão)
 
-
+* Módulo 2
+  - [Tabela de Dados](Modulo-2/TDs.md)
+  - [DDL](Modulo-2/DDL.md)
+  - [DML](Modulo-2/DML.md)
+  - [DQL](Modulo-2/DQL.md)
+  - [Álgebra Relacional](Modulo-2/AL-REL.md)
 
