@@ -42,7 +42,7 @@
 | celaD                | celas      | Cela onde dormem os prisioneiros 7 e 8.                                                |
 | celaE                | celas      | Cela onde dormem os prisioneiros 9 e 10.                                               |
 | celaF                | celas      | Cela onde dormem os prisioneiros 11 e 12.                                              |
-| celaG                | celas      | Cela onde dormem o prisioneiro 13 e o prisioneiro 19.                                         |
+| celaG                | celas      | Cela onde dormem o prisioneiro 13 e o prisioneiro 19.                                  |
 | solitariaLeste       | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
 | banheiroA            | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
 | banheiroB            | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
@@ -59,32 +59,36 @@
 
 # Item
 
-| nome_item        | tipo_item |
-|------------------|-----------|
-| Chave de Fenda   | 'fabr'    |
-| Pa               | 'fabr'    |
-| Martelo          | 'fabr'    |
-| Picareta         | 'fabr'    |
-| Lock Pick        | 'fabr'    |
-| Corda            | 'fabr'    |
-| Faca             | 'fabr'    |
-| Agulha           | 'fabr'    |
-| Soco Ingles      | 'fabr'    |
-| Faca Curta       | 'fabr'    |
-| Coquetel Molotov | 'fabr'    |
-| Corda com Cerol  | 'fabr'    |
-| Garrafa Quebrada | 'fabr'    |
-| sabão            | 'nfabr'   |
-| pedra               | 'nfabr'    |
-| graveto          | 'nfabr'    |
-| linha         | 'nfabr'    |
-| pedaço pequeno de metal        | 'nfabr'   |
-| vidro            | 'nfabr'    |
-| pedaço grande de metal             | 'nfabr'    |
-| alcool          | 'nfabr'    |
-| tecido      | 'nfabr'    |
-| garrada de vidro       | 'nfabr'    |
-| plastico | 'nfabr'    |
+| id_item        | tipo_item   |
+|----------------------|-------------|
+| 1[Chave_de_Fenda]    | 'fabricavel'|
+| 2[Pa]                | 'fabricavel'|
+| 3[Martelo]           | 'fabricavel'|
+| 4[Picareta]          | 'fabricavel'|
+| 5[Lock_Pick]         | 'fabricavel'|
+| 6[Corda]             | 'fabricavel'|
+| 7[Faca]              | 'fabricavel'|
+| 8[Agulha]            | 'fabricavel'|
+| 9[Soco_Ingles]       | 'fabricavel'|
+| 10[Faca_Curta]       | 'fabricavel'|
+| 11[Coquetel_Molotov] | 'fabricavel'|
+| 12[Corda_com_Cerol]  | 'fabricavel'|
+| 13[Garrafa_Quebrada] | 'fabricavel'|
+| 14[sabao]            | 'nao_fabricavel'|
+| 15[pedra]            | 'nao_fabricavel'|
+| 16[graveto]          | 'nao_fabricavel'|
+| 17[linha]            | 'nao_fabricavel'|
+| 18[pedaco_pequeno_de_metal]        | 'nao_fabricavel'|
+| 19[vidro]            | 'nao_fabricavel'|
+| 20[pedaco_grande_de_metal]         | 'nao_fabricavel'|
+| 21[alcool]           | 'nao_fabricavel'|
+| 22[tecido]           | 'nao_fabricavel'|
+| 23[garrada_de_vidro] | 'nao_fabricavel'|
+| 24[plastico]         | 'nao_fabricavel'|
+| 25[Isqueiro]         | 'nao_fabricavel'|
+| 26[lanterna]         | 'nao_fabricavel'|
+| 27[cigarro]          | 'nao_fabricavel'|
+| 28[agulha]           | 'nao_fabricavel'|
 
 
 
@@ -127,12 +131,12 @@
 
 | nome_item        | tipo_fabricavel |
 |------------------|-----------------|
-| Chave de Fenda   | 'ferr'          |
-| Pa               | 'ferr'          |
-| Martelo          | 'ferr'          |
-| Picareta         | 'ferr'          |
-| Lock Pick        | 'ferr'          |
-| Corda            | 'ferr'          |
+| Chave de Fenda   | 'ferramenta'    |
+| Pa               | 'ferramenta'    |
+| Martelo          | 'ferramenta'    |
+| Picareta         | 'ferramenta'    |
+| Lock Pick        | 'ferramenta'    |
+| Corda            | 'ferramenta'    |
 | Faca             | 'arma'          |
 | Agulha           | 'arma'          |
 | Soco Ingles      | 'arma'          |
@@ -141,34 +145,38 @@
 | Corda com Cerol  | 'arma'          |
 | Garrafa Quebrada | 'arma'          |
 
+
 ---
 
 # Item_nao_Fabricavel
 
-| nome_item        | tipo_nao_fabricavel |
-|------------------|-----------------|
-| Anti-inflamatorio| 'med'           |
-| Morfina          | 'med'           |
-| Bandagem         | 'med'           |
-| pao seco         | 'comida'        |
-| pao              | 'comida'        |
-| queijo           | 'comida'        |
-| carne            | 'comida'        |
-| Peixe            | 'comida'        |
-| Laranja          | 'comida'        |
-| Isqueiro         | 'Util'          |
-| lanterna         | 'Util'          |
-| cigarro          | 'Util'          |
-| pedra            | 'Util'          |
-| graveto          | 'Util'          |
-| plastico         | 'Util'          |
-| vidro            | 'Util'          |
-| pedaco pequeno de metal | 'Util'   |
-| pedaco grande de metal  | 'Util'   |
-| alcool           | 'Util'          |
-| tecido           | 'Util'          |
-| garrafa          | 'Util'          |
-| linha            | 'Util'          |
+| id_item        | tipo_nao_fabricavel |
+|----------------------|-----------------|
+| 14[sabao]            | 'Utilizavel'    |
+| 15[pedra]            | 'Utilizavel'    |
+| 16[graveto]          | 'Utilizavel'    |
+| 17[linha]            | 'Utilizavel'    |
+| 18[pedaco_pequeno_de_metal]            | 'Utilizavel'    |
+| 19[vidro]            | 'Utilizavel'    |
+| 20[pedaco_grande_de_metal]             | 'Utilizavel'    |
+| 21[alcool]           | 'Utilizavel'    |
+| 22[tecido]           | 'Utilizavel'    |
+| 23[garrada_de_vidro] | 'Utilizavel'    |
+| 24[plastico]         | 'Utilizavel'    |
+| 25[Isqueiro]         | 'Utilizavel'    |
+| 26[lanterna]         | 'Utilizavel'    |
+| 27[cigarro]          | 'Utilizavel'    |
+| 28[agulha]           | 'Utilizavel'    |
+| 1[Anti-inflamatorio] | 'medicamento'   |
+| 2[Morfina]           | 'medicamento'   |
+| 3[Bandagem]          | 'medicamento'   |
+| 4[pao_seco]          | 'comida'        |
+| 5[pao]               | 'comida'        |
+| 6[queijo]            | 'comida'        |
+| 7[carne]             | 'comida'        |
+| 8[Peixe]             | 'comida'        |
+| 9[Laranja]           | 'comida'        |
+
 
 
 ---
@@ -222,47 +230,46 @@
 
 # Medicamento
 
-| nome_item        | tamanho_item | descricao_item                                                               | cura_item |medicamento_quantidade |
-|------------------|--------------|------------------------------------------------------------------------------|-----------|-----------------------|
-| Bandagem         | 1            | Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo.| 2    |           5           |
-| Morfina          | 1            | Analgésico opiáceo potente utilizado para aliviar dores intensas.                 | 10   |           2           |
-| anti-inflamatorio| 1            | Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.            | 3    |           5           |
+| id_item             | tamanho_item | descricao_item                | raridade_nao_fabricavel | cura_medicamento | medicamento_quantidade|
+|---------------------|--------------|----------------------------------------------------------------------------------|---|------|------|
+| 3[Bandagem]         |       1      | Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo.|N  | 2    |  5   |
+| 2[Morfina]          |       1      | Analgésico opiáceo potente utilizado para aliviar dores intensas.                |R  | 10   |  2   |
+| 1[anti-inflamatorio]|       1      | Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.           |UR | 3    |  5   |
 
 ---
 
 # Comida
 
-| nome_item        | tamanho_item | descricao_item                                                               | cura_comida | comida_quantidade |
-|------------------|--------------|------------------------------------------------------------------------------|-------------|-------------------|
-| Pao seco         | 1            | um pão tão seco e duro, que parece que o proprio vandor amassou ele          |    0        | 1                 |
-| Pao              | 1            |  alimento básico feito a partir de farinha, água e fermento                  | 1           | 3                 |
-| queijo           | 1            | produto lácteo sólido feito a partir da coagulação do leite                  | 1           | 3                 |
-| Carne            | 2            | é o tecido muscular de animais, como bovinos, suínos ou aves, consumido como alimento.| 5  | 1                 |
-| peixe            | 1            | tecido muscular de peixe, consumido como alimento                            | 3           | 2                 |
-| laranja          | 1            | fruta cítrica, suculenta e doce                                              | 1           | 3                 |
+| id_item      | tamanho_item | descricao_item                                     | raridade_nao_fabricavel | comida_quantidade | cura_comida |
+|----------------------|------|------------------------------------------------------------------------------|-------|-----------|-------------|
+| 4[Pao_seco]          | 1    | um pão tão seco e duro, que parece que o proprio vandor amassou ele          |  N    | 1         | 0           |
+| 5[Pao]               | 1    | alimento básico feito a partir de farinha, água e fermento                   |  N    | 3         | 1           |
+| 6[queijo]            | 1    | produto lácteo sólido feito a partir da coagulação do leite                  |  N    | 3         | 1           |
+| 7[Carne]             | 2    | é o tecido muscular de animais, como bovinos ou suínos, consumido como alimento.|UR  | 1         | 5           |
+| 8[peixe]             | 1    | tecido muscular de peixe, consumido como alimento                            |  R    | 2         | 3           |
+| 9[laranja]           | 1    | fruta cítrica, suculenta e doce                                              |  N    | 3         | 1           |
   
 ---
 
 # Utilizavel
 
-| nome_item        | tamanho_item | descricao_Efeito_item                                                         | quantidade_utilizavel    |
-|------------------|--------------|-------------------------------------------------------------------------------|--------------------------| 
-| Isqueiro         |  1           | Isqueiro é um dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas. |  1  |
-| Lanterna         | 1            | Lanterna é um dispositivo portátil que emite luz                                                         |  1  |
-| cigarro          | 1            | Moeda de troca do jogo, além de poder ser utilizado para acalmar.                                        |  10 |
-| Sabao            | 1            | serve para limpar e remover sujeira e impurezas de superfícies e objetos, além de ser um material para fabricação de itens| 1| 
-| Pedra            | 1            | A pedra serve para construção e também é um material para fabricação de itens.                           |  3  |
-| graveto          | 1            | é usado para diversos fins, como acender fogueiras, construir estruturas simples ou como material para fabricação de itens|  3  | 
-| linha            | 1            | fio fino e flexível utilizado como material para fabricação de itens                                     |  3  |
-| vidro            | 1            | utilizado como material para fabricação de cerol.                                                        |  1  | 
-| garrafa          | 2            | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                            |  1  |
-| agulha           | 1            | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                    |  5  |
-| pedaço pequeno de metal|  1     | Corda revestida com vidro moído para causar cortes.                                                      |  3  |
-| pedaço grande de metal |  3  | Garrafa de vidro quebrada, usada como arma cortante.                                                        |  1  |
-| alcool           | 1            | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                            |  1  |
-| tecido           | 1            | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                    |  3  |
-| plastico         | 1            | Corda revestida com vidro moído para causar cortes.                                                      |  3  |
-
+| id_item        | tamanho_item | descricao_Efeito_item                                                     | quantidade_utilizavel    |
+|---------------------|-----|-------------------------------------------------------------------------------|--------------------------| 
+| 14[Sabao]           | 1   | serve para remover sujeira e impurezas de superfícies e objetos, também é um material para fabricação de itens|1 | 
+| 15[Pedra]           | 1   | A pedra serve para construção e também é um material para fabricação de itens.                           |  3  |
+| 16[graveto]         | 1   | Produto de origem vegetal, é usado como material para fabricação de itens                                |  3  | 
+| 17[linha]           | 1   | fio fino e flexível utilizado como material para fabricação de itens                                     |  3  |
+| 18[pedaco_pequeno_de_metal]| 1 | Corda revestida com vidro moído para causar cortes.                                                 |  3  |
+| 19[vidro]           | 1   | utilizado como material para fabricação de cerol.                                                        |  1  |
+| 20[pedaco_grande_de_metal] | 3 | Garrafa de vidro quebrada, usada como arma cortante.                                                |  1  | 
+| 21[alcool]          | 1   | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                            |  1  |
+| 22[tecido]          | 1   | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                    |  3  |
+| 23[garrada_de_vidro]| 2   | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                            |  1  |
+| 24[plastico]        | 1   | Corda revestida com vidro moído para causar cortes.                                                      |  3  |
+| 25[Isqueiro]        | 1   | Isqueiro é um dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas. |  1  |
+| 26[Lanterna]        | 1   | Lanterna é um dispositivo portátil que emite luz                                                         |  1  |
+| 27[cigarro]         | 1   | Moeda de troca do jogo, além de poder ser utilizado para acalmar.                                        |  10 |
+| 28[agulha]          | 1   | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                    |  5  |
 ---
 
 # Livro_Fabricacoes
@@ -277,35 +284,35 @@
 
 ## Pessoa
 
-| IdPersonagem | cargo        | tipoP      |
-|--------------|--------------|------------|
-| 01           | Prisioneiro  | PJ         |
-| 02           | Prisioneiro  | PNJ        |
-| 03           | Prisioneiro  | PNJ        |
-| 04           | Prisioneiro  | PNJ        |
-| 05           | Prisioneiro  | PNJ        |
-| 06           | Prisioneiro  | PNJ        |
-| 07           | Prisioneiro  | PNJ        |
-| 08           | Prisioneiro  | PNJ        |
-| 09           | Prisioneiro  | PNJ        |
-| 10           | Prisioneiro  | PNJ        |
-| 11           | Prisioneiro  | PNJ        |
-| 12           | Prisioneiro  | PNJ        |
-| 13           | Prisioneiro  | PNJ        |
-| 14           | Policial     | PNJ        |
-| 15           | Policial     | PNJ        |
-| 16           | Policial     | PNJ        |
-| 17           | Policial     | PNJ        |
-| 18           | Policial     | PNJ        |
-| 19           | Informante   | PNJ        |
+| IdPersonagem | tipo_pessoa    | 
+|--------------|----------------|
+| 1            | 'Prisioneiro'  |
+| 2            | 'Prisioneiro'  |
+| 3            | 'Prisioneiro'  |
+| 4            | 'Prisioneiro'  |
+| 5            | 'Prisioneiro'  |
+| 6            | 'Prisioneiro'  |
+| 7            | 'Prisioneiro'  |
+| 8            | 'Prisioneiro'  |
+| 9            | 'Prisioneiro'  |
+| 10           | 'Prisioneiro'  |
+| 11           | 'Prisioneiro'  |
+| 12           | 'Prisioneiro'  |
+| 13           | 'Prisioneiro'  |
+| 14           | 'Policial'     |
+| 15           | 'Policial'     |
+| 16           | 'Policial'     |
+| 17           | 'Policial'     |
+| 18           | 'Policial'     |
+| 19           | 'Informante'   |
 
 ---
 
 # Jogador
 
-| **idPessoa** | **Nome** | **Habilidade de Briga** | **Vida** | **Força** | **Tempo de Vida** | **Gangue** | **Lugar** | **missao** |
+| **id_pessoa** | **nome_pessoa** | **habilidade_briga_jogador** | **vida_jogador** | **força_jogador** | **tempo_vida_jogador** | **gangue_jogador** | **lugar** | **missao** |
 |--------------|----------|-------------------------|----------|-----------|-------------------|------------|-----------|------------|
-| 01           | Carimbo  | 2                       | 5        | 3         | 10                 | -          | celaA         |  -         |
+| 01           | Carimbo  | 2                       | 5        | 3         | 10                 | null          | celaA         |  null         |
 
 
 
@@ -313,20 +320,20 @@
 
 # Prisioneiro
 
-| **idPessoa** | **Nome**     | **Habilidade de Briga** | **Vida** | **Força** | **Gangue** | **Lugar**            |
+| **id_pessoa** | **nome_pessoa**     | **habilidade_briga_prisioneiro** | **vida_prisioneiro** | **força_prisioneiro** | **gangue_prisioneiro** | **lugar**            |
 |--------------|--------------|-------------------------|----------|-----------|------------|----------------------|
-| 02           | Rivas        | 4                       | 9        | 7         | Palhaços   | quadraDesportiva     |
-| 03           | Filomano     | 6                       | 7        | 4         | Polvos     | celaB                |
-| 04           | Fragas       | 5                       | 11       | 5         | Palhaços   | banheiroA            |
-| 05           | Glaucão      | 3                       | 6        | 8         | Polvos     | mesaEsquerda         |
-| 06           | Ucraniano    | 7                       | 5        | 6         | Palhaços   | celaC                |
-| 07           | Rispomático  | 6                       | 12       | 6         | Polvos     | academiaSimples      |
-| 08           | Manogaz      | 4                       | 8        | 5         | Palhaços   | celaG                |
-| 09           | Dado         | 5                       | 10       | 6         | Polvos     | banheiroB            |
-| 10           | Fabrilton    | 4                       | 7        | 5         | Palhaços   | mesaDireita          |
-| 11           | Eneido       | 6                       | 6        | 6         | Polvos     | solitariaOeste       |
-| 12           | Carlos       | 5                       | 9        | 7         | Palhaços   | arquibancada         |
-| 13           | Silvio Serra | 6                       | 8        | 5         | Polvos     | celaE                |
+| 2           | Rivas        | 4                       | 9        | 7         | 'Palhacos'   | quadraDesportiva     |
+| 3           | Filomano     | 6                       | 7        | 4         | 'Polvos'     | celaB                |
+| 4           | Fragas       | 5                       | 11       | 5         | 'Palhacos'   | banheiroA            |
+| 5           | Glaucão      | 3                       | 6        | 8         | 'Polvos'     | mesaEsquerda         |
+| 6           | Ucraniano    | 7                       | 5        | 6         | 'Palhacos'   | celaC                |
+| 7           | Rispomático  | 6                       | 12       | 6         | 'Polvos'     | academiaSimples      |
+| 8           | Manogaz      | 4                       | 8        | 5         | 'Palhacos'   | celaG                |
+| 9           | Dado         | 5                       | 10       | 6         | 'Polvos'     | banheiroB            |
+| 10           | Fabrilton    | 4                       | 7        | 5         | 'Palhacos'   | mesaDireita          |
+| 11           | Eneido       | 6                       | 6        | 6         | 'Polvos'     | solitariaOeste       |
+| 12           | Carlos       | 5                       | 9        | 7         | 'Palhacos'   | arquibancada         |
+| 13           | Silvio Serra | 6                       | 8        | 5         | 'Polvos'     | celaE                |
 
 
 
@@ -334,20 +341,20 @@
 
 # Policial
 
-| **idPersonagem** | **Nome**              | **Lugar**        | **Corrupto** |
+| **id_pessoa** | **nome_pessoa**              | **lugar**        | **policial_corrupto** |
 |------------------|-----------------------|------------------|--------------|
-| 14               | Italo Dimetrio        | solitariaOeste   | SIM          |
-| 15               | Sargento Nascimento   | mesaDireita      | NÃO          |
-| 16               | Capitão Mathias       | quadraDesportiva | NÃO          |
-| 17               | Capitão Brad          | solitariaLeste   | SIM          |
-| 18               | Lil Chico             | arquibancada     | SIM          |
+| 14               | Italo Dimetrio        | solitariaOeste   | true          |
+| 15               | Sargento Nascimento   | mesaDireita      | false          |
+| 16               | Capitão Mathias       | quadraDesportiva | false          |
+| 17               | Capitão Brad          | solitariaLeste   | true          |
+| 18               | Lil Chico             | arquibancada     | true          |
 
 
 ---
 
 # Informante
 
-| **idPersonagem** | **Nome** | **Dano Informante** | **Lugar**   |
+| **id_pessoa** | **nome_pessoa** | **dano_infomante** | **lugar**   |
 |------------------|----------|---------------------|-------------|
 | 19               | Cubano   | 200                 | banheiroC   |
 
@@ -357,8 +364,26 @@
 
 |                 |                  |             |           |            |            | 
 | --------------- | ------------------|---------|-------|-------|-------|
-| **idInventario**   | **Pessoa** |**inventário ocupado** | **tamanho inventário** | 
-| 1  | -  | 0  | 5 |
+| **id_inventario**   | **pessoa** |**inventario_ocupado** | **tamanho_inventario** |
+| 1   | 1  | 0  | 5 |
+| 2   | 2  | 0  | 5 |
+| 3   | 3  | 0  | 5 |
+| 4   | 4  | 0  | 5 |
+| 5   | 5  | 0  | 5 |
+| 6   | 6  | 0  | 5 |
+| 7   | 7  | 0  | 5 |
+| 8   | 8  | 0  | 5 |
+| 9   | 9  | 0  | 5 |
+| 10  | 10  | 0  | 5 |
+| 11  | 11  | 0  | 5 |
+| 12  | 12  | 0  | 5 |
+| 13  | 13  | 0  | 5 |
+| 14  | 14  | 0  | 5 |
+| 15  | 15  | 0  | 5 |
+| 16  | 16  | 0  | 5 |
+| 17  | 17  | 0  | 5 |
+| 18  | 18  | 0  | 5 |
+| 19  | 19  | 0  | 5 |
 
 ---
 
@@ -379,5 +404,6 @@
 | 29/07/2024 | `1.4`  | Completa a tabela [`Lugar`](#Lugar)             | [Breno Alexandre](https://github.com/brenoalexandre0) |
 | 29/07/2024 | `1.5`  | Ajustes tabela Pessoa             | [Júlio Cesar](https://github.com/julio1099) |
 | 29/07/2024 | `1.6`  | Desenvolvimento algumas tabelas.                | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 02/08/2024 | `1.7`  | Correção tabela Pessoa.                | [Júlio Cesar](https://github.com/Julio1099)      |
 
 </div>
