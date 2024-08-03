@@ -85,6 +85,10 @@
 | 22[tecido]           | 'nao_fabricavel'|
 | 23[garrada_de_vidro] | 'nao_fabricavel'|
 | 24[plastico]         | 'nao_fabricavel'|
+| 25[Isqueiro]         | 'nao_fabricavel'|
+| 26[lanterna]         | 'nao_fabricavel'|
+| 27[cigarro]          | 'nao_fabricavel'|
+| 28[agulha]           | 'nao_fabricavel'|
 
 
 
@@ -159,23 +163,19 @@
 | 22[tecido]           | 'Utilizavel'    |
 | 23[garrada_de_vidro] | 'Utilizavel'    |
 | 24[plastico]         | 'Utilizavel'    |
-| 1[Isqueiro]          | 'Utilizavel'    |
-| 2[lanterna]          | 'Utilizavel'    |
-| 3[cigarro]           | 'Utilizavel'    |
-| 4[pedra]             | 'Utilizavel'    |
-| 5[graveto]           | 'Utilizavel'    |
-| 6[plastico]          | 'Utilizavel'    |
-| 7[vidro]             | 'Utilizavel'    |
-| 8[agulha]            | 'Utilizavel'    |
-| 9[Anti-inflamatorio] | 'medicamento'   |
-| 10[Morfina]          | 'medicamento'   |
-| 11[Bandagem]         | 'medicamento'   |
-| 12[pao_seco]         | 'comida'        |
-| 13[pao]              | 'comida'        |
-| 25[queijo]           | 'comida'        |
-| 26[carne]            | 'comida'        |
-| 27[Peixe]            | 'comida'        |
-| 28[Laranja]          | 'comida'        |
+| 25[Isqueiro]         | 'Utilizavel'    |
+| 26[lanterna]         | 'Utilizavel'    |
+| 27[cigarro]          | 'Utilizavel'    |
+| 28[agulha]           | 'Utilizavel'    |
+| 1[Anti-inflamatorio] | 'medicamento'   |
+| 2[Morfina]           | 'medicamento'   |
+| 3[Bandagem]          | 'medicamento'   |
+| 4[pao_seco]          | 'comida'        |
+| 5[pao]               | 'comida'        |
+| 6[queijo]            | 'comida'        |
+| 7[carne]             | 'comida'        |
+| 8[Peixe]             | 'comida'        |
+| 9[Laranja]           | 'comida'        |
 
 
 
@@ -230,11 +230,11 @@
 
 # Medicamento
 
-| id_item             | tamanho_item | descricao_item                                  | raridade_nao_fabricavel | cura_medicamento | medicamento_quantidade|
-|---------------------|--------------|-----------------------------------------------------------------------------------|---|------|-----------------------|
-| 10[Bandagem]        | 1            | Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo.|N  | 2    |           5           |
-| 9[Morfina]          | 1            | Analgésico opiáceo potente utilizado para aliviar dores intensas.                 |R  | 10   |           2           |
-| 8[anti-inflamatorio]| 1            | Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.            |UR | 3    |           5           |
+| id_item             | tamanho_item | descricao_item                | raridade_nao_fabricavel | cura_medicamento | medicamento_quantidade|
+|---------------------|--------------|----------------------------------------------------------------------------------|---|------|------|
+| 3[Bandagem]         |       1      | Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo.|N  | 2    |  5   |
+| 2[Morfina]          |       1      | Analgésico opiáceo potente utilizado para aliviar dores intensas.                |R  | 10   |  2   |
+| 1[anti-inflamatorio]|       1      | Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.           |UR | 3    |  5   |
 
 ---
 
@@ -242,12 +242,12 @@
 
 | id_item      | tamanho_item | descricao_item                                     | raridade_nao_fabricavel | comida_quantidade | cura_comida |
 |----------------------|------|------------------------------------------------------------------------------|-------|-----------|-------------|
-| 11[Pao_seco]         | 1    | um pão tão seco e duro, que parece que o proprio vandor amassou ele          |  N    | 1         | 0           |
-| 12[Pao]              | 1    | alimento básico feito a partir de farinha, água e fermento                   |  N    | 3         | 1           |
-| 13[queijo]           | 1    | produto lácteo sólido feito a partir da coagulação do leite                  |  N    | 3         | 1           |
-| 25[Carne]            | 2    | é o tecido muscular de animais, como bovinos ou suínos, consumido como alimento.|UR  | 1         | 5           |
-| 26[peixe]            | 1    | tecido muscular de peixe, consumido como alimento                            |  R    | 2         | 3           |
-| 27[laranja]          | 1    | fruta cítrica, suculenta e doce                                              |  N    | 3         | 1           |
+| 4[Pao_seco]          | 1    | um pão tão seco e duro, que parece que o proprio vandor amassou ele          |  N    | 1         | 0           |
+| 5[Pao]               | 1    | alimento básico feito a partir de farinha, água e fermento                   |  N    | 3         | 1           |
+| 6[queijo]            | 1    | produto lácteo sólido feito a partir da coagulação do leite                  |  N    | 3         | 1           |
+| 7[Carne]             | 2    | é o tecido muscular de animais, como bovinos ou suínos, consumido como alimento.|UR  | 1         | 5           |
+| 8[peixe]             | 1    | tecido muscular de peixe, consumido como alimento                            |  R    | 2         | 3           |
+| 9[laranja]           | 1    | fruta cítrica, suculenta e doce                                              |  N    | 3         | 1           |
   
 ---
 
@@ -255,21 +255,21 @@
 
 | id_item        | tamanho_item | descricao_Efeito_item                                                     | quantidade_utilizavel    |
 |---------------------|-----|-------------------------------------------------------------------------------|--------------------------| 
-| 1[Isqueiro]         | 1   | Isqueiro é um dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas. |  1  |
-| 2[Lanterna]         | 1   | Lanterna é um dispositivo portátil que emite luz                                                         |  1  |
-| 3[cigarro]          | 1   | Moeda de troca do jogo, além de poder ser utilizado para acalmar.                                        |  10 |
-| 14[Sabao]           | 1   | serve para limpar e remover sujeira e impurezas de superfícies e objetos, além de ser um material para fabricação de itens|1 | 
+| 14[Sabao]           | 1   | serve para remover sujeira e impurezas de superfícies e objetos, também é um material para fabricação de itens|1 | 
 | 15[Pedra]           | 1   | A pedra serve para construção e também é um material para fabricação de itens.                           |  3  |
-| 16[graveto]         | 1   | é usado para diversos fins, como acender fogueiras, construir estruturas simples ou como material para fabricação de itens| 3 | 
+| 16[graveto]         | 1   | Produto de origem vegetal, é usado como material para fabricação de itens                                |  3  | 
 | 17[linha]           | 1   | fio fino e flexível utilizado como material para fabricação de itens                                     |  3  |
-| 19[vidro]           | 1   | utilizado como material para fabricação de cerol.                                                        |  1  | 
-| 23[garrada_de_vidro]| 2   | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                            |  1  |
-| 8[agulha]           | 1   | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                    |  5  |
 | 18[pedaco_pequeno_de_metal]| 1 | Corda revestida com vidro moído para causar cortes.                                                 |  3  |
-| 20[pedaco_grande_de_metal] | 3 | Garrafa de vidro quebrada, usada como arma cortante.                                                |  1  |
+| 19[vidro]           | 1   | utilizado como material para fabricação de cerol.                                                        |  1  |
+| 20[pedaco_grande_de_metal] | 3 | Garrafa de vidro quebrada, usada como arma cortante.                                                |  1  | 
 | 21[alcool]          | 1   | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                            |  1  |
 | 22[tecido]          | 1   | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                    |  3  |
+| 23[garrada_de_vidro]| 2   | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                            |  1  |
 | 24[plastico]        | 1   | Corda revestida com vidro moído para causar cortes.                                                      |  3  |
+| 25[Isqueiro]        | 1   | Isqueiro é um dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas. |  1  |
+| 26[Lanterna]        | 1   | Lanterna é um dispositivo portátil que emite luz                                                         |  1  |
+| 27[cigarro]         | 1   | Moeda de troca do jogo, além de poder ser utilizado para acalmar.                                        |  10 |
+| 28[agulha]          | 1   | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                    |  5  |
 ---
 
 # Livro_Fabricacoes
