@@ -364,7 +364,7 @@
 
 |                 |                  |             |           |            |            | 
 | --------------- | ------------------|---------|-------|-------|-------|
-| **id_inventario**   | **pessoa** |**inventario_ocupado** | **tamanho_inventario** |
+| **id_inventario**   | **pessoa** |**inventario_ocupado** | **tamanho_inventario** | 
 | 1   | 1  | 0  | 5 |
 | 2   | 2  | 0  | 5 |
 | 3   | 3  | 0  | 5 |
