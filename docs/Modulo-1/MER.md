@@ -42,16 +42,18 @@
 
 ---
 
+<span style="text-decoration: underline; text-decoration-style: double;">nome</span>
+
 # Atributos
 
-- **Prisao**: <ins>id_prisao</ins>, nome_prisao
-- **Regiao**: <ins>nome_regiao</ins>, descricao_regiao
-- **Lugar**: <ins>nome_lugar</ins>, descricao_lugar
-- **Pessoa**: <ins>id_pessoa</ins>, nome_pessoa, tipo_pessoa
-  - **Prisioneiro**: habilidade_briga_prisioneiro, vida_prisioneiro, forca_prisioneiro, gangue_prisioneiro
-  - **Policial**: policial_corrupto
-  - **Informante**: dano_informante
-  - **Jogador**: habilidade_briga_jogador, vida_jogador, forca_jogador, tempo_vida_jogador, gangue_jogador
+- **Prisao**: <ins>id</ins>, nome, objetivo
+- **Regiao**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span>, descricao
+- **Lugar**: <ins>id</ins>,  <span style="text-decoration: underline; text-decoration-style: double;">nome</span> descricao
+- **Pessoa**: <ins>id</ins>, nome, tipo
+  - **Prisioneiro**: habilidade_briga, vida, forca, gangue
+  - **Policial**:  corrupto
+  - **Informante**: dano
+  - **Jogador**: habilidade_briga, vida, forca, tempo_vida_jogador, gangue_jogador
 - **Inventario**: <span style="text-decoration: underline; text-decoration-style: dotted;">id_inventario</span>, tamanho_inventario, inventario_ocupado
 - **Instancia_Item**: <span style="text-decoration: underline; text-decoration-style: dotted;">nome_inst</span>
 - **Item**: <ins>nome_item</ins>, tipo_item, tamanho_item, descricao_item

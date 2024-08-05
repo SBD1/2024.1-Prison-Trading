@@ -69,10 +69,10 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão | Descrição                                                | Autores                                          |
-|:----------:|:------:|----------------------------------------------------------|--------------------------------------------------|
-| 19/07/2024 | `1.0`  | Criação do documento.                                    | [João Antonio G.](https://github.com/joaoseisei) |
-| 20/07/2024 | `1.1`  | Adição da Introdução.                                    | [Breno Alexandre](https://github.com/brenoalexandre0) |
+|    Data    | Versão | Descrição                                                | Autores                                                                                                                                                                                                  |
+| :--------: | :----: | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 19/07/2024 | `1.0`  | Criação do documento.                                    | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                         |
+| 20/07/2024 | `1.1`  | Adição da Introdução.                                    | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                                                                                    |
 | 20/07/2024 | `1.2`  | Adição das versões antigas e atual do Modelo Relacional. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
 
 </div>

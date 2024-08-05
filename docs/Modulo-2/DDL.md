@@ -42,7 +42,7 @@ CREATE TABLE arma(
 	id_item INTEGER NOT NULL,
 	nome_item CHAR(25) NOT NULL UNIQUE,
 	tamanho_item INT NOT NULL DEFAULT 1 CHECK (tamanho_item >= 1),
-	descricao_item TEXT NOT NULL,
+	descricao_efeito_item TEXT NOT NULL,
 	dano_arma INT NOT NULL,
 	PRIMARY KEY (id_item),
 	FOREIGN KEY (id_item) REFERENCES item_fabricavel(id_item)
@@ -66,6 +66,18 @@ CREATE TABLE fabricacao(
 
 ```
 > PARTE DO JOAO NAO MEXER!!!
+
+>PARTE DO FERNANDO, MEXER!!!
+
+CREATE TABLE utilizavel(
+	id_item INTEGER NOT NULL,
+	nome_item CHAR(25) NOT NULL UNIQUE,
+	tamanho_item INT NOT NULL DEFAULT 1 CHECK (tamanho_item >= 1),
+	descricao_item TEXT NOT NULL,
+	dano_arma INT NOT NULL,
+	PRIMARY KEY (id_item),
+	FOREIGN KEY (id_item) REFERENCES item_fabricavel(id_item)
+);
 
 ---
 
