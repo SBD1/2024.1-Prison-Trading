@@ -155,7 +155,7 @@
 | 5[Lock pick]                | 'fabricavel'     |
 | 6[Corda]                    | 'fabricavel'     |
 | 7[Faca]                     | 'fabricavel'     |
-| 8[Agulha]                   | 'fabricavel'     |
+| 8[Adaga]                    | 'fabricavel'     |
 | 9[Soco ingles]              | 'fabricavel'     |
 | 10[Faca curta]              | 'fabricavel'     |
 | 11[Coquetel_Molotov]        | 'fabricavel'     |
@@ -175,16 +175,15 @@
 | 25[Isqueiro]                | 'nao_fabricavel' |
 | 26[lanterna]                | 'nao_fabricavel' |
 | 27[cigarro]                 | 'nao_fabricavel' |
-| 28[agulha]                  | 'nao_fabricavel' |
-| 29[Anti-inflamatorio]       | 'nao_fabricavel' |
-| 30[Morfina]                 | 'nao_fabricavel' |
-| 31[Bandagem]                | 'nao_fabricavel' |
-| 32[pao_seco]                | 'nao_fabricavel' |
-| 33[pao]                     | 'nao_fabricavel' |
-| 34[queijo]                  | 'nao_fabricavel' |
-| 35[carne]                   | 'nao_fabricavel' |
-| 36[Peixe]                   | 'nao_fabricavel' |
-| 37[Laranja]                 | 'nao_fabricavel' |
+| 28[Anti-inflamatorio]       | 'nao_fabricavel' |
+| 29[Morfina]                 | 'nao_fabricavel' |
+| 30[Bandagem]                | 'nao_fabricavel' |
+| 31[pao_seco]                | 'nao_fabricavel' |
+| 32[pao]                     | 'nao_fabricavel' |
+| 33[queijo]                  | 'nao_fabricavel' |
+| 34[carne]                   | 'nao_fabricavel' |
+| 35[Peixe]                   | 'nao_fabricavel' |
+| 36[Laranja]                 | 'nao_fabricavel' |
 
 ---
 
@@ -295,16 +294,15 @@
 | 25[Isqueiro]                | 'utilizavel'        |
 | 26[lanterna]                | 'utilizavel'        |
 | 27[cigarro]                 | 'utilizavel'        |
-| 28[agulha]                  | 'utilizavel'        |
-| 29[Anti-inflamatorio]       | 'medicamento'       |
-| 30[Morfina]                 | 'medicamento'       |
-| 31[Bandagem]                | 'medicamento'       |
-| 32[pao_seco]                | 'comida'            |
-| 33[pao]                     | 'comida'            |
-| 34[queijo]                  | 'comida'            |
-| 35[carne]                   | 'comida'            |
-| 36[Peixe]                   | 'comida'            |
-| 37[Laranja]                 | 'comida'            |
+| 28[Anti-inflamatorio]       | 'medicamento'       |
+| 29[Morfina]                 | 'medicamento'       |
+| 30[Bandagem]                | 'medicamento'       |
+| 31[pao_seco]                | 'comida'            |
+| 32[pao]                     | 'comida'            |
+| 33[queijo]                  | 'comida'            |
+| 34[carne]                   | 'comida'            |
+| 35[Peixe]                   | 'comida'            |
+| 36[Laranja]                 | 'comida'            |
 
 ---
 
@@ -339,9 +337,9 @@
 
 | id_item | nome_item         | tamanho_item | descricao_item                                                                     | raridade_nao_fabricavel | cura_medicamento | medicamento_quantidade |
 |---------|-------------------|--------------|------------------------------------------------------------------------------------|-------------------------|------------------|------------------------|
-| 29       | anti-inflamatorio | 1            | Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.             | 2                      | 3                | 5                      |
-| 30       | Morfina           | 1            | Analgésico opiáceo potente utilizado para aliviar dores intensas.                  | 1                       | 10               | 2                      |
-| 31       | Bandagem          | 1            | Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo. | 0                       | 2                | 5                      |
+| 28       | anti-inflamatorio | 1            | Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.             | 2                      | 3                | 5                      |
+| 29       | Morfina           | 1            | Analgésico opiáceo potente utilizado para aliviar dores intensas.                  | 1                       | 10               | 2                      |
+| 30       | Bandagem          | 1            | Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo. | 0                       | 2                | 5                      |
 
 ---
 
@@ -349,12 +347,12 @@
 
 | id_item | nome_item | tamanho_item | descricao_item                                                                   | raridade_nao_fabricavel | comida_quantidade | cura_comida |
 |---------|-----------|--------------|----------------------------------------------------------------------------------|-------------------------|-------------------|-------------|
-| 32       | Pao seco  | 1            | um pão tão seco e duro, que parece que o proprio vandor amassou ele.             | 0                       | 1                 | 0           |
-| 33       | Pao       | 1            | alimento básico feito a partir de farinha, água e fermento.                      | 0                       | 3                 | 1           |
-| 34       | Queijo    | 1            | produto lácteo sólido feito a partir da coagulação do leite.                     | 0                       | 3                 | 1           |
-| 35       | Carne     | 2            | é o tecido muscular de animais, como bovinos ou suínos, consumido como alimento. | 2                      | 1                 | 5           |
-| 36       | Peixe     | 1            | tecido muscular de peixe, consumido como alimento.                               | 1                       | 2                 | 3           |
-| 37       | Laranja   | 1            | fruta cítrica, suculenta e doce.                                                 | 0                       | 3                 | 1           |
+| 31       | Pao seco  | 1            | um pão tão seco e duro, que parece que o proprio vandor amassou ele.             | 0                       | 1                 | 0           |
+| 32       | Pao       | 1            | alimento básico feito a partir de farinha, água e fermento.                      | 0                       | 3                 | 1           |
+| 33       | Queijo    | 1            | produto lácteo sólido feito a partir da coagulação do leite.                     | 0                       | 3                 | 1           |
+| 34       | Carne     | 2            | é o tecido muscular de animais, como bovinos ou suínos, consumido como alimento. | 2                      | 1                 | 5           |
+| 35       | Peixe     | 1            | tecido muscular de peixe, consumido como alimento.                               | 1                       | 2                 | 3           |
+| 36       | Laranja   | 1            | fruta cítrica, suculenta e doce.                                                 | 0                       | 3                 | 1           |
 
   
 ---
@@ -377,7 +375,6 @@
 | 25                   |     Isqueiro   | 1            | Isqueiro é um dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas.        | 1                     |
 | 26                   |     Lanterna   | 1            | Lanterna é um dispositivo portátil que emite luz.                                                               | 1                     |
 | 27                   |     cigarro    | 1            | Moeda de troca do jogo, além de poder ser utilizado para acalmar.                                               | 10                    |
-| 28                   |     agulha     | 1            | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                           | 5                     |
 
 ---
 
@@ -390,7 +387,7 @@
 | 3             | 3 [Martelo]           | 1 [Livro de Crafts EASY] |
 | 4             | 4 [Lock Pick]         | 1 [Livro de Crafts EASY] |
 | 5             | 5 [Corda]             | 1 [Livro de Crafts EASY] |
-| 6             | 6 [Agulha]            | 1 [Livro de Crafts EASY] |
+| 6             | 6 [Adaga]            | 1 [Livro de Crafts EASY] |
 | 7             | 7 [Faca Curta]        | 1 [Livro de Crafts EASY] |
 | 8             | 8 [Corda com Cerol]   | 1 [Livro de Crafts EASY] |
 | 9             | 9 [Garrafa Quebrada]  | 1 [Livro de Crafts EASY] |
