@@ -42,7 +42,7 @@
 
 ---
 
-<span style="text-decoration: underline; text-decoration-style: double;">nome</span>
+
 
 # Atributos
 
@@ -53,20 +53,20 @@
   - **Prisioneiro**: habilidade_briga, vida, forca, gangue
   - **Policial**:  corrupto
   - **Informante**: dano
-  - **Jogador**: habilidade_briga, vida, forca, tempo_vida_jogador, gangue_jogador
-- **Inventario**: <span style="text-decoration: underline; text-decoration-style: dotted;">id_inventario</span>, tamanho_inventario, inventario_ocupado
-- **Instancia_Item**: <span style="text-decoration: underline; text-decoration-style: dotted;">nome_inst</span>
-- **Item**: <ins>nome_item</ins>, tipo_item, tamanho_item, descricao_item
-  - **Item_Fabricavel**: tipo_fabricavel
-    - **Ferramenta**: utilidade_ferramenta
-    - **Arma**: dano_arma, arma_equipeada
-  - **Item_Nao_Fabricavel**: raridade_nao_fabricavel, tipo_nao_fabricavel
-    - **Comida**: quantidade_comida, qualidade_comida
-    - **Medicamento**: cura_medicamento, qualidade_medicamento
-    - **Utilizavel**: efeito_Utilizavel
-- **Fabricacao**: <span style="text-decoration: underline; text-decoration-style: dotted;">nome_fabri</span>
-- **Livro_Fabricacoes**: <ins>nome_livro_fabri</ins>
-- **Missao**: <ins>id_missao</ins>, nome_missao, descricao_missao
+  - **Jogador**: habilidade_briga, vida, forca, tempo_vida, gangue
+- **Inventario**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>, tamanho, ocupado
+- **Instancia_Item**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>
+- **Item**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span> tipo, tamanho, descricao
+  - **Item_Fabricavel**: tipo
+    - **Ferramenta**: utilidade
+    - **Arma**: dano, equipada
+  - **Item_Nao_Fabricavel**: raridade, tipo
+    - **Comida**: quantidade , 
+    - **Medicamento**: cura, 
+    - **Utilizavel**: efeito
+- **Fabricacao**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>
+- **Livro_Fabricacao**: <ins>id</ins> <span style="text-decoration: underline; text-decoration-style: double;">nome</span>
+- **Missao**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span>, descricao
 
 ---
 
@@ -84,8 +84,8 @@
 
 **Lugar _Conecta_ Lugar**
 
-- Lugar pode conectar a um ou quatro outros lugares (1,4)
-- Outro Lugar pode ser conectado por um ou quatro lugares (1,4)
+- Lugar pode conectar a um ou varios outros lugares (1,n)
+- Outro Lugar pode ser conectado por um ou varios lugares (1,n)
 
 **Missao _Está disponivel em_ Lugar**
 
@@ -117,17 +117,17 @@
 - Item possui uma ou várias instâncias de itens (1,N)
 - Instância de Item petence a apenas um único item (1,1)
 
-**Fabricacao _É feita_ Instancia_Item**
+**Fabricacao _É feita_ Item**
 
-- Fabricação é feita de uma ou várias instancias de itens (1,N)
-- Instancia de item está em nenhuma ou várias fabricações (0,N)
+- Fabricação é feita de uma ou vários  itens (1,N)
+- item está em nenhuma ou várias fabricações (0,N)
 
 **Fabricacao _Resulta_ Item_Fabricavel**
 
 - Fabricação resulta em apenas um item fabricado (1,1)
 - Item Fabricável é resultado por apenas uma única fabricação (1,1)
 
-**Livro_Fabricacoes _Possui_ Fabricao**
+**Livro_Fabricacao _Possui_ Fabricao**
 
 - Livro de Fabricações possui nenhuma ou várias fabricações (0,N)
 - Fabricação pertence a apenas um único livro de fabricações (1,1)
@@ -139,7 +139,7 @@
 
 **Missao _Dropa_ Item_Nao_Fabricavel**
 
-- Missão dropa apenas um item não fabricável (1,1)
+- Missão dropa apenas zero ou um item não fabricável (0,1)
 - Item Não Fabricável é dropado por uma ou várias missões (1,N)
 
 ---
