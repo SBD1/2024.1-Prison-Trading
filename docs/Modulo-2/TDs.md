@@ -12,48 +12,135 @@
 
 ---
 
-# Prisão
+# Prisao
 
 | id_prisao | nome_prisao |
 |-----------|-------------|
-| 01        | Basilio     |
+| 1         | Basilio     |
 
 ---
 
-# Região
+# Regiao
 
-| nome_regiao | prisao | descricao_regiao                                                                                    |
-|-------------|--------|-----------------------------------------------------------------------------------------------------|
-| celas       | 01     | Local onde estão as celas e solitárias dos prisioneiros.                                            |
-| banheiros   | 01     | Local onde os prisioneiros se banham.                                                               |
-| refeitorio  | 01     | Local onde os prisioneiros fazem suas refeições.                                                    |
-| patio       | 01     | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futsal e relaxar. |
+| id_regiao | nome_regiao | prisao | descricao_regiao                                                                                    |
+|-----------|-------------|--------|-----------------------------------------------------------------------------------------------------|
+| 1         | celas       | 1      | Local onde estão as celas e solitárias dos prisioneiros.                                            |
+| 2         | banheiros   | 1      | Local onde os prisioneiros se banham.                                                               |
+| 3         | enfermaria  | 1      | Local onde os prisioneiros podem se tratar/curar.                                                   |
+| 4         | refeitorio  | 1      | Local onde os prisioneiros fazem suas refeições.                                                    |
+| 5         | patio       | 1      | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futsal e relaxar. |
+| 6         | oficinas    | 1      | Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.                                 |
 
 ---
 
 # Lugar
 
-| nome_lugar       | *regiao*   | descricao_lugar                                                                        |
-|------------------|------------|----------------------------------------------------------------------------------------|
-| solitariaOeste   | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
-| celaA            | celas      | Cela onde dormem os prisioneiros 1 e 2.                                                |
-| celaB            | celas      | Cela onde dormem os prisioneiros 3 e 4.                                                |
-| celaC            | celas      | Cela onde dormem os prisioneiros 5 e 6.                                                |
-| celaD            | celas      | Cela onde dormem os prisioneiros 7 e 8.                                                |
-| celaE            | celas      | Cela onde dormem os prisioneiros 9 e 10.                                               |
-| celaF            | celas      | Cela onde dormem os prisioneiros 11 e 12.                                              |
-| celaG            | celas      | Cela onde dormem o prisioneiro 13 e o prisioneiro 19.                                  |
-| solitariaLeste   | celas      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas. |
-| banheiroA        | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
-| banheiroB        | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
-| banheiroC        | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
-| banheiroD        | banheiros  | Banheiro onde os prisioneiros tomam banho.                                             |
-| mesaDireita      | refeitorio | Mesa onde a gangue 1 faz suas refeições.                                               |
-| mesaEsquerda     | refeitorio | Mesa onde a gangue 2 faz suas refeições.                                               |
-| bancos           | patio      | Bancos onde os prisioneiros podem sentar e conversar.                                  |
-| academiaSimples  | patio      | Uma área com equipamentos simples de exercício.                                        |
-| arquibancada     | patio      | Arquibancada onde os prisioneiros podem conversar e assistir os jogos.                 |
-| quadraDesportiva | patio      | Quadra onde os prisioneiros jogam basquete/futsal para se distrair e se exercitar.     |
+| id_lugar | nome_lugar         | *regiao*   | descricao_lugar                                                                          |
+|----------|--------------------|------------|------------------------------------------------------------------------------------------|
+| 1        | solitariaOeste     | 1          | Cela para os prisioneiros levadinhos. Na parede direita há uma mancha de cimento fresco. |
+| 2        | celaA              | 1          | Cela onde dormem os prisioneiros 1 e 2.                                                  |
+| 3        | celaB              | 1          | Cela onde dormem os prisioneiros 3 e 4.                                                  |
+| 4        | celaC              | 1          | Cela onde dormem os prisioneiros 5 e 6.                                                  |
+| 5        | celaD              | 1          | Cela onde dormem os prisioneiros 7 e 8.                                                  |
+| 6        | celaE              | 1          | Cela onde dormem os prisioneiros 9 e 10.                                                 |
+| 7        | celaF              | 1          | Cela onde dormem os prisioneiros 11 e 12.                                                |
+| 8        | celaG              | 1          | Cela onde dormem o prisioneiro 13 e o jogador.                                           |
+| 9        | solitariaLeste     | 1          | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.   |
+| 10       | corredorCelas      | 1          | Corredor para se deslocar entre as celas e as solitárias.                                |
+| 11       | banheiroA          | 2          | Banheiro onde os prisioneiros tomam banho.                                               |
+| 12       | banheiroB          | 2          | Banheiro onde os prisioneiros tomam banho.                                               |
+| 13       | banheiroC          | 2          | Banheiro onde os prisioneiros tomam banho.                                               |
+| 14       | banheiroD          | 2          | Banheiro onde os prisioneiros tomam banho.                                               |
+| 15       | corredorBanheiros  | 2          | Corredor para se deslocar entre os banheiros.                                            |
+| 16       | salaA              | 3          | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
+| 17       | salaB              | 3          | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
+| 18       | salaC              | 3          | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
+| 19       | corredorEnfermaria | 3          | Corredor para se deslocar entre as salas da enfermaria.                                  |
+| 20       | mesaEsquerda       | 4          | Mesa onde a gangue 1 faz suas refeições.                                                 |
+| 21       | mesaDireita        | 4          | Mesa onde a gangue 2 faz suas refeições.                                                 |
+| 22       | corredorRefeitorio | 4          | Corredor para se deslocar entre as mesas do refeitório.                                  |
+| 23       | academiaSimples    | 5          | Uma área com equipamentos simples de exercício.                                          |
+| 24       | quadraDeBasquete   | 5          | Quadra onde os prisioneiros jogam basquete/futsal para se distrair e se exercitar.       |
+| 25       | arquibancada       | 5          | Arquibancada onde os prisioneiros podem conversar e assistir os jogos.                   |
+| 26       | areaDeLazer        | 5          | Bancos onde os prisioneiros podem sentar e conversar.                                    |
+| 27       | corredorPatio      | 5          | Corredor para se deslocar entre as áreas do pátio e as oficinas.                         |
+| 28       | oficinaA           | 6          | Oficina de marcenaria onde os prisioneiros trabalham.                                    |
+| 29       | oficinaB           | 6          | Oficina de impressão de placas de carro onde os prisioneiros trabalham.                  |
+
+---
+
+# Lugar_Anterior
+
+| id_lugar | id_lugar_anterior |
+|----------|-------------------|
+| 1        | 2                 |
+| 1        | 10                |
+| 2        | 1                 |
+| 2        | 10                |
+| 3        | 10                |
+| 4        | 10                |
+| 5        | 10                |
+| 6        | 10                |
+| 7        | 10                |
+| 8        | 10                |
+| 9        | 10                |
+| 10       | 1                 |
+| 10       | 2                 |
+| 10       | 3                 |
+| 10       | 4                 |
+| 10       | 5                 |
+| 10       | 6                 |
+| 10       | 7                 |
+| 10       | 8                 |
+| 10       | 9                 |
+| 10       | 15                |
+| 11       | 15                |
+| 12       | 15                |
+| 13       | 15                |
+| 14       | 15                |
+| 15       | 10                |
+| 15       | 11                |
+| 15       | 12                |
+| 15       | 13                |
+| 15       | 14                |
+| 15       | 19                |
+| 15       | 22                |
+| 16       | 17                |
+| 16       | 19                |
+| 17       | 16                |
+| 17       | 18                |
+| 17       | 19                |
+| 18       | 17                |
+| 18       | 19                |
+| 19       | 15                |
+| 19       | 16                |
+| 19       | 17                |
+| 19       | 18                |
+| 20       | 22                |
+| 21       | 22                |
+| 22       | 15                |
+| 22       | 20                |
+| 22       | 21                |
+| 22       | 27                |
+| 23       | 24                |
+| 23       | 27                |
+| 24       | 23                |
+| 24       | 25                |
+| 24       | 27                |
+| 25       | 24                |
+| 25       | 26                |
+| 25       | 27                |
+| 26       | 25                |
+| 26       | 27                |
+| 27       | 22                |
+| 27       | 23                |
+| 27       | 24                |
+| 27       | 25                |
+| 27       | 26                |
+| 27       | 28                |
+| 27       | 29                |
+| 28       | 27                |
+| 29       | 27                |
 
 ---
 
@@ -431,16 +518,17 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-| Data       | Versão | Descrição                                       | Autores                                               |
-|------------|--------|-------------------------------------------------|-------------------------------------------------------|
-| 26/07/2024 | `1.0`  | Criação do documento.                           | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 28/07/2024 | `1.1`  | Desenvolvimento de algumas tabelas e correções. | [João Antonio G.](https://github.com/joaoseisei)      |
-| 28/07/2024 | `1.2`  | Desenvolvimento algumas tabelas.                | [Fernando Gabriel](https://github.com/show-dawn)      |
-| 28/07/2024 | `1.3`  | Desenvolvimento algumas tabelas.                | [Julio Cesar](https://github.com/Julio1099)           |
-| 29/07/2024 | `1.4`  | Completa a tabela [`Lugar`](#Lugar)             | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 29/07/2024 | `1.5`  | Ajustes tabela Pessoa                           | [Júlio Cesar](https://github.com/julio1099)           |
-| 29/07/2024 | `1.6`  | Desenvolvimento algumas tabelas.                | [Fernando Gabriel](https://github.com/show-dawn)      |
-| 02/08/2024 | `1.7`  | Correção tabela Pessoa.                         | [Júlio Cesar](https://github.com/Julio1099)           |
-| 04/08/2024 | `1.8`  | Adiciona os crafts.                             | [João Antonio G.](https://github.com/joaoseisei)      |
+| Data       | Versão | Descrição                                                                                                                            | Autores                                               |
+|------------|--------|--------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------|
+| 26/07/2024 | `1.0`  | Criação do documento.                                                                                                                | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 28/07/2024 | `1.1`  | Desenvolvimento de algumas tabelas e correções.                                                                                      | [João Antonio G.](https://github.com/joaoseisei)      |
+| 28/07/2024 | `1.2`  | Desenvolvimento algumas tabelas.                                                                                                     | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 28/07/2024 | `1.3`  | Desenvolvimento algumas tabelas.                                                                                                     | [Julio Cesar](https://github.com/Julio1099)           |
+| 29/07/2024 | `1.4`  | Completa a tabela [`Lugar`](#Lugar)                                                                                                  | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 29/07/2024 | `1.5`  | Ajustes tabela Pessoa                                                                                                                | [Júlio Cesar](https://github.com/julio1099)           |
+| 29/07/2024 | `1.6`  | Desenvolvimento algumas tabelas.                                                                                                     | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 02/08/2024 | `1.7`  | Correção tabela Pessoa.                                                                                                              | [Júlio Cesar](https://github.com/Julio1099)           |
+| 04/08/2024 | `1.8`  | Adiciona os crafts.                                                                                                                  | [João Antonio G.](https://github.com/joaoseisei)      |
+| 26/07/2024 | `1.9`  | Corrige as tabelas [`Prisao`](#Prisao), [`Regiao`](#Regiao) e [`Lugar`](#Lugar), e cria a tabela [`Lugar_Anterior`](#Lugar_Anterior) | [Breno Alexandre](https://github.com/brenoalexandre0) |
 
 </div>
