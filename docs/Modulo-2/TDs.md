@@ -189,70 +189,70 @@
 
 # Instancia_Item
 
-| id  | item                         | lugar         | fabricacao            |
-| --- | :--------------------------- | ------------- | --------------------- |
-| 1   | 1 [Chave de fenda]           | OficinaA      | NULL                  |
-| 2   | 2 [Pa]                       | OficinaA      | NULL                  |
-| 3   | 3 [Martelo]                  | OficinaB      | NULL                  |
-| 4   | 4 [Picareta]                 | OficinaB      | NULL                  |
-| 5   | 5 [Lock pick]                | OficinaA      | NULL                  |
-| 6   | 6 [Corda]                    | OficinaB      | NULL                  |
-| 7   | 7 [Faca]                     | banheiroA     | NULL                  |
-| 8   | 8 [Adaga]                    | banheiroA     | NULL                  |
-| 9   | 9 [Soco ingles]              | CelaG         | NULL                  |
-| 10  | 10 [Faca curta]              | CelaF         | NULL                  |
-| 11  | 11 [Coquetel molotov]        | SolitariaB    | NULL                  |
-| 12  | 12 [Corda com Cerol]         | CelaE         | NULL                  |
-| 13  | 13 [Garrafa quebrada]        | CorredorPatio | NULL                  |
-| 14  | 14 [Sabao]                   | banheiro      | NULL                  |
-| 15  | 15 [Pedra]                   | patio         | NULL                  |
-| 16  | 16 [Graveto]                 | patio         | NULL                  |
-| 17  | 17 [Linha]                   | EnfermariaA   | NULL                  |
-| 18  | 18 [Pedaco pequeno de metal] | oficinaA      | NULL                  |
-| 19  | 19 [Vidro]                   | CelaB         | NULL                  |
-| 20  | 20 [Pedaco grande de metal]  | CelaA         | NULL                  |
-| 21  | 21 [Alcool]                  | enfermaria    | NULL                  |
-| 22  | 22 [Tecido]                  | enfermaria    | NULL                  |
-| 23  | 23 [Garrafa de vidro]        | enfermaria    | NULL                  |
-| 24  | 24 [Plastico]                | CorredorEnfer | NULL                  |
-| 25  | 25 [Isqueiro]                | CelaC         | NULL                  |
-| 26  | 26 [Lanterna]                | SolitariaA    | NULL                  |
-| 27  | 27 [Cigarro]                 | CorredorPatio | NULL                  |
-| 28  | 28 [Anti inflamatorio]       | EnfermariaA   | NULL                  |
-| 29  | 29 [Morfina]                 | EnfermariaB   | NULL                  |
-| 30  | 30 [Bandagem]                | EnfermariaC   | NULL                  |
-| 31  | 31 [Pao seco]                | RefeiEsq      | NULL                  |
-| 32  | 32 [Pao]                     | RefeiEsq      | NULL                  |
-| 33  | 33 [Queijo]                  | RefeiEsq      | NULL                  |
-| 34  | 34 [Carne]                   | RefeiDir      | NULL                  |
-| 35  | 35 [Peixe]                   | RefeiDir      | NULL                  |
-| 36  | 36 [Laranja]                 | RefeiDir      | NULL                  |
-| 37  | 18 [Pedaco pequeno de metal] | NULL          | 1 [Chave de fenda]    |
-| 38  | 24 [Plastico]                | NULL          | 1 [Chave de fenda]    |
-| 39  | 16 [Graveto]                 | NULL          | 2 [Pa]                |
-| 40  | 20 [Pedaco grande de metal]  | NULL          | 2 [Pa]                |
-| 41  | 17 [Linha]                   | NULL          | 2 [Pa]                |
-| 42  | 15 [Pedra]                   | NULL          | 3 [Martelo]           |
-| 43  | 16 [Graveto]                 | NULL          | 3 [Martelo]           |
-| 44  | 20 [Pedaco grande de metal]  | NULL          | 4 [Picareta]          |
-| 45  | 16 [Graveto]                 | NULL          | 4 [Picareta]          |
-| 46  | 22 [Tecido]                  | NULL          | 4 [Picareta]          |
-| 47  | 16 [Graveto]                 | NULL          | 5 [Lock Pick]         |
-| 48  | 18 [Pedaco pequeno de metal] | NULL          | 5 [Lock Pick]         |
-| 49  | 24 [Plastico]                | NULL          | 6 [Corda]             |
-| 50  | 20 [Pedaco grande de metal]  | NULL          | 7 [Faca]              |
-| 51  | 22 [Tecido]                  | NULL          | 7 [Faca]              |
-| 52  | 18 [Pedaco pequeno de metal] | NULL          | 8 [Adaga]             |
-| 53  | 14 [Sabao]                   | NULL          | 9 [Soco Ingles]       |
-| 54  | 22 [Tecido]                  | NULL          | 9 [Soco Ingles]       |
-| 55  | 18 [Pedaco pequeno de metal] | NULL          | 10 [Faca Curta]       |
-| 56  | 22 [Tecido]                  | NULL          | 10 [Faca Curta]       |
-| 57  | 23 [Garrafa de vidro]        | NULL          | 11 [Coquetel Molotov] |
-| 58  | 21 [Alcool]                  | NULL          | 11 [Coquetel Molotov] |
-| 59  | 22 [Tecido]                  | NULL          | 11 [Coquetel Molotov] |
-| 60  | 6 [Corda]                    | NULL          | 12 [Corda com Cerol]  |
-| 61  | 19 [Vidro]                   | NULL          | 12 [Corda com Cerol]  |
-| 62  | 23 [Garrafa de vidro]        | NULL          | 13 [Garrafa Quebrada] |
+| id  | item                         | lugar               | fabricacao            |
+| --- | :--------------------------- | ------------------- | --------------------- |
+| 1   | 1 [Chave de fenda]           | Oficina A           | NULL                  |
+| 2   | 2 [Pa]                       | Oficina A           | NULL                  |
+| 3   | 3 [Martelo]                  | Oficina B           | NULL                  |
+| 4   | 4 [Picareta]                 | Oficina B           | NULL                  |
+| 5   | 5 [Lock pick]                | Oficina A           | NULL                  |
+| 6   | 6 [Corda]                    | Oficina B           | NULL                  |
+| 7   | 7 [Faca]                     | banheiro A          | NULL                  |
+| 8   | 8 [Adaga]                    | banheiro A          | NULL                  |
+| 9   | 9 [Soco ingles]              | Cela G              | NULL                  |
+| 10  | 10 [Faca curta]              | Cela F              | NULL                  |
+| 11  | 11 [Coquetel molotov]        | Solitaria B         | NULL                  |
+| 12  | 12 [Corda com Cerol]         | Cela E              | NULL                  |
+| 13  | 13 [Garrafa quebrada]        | Corredor Patio      | NULL                  |
+| 14  | 14 [Sabao]                   | banheiro            | NULL                  |
+| 15  | 15 [Pedra]                   | patio               | NULL                  |
+| 16  | 16 [Graveto]                 | patio               | NULL                  |
+| 17  | 17 [Linha]                   | Enfermaria A        | NULL                  |
+| 18  | 18 [Pedaco pequeno de metal] | oficina A           | NULL                  |
+| 19  | 19 [Vidro]                   | Cela B              | NULL                  |
+| 20  | 20 [Pedaco grande de metal]  | Cela A              | NULL                  |
+| 21  | 21 [Alcool]                  | enfermaria          | NULL                  |
+| 22  | 22 [Tecido]                  | enfermaria          | NULL                  |
+| 23  | 23 [Garrafa de vidro]        | enfermaria          | NULL                  |
+| 24  | 24 [Plastico]                | Corredor Enfermaria | NULL                  |
+| 25  | 25 [Isqueiro]                | CelaC               | NULL                  |
+| 26  | 26 [Lanterna]                | Solitaria A         | NULL                  |
+| 27  | 27 [Cigarro]                 | Corredor Patio      | NULL                  |
+| 28  | 28 [Anti inflamatorio]       | Enfermaria A        | NULL                  |
+| 29  | 29 [Morfina]                 | Enfermaria B        | NULL                  |
+| 30  | 30 [Bandagem]                | Enfermaria C        | NULL                  |
+| 31  | 31 [Pao seco]                | Refeitorio Esquerdo | NULL                  |
+| 32  | 32 [Pao]                     | Refeitorio Esquerdo | NULL                  |
+| 33  | 33 [Queijo]                  | Refeitorio Esquerdo | NULL                  |
+| 34  | 34 [Carne]                   | Refeitorio Direito  | NULL                  |
+| 35  | 35 [Peixe]                   | Refeitorio Direito  | NULL                  |
+| 36  | 36 [Laranja]                 | Refeitorio Direito  | NULL                  |
+| 37  | 18 [Pedaco pequeno de metal] | NULL                | 1 [Chave de fenda]    |
+| 38  | 24 [Plastico]                | NULL                | 1 [Chave de fenda]    |
+| 39  | 16 [Graveto]                 | NULL                | 2 [Pa]                |
+| 40  | 20 [Pedaco grande de metal]  | NULL                | 2 [Pa]                |
+| 41  | 17 [Linha]                   | NULL                | 2 [Pa]                |
+| 42  | 15 [Pedra]                   | NULL                | 3 [Martelo]           |
+| 43  | 16 [Graveto]                 | NULL                | 3 [Martelo]           |
+| 44  | 20 [Pedaco grande de metal]  | NULL                | 4 [Picareta]          |
+| 45  | 16 [Graveto]                 | NULL                | 4 [Picareta]          |
+| 46  | 22 [Tecido]                  | NULL                | 4 [Picareta]          |
+| 47  | 16 [Graveto]                 | NULL                | 5 [Lock Pick]         |
+| 48  | 18 [Pedaco pequeno de metal] | NULL                | 5 [Lock Pick]         |
+| 49  | 24 [Plastico]                | NULL                | 6 [Corda]             |
+| 50  | 20 [Pedaco grande de metal]  | NULL                | 7 [Faca]              |
+| 51  | 22 [Tecido]                  | NULL                | 7 [Faca]              |
+| 52  | 18 [Pedaco pequeno de metal] | NULL                | 8 [Adaga]             |
+| 53  | 14 [Sabao]                   | NULL                | 9 [Soco Ingles]       |
+| 54  | 22 [Tecido]                  | NULL                | 9 [Soco Ingles]       |
+| 55  | 18 [Pedaco pequeno de metal] | NULL                | 10 [Faca Curta]       |
+| 56  | 22 [Tecido]                  | NULL                | 10 [Faca Curta]       |
+| 57  | 23 [Garrafa de vidro]        | NULL                | 11 [Coquetel Molotov] |
+| 58  | 21 [Alcool]                  | NULL                | 11 [Coquetel Molotov] |
+| 59  | 22 [Tecido]                  | NULL                | 11 [Coquetel Molotov] |
+| 60  | 6 [Corda]                    | NULL                | 12 [Corda com Cerol]  |
+| 61  | 19 [Vidro]                   | NULL                | 12 [Corda com Cerol]  |
+| 62  | 23 [Garrafa de vidro]        | NULL                | 13 [Garrafa Quebrada] |
 
 ---
 
