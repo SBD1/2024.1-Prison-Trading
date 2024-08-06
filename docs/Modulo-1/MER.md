@@ -37,7 +37,7 @@
     - **Medicamento**
     - **Utilizavel**
 - **Fabricacao**
-- **Livro_Fabricacoes**
+- **Livro_Fabricacao**
 - **Missao**
 
 ---
@@ -53,16 +53,16 @@
   - **Prisioneiro**: habilidade_briga, vida, forca, gangue
   - **Policial**:  corrupto
   - **Informante**: dano
-  - **Jogador**: habilidade_briga, vida, forca, tempo_vida, gangue
-- **Inventario**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>, tamanho, ocupado
+  - **Jogador**: habilidade_briga, vida, forca, tempo_vida, gangue, `nivel`(derivado)
+- **Inventario**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>, tamanho, `tamanho_ocupado`(derivado)
 - **Instancia_Item**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>
-- **Item**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span> tipo, tamanho, descricao
+- **Item**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span>, tipo, tamanho, descricao
   - **Item_Fabricavel**: tipo
     - **Ferramenta**: utilidade
-    - **Arma**: dano, equipada
+    - **Arma**: dano
   - **Item_Nao_Fabricavel**: raridade, tipo
-    - **Comida**: quantidade , 
-    - **Medicamento**: cura, 
+    - **Comida**: quantidade  
+    - **Medicamento**: cura 
     - **Utilizavel**: efeito
 - **Fabricacao**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>
 - **Livro_Fabricacao**: <ins>id</ins> <span style="text-decoration: underline; text-decoration-style: double;">nome</span>
@@ -84,8 +84,8 @@
 
 **Lugar _Conecta_ Lugar**
 
-- Lugar pode conectar a um ou varios outros lugares (1,n)
-- Outro Lugar pode ser conectado por um ou varios lugares (1,n)
+- Lugar pode conectar a um ou varios outros lugares (1,N)
+- Outro Lugar pode ser conectado por um ou varios lugares (1,N)
 
 **Missao _Está disponivel em_ Lugar**
 
@@ -151,13 +151,15 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão |          Descrição          | Autores                                                                                                                                                                                                 |
-|:----------:|:------:|:---------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 10/04/2024 | `1.0`  | Criação da primeira versão. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
-| 10/04/2024 | `1.1`  |       Segunda Versão.       | [Fernando Gabriel](https://github.com/show-dawn), [Julio Cesar](https://github.com/julio1099)                                                                                                           |
-| 11/04/2024 | `1.2`  | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
-| 13/04/2024 | `1.3`  | Criação da terceira versão. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
-| 20/04/2024 | `1.4`  |  Criação da quarta versão.  | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
-| 18/07/2024 | `1.5`  |       Quinta Versão.        | [Julio Cesar](https://github.com/julio1099)                                                                                                                                                             |
+|    Data    | Versão |              Descrição              | Autores                                                                                                                                                                                                 |
+|:----------:|:------:|:-----------------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 10/04/2024 | `1.0`  |     Criação da primeira versão.     | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
+| 10/04/2024 | `1.1`  |           Segunda Versão.           | [Fernando Gabriel](https://github.com/show-dawn), [Julio Cesar](https://github.com/julio1099)                                                                                                           |
+| 11/04/2024 | `1.2`  |     Criação da terceira versão.     | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 13/04/2024 | `1.3`  |     Criação da terceira versão.     | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 20/04/2024 | `1.4`  |      Criação da quarta versão.      | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 18/07/2024 | `1.5`  |           Quinta Versão.            | [Julio Cesar](https://github.com/julio1099)                                                                                                                                                             |
+| 06/08/2024 | `1.6`  | Corrige as alterações do professor. | [Fernando Gabriel](https://github.com/show-dawn),  [João Antonio G.](https://github.com/joaoseisei)                                                                                                     |
+
 
 </div>
