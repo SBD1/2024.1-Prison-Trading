@@ -12,7 +12,9 @@
 
 </center>
 
-> O modelo Entidade-Relacionamento tem como principal função, descrever itens, em outras palavras entidades, que são utilizadas para representar participantes de um cenário em um problema que deseja ser resolvido mediante utilização de um banco de dados.
+> O modelo Entidade-Relacionamento tem como principal função, descrever itens, em outras palavras entidades, que são
+> utilizadas para representar participantes de um cenário em um problema que deseja ser resolvido mediante utilização de
+> um banco de dados.
 
 ---
 
@@ -22,51 +24,54 @@
 - **Regiao**
 - **Lugar**
 - **Pessoa**
-  - **Prisioneiro**
-  - **Policial**
-  - **Informante**
-  - **Jogador**
+    - **Prisioneiro**
+    - **Policial**
+    - **Informante**
+    - **Jogador**
 - **Inventario**
 - **Instancia_Item**
 - **Item**
-  - **Item_Fabricavel**
-    - **Ferramenta**
-    - **Arma**
-  - **Item_Nao_Fabricavel**
-    - **Comida**
-    - **Medicamento**
-    - **Utilizavel**
+    - **Item_Fabricavel**
+        - **Ferramenta**
+        - **Arma**
+    - **Item_Nao_Fabricavel**
+        - **Comida**
+        - **Medicamento**
+        - **Utilizavel**
 - **Fabricacao**
 - **Livro_Fabricacao**
 - **Missao**
 
 ---
 
-
-
 # Atributos
 
 - **Prisao**: <ins>id</ins>, nome, objetivo
-- **Regiao**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span>, descricao
-- **Lugar**: <ins>id</ins>,  <span style="text-decoration: underline; text-decoration-style: double;">nome</span> descricao
+- **Regiao**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span>,
+  descricao
+- **Lugar**: <ins>id</ins>,  <span style="text-decoration: underline; text-decoration-style: double;">nome</span>
+  descricao
 - **Pessoa**: <ins>id</ins>, nome, tipo
-  - **Prisioneiro**: habilidade_briga, vida, forca, gangue
-  - **Policial**:  corrupto
-  - **Informante**: dano
-  - **Jogador**: habilidade_briga, vida, forca, tempo_vida, gangue, `nivel`(derivado)
-- **Inventario**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>, tamanho, `tamanho_ocupado`(derivado)
+    - **Prisioneiro**: habilidade_briga, vida, forca, gangue
+    - **Policial**:  corrupto
+    - **Informante**: dano
+    - **Jogador**: habilidade_briga, vida, forca, tempo_vida, gangue, `nivel`(derivado)
+- **Inventario**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>,
+  tamanho, `tamanho_ocupado`(derivado)
 - **Instancia_Item**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>
-- **Item**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span>, tipo, tamanho, descricao
-  - **Item_Fabricavel**: tipo
-    - **Ferramenta**: utilidade
-    - **Arma**: dano
-  - **Item_Nao_Fabricavel**: raridade, tipo
-    - **Comida**: quantidade  
-    - **Medicamento**: cura 
-    - **Utilizavel**: efeito
+- **Item**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span>, tipo,
+  tamanho, descricao
+    - **Item_Fabricavel**: tipo
+        - **Ferramenta**: utilidade
+        - **Arma**: dano
+    - **Item_Nao_Fabricavel**: raridade, tipo
+        - **Comida**: quantidade
+        - **Medicamento**: cura
+        - **Utilizavel**: efeito
 - **Fabricacao**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>
-- **Livro_Fabricacao**: <ins>id</ins> <span style="text-decoration: underline; text-decoration-style: double;">nome</span>
-- **Missao**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span>, descricao
+- **Livro_Fabricacao**: <ins>id</ins> <span style="text-decoration: underline; text-decoration-style: double;">
+  nome</span>
+- **Missao**: <ins>id</ins>, nome, descricao
 
 ---
 
@@ -119,7 +124,7 @@
 
 **Fabricacao _É feita_ Item**
 
-- Fabricação é feita de uma ou vários  itens (1,N)
+- Fabricação é feita de uma ou vários itens (1,N)
 - item está em nenhuma ou várias fabricações (0,N)
 
 **Fabricacao _Resulta_ Item_Fabricavel**
@@ -160,6 +165,5 @@
 | 20/04/2024 | `1.4`  |      Criação da quarta versão.      | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 | 18/07/2024 | `1.5`  |           Quinta Versão.            | [Julio Cesar](https://github.com/julio1099)                                                                                                                                                             |
 | 06/08/2024 | `1.6`  | Corrige as alterações do professor. | [Fernando Gabriel](https://github.com/show-dawn),  [João Antonio G.](https://github.com/joaoseisei)                                                                                                     |
-
 
 </div>
