@@ -69,56 +69,56 @@
 
 ---
 
-# Lugar_Anterior
+# Lugar_Proximo
 
-| id_lugar | id_lugar_anterior |
-| -------- | ----------------- |
-| 1        | 2                 |
-| 1        | 10                |
-| 2        | 1                 |
-| 2        | 10                |
-| 3        | 10                |
-| 4        | 10                |
-| 5        | 10                |
-| 6        | 10                |
-| 7        | 10                |
-| 8        | 10                |
-| 9        | 10                |
-| 10       | 1                 |
-| 10       | 2                 |
-| 10       | 3                 |
-| 10       | 4                 |
-| 10       | 5                 |
-| 10       | 6                 |
-| 10       | 7                 |
-| 10       | 8                 |
-| 10       | 9                 |
-| 10       | 15                |
-| 11       | 15                |
-| 12       | 15                |
-| 13       | 15                |
-| 14       | 15                |
-| 15       | 10                |
-| 15       | 11                |
-| 15       | 12                |
-| 15       | 13                |
-| 15       | 14                |
-| 15       | 19                |
-| 15       | 22                |
-| 16       | 17                |
-| 16       | 19                |
-| 17       | 16                |
-| 17       | 18                |
-| 17       | 19                |
-| 18       | 17                |
-| 18       | 19                |
-| 19       | 15                |
-| 19       | 16                |
-| 19       | 17                |
-| 19       | 18                |
+| id_lugar_atual           | id_lugar_proximo         |
+| ------------------------ | ------------------------ |
+| 1 [solitaria Oeste]      | 2 [cela A]               |
+| 1 [solitaria Oeste]      | 10 [corredor Celas]      |
+| 2 [cela A]               | 1 [solitaria Oeste]      |
+| 2 [cela A]               | 10 [corredor Celas]      |
+| 3 [cela B]               | 10 [corredor Celas]      |
+| 4 [cela C]               | 10 [corredor Celas]      |
+| 5 [cela D]               | 10 [corredor Celas]      |
+| 6 [cela E]               | 10 [corredor Celas]      |
+| 7 [cela F]               | 10 [corredor Celas]      |
+| 8 [cela G]               | 10 [corredor Celas]      |
+| 9 [solitaria Leste]      | 10 [corredor Celas]      |
+| 10 [corredor Celas]      | 1 [solitaria Oeste]      |
+| 10 [corredor Celas]      | 2 [cela A]               |
+| 10 [corredor Celas]      | 3 [cela B]               |
+| 10 [corredor Celas]      | 4 [cela C]               |
+| 10 [corredor Celas]      | 5 [cela D]               |
+| 10 [corredor Celas]      | 6 [cela E]               |
+| 10 [corredor Celas]      | 7 [cela F]               |
+| 10 [corredor Celas]      | 8 [cela G]               |
+| 10 [corredor Celas]      | 9 [solitaria Leste]      |
+| 10 [corredor Celas]      | 15 [corredor Banheiros]  |
+| 11 [banheiro A]          | 15 [corredor Banheiros]  |
+| 12 [banheiro B]          | 15 [corredor Banheiros]  |
+| 13 [banheiro C]          | 15 [corredor Banheiros]  |
+| 14 [banheiro D]          | 15 [corredor Banheiros]  |
+| 15 [corredor Banheiros]  | 10 [corredor Celas]      |
+| 15 [corredor Banheiros]  | 11 [banheiro A]          |
+| 15 [corredor Banheiros]  | 12 [banheiro B]          |
+| 15 [corredor Banheiros]  | 13 [banheiro C]          |
+| 15 [corredor Banheiros]  | 14 [banheiro D]          |
+| 15 [corredor Banheiros]  | 19 [corredor Enfermaria] |
+| 15 [corredor Banheiros]  | 22                       |
+| 16 [sala A]              | 17 [sala B]              |
+| 16 [sala A]              | 19 [corredor Enfermaria] |
+| 17 [sala B]              | 16 [sala A]              |
+| 17 [sala B]              | 18 [sala C]              |
+| 17 [sala B]              | 19 [corredor Enfermaria] |
+| 18 [sala C]              | 17 [sala B]              |
+| 18 [sala C]              | 19 [corredor Enfermaria] |
+| 19 [corredor Enfermaria] | 15 [corredor Banheiros]  |
+| 19 [corredor Enfermaria] | 16 [sala A]              |
+| 19 [corredor Enfermaria] | 17 [sala B]              |
+| 19 [corredor Enfermaria] | 18 [sala C]              |
 | 20       | 22                |
 | 21       | 22                |
-| 22       | 15                |
+| 22       | 15 [corredor Banheiros] |
 | 22       | 20                |
 | 22       | 21                |
 | 22       | 27                |
@@ -543,5 +543,6 @@
 | 04/08/2024 | `1.8`  | Adiciona os crafts.                                                                                                                  | [João Antonio G.](https://github.com/joaoseisei)      |
 | 04/08/2024 | `1.9`  | Corrige as tabelas [`Prisao`](#Prisao), [`Regiao`](#Regiao) e [`Lugar`](#Lugar), e cria a tabela [`Lugar_Anterior`](#Lugar_Anterior) | [Breno Alexandre](https://github.com/brenoalexandre0) |
 | 05/08/2024 | `2.0`  | Adiciona missao e formata tabelas.                                                                                                   | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 06/08/2024 | `2.1`  | Corrige a tabela [`Lugar_Proximo`](#Lugar_Proximo).                                                                                  | [Breno Alexandre](https://github.com/brenoalexandre0) |
 
 </div>
