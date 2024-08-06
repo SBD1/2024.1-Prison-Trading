@@ -15,12 +15,12 @@
 
 <center>
 
-#### Versão atual - 2.4 - Corrige respeito de jogador.
+#### Versão atual - 2.5 - Adiciona correções do professor.
 
 </center>
 
 <div align="center">
-<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/DERV2-4.png?raw=true"/></div>
+<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/DERV2-5.png?raw=true"/></div>
 </div>
 
 
@@ -105,6 +105,15 @@
 
 </details>
 
+<details>
+  <summary>V2.4 - Corrige respeito de jogador.</summary>
+
+<div align="center">
+<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/DERV2-4.png?raw=true"/></div>
+</div>
+
+</details>
+
 ---
 <center>
 
@@ -125,5 +134,6 @@
 | 17/07/2024 | `2.2`  | Corrige chaves estrangeiras e cardinalidade de missão. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
 | 20/07/2024 | `2.3`  | Corrige participação total de pessoa.                  | [João Antonio G.](https://github.com/joaoseisei), [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                                 |
 | 20/07/2024 | `2.4`  | Corrige respeito de jogador.                           | [João Antonio G.](https://github.com/joaoseisei), [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                                 |
+| 06/08/2024 | `2.5`  | Adiciona correções do professor                        | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
 
 </div>
