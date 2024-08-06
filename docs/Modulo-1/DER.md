@@ -134,6 +134,6 @@
 | 17/07/2024 | `2.2`  | Corrige chaves estrangeiras e cardinalidade de missão. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
 | 20/07/2024 | `2.3`  | Corrige participação total de pessoa.                  | [João Antonio G.](https://github.com/joaoseisei), [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                                 |
 | 20/07/2024 | `2.4`  | Corrige respeito de jogador.                           | [João Antonio G.](https://github.com/joaoseisei), [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                                 |
-| 06/08/2024 | `2.5`  | Adiciona correções do professor                        | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
+| 06/08/2024 | `2.5`  | Adiciona correções do professor.                       | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
 
 </div>
