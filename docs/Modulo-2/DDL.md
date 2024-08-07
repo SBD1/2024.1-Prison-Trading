@@ -168,8 +168,10 @@ CREATE TABLE missao(
 <div style="margin: 0 auto; width: fit-content;">
 
 |    Data    | Versão | Descrição                          | Autores                                          |
-|:----------:|:------:|------------------------------------|--------------------------------------------------|
+| :--------: | :----: | ---------------------------------- | ------------------------------------------------ |
 | 28/07/2024 | `1.0`  | Criação do documento.              | [João Antonio G.](https://github.com/joaoseisei) |
 | 06/08/2024 | `1.1`  | Adiciona DDL Prevido de fabricacao | [João Antonio G.](https://github.com/joaoseisei) |
+| 07/08/2024 | `1.2`  | Adiciona parte do fernando         | [Fernando Gabriel](https://github.com/show-dawn) |
+
 
 </div>
