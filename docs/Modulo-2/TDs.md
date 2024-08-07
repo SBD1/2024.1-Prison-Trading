@@ -472,7 +472,7 @@
 | 15 [corredor Banheiros]  | 13 [banheiro C]          |
 | 15 [corredor Banheiros]  | 14 [banheiro D]          |
 | 15 [corredor Banheiros]  | 19 [corredor Enfermaria] |
-| 15 [corredor Banheiros]  | 22                       |
+| 15 [corredor Banheiros]  | 22 [corredor Refeitorio] |
 | 16 [sala A]              | 17 [sala B]              |
 | 16 [sala A]              | 19 [corredor Enfermaria] |
 | 17 [sala B]              | 16 [sala A]              |
@@ -484,31 +484,31 @@
 | 19 [corredor Enfermaria] | 16 [sala A]              |
 | 19 [corredor Enfermaria] | 17 [sala B]              |
 | 19 [corredor Enfermaria] | 18 [sala C]              |
-| 20                       | 22                       |
-| 21                       | 22                       |
-| 22                       | 15 [corredor Banheiros]  |
-| 22                       | 20                       |
-| 22                       | 21                       |
-| 22                       | 27                       |
-| 23                       | 24                       |
-| 23                       | 27                       |
-| 24                       | 23                       |
-| 24                       | 25                       |
-| 24                       | 27                       |
-| 25                       | 24                       |
-| 25                       | 26                       |
-| 25                       | 27                       |
-| 26                       | 25                       |
-| 26                       | 27                       |
-| 27                       | 22                       |
-| 27                       | 23                       |
-| 27                       | 24                       |
-| 27                       | 25                       |
-| 27                       | 26                       |
-| 27                       | 28                       |
-| 27                       | 29                       |
-| 28                       | 27                       |
-| 29                       | 27                       |
+| 20 [mesa Esquerda]       | 22 [corredor Refeitorio] |
+| 21 [mesa Direita]        | 22 [corredor Refeitorio] |
+| 22 [corredor Refeitorio] | 15 [corredor Banheiros]  |
+| 22 [corredor Refeitorio] | 20 [mesa Esquerda]       |
+| 22 [corredor Refeitorio] | 21 [mesa Direita]        |
+| 22 [corredor Refeitorio] | 27 [corredor Patio ]     |
+| 23 [academia Simples]    | 24 [quadra De Basquete]  |
+| 23 [academia Simples]    | 27 [corredor Patio ]     |
+| 24 [quadra De Basquete]  | 23 [academia Simples]    |
+| 24 [quadra De Basquete]  | 25 [arquibancada]        |
+| 24 [quadra De Basquete]  | 27 [corredor Patio ]     |
+| 25 [arquibancada]        | 24 [quadra De Basquete]  |
+| 25 [arquibancada]        | 26 [area De Lazer]       |
+| 25 [arquibancada]        | 27 [corredor Patio ]     |
+| 26 [area De Lazer]       | 25 [arquibancada]        |
+| 26 [area De Lazer]       | 27 [corredor Patio ]     |
+| 27 [corredor Patio ]     | 22 [corredor Refeitorio] |
+| 27 [corredor Patio ]     | 23 [academia Simples]    |
+| 27 [corredor Patio ]     | 24 [quadra De Basquete]  |
+| 27 [corredor Patio ]     | 25 [arquibancada]        |
+| 27 [corredor Patio ]     | 26 [area De Lazer]       |
+| 27 [corredor Patio ]     | 28 [oficina A]           |
+| 27 [corredor Patio ]     | 29 [oficina B]           |
+| 28 [oficina A]           | 27 [corredor Patio ]     |
+| 29 [oficina B]           | 27 [corredor Patio ]     |
 
 ---
 
@@ -655,5 +655,6 @@
 | 05/08/2024 | `2.0`  |                                                  Adiciona missao e formata tabelas.                                                  | [Fernando Gabriel](https://github.com/show-dawn)      |
 | 06/08/2024 | `2.1`  |                                         Corrige a tabela [`Lugar_Proximo`](#Lugar_Proximo).                                          | [Breno Alexandre](https://github.com/brenoalexandre0) |
 | 06/08/2024 | `2.2`  |                                           Popula instancia de item e lista de fabricacao.                                            | [João Antonio G.](https://github.com/joaoseisei)      |
+| 06/08/2024 | `2.3`  |                                     Termina de corrigir a tabela [`Lugar_Proximo`](#Lugar_Proximo).                                  | [Breno Alexandre](https://github.com/brenoalexandre0) |
 
 </div>
