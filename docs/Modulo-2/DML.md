@@ -16,6 +16,7 @@
 ---
 
 ```
+BEGIN TRANSACTION;
 
 INSERT INTO item(tipo)
 VALUES
@@ -219,7 +220,10 @@ VALUES
 (12, NULL, NULL, 20, 20),
 (20, NULL, NULL, 20, 20);
 
+COMMIT;
 ```
+
+---
 
 <center>
 

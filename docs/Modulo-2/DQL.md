@@ -10,6 +10,16 @@
 
 ---
 
+```sql
+BEGIN TRANSACTION;
+
+
+
+COMMIT;
+```
+
+---
+
 <center>
 
 # Histórico de versão

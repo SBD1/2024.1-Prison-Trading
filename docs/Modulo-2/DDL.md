@@ -16,7 +16,9 @@
 
 ---
 
-```
+```sql
+BEGIN TRANSACTION;
+
 CREATE TYPE TipoItem AS ENUM('fabricavel', 'nao_fabricavel');
 CREATE TYPE TipoItemFabricavel AS ENUM('ferramenta', 'arma');
 
@@ -94,6 +96,7 @@ CREATE TABLE lista_fabricacao(
 	FOREIGN KEY (item) REFERENCES item(id)
 );
 
+COMMIT;
 ```
 
 >PARTE DO FERNANDO, MEXER!!!
