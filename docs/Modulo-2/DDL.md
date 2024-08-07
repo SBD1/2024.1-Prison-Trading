@@ -98,14 +98,60 @@ CREATE TABLE lista_fabricacao(
 
 >PARTE DO FERNANDO, MEXER!!!
 
+CREATE TYPE TipoItemNaoFabricavel AS ENUM('comida', 'medicamento', 'utilizavel');
+
+
+CREATE TABLE item_nao_fabricavel(
+	id INTEGER NOT NULL,
+	tipo TipoItemNaoFabricavel NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id) REFERENCES item(id)
+);
+
+CREATE TABLE medicamento(
+	id INTEGER NOT NULL,
+	nome CHAR(25) NOT NULL UNIQUE,
+	tamanho SMALLINT NOT NULL DEFAULT 1 
+	descricao TEXT NOT NULL,
+	raridade SMALLINT NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2)
+	cura SMALLINT NOT NULL,
+	quantidade SMALLINT NOT NULL DEFAULT 5
+	PRIMARY KEY (id),
+	FOREIGN KEY (id) REFERENCES item_nao_fabricavel(id)
+);
+
+CREATE TABLE comida(
+	id INTEGER NOT NULL,
+	nome CHAR(25) NOT NULL UNIQUE,
+	tamanho SMALLINT NOT NULL DEFAULT 1 
+	descricao TEXT NOT NULL,
+	raridade SMALLINT NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2)
+	quantidade SMALLINT NOT NULL DEFAULT 3
+	PRIMARY KEY (id),
+	FOREIGN KEY (id) REFERENCES item_nao_fabricavel(id)
+);
+
 CREATE TABLE utilizavel(
-	id_item INTEGER NOT NULL,
-	nome_item CHAR(25) NOT NULL UNIQUE,
-	tamanho_item INT NOT NULL DEFAULT 1 CHECK (tamanho_item >= 1),
-	descricao_item TEXT NOT NULL,
-	dano_arma INT NOT NULL,
-	PRIMARY KEY (id_item),
-	FOREIGN KEY (id_item) REFERENCES item_fabricavel(id_item)
+	id INTEGER NOT NULL,
+	nome CHAR(25) NOT NULL UNIQUE,
+	tamanho SMALLINT NOT NULL DEFAULT 1 
+	descricao TEXT NOT NULL,
+	raridade SMALLINT NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2)
+	quantidade SMALLINT NOT NULL DEFAULT 1,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id) REFERENCES item_nao_fabricavel(id)
+);
+
+CREATE TABLE missao(
+	id SERIAL NOT NULL,
+	item INTEGER NOT NULL,
+	lugar INTEGER NOT NULL,
+	nome CHAR(25) NOT NULL UNIQUE,
+	descricao TEXT NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (item) REFERENCES item_nao_fabricavel(id)
+	FOREIGN KEY (lugar) REFERENCES lugar(id, regiao),
+
 );
 
 ---
