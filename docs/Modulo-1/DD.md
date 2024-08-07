@@ -147,13 +147,14 @@
 | **Observações** | A Tabela [Item_Nao_Fabricavel](#tabela-item_nao_fabricavel) possui os mesmos nome_item como chave primária e é a chave estrangeira.                        | 
 
 | Nome       | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
-|:-----------|:----------------------------------------------------------------------------------------------------------|:-----------------------|---------|:------------------------------------------------------|
+| :--------- | :-------------------------------------------------------------------------------------------------------- | :--------------------- | ------- | :---------------------------------------------------- |
 | id         | Chave primária que define o número de identificação da comida                                             | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
 | nome       | Atributo que define o nome da comida mencionada                                                           | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
 | tamanho    | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
 | descricao  | Atributo que descreve um breve resumo da função do item mencionado                                        | TEXT                   | -       | NOT NULL                                              |
 | raridade   | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
 | quantidade | Atributo que define a quantidade disponivel de uma comida por espaço, (EX: 3 pães ocupam 1 tamanho)       | SMALLINT               | -       | NOT NULL                                              |
+| cura       | Atributo que define quanto de vida uma comida pode recuperar                                              | SMALLINT               | -       | NOT NULL                                              |
 
 ---
 
@@ -164,14 +165,15 @@
 | **Descrição**   | Tabela para armazenar medicamentos que podem eventualmente serem utilizados para curar o jogador, caso sejam utilizados o medicamento some do inventário do jogador. |
 | **Observações** | A Tabela [Item_Nao_Fabricavel](#tabela-item_nao_fabricavel) possui os mesmos nome_item como chave primária e é a chave estrangeira.                                  | 
 
-| Nome      | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
-|:----------|:----------------------------------------------------------------------------------------------------------|:-----------------------|---------|:------------------------------------------------------|
-| id        | Chave primária que define o número de identificação do medicamento                                        | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
-| nome      | Atributo que define o nome do medicamento mencionado                                                      | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
-| tamanho   | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
-| descricao | Atributo que descreve um breve resumo da função do item mencionado                                        | TEXT                   | -       | NOT NULL                                              |
-| raridade  | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
-| cura      | Atributo que define quanto de vida um medicamento pode recuperar                                          | SMALLINT               | -       | NOT NULL                                              |
+| Nome       | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
+| :--------- | :-------------------------------------------------------------------------------------------------------- | :--------------------- | ------- | :---------------------------------------------------- |
+| id         | Chave primária que define o número de identificação do medicamento                                        | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
+| nome       | Atributo que define o nome do medicamento mencionado                                                      | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
+| tamanho    | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
+| descricao  | Atributo que descreve um breve resumo da função do item mencionado                                        | TEXT                   | -       | NOT NULL                                              |
+| raridade   | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
+| quantidade | Atributo que define a quantidade disponivel de um medicamento por espaço                                  | SMALLINT               | -       | NOT NULL                                              |
+| cura       | Atributo que define quanto de vida um medicamento pode recuperar                                          | SMALLINT               | -       | NOT NULL                                              |
 
 ---
 
@@ -182,14 +184,14 @@
 | **Descrição**   | Tabela para armazenar itens que podem eventualmente serem utilizados, caso sejam utilizados o item some do inventário do jogador.   |
 | **Observações** | A Tabela [Item_Nao_Fabricavel](#tabela-item_nao_fabricavel) possui os mesmos nome_item como chave primária e é a chave estrangeira. | 
 
-| Nome      | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
-|:----------|:----------------------------------------------------------------------------------------------------------|:-----------------------|---------|:------------------------------------------------------|
-| id        | Chave primária que define o número de identificação do item utilizável                                    | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
-| nome      | Atributo que define o nome do utilizavel mencionado                                                       | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
-| tamanho   | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
-| descricao | Atributo que descreve um breve resumo da função do item mencionado                                        | TEXT                   | -       | NOT NULL                                              |
-| raridade  | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
-| efeito    | Atributo que define o efeito do item utilizável.                                                          | TEXT                   | -       | NOT NULL                                              |
+| Nome             | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
+| :--------------- | :-------------------------------------------------------------------------------------------------------- | :--------------------- | ------- | :---------------------------------------------------- |
+| id               | Chave primária que define o número de identificação do item utilizável                                    | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
+| nome             | Atributo que define o nome do utilizavel mencionado                                                       | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
+| tamanho          | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
+| descricao_efeito | Atributo que descreve um breve resumo da função e do efeito, sobre um item mencionado                     | TEXT                   | -       | NOT NULL                                              |
+| raridade         | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
+| quantidade       | Atributo que define a quantidade disponivel de um medicamento por espaço                                  | SMALLINT               | -       | NOT NULL                                              |
 
 ---
 
@@ -405,13 +407,13 @@
 | **Descrição**   | Missão é uma tabela que contém informações especializadas de cada missão no jogo.                              |
 | **Observações** | Possui chave estrangeira vindo de [Lugar](#tabela-lugar) e [Item_Nao_Fabricavel](#tabela-item_nao_fabricavel). |
 
-| Nome                | Definição Lógica                                                                                           | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
-|:--------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------|---------|:----------------------|
-| id                  | Chave primária que define o número de identificação da missão mencionada                                   | SERIAL                 | -       | PRIMARY KEY           |
-| item_nao_fabricavel | Atributo determina qual a recompensa da missão. A recompensa de uma missão sempre é um item não fabricável | INTEGER                | -       | FOREIGN KEY, NOT NULL |
-| lugar               | Chave estrangeira vindo de lugar                                                                           | INTEGER                | -       | FOREIGN KEY           |
-| nome                | Atributo que define o nome da missão mencionada                                                            | CHAR                   | 25      | NOT NULL              |
-| descricao           | Atributo que define uma descrição detalhando os objetivos necessários para completar a missão atual        | TEXT                   | -       | NOT NULL              |
+| Nome      | Definição Lógica                                                                                           | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+| :-------- | :--------------------------------------------------------------------------------------------------------- | :--------------------- | ------- | :-------------------- |
+| id        | Chave primária que define o número de identificação da missão mencionada                                   | SERIAL                 | -       | PRIMARY KEY           |
+| item      | Atributo determina qual a recompensa da missão. A recompensa de uma missão sempre é um item não fabricável | INTEGER                | -       | FOREIGN KEY           |
+| lugar     | Chave estrangeira vindo de lugar                                                                           | INTEGER                | -       | FOREIGN KEY           |
+| nome      | Atributo que define o nome da missão mencionada                                                            | CHAR                   | 25      | NOT NULL              |
+| descricao | Atributo que define uma descrição detalhando os objetivos necessários para completar a missão atual        | TEXT                   | -       | NOT NULL              |
 
 ---
 
