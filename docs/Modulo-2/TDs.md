@@ -655,6 +655,6 @@
 | 05/08/2024 | `2.0`  |                                                  Adiciona missao e formata tabelas.                                                  | [Fernando Gabriel](https://github.com/show-dawn)      |
 | 06/08/2024 | `2.1`  |                                         Corrige a tabela [`Lugar_Proximo`](#Lugar_Proximo).                                          | [Breno Alexandre](https://github.com/brenoalexandre0) |
 | 06/08/2024 | `2.2`  |                                           Popula instancia de item e lista de fabricacao.                                            | [João Antonio G.](https://github.com/joaoseisei)      |
-| 06/08/2024 | `2.3`  |                                     Termina de corrigir a tabela [`Lugar_Proximo`](#Lugar_Proximo).                                  | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 06/08/2024 | `2.3`  |                              Termina de corrigir a tabela [`Lugar_Origem_Destino`](#Lugar_Origem_Destino).                           | [Breno Alexandre](https://github.com/brenoalexandre0) |
 
 </div>
