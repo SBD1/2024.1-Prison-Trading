@@ -655,6 +655,6 @@
 | 06/08/2024 | `2.1`  |                                         Corrige a tabela [`Lugar_Proximo`](#Lugar_Proximo).                                          | [Breno Alexandre](https://github.com/brenoalexandre0) |
 | 06/08/2024 | `2.2`  |                                           Popula instancia de item e lista de fabricacao.                                            | [João Antonio G.](https://github.com/joaoseisei)      |
 | 06/08/2024 | `2.3`  |                     Termina de corrigir a tabela [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino).                      | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 07/08/2024 | `2.4`  |                                    Adiciona chaves compostas em lista_fabricacao e instanci_item.                                    | [João Antonio G.](https://github.com/joaoseisei)      |
+| 07/08/2024 | `2.4`  |                                   Adiciona chaves compostas em lista_fabricacao e instancia_item.                                    | [João Antonio G.](https://github.com/joaoseisei)      |
 
 </div>
