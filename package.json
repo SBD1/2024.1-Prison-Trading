@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/SBD1/2024.1-Prison-Trading#readme",
   "dependencies": {
-    "docsify-cli": "^4.4.4"
+    "docsify-cli": "^4.4.4",
+    "docsify-darklight-theme": "^3.2.0"
   }
 }
