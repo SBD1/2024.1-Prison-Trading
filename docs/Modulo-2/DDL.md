@@ -21,6 +21,7 @@ BEGIN TRANSACTION;
 
 CREATE TYPE TipoItem AS ENUM('fabricavel', 'nao_fabricavel');
 CREATE TYPE TipoItemFabricavel AS ENUM('ferramenta', 'arma');
+CREATE TYPE TipoItemNaoFabricavel AS ENUM('comida', 'medicamento', 'utilizavel');
 
 CREATE TABLE item(
 	id SERIAL NOT NULL,
@@ -48,6 +49,13 @@ CREATE TABLE instancia_item(
 CREATE TABLE item_fabricavel(
 	id INTEGER NOT NULL,
 	tipo TipoItemFabricavel NOT NULL,
+	PRIMARY KEY (id),
+	FOREIGN KEY (id) REFERENCES item(id)
+);
+
+CREATE TABLE item_nao_fabricavel(
+	id INTEGER NOT NULL,
+	tipo TipoItemNaoFabricavel NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (id) REFERENCES item(id)
 );
