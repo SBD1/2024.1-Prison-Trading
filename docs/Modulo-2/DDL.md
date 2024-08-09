@@ -105,6 +105,7 @@ CREATE TABLE lista_fabricacao(
 );
 
 COMMIT;
+
 ```
 
 >PARTE DO FERNANDO, MEXER!!!
