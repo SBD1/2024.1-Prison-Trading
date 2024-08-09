@@ -389,125 +389,125 @@
 
 # Tabela Regiao
 
-| id | nome       | prisao | descricao                                                                                           |
-|----|------------|--------|-----------------------------------------------------------------------------------------------------|
-| 1  | celas      | 1      | Local onde estão as celas e solitárias dos prisioneiros.                                            |
-| 2  | banheiros  | 1      | Local onde os prisioneiros se banham.                                                               |
-| 3  | enfermaria | 1      | Local onde os prisioneiros podem se tratar/curar.                                                   |
-| 4  | refeitorio | 1      | Local onde os prisioneiros fazem suas refeições.                                                    |
-| 5  | patio      | 1      | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futsal e relaxar. |
-| 6  | oficinas   | 1      | Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.                                 |
+| id | nome       | prisao      | descricao                                                                                           |
+|----|------------|-------------|-----------------------------------------------------------------------------------------------------|
+| 1  | celas      | 1 [Basilio] | Local onde estão as celas e solitárias dos prisioneiros.                                            |
+| 2  | banheiros  | 1 [Basilio] | Local onde os prisioneiros se banham.                                                               |
+| 3  | enfermaria | 1 [Basilio] | Local onde os prisioneiros podem se tratar/curar.                                                   |
+| 4  | refeitorio | 1 [Basilio] | Local onde os prisioneiros fazem suas refeições.                                                    |
+| 5  | patio      | 1 [Basilio] | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futsal e relaxar. |
+| 6  | oficinas   | 1 [Basilio] | Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.                                 |
 
 ---
 
 # Tabela Lugar
 
-| id | nome                | *regiao* | descricao                                                                                |
-|----|---------------------|----------|------------------------------------------------------------------------------------------|
-| 1  | solitaria Oeste     | 1        | Cela para os prisioneiros levadinhos. Na parede direita há uma mancha de cimento fresco. |
-| 2  | cela A              | 1        | Cela onde dormem os prisioneiros 1 e 2.                                                  |
-| 3  | cela B              | 1        | Cela onde dormem os prisioneiros 3 e 4.                                                  |
-| 4  | cela C              | 1        | Cela onde dormem os prisioneiros 5 e 6.                                                  |
-| 5  | cela D              | 1        | Cela onde dormem os prisioneiros 7 e 8.                                                  |
-| 6  | cela E              | 1        | Cela onde dormem os prisioneiros 9 e 10.                                                 |
-| 7  | cela F              | 1        | Cela onde dormem os prisioneiros 11 e 12.                                                |
-| 8  | cela G              | 1        | Cela onde dormem o prisioneiro 13 e o jogador.                                           |
-| 9  | solitaria Leste     | 1        | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.   |
-| 10 | corredor Celas      | 1        | Corredor para se deslocar entre as celas e as solitárias.                                |
-| 11 | banheiro A          | 2        | Banheiro onde os prisioneiros tomam banho.                                               |
-| 12 | banheiro B          | 2        | Banheiro onde os prisioneiros tomam banho.                                               |
-| 13 | banheiro C          | 2        | Banheiro onde os prisioneiros tomam banho.                                               |
-| 14 | banheiro D          | 2        | Banheiro onde os prisioneiros tomam banho.                                               |
-| 15 | corredor Banheiros  | 2        | Corredor para se deslocar entre os banheiros.                                            |
-| 16 | sala A              | 3        | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
-| 17 | sala B              | 3        | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
-| 18 | sala C              | 3        | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
-| 19 | corredor Enfermaria | 3        | Corredor para se deslocar entre as salas da enfermaria.                                  |
-| 20 | mesa Esquerda       | 4        | Mesa onde a gangue 1 faz suas refeições.                                                 |
-| 21 | mesa Direita        | 4        | Mesa onde a gangue 2 faz suas refeições.                                                 |
-| 22 | corredor Refeitorio | 4        | Corredor para se deslocar entre as mesas do refeitório.                                  |
-| 23 | academia Simples    | 5        | Uma área com equipamentos simples de exercício.                                          |
-| 24 | quadra De Basquete  | 5        | Quadra onde os prisioneiros jogam basquete/futsal para se distrair e se exercitar.       |
-| 25 | arquibancada        | 5        | Arquibancada onde os prisioneiros podem conversar e assistir os jogos.                   |
-| 26 | area De Lazer       | 5        | Bancos onde os prisioneiros podem sentar e conversar.                                    |
-| 27 | corredor Patio      | 5        | Corredor para se deslocar entre as áreas do pátio e as oficinas.                         |
-| 28 | oficina A           | 6        | Oficina de marcenaria onde os prisioneiros trabalham.                                    |
-| 29 | oficina B           | 6        | Oficina de impressão de placas de carro onde os prisioneiros trabalham.                  |
+| id | nome                | *regiao*       | descricao                                                                                |
+|----|---------------------|----------------|------------------------------------------------------------------------------------------|
+| 1  | solitaria Oeste     | 1 [celas]      | Cela para os prisioneiros levadinhos. Na parede direita há uma mancha de cimento fresco. |
+| 2  | cela A              | 1 [celas]      | Cela onde dormem os prisioneiros 1 e 2.                                                  |
+| 3  | cela B              | 1 [celas]      | Cela onde dormem os prisioneiros 3 e 4.                                                  |
+| 4  | cela C              | 1 [celas]      | Cela onde dormem os prisioneiros 5 e 6.                                                  |
+| 5  | cela D              | 1 [celas]      | Cela onde dormem os prisioneiros 7 e 8.                                                  |
+| 6  | cela E              | 1 [celas]      | Cela onde dormem os prisioneiros 9 e 10.                                                 |
+| 7  | cela F              | 1 [celas]      | Cela onde dormem os prisioneiros 11 e 12.                                                |
+| 8  | cela G              | 1 [celas]      | Cela onde dormem o prisioneiro 13 e o jogador.                                           |
+| 9  | solitaria Leste     | 1 [celas]      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.   |
+| 10 | corredor Celas      | 1 [celas]      | Corredor para se deslocar entre as celas e as solitárias.                                |
+| 11 | banheiro A          | 2 [banheiros]  | Banheiro onde os prisioneiros tomam banho.                                               |
+| 12 | banheiro B          | 2 [banheiros]  | Banheiro onde os prisioneiros tomam banho.                                               |
+| 13 | banheiro C          | 2 [banheiros]  | Banheiro onde os prisioneiros tomam banho.                                               |
+| 14 | banheiro D          | 2 [banheiros]  | Banheiro onde os prisioneiros tomam banho.                                               |
+| 15 | corredor Banheiros  | 2 [banheiros]  | Corredor para se deslocar entre os banheiros.                                            |
+| 16 | sala A              | 3 [enfermaria] | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
+| 17 | sala B              | 3 [enfermaria] | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
+| 18 | sala C              | 3 [enfermaria] | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
+| 19 | corredor Enfermaria | 3 [enfermaria] | Corredor para se deslocar entre as salas da enfermaria.                                  |
+| 20 | mesa Esquerda       | 4 [refeitorio] | Mesa onde a gangue 1 faz suas refeições.                                                 |
+| 21 | mesa Direita        | 4 [refeitorio] | Mesa onde a gangue 2 faz suas refeições.                                                 |
+| 22 | corredor Refeitorio | 4 [refeitorio] | Corredor para se deslocar entre as mesas do refeitório.                                  |
+| 23 | academia Simples    | 5 [patio]      | Uma área com equipamentos simples de exercício.                                          |
+| 24 | quadra De Basquete  | 5 [patio]      | Quadra onde os prisioneiros jogam basquete/futsal para se distrair e se exercitar.       |
+| 25 | arquibancada        | 5 [patio]      | Arquibancada onde os prisioneiros podem conversar e assistir os jogos.                   |
+| 26 | area De Lazer       | 5 [patio]      | Bancos onde os prisioneiros podem sentar e conversar.                                    |
+| 27 | corredor Patio      | 5 [patio]      | Corredor para se deslocar entre as áreas do pátio e as oficinas.                         |
+| 28 | oficina A           | 6 [oficinas]   | Oficina de marcenaria onde os prisioneiros trabalham.                                    |
+| 29 | oficina B           | 6 [oficinas]   | Oficina de impressão de placas de carro onde os prisioneiros trabalham.                  |
 
 ---
 
 # Tabela Lugar_Origem_Destino
 
-| lugar_origem             | lugar_destino            |
-|--------------------------|--------------------------|
-| 1 [solitaria Oeste]      | 2 [cela A]               |
-| 1 [solitaria Oeste]      | 10 [corredor Celas]      |
-| 2 [cela A]               | 1 [solitaria Oeste]      |
-| 2 [cela A]               | 10 [corredor Celas]      |
-| 3 [cela B]               | 10 [corredor Celas]      |
-| 4 [cela C]               | 10 [corredor Celas]      |
-| 5 [cela D]               | 10 [corredor Celas]      |
-| 6 [cela E]               | 10 [corredor Celas]      |
-| 7 [cela F]               | 10 [corredor Celas]      |
-| 8 [cela G]               | 10 [corredor Celas]      |
-| 9 [solitaria Leste]      | 10 [corredor Celas]      |
-| 10 [corredor Celas]      | 1 [solitaria Oeste]      |
-| 10 [corredor Celas]      | 2 [cela A]               |
-| 10 [corredor Celas]      | 3 [cela B]               |
-| 10 [corredor Celas]      | 4 [cela C]               |
-| 10 [corredor Celas]      | 5 [cela D]               |
-| 10 [corredor Celas]      | 6 [cela E]               |
-| 10 [corredor Celas]      | 7 [cela F]               |
-| 10 [corredor Celas]      | 8 [cela G]               |
-| 10 [corredor Celas]      | 9 [solitaria Leste]      |
-| 10 [corredor Celas]      | 15 [corredor Banheiros]  |
-| 11 [banheiro A]          | 15 [corredor Banheiros]  |
-| 12 [banheiro B]          | 15 [corredor Banheiros]  |
-| 13 [banheiro C]          | 15 [corredor Banheiros]  |
-| 14 [banheiro D]          | 15 [corredor Banheiros]  |
-| 15 [corredor Banheiros]  | 10 [corredor Celas]      |
-| 15 [corredor Banheiros]  | 11 [banheiro A]          |
-| 15 [corredor Banheiros]  | 12 [banheiro B]          |
-| 15 [corredor Banheiros]  | 13 [banheiro C]          |
-| 15 [corredor Banheiros]  | 14 [banheiro D]          |
-| 15 [corredor Banheiros]  | 19 [corredor Enfermaria] |
-| 15 [corredor Banheiros]  | 22 [corredor Refeitorio] |
-| 16 [sala A]              | 17 [sala B]              |
-| 16 [sala A]              | 19 [corredor Enfermaria] |
-| 17 [sala B]              | 16 [sala A]              |
-| 17 [sala B]              | 18 [sala C]              |
-| 17 [sala B]              | 19 [corredor Enfermaria] |
-| 18 [sala C]              | 17 [sala B]              |
-| 18 [sala C]              | 19 [corredor Enfermaria] |
-| 19 [corredor Enfermaria] | 15 [corredor Banheiros]  |
-| 19 [corredor Enfermaria] | 16 [sala A]              |
-| 19 [corredor Enfermaria] | 17 [sala B]              |
-| 19 [corredor Enfermaria] | 18 [sala C]              |
-| 20 [mesa Esquerda]       | 22 [corredor Refeitorio] |
-| 21 [mesa Direita]        | 22 [corredor Refeitorio] |
-| 22 [corredor Refeitorio] | 15 [corredor Banheiros]  |
-| 22 [corredor Refeitorio] | 20 [mesa Esquerda]       |
-| 22 [corredor Refeitorio] | 21 [mesa Direita]        |
-| 22 [corredor Refeitorio] | 27 [corredor Patio ]     |
-| 23 [academia Simples]    | 24 [quadra De Basquete]  |
-| 23 [academia Simples]    | 27 [corredor Patio ]     |
-| 24 [quadra De Basquete]  | 23 [academia Simples]    |
-| 24 [quadra De Basquete]  | 25 [arquibancada]        |
-| 24 [quadra De Basquete]  | 27 [corredor Patio ]     |
-| 25 [arquibancada]        | 24 [quadra De Basquete]  |
-| 25 [arquibancada]        | 26 [area De Lazer]       |
-| 25 [arquibancada]        | 27 [corredor Patio ]     |
-| 26 [area De Lazer]       | 25 [arquibancada]        |
-| 26 [area De Lazer]       | 27 [corredor Patio ]     |
-| 27 [corredor Patio ]     | 22 [corredor Refeitorio] |
-| 27 [corredor Patio ]     | 23 [academia Simples]    |
-| 27 [corredor Patio ]     | 24 [quadra De Basquete]  |
-| 27 [corredor Patio ]     | 25 [arquibancada]        |
-| 27 [corredor Patio ]     | 26 [area De Lazer]       |
-| 27 [corredor Patio ]     | 28 [oficina A]           |
-| 27 [corredor Patio ]     | 29 [oficina B]           |
-| 28 [oficina A]           | 27 [corredor Patio ]     |
-| 29 [oficina B]           | 27 [corredor Patio ]     |
+| lugar_origem             | regiao_origem  | lugar_destino            | regiao_destino |
+|--------------------------|----------------|--------------------------|----------------|
+| 1 [solitaria Oeste]      | 1 [celas]      | 2 [cela A]               | 1 [celas]      |
+| 1 [solitaria Oeste]      | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
+| 2 [cela A]               | 1 [celas]      | 1 [solitaria Oeste]      | 1 [celas]      |
+| 2 [cela A]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
+| 3 [cela B]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
+| 4 [cela C]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
+| 5 [cela D]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
+| 6 [cela E]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
+| 7 [cela F]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
+| 8 [cela G]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
+| 9 [solitaria Leste]      | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
+| 10 [corredor Celas]      | 1 [celas]      | 1 [solitaria Oeste]      | 1 [celas]      |
+| 10 [corredor Celas]      | 1 [celas]      | 2 [cela A]               | 1 [celas]      |
+| 10 [corredor Celas]      | 1 [celas]      | 3 [cela B]               | 1 [celas]      |
+| 10 [corredor Celas]      | 1 [celas]      | 4 [cela C]               | 1 [celas]      |
+| 10 [corredor Celas]      | 1 [celas]      | 5 [cela D]               | 1 [celas]      |
+| 10 [corredor Celas]      | 1 [celas]      | 6 [cela E]               | 1 [celas]      |
+| 10 [corredor Celas]      | 1 [celas]      | 7 [cela F]               | 1 [celas]      |
+| 10 [corredor Celas]      | 1 [celas]      | 8 [cela G]               | 1 [celas]      |
+| 10 [corredor Celas]      | 1 [celas]      | 9 [solitaria Leste]      | 1 [celas]      |
+| 10 [corredor Celas]      | 1 [celas]      | 15 [corredor Banheiros]  | 2 [banheiros]  |
+| 11 [banheiro A]          | 2 [banheiros]  | 15 [corredor Banheiros]  | 2 [banheiros]  |
+| 12 [banheiro B]          | 2 [banheiros]  | 15 [corredor Banheiros]  | 2 [banheiros]  |
+| 13 [banheiro C]          | 2 [banheiros]  | 15 [corredor Banheiros]  | 2 [banheiros]  |
+| 14 [banheiro D]          | 2 [banheiros]  | 15 [corredor Banheiros]  | 2 [banheiros]  |
+| 15 [corredor Banheiros]  | 2 [banheiros]  | 10 [corredor Celas]      | 1 [celas]      |
+| 15 [corredor Banheiros]  | 2 [banheiros]  | 11 [banheiro A]          | 2 [banheiros]  |
+| 15 [corredor Banheiros]  | 2 [banheiros]  | 12 [banheiro B]          | 2 [banheiros]  |
+| 15 [corredor Banheiros]  | 2 [banheiros]  | 13 [banheiro C]          | 2 [banheiros]  |
+| 15 [corredor Banheiros]  | 2 [banheiros]  | 14 [banheiro D]          | 2 [banheiros]  |
+| 15 [corredor Banheiros]  | 2 [banheiros]  | 19 [corredor Enfermaria] | 3 [enfermaria] |
+| 15 [corredor Banheiros]  | 2 [banheiros]  | 22 [corredor Refeitorio] | 4 [refeitorio] |
+| 16 [sala A]              | 3 [enfermaria] | 17 [sala B]              | 3 [enfermaria] |
+| 16 [sala A]              | 3 [enfermaria] | 19 [corredor Enfermaria] | 3 [enfermaria] |
+| 17 [sala B]              | 3 [enfermaria] | 16 [sala A]              | 3 [enfermaria] |
+| 17 [sala B]              | 3 [enfermaria] | 18 [sala C]              | 3 [enfermaria] |
+| 17 [sala B]              | 3 [enfermaria] | 19 [corredor Enfermaria] | 3 [enfermaria] |
+| 18 [sala C]              | 3 [enfermaria] | 17 [sala B]              | 3 [enfermaria] |
+| 18 [sala C]              | 3 [enfermaria] | 19 [corredor Enfermaria] | 3 [enfermaria] |
+| 19 [corredor Enfermaria] | 3 [enfermaria] | 15 [corredor Banheiros]  | 2 [banheiros]  |
+| 19 [corredor Enfermaria] | 3 [enfermaria] | 16 [sala A]              | 3 [enfermaria] |
+| 19 [corredor Enfermaria] | 3 [enfermaria] | 17 [sala B]              | 3 [enfermaria] |
+| 19 [corredor Enfermaria] | 3 [enfermaria] | 18 [sala C]              | 3 [enfermaria] |
+| 20 [mesa Esquerda]       | 4 [refeitorio] | 22 [corredor Refeitorio] | 4 [refeitorio] |
+| 21 [mesa Direita]        | 4 [refeitorio] | 22 [corredor Refeitorio] | 4 [refeitorio] |
+| 22 [corredor Refeitorio] | 4 [refeitorio] | 15 [corredor Banheiros]  | 2 [banheiros]  |
+| 22 [corredor Refeitorio] | 4 [refeitorio] | 20 [mesa Esquerda]       | 4 [refeitorio] |
+| 22 [corredor Refeitorio] | 4 [refeitorio] | 21 [mesa Direita]        | 4 [refeitorio] |
+| 22 [corredor Refeitorio] | 4 [refeitorio] | 27 [corredor Patio ]     | 5 [patio]      |
+| 23 [academia Simples]    | 5 [patio]      | 24 [quadra De Basquete]  | 5 [patio]      |
+| 23 [academia Simples]    | 5 [patio]      | 27 [corredor Patio ]     | 5 [patio]      |
+| 24 [quadra De Basquete]  | 5 [patio]      | 23 [academia Simples]    | 5 [patio]      |
+| 24 [quadra De Basquete]  | 5 [patio]      | 25 [arquibancada]        | 5 [patio]      |
+| 24 [quadra De Basquete]  | 5 [patio]      | 27 [corredor Patio ]     | 5 [patio]      |
+| 25 [arquibancada]        | 5 [patio]      | 24 [quadra De Basquete]  | 5 [patio]      |
+| 25 [arquibancada]        | 5 [patio]      | 26 [area De Lazer]       | 5 [patio]      |
+| 25 [arquibancada]        | 5 [patio]      | 27 [corredor Patio ]     | 5 [patio]      |
+| 26 [area De Lazer]       | 5 [patio]      | 25 [arquibancada]        | 5 [patio]      |
+| 26 [area De Lazer]       | 5 [patio]      | 27 [corredor Patio ]     | 5 [patio]      |
+| 27 [corredor Patio ]     | 5 [patio]      | 22 [corredor Refeitorio] | 4 [refeitorio] |
+| 27 [corredor Patio ]     | 5 [patio]      | 23 [academia Simples]    | 5 [patio]      |
+| 27 [corredor Patio ]     | 5 [patio]      | 24 [quadra De Basquete]  | 5 [patio]      |
+| 27 [corredor Patio ]     | 5 [patio]      | 25 [arquibancada]        | 5 [patio]      |
+| 27 [corredor Patio ]     | 5 [patio]      | 26 [area De Lazer]       | 5 [patio]      |
+| 27 [corredor Patio ]     | 5 [patio]      | 28 [oficina A]           | 6 [oficinas]   |
+| 27 [corredor Patio ]     | 5 [patio]      | 29 [oficina B]           | 6 [oficinas]   |
+| 28 [oficina A]           | 6 [oficinas]   | 27 [corredor Patio ]     | 5 [patio]      |
+| 29 [oficina B]           | 6 [oficinas]   | 27 [corredor Patio ]     | 5 [patio]      |
 
 ---
 
@@ -639,22 +639,23 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-| Data       | Versão |                                                              Descrição                                                               | Autores                                               |
-|------------|--------|:------------------------------------------------------------------------------------------------------------------------------------:|-------------------------------------------------------|
-| 26/07/2024 | `1.0`  |                                                        Criação do documento.                                                         | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 28/07/2024 | `1.1`  |                                           Desenvolvimento de algumas tabelas e correções.                                            | [João Antonio G.](https://github.com/joaoseisei)      |
-| 28/07/2024 | `1.2`  |                                                   Desenvolvimento algumas tabelas.                                                   | [Fernando Gabriel](https://github.com/show-dawn)      |
-| 28/07/2024 | `1.3`  |                                                   Desenvolvimento algumas tabelas.                                                   | [Julio Cesar](https://github.com/Julio1099)           |
-| 29/07/2024 | `1.4`  |                                                 Completa a tabela [`Lugar`](#Lugar)                                                  | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 29/07/2024 | `1.5`  |                                                        Ajustes tabela Pessoa                                                         | [Júlio Cesar](https://github.com/julio1099)           |
-| 29/07/2024 | `1.6`  |                                                   Desenvolvimento algumas tabelas.                                                   | [Fernando Gabriel](https://github.com/show-dawn)      |
-| 02/08/2024 | `1.7`  |                                                       Correção tabela Pessoa.                                                        | [Júlio Cesar](https://github.com/Julio1099)           |
-| 04/08/2024 | `1.8`  |                                                         Adiciona os crafts.                                                          | [João Antonio G.](https://github.com/joaoseisei)      |
-| 04/08/2024 | `1.9`  | Corrige as tabelas [`Prisao`](#Prisao), [`Regiao`](#Regiao) e [`Lugar`](#Lugar), e cria a tabela [`Lugar_Anterior`](#Lugar_Anterior) | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 05/08/2024 | `2.0`  |                                                  Adiciona missao e formata tabelas.                                                  | [Fernando Gabriel](https://github.com/show-dawn)      |
-| 06/08/2024 | `2.1`  |                                         Corrige a tabela [`Lugar_Proximo`](#Lugar_Proximo).                                          | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 06/08/2024 | `2.2`  |                                           Popula instancia de item e lista de fabricacao.                                            | [João Antonio G.](https://github.com/joaoseisei)      |
-| 06/08/2024 | `2.3`  |                     Termina de corrigir a tabela [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino).                      | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 07/08/2024 | `2.4`  |                                   Adiciona chaves compostas em lista_fabricacao e instancia_item.                                    | [João Antonio G.](https://github.com/joaoseisei)      |
+| Data       | Versão |                                                              Descrição                                                                           | Autores                                               |
+|------------|--------|:------------------------------------------------------------------------------------------------------------------------------------------------:|-------------------------------------------------------|
+| 26/07/2024 | `1.0`  |                                                        Criação do documento.                                                                     | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 28/07/2024 | `1.1`  |                                           Desenvolvimento de algumas tabelas e correções.                                                        | [João Antonio G.](https://github.com/joaoseisei)      |
+| 28/07/2024 | `1.2`  |                                                   Desenvolvimento algumas tabelas.                                                               | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 28/07/2024 | `1.3`  |                                                   Desenvolvimento algumas tabelas.                                                               | [Julio Cesar](https://github.com/Julio1099)           |
+| 29/07/2024 | `1.4`  |                                                 Completa a tabela [`Lugar`](#Lugar)                                                              | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 29/07/2024 | `1.5`  |                                                        Ajustes tabela Pessoa                                                                     | [Júlio Cesar](https://github.com/julio1099)           |
+| 29/07/2024 | `1.6`  |                                                   Desenvolvimento algumas tabelas.                                                               | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 02/08/2024 | `1.7`  |                                                       Correção tabela Pessoa.                                                                    | [Júlio Cesar](https://github.com/Julio1099)           |
+| 04/08/2024 | `1.8`  |                                                         Adiciona os crafts.                                                                      | [João Antonio G.](https://github.com/joaoseisei)      |
+| 04/08/2024 | `1.9`  | Corrige as tabelas [`Prisao`](#Prisao), [`Regiao`](#Regiao) e [`Lugar`](#Lugar), e cria a tabela [`Lugar_Anterior`](#Lugar_Anterior)             | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 05/08/2024 | `2.0`  |                                                  Adiciona missao e formata tabelas.                                                              | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 06/08/2024 | `2.1`  |                                         Corrige a tabela [`Lugar_Proximo`](#Lugar_Proximo).                                                      | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 06/08/2024 | `2.2`  |                                           Popula instancia de item e lista de fabricacao.                                                        | [João Antonio G.](https://github.com/joaoseisei)      |
+| 06/08/2024 | `2.3`  |                     Termina de corrigir a tabela [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino).                                  | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 07/08/2024 | `2.4`  |                                   Adiciona chaves compostas em lista_fabricacao e instancia_item.                                                | [João Antonio G.](https://github.com/joaoseisei)      |
+| 09/08/2024 | `2.5`  |                     Correção das tabelas [`Regiao`](#Regiao), [`Lugar`](#Lugar) e [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino). | [Breno Alexandre](https://github.com/brenoalexandre0) |
 
 </div>
