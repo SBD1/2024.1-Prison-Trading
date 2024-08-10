@@ -121,50 +121,49 @@ VALUES
 
 INSERT INTO utilizavel(id, nome, tamanho, descricao_efeito, raridade, quantidade)
 VALUES
-(14, 'Sabao', 1, 'serve para remover sujeira e impurezas de superfícies e objetos, também é um material para fabricação de itens.', 0, 1),
+(14, 'Sabao', 1, 'Serve para remover sujeira e impurezas de superfícies e objetos, também é um material para fabricação de itens.', 0, 1),
 (15, 'Pedra', 1, 'A pedra serve para construção e também é um material para fabricação de itens.', 0, 3),
-(16, 'graveto', 1, 'Produto de origem vegetal, é usado como material para fabricação de itens.', 0, 3),
-(17, 'linha', 1, 'fio fino e flexível utilizado como material para fabricação de itens.', 0, 3),          
-(18, 'pedaco pequeno de metal', 1, 'Corda revestida com vidro moído para causar cortes.', 1, 3),          
-(19, 'vidro', 1, 'utilizado como material para fabricação de cerol.', 0, 1),          
-(20, 'pedaco grande de metal', 3, 'Garrafa de vidro quebrada, usada como arma cortante.', 2, 1),          
-(21, 'alcool', 1, 'utilizado como material para fabricação de coctel molotov e garrafa quebrada.', 1, 1),          
-(22, 'tecido', 1, 'Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.', 1, 3),          
-(23, 'garrada de vidro', 2, 'utilizado como material para fabricação de coctel molotov e garrafa quebrada.', 1, 1),          
-(24, 'plastico', 1, 'Corda revestida com vidro moído para causar cortes.', 0, 3),          
-(25, 'Isqueiro', 1, 'Isqueiro é um dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas.', 1, 1),          
-(26, 'Lanterna', 1, 'Lanterna é um dispositivo portátil que emite luz.', 1, 1),          
-(27, 'cigarro', 1, 'Moeda de troca do jogo, além de poder ser utilizado para acalmar.', 1, 10);         
+(16, 'Graveto', 1, 'Produto de origem vegetal, é usado como material para fabricação de itens.', 0, 3),
+(17, 'Linha', 1, 'Fio fino e flexível utilizado como material para fabricação de itens.', 0, 3),
+(18, 'Pedaco pequeno de metal', 1, 'Material para fabricação de itens.', 1, 3),
+(19, 'Vidro', 1, 'Utilizado como material para fabricação de cerol.', 0, 1),
+(20, 'Pedaco grande de metal', 3, 'Material para fabricação de itens pesados.', 2, 1),
+(21, 'Alcool', 1, 'Utilizado como material para fabricação de coquetel molotov e garrafa quebrada.', 1, 1),
+(22, 'Tecido', 1, 'Utilizado como material para fabricação de explosivos.', 1, 3),
+(23, 'Garrafa de vidro', 2, 'Utilizado como material para fabricação de coquetel molotov e garrafa quebrada.', 1, 1),
+(24, 'Plastico', 1, 'Material versátil utilizado para várias criações.', 0, 3),
+(25, 'Isqueiro', 1, 'Dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas.', 1, 1),
+(26, 'Lanterna', 1, 'Dispositivo portátil que emite luz.', 1, 1),
+(27, 'Cigarro', 1, 'Moeda de troca do jogo, além de poder ser utilizado para acalmar.', 1, 10);
 
 INSERT INTO medicamento(id, nome, tamanho, descricao, raridade, cura, quantidade)
 VALUES
-(28, 'anti-inflamatorio', 1, 'Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.', 2, 3, 5),          
-(29, 'Morfina', 1, 'Analgésico opiáceo potente utilizado para aliviar dores intensas.', 1, 10, 2),          
-(30, 'Bandagem', 1, 'Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo.', 0, 2, 5);         
+(28, 'Anti-inflamatorio', 1, 'Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.', 2, 3, 5),
+(29, 'Morfina', 1, 'Analgésico opiáceo potente utilizado para aliviar dores intensas.', 1, 10, 2),
+(30, 'Bandagem', 1, 'Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo.', 0, 2, 5);
 
 INSERT INTO comida(id, nome, tamanho, descricao, raridade, quantidade, cura)
 VALUES
-(31, 'Pao seco', 1 'um pão tão seco e duro, que parece que o proprio vandor amassou ele.', 0, 1, 0),
-(32, 'Pao', 1 'alimento básico feito a partir de farinha, água e fermento.', 0, 3, 1),    
-(33, 'Queijo', 1 'produto lácteo sólido feito a partir da coagulação do leite.', 0, 3, 1),    
-(34, 'Carne', 2 'é o tecido muscular de animais, como bovinos ou suínos, consumido como alimento.', 2, 1, 5),    
-(35, 'Peixe', 1 'tecido muscular de peixe, consumido como alimento.', 1, 2, 3),    
-(36, 'Laranja', 1 'fruta cítrica, suculenta e doce.', 0, 3, 1); 
+(31, 'Pao seco', 1, 'Um pão tão seco e duro, que parece que o próprio vendendor amassou ele.', 0, 1, 0),
+(32, 'Pao', 1, 'Alimento básico feito a partir de farinha, água e fermento.', 0, 3, 1),
+(33, 'Queijo', 1, 'Produto lácteo sólido feito a partir da coagulação do leite.', 0, 3, 1),
+(34, 'Carne', 2, 'Tecido muscular de animais, como bovinos ou suínos, consumido como alimento.', 2, 1, 5),
+(35, 'Peixe', 1, 'Tecido muscular de peixe, consumido como alimento.', 1, 2, 3),
+(36, 'Laranja', 1, 'Fruta cítrica, suculenta e doce.', 0, 3, 1);
 
 INSERT INTO missao(id, item, lugar, nome, descricao)
 VALUES
-(1, 'chave oficina A', 1, 'Fuja da solitaria oeste', 'Escape da cela de isolamento leste sem ser pego.'),                           
-(2, 'chave oficina B', 9, 'Fuja da solitaria leste', 'Escape da cela de isolamento oeste sem ser pego.'),                           
-(3, 'BANDAGEM', 5, 'Observar cela', 'Observe e memorize os detalhes da cela para planejar uma fuga.'),             
-(4, 'FACA PEQUENA', 'NULL', 'Escolher gangue', 'Escolha a gangue com a qual se aliar na prisão.'),                            
-(5, 'NULL', 'NULL', 'explorar o mapa', 'Explore os locais no mapa da prisão, para um melhor entendimento do mesmo.'), 
-(6, 'CARNE', 'NULL', 'Brigue com alguém', 'Inicie e participe de uma briga com outro prisioneiro.'),                     
-(7, 'REMEDIO', 'NULL', 'Vença uma briga', 'Vença uma briga contra qualquer prisioneiro.'),                                                            
-(8, 'NULL', 'NULL', 'Fuja da prisão', 'Fuja da prisão e reconquiste a sua liberdade.'),                                                             
-(9, 'pedaco grande de metal', 'NULL', 'encontre o informante', 'encontre o informante que está infiltrado na prisão.'),                                                      
-(10, 'Isqueiro', 24, 'vença um jogo de basquete', 'vença um jogo de basquete contra os outros presos.'),                                                  
-(11, 'CARNE', 23, 'Fique maromba', 'Va na academia.');                                                             
-
+(1, 'Chave Oficina A', 1, 'Fuja da solitária oeste', 'Escape da cela de isolamento leste sem ser pego.'),
+(2, 'Chave Oficina B', 9, 'Fuja da solitária leste', 'Escape da cela de isolamento oeste sem ser pego.'),
+(3, 'Bandagem', 5, 'Observar cela', 'Observe e memorize os detalhes da cela para planejar uma fuga.'),
+(4, 'Faca Pequena', 'NULL', 'Escolher gangue', 'Escolha a gangue com a qual se aliar na prisão.'),
+(5, 'NULL', 'NULL', 'Explorar o mapa', 'Explore os locais no mapa da prisão para um melhor entendimento do mesmo.'),
+(6, 'Carne', 'NULL', 'Brigue com alguém', 'Inicie e participe de uma briga com outro prisioneiro.'),
+(7, 'Remédio', 'NULL', 'Vença uma briga', 'Vença uma briga contra qualquer prisioneiro.'),
+(8, 'NULL', 'NULL', 'Fuja da prisão', 'Fuja da prisão e reconquiste a sua liberdade.'),
+(9, 'Pedaco grande de metal', 'NULL', 'Encontre o informante', 'Encontre o informante que está infiltrado na prisão.'),
+(10, 'Isqueiro', 24, 'Vença um jogo de basquete', 'Vença um jogo de basquete contra os outros presos.'),
+(11, 'Carne', 23, 'Fique maromba', 'Vá na academia.');
 
 INSERT INTO livro_fabricacao(nome)
 VALUES
@@ -317,6 +316,78 @@ VALUES
 (12, NULL, NULL, 20, 20),
 (20, NULL, NULL, 20, 20);
 
+INSERT INTO Pessoa (Id, tipo) VALUES
+(1, 'Jogador'),
+(2, 'Prisioneiro'),
+(3, 'Prisioneiro'),
+(4, 'Prisioneiro'),
+(5, 'Prisioneiro'),
+(6, 'Prisioneiro'),
+(7, 'Prisioneiro'),
+(8, 'Prisioneiro'),
+(9, 'Prisioneiro'),
+(10, 'Prisioneiro'),
+(11, 'Prisioneiro'),
+(12, 'Prisioneiro'),
+(13, 'Prisioneiro'),
+(14, 'Policial'),
+(15, 'Policial'),
+(16, 'Policial'),
+(17, 'Policial'),
+(18, 'Policial'),
+(19, 'Informante'),
+(20, 'Informante');
+
+INSERT INTO Inventario (id, pessoa, inventario_ocupado, tamanho) VALUES
+(1, 1, 0, 5),
+(2, 2, 0, 5),
+(3, 3, 0, 5),
+(4, 4, 0, 5),
+(5, 5, 0, 5),
+(6, 6, 0, 5),
+(7, 7, 0, 5),
+(8, 8, 0, 5),
+(9, 9, 0, 5),
+(10, 10, 0, 5),
+(11, 11, 0, 5),
+(12, 12, 0, 5),
+(13, 13, 0, 5),
+(14, 14, 0, 5),
+(15, 15, 0, 5),
+(16, 16, 0, 5),
+(17, 17, 0, 5),
+(18, 18, 0, 5),
+(19, 19, 0, 5),
+(20, 20, 0, 5);
+
+INSERT INTO Prisioneiro (id, nome, habilidade_briga, vida, força, gangue, lugar) VALUES
+(2, 'Rivas', 4, 9, 7, 'Palhacos', 'quadraDesportiva'),
+(3, 'Filomano', 6, 7, 4, 'Polvos', 'celaB'),
+(4, 'Fragas', 5, 11, 5, 'Palhacos', 'banheiroA'),
+(5, 'Glaucão', 3, 6, 8, 'Polvos', 'mesaEsquerda'),
+(6, 'Ucraniano', 7, 5, 6, 'Palhacos', 'celaC'),
+(7, 'Rispomático', 6, 12, 6, 'Polvos', 'academiaSimples'),
+(8, 'Manogaz', 4, 8, 5, 'Palhacos', 'celaG'),
+(9, 'Dado', 5, 10, 6, 'Polvos', 'banheiroB'),
+(10, 'Fabrilton', 4, 7, 5, 'Palhacos', 'mesaDireita'),
+(11, 'Eneido', 6, 6, 6, 'Polvos', 'solitariaOeste'),
+(12, 'Carlos', 5, 9, 7, 'Palhacos', 'arquibancada'),
+(13, 'Silvio Serra', 6, 8, 5, 'Polvos', 'celaE');
+
+INSERT INTO Policial (id, nome, lugar, corrupto) VALUES
+(14, 'Italo Dimetrio', 'solitariaOeste', true),
+(15, 'Sargento Nascimento', 'mesaDireita', false),
+(16, 'Capitão Mathias', 'quadraDesportiva', false),
+(17, 'Capitão Brad', 'solitariaLeste', true),
+(18, 'Lil Chico', 'arquibancada', true);
+
+INSERT INTO Informante (id, nome, dano_infomante, lugar) VALUES
+(19, 'Cubano', 200, 'banheiroC'),
+(20, 'Chileno', 200, 'Enfermaria A');
+
+INSERT INTO Jogador (id, nome, habilidade_briga, vida, força, tempo_vida, gangue, lugar, missao) VALUES
+(1, 'Carimbo', 2, 5, 3, 10, null, 'celaA', null);
+
 COMMIT;
 ```
 
@@ -335,6 +406,6 @@ COMMIT;
 | 28/07/2024 | `1.0`  | Criação do documento.    | [João Antonio G.](https://github.com/joaoseisei) |
 | 07/08/2024 | `1.1`  | Adiciona fabricacao.     | [João Antonio G.](https://github.com/joaoseisei) |
 | 07/08/2024 | `1.2`  | adição parte do fernando | [Fernando Gabriel](https://github.com/show-dawn) |
-
+| 07/08/2024 | `1.3`  | Adiciona parte do Júlio. | [Júlio Cesar](https://github.com/Julio1099)      |
 
 </div>
