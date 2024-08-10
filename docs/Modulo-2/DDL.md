@@ -109,6 +109,7 @@ COMMIT;
 
 >PARTE DO FERNANDO, MEXER!!!
 
+```sql
 CREATE TYPE TipoItemNaoFabricavel AS ENUM('comida', 'medicamento', 'utilizavel');
 
 
@@ -164,6 +165,85 @@ CREATE TABLE missao(
 	FOREIGN KEY (lugar) REFERENCES lugar(id, regiao),
 
 );
+```
+
+>PARTE JÚLIO
+
+```sql
+BEGIN TRANSACTION;
+
+-- Tabela Pessoa
+CREATE TABLE pessoa (
+    id SERIAL NOT NULL,
+    tipo ENUM('policia', 'prisioneiro', 'informante', 'jogador') NOT NULL,
+    PRIMARY KEY (id)
+);
+
+-- Tabela Inventario
+CREATE TABLE inventario (
+    id SERIAL NOT NULL,
+    pessoa INTEGER NOT NULL,
+    tamanho SMALLINT NOT NULL DEFAULT 5,
+    inventario_ocupado SMALLINT NOT NULL CHECK (inventario_ocupado BETWEEN 0 AND 5),
+    PRIMARY KEY (id, pessoa),
+    FOREIGN KEY (pessoa) REFERENCES pessoa(id)
+);
+
+-- Tabela Prisioneiro
+CREATE TABLE prisioneiro (
+    id INTEGER NOT NULL,
+    lugar INTEGER NOT NULL,
+    nome CHAR(60) NOT NULL,
+    habilidade_briga SMALLINT NOT NULL CHECK (habilidade_briga BETWEEN 1 AND 10),
+    vida SMALLINT NOT NULL CHECK (vida BETWEEN 1 AND 10),
+    forca SMALLINT NOT NULL CHECK (forca BETWEEN 1 AND 10),
+    gangue ENUM('polvo', 'palhaco') NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id) REFERENCES pessoa(id),
+    FOREIGN KEY (lugar) REFERENCES lugar(id)
+);
+
+-- Tabela Policial
+CREATE TABLE policial (
+    id INTEGER NOT NULL,
+    lugar INTEGER NOT NULL,
+    nome CHAR(60) NOT NULL,
+    corrupto BOOLEAN NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id) REFERENCES pessoa(id),
+    FOREIGN KEY (lugar) REFERENCES lugar(id)
+);
+
+-- Tabela Informante
+CREATE TABLE informante (
+    id INTEGER NOT NULL,
+    lugar INTEGER NOT NULL,
+    nome CHAR(60) NOT NULL,
+    dano SMALLINT NOT NULL DEFAULT 200,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id) REFERENCES pessoa(id),
+    FOREIGN KEY (lugar) REFERENCES lugar(id)
+);
+
+-- Tabela Jogador
+CREATE TABLE jogador (
+    id INTEGER NOT NULL,
+    lugar INTEGER NOT NULL,
+    missao INTEGER NOT NULL,
+    nome CHAR(60) NOT NULL,
+    habilidade_briga SMALLINT NOT NULL CHECK (habilidade_briga BETWEEN 1 AND 10),
+    vida SMALLINT NOT NULL CHECK (vida BETWEEN 1 AND 10),
+    forca SMALLINT NOT NULL CHECK (forca BETWEEN 1 AND 10),
+    tempo_vida SMALLINT NOT NULL CHECK (tempo_vida BETWEEN 1 AND 10),
+    gangue ENUM('polvo', 'palhaco') NOT NULL,
+    PRIMARY KEY (id),
+    FOREIGN KEY (id) REFERENCES pessoa(id),
+    FOREIGN KEY (lugar) REFERENCES lugar(id),
+    FOREIGN KEY (missao) REFERENCES missao(id)
+);
+
+COMMIT;
+```
 
 ---
 
@@ -180,6 +260,6 @@ CREATE TABLE missao(
 | 28/07/2024 | `1.0`  | Criação do documento.              | [João Antonio G.](https://github.com/joaoseisei) |
 | 06/08/2024 | `1.1`  | Adiciona DDL Prevido de fabricacao | [João Antonio G.](https://github.com/joaoseisei) |
 | 07/08/2024 | `1.2`  | Adiciona parte do fernando         | [Fernando Gabriel](https://github.com/show-dawn) |
-
+| 10/08/2024 | `1.3`  | Adiciona parte do Júlio e corrige Fernando         | [Júlio Cesar](https://github.com/Julio1099) |
 
 </div>
