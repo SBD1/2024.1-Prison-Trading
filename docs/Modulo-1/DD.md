@@ -154,7 +154,7 @@
 | descricao  | Atributo que descreve um breve resumo da função do item mencionado                                        | TEXT                   | -       | NOT NULL                                              |
 | raridade   | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
 | quantidade | Atributo que define a quantidade disponivel de uma comida por espaço, (EX: 3 pães ocupam 1 tamanho)       | SMALLINT               | -       | NOT NULL                                              |
-
+| cura       | Atributo que define quanto de vida uma comida pode recuperar                                              | SMALLINT               | -       | NOT NULL                                              |
 ---
 
 # Tabela Medicamento
@@ -164,14 +164,15 @@
 | **Descrição**   | Tabela para armazenar medicamentos que podem eventualmente serem utilizados para curar o jogador, caso sejam utilizados o medicamento some do inventário do jogador. |
 | **Observações** | A Tabela [Item_Nao_Fabricavel](#tabela-item_nao_fabricavel) possui os mesmos nome_item como chave primária e é a chave estrangeira.                                  | 
 
-| Nome      | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
-|:----------|:----------------------------------------------------------------------------------------------------------|:-----------------------|---------|:------------------------------------------------------|
-| id        | Chave primária que define o número de identificação do medicamento                                        | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
-| nome      | Atributo que define o nome do medicamento mencionado                                                      | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
-| tamanho   | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
-| descricao | Atributo que descreve um breve resumo da função do item mencionado                                        | TEXT                   | -       | NOT NULL                                              |
-| raridade  | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
-| cura      | Atributo que define quanto de vida um medicamento pode recuperar                                          | SMALLINT               | -       | NOT NULL                                              |
+| Nome       | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
+| :--------- | :-------------------------------------------------------------------------------------------------------- | :--------------------- | ------- | :---------------------------------------------------- |
+| id         | Chave primária que define o número de identificação do medicamento                                        | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
+| nome       | Atributo que define o nome do medicamento mencionado                                                      | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
+| tamanho    | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
+| descricao  | Atributo que descreve um breve resumo da função do item mencionado                                        | TEXT                   | -       | NOT NULL                                              |
+| raridade   | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
+| quantidade | Atributo que define a quantidade disponivel de um medicamento por espaço                                  | SMALLINT               | -       | NOT NULL                                              |
+| cura       | Atributo que define quanto de vida um medicamento pode recuperar                                          | SMALLINT               | -       | NOT NULL                                              |
 
 ---
 
@@ -182,15 +183,14 @@
 | **Descrição**   | Tabela para armazenar itens que podem eventualmente serem utilizados, caso sejam utilizados o item some do inventário do jogador.   |
 | **Observações** | A Tabela [Item_Nao_Fabricavel](#tabela-item_nao_fabricavel) possui os mesmos nome_item como chave primária e é a chave estrangeira. | 
 
-| Nome             | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
-|:-----------------|:----------------------------------------------------------------------------------------------------------|:-----------------------|---------|:------------------------------------------------------|
-| id               | Chave primária que define o número de identificação do item utilizável                                    | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
-| nome             | Atributo que define o nome do utilizavel mencionado                                                       | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
-| tamanho          | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
-| descricao_efeito | Atributo que descreve um breve resumo da função e do efeito, sobre um item mencionado                     | TEXT                   | -       | NOT NULL                                              |
-| raridade         | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
-| quantidade       | Atributo que define a quantidade disponivel de um medicamento por espaço                                  | SMALLINT               | -       | NOT NULL                                              |
-| efeito           | Atributo que define o efeito do item utilizável.                                                          | TEXT                   | -       | NOT NULL                                              |
+| Nome       | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
+| :--------- | :-------------------------------------------------------------------------------------------------------- | :--------------------- | ------- | :---------------------------------------------------- |
+| id         | Chave primária que define o número de identificação do item utilizável                                    | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
+| nome       | Atributo que define o nome do utilizavel mencionado                                                       | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
+| tamanho    | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
+| descricao  | Atributo que descreve um breve resumo da função e do efeito, sobre um item mencionado                     | TEXT                   | -       | NOT NULL                                              |
+| raridade   | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
+| quantidade | Atributo que define a quantidade disponivel de um Utilizavel por espaço                                   | SMALLINT               | -       | NOT NULL                                              |
 
 ---
 
@@ -243,11 +243,12 @@
 | **Descrição**   | Prisão é uma tabela que contém informações da prisão do jogo. |
 | **Observações** | Não possui chave estrangeira.                                 | 
 
-| Nome     | Definição Lógica                                              | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
-|:---------|:--------------------------------------------------------------|:-----------------------|---------|:----------------------|
-| id       | Chave primária que define o número de identificação da prisão | SERIAL                 | -       | PRIMARY KEY           |
-| nome     | Atributo que define o nome da prisão                          | CHAR                   | 25      | NOT NULL              |
-| objetivo | Atributo que define o objetivo para conseguir fugir da prisão | TEXT                   | -       | NOT NULL              |
+| Nome      | Definição Lógica                                                       | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+| :-------- | :--------------------------------------------------------------------- | :--------------------- | ------- | :-------------------- |
+| id        | Chave primária que define o número de identificação da prisão          | SERIAL                 | -       | PRIMARY KEY           |
+| nome      | Atributo que define o nome da prisão                                   | CHAR                   | 25      | NOT NULL              |
+| descricao | Atributo que descreve um breve resumo da prisao e suas caracteristicas | TEXT                   | -       | NOT NULL              |
+| objetivo  | Atributo que define o objetivo para conseguir fugir da prisão          | TEXT                   | -       | NOT NULL              |
 
 ---
 
@@ -274,12 +275,12 @@
 | **Descrição**   | Lugar é uma tabela que contém informações de cada local, bem como uma descrição mais especifica, é uma entidade fraca de [Regiao](#tabela-regiao). |
 | **Observações** | Possui chave composta vindo de [Regiao](#tabela-regiao).                                                                                           |
 
-| Nome            | Definição Lógica                                                                                                      | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
-|:----------------|:----------------------------------------------------------------------------------------------------------------------|:-----------------------|---------|:----------------------|
-| id, regiao      | Chave composta de nome_lugar e regiao, regiao é a chave primária de Regiao                                            | SERIAL                 | -       | PRIMARY KEY           |
-| nome            | Atributo que define o nome do lugar mencionado                                                                        | CHAR                   | 25      | UNIQUE, NOT NULL      |
-| regiao          | Chave estrangeira que tem o valor da chave primária de regiao, usada para compor a chave composta                     | INTEGER                | -       | FOREIGN KEY, NOT NULL |
-| descricao_lugar | Atributo que contém uma descrição mais especifica de um lugar, como detalhes do ambiente                              | TEXT                   | -       | NOT NULL              |
+| Nome       | Definição Lógica                                                                                  | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:-----------|:--------------------------------------------------------------------------------------------------|:-----------------------|---------|:----------------------|
+| id, regiao | Chave composta de nome_lugar e regiao, regiao é a chave primária de Regiao                        | SERIAL                 | -       | PRIMARY KEY           |
+| nome       | Atributo que define o nome do lugar mencionado                                                    | CHAR                   | 25      | UNIQUE, NOT NULL      |
+| regiao     | Chave estrangeira que tem o valor da chave primária de regiao, usada para compor a chave composta | INTEGER                | -       | FOREIGN KEY, NOT NULL |
+| descricao  | Atributo que contém uma descrição mais especifica de um lugar, como detalhes do ambiente          | TEXT                   | -       | NOT NULL              |
 
 ---
 
@@ -396,6 +397,7 @@
 | forca            | Atributo que determina a quantidade de força que um jogador possui                                                 | SMALLINT                 | -       | NOT NULL, CHECK (forca BETWEEN 1 AND 10)            |
 | tempo_vida       | Atributo que determina quanto tempo de vida restante um jogador possui                                             | SMALLINT                 | -       | NOT NULL, CHECK (tempo_vida BETWEEN 1 AND 10)       |
 | gangue           | Atributo que determina qual gangue o jogador é afiliado.  tendo 2 opções, polvo e palhaco                          | ENUM('polvo', 'palhaco') | -       | NOT NULL                                            |
+| nivel            | Atributo derivado que determina qual o nivel do jogador, quantas missões ele realizou.                             | SMALLINT                 | -       | NOT NULL                                            |
 
 ---
 
@@ -406,13 +408,13 @@
 | **Descrição**   | Missão é uma tabela que contém informações especializadas de cada missão no jogo.                              |
 | **Observações** | Possui chave estrangeira vindo de [Lugar](#tabela-lugar) e [Item_Nao_Fabricavel](#tabela-item_nao_fabricavel). |
 
-| Nome      | Definição Lógica                                                                                           | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
-| :-------- | :--------------------------------------------------------------------------------------------------------- | :--------------------- | ------- | :-------------------- |
-| id        | Chave primária que define o número de identificação da missão mencionada                                   | SERIAL                 | -       | PRIMARY KEY           |
-| item      | Atributo determina qual a recompensa da missão. A recompensa de uma missão sempre é um item não fabricável | INTEGER                | -       | FOREIGN KEY           |
-| lugar     | Chave estrangeira vindo de lugar                                                                           | INTEGER                | -       | FOREIGN KEY           |
-| nome      | Atributo que define o nome da missão mencionada                                                            | CHAR                   | 25      | NOT NULL              |
-| descricao | Atributo que define uma descrição detalhando os objetivos necessários para completar a missão atual        | TEXT                   | -       | NOT NULL              |
+| Nome                | Definição Lógica                                                                                           | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:--------------------|:-----------------------------------------------------------------------------------------------------------|:-----------------------|---------|:----------------------|
+| id                  | Chave primária que define o número de identificação da missão mencionada                                   | SERIAL                 | -       | PRIMARY KEY           |
+| item_nao_fabricavel | Atributo determina qual a recompensa da missão. A recompensa de uma missão sempre é um item não fabricável | INTEGER                | -       | FOREIGN KEY           |
+| lugar               | Chave estrangeira vindo de lugar                                                                           | INTEGER                | -       | FOREIGN KEY           |
+| nome                | Atributo que define o nome da missão mencionada                                                            | CHAR                   | 25      | NOT NULL              |
+| descricao           | Atributo que define uma descrição detalhando os objetivos necessários para completar a missão atual        | TEXT                   | -       | NOT NULL              |
 
 ---
 
@@ -425,7 +427,7 @@
 <div style="margin: 0 auto; width: fit-content;">
 
 |    Data    | Versão |                 Descrição                 | Autores                                                                                                                                                                                                 |
-|:----------:|:------:|:-----------------------------------------:|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| :--------: | :----: | :---------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 17/07/2024 | `1.0`  |        Aumenta escopo do projeto.         | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
 | 15/07/2024 | `1.1`  | Adiciona dicionário refatorado de pessoa. | [Fernando Gabriel](https://github.com/show-dawn)                                                                                                                                                        |
 | 15/07/2024 | `1.2`  |    Termina de refatorar o dicionário.     | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
@@ -433,6 +435,8 @@
 | 20/07/2024 | `1.4`  |           Correção dicionário.            | [Júlio Cesar](https://github.com/Julio1099), [João Antonio G.](https://github.com/joaoseisei)                                                                                                           |
 | 20/07/2024 | `1.5`  |            Normaliza trabalho.            | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 | 05/08/2024 | `1.6`  |           Correção dicionário.            | [Júlio Cesar](https://github.com/Julio1099)                                                                                                                                                             |
-| 06/08/2024 | `1.8`  |           Altera tipo de dados.           | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
+| 06/08/2024 | `1.8`  |                corrige DD                 | [Fernando Gabriel](https://github.com/show-dawn)                                                                                                                                                        |
+| 06/08/2024 | `1.9`  |           Altera tipo de dados.           | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
+| 10/08/2024 | `1.8`  |               REcorrige DD                | [Fernando Gabriel](https://github.com/show-dawn)                                                                                                                                                        |
 
 </div>
