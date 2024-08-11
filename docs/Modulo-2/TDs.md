@@ -566,7 +566,7 @@
 
 # Tabela Prisioneiro
 
-| id | nome         | habilidade_briga | vida | força | gangue     | lugar                 | `regiao`       |
+| id | nome         | habilidade_briga | vida | forca | gangue     | lugar                 | `regiao`       |
 |----|--------------|------------------|------|-------|------------|-----------------------|----------------|
 | 2  | Rivas        | 4                | 9    | 7     | 'Palhacos' | 24 [quadraDeBasquete] | 5 [patio]      |
 | 3  | Filomano     | 6                | 7    | 4     | 'Polvos'   | 3 [cela B]            | 1 [celas]      |
@@ -609,9 +609,9 @@
 
 # Tabela Jogador
 
-| id | nome    | habilidade_briga | vida | força | tempo_vida | gangue | missao | lugar      | `regiao`  |
-|----|---------|------------------|------|-------|------------|--------|--------|------------|-----------|
-| 1  | Carimbo | 2                | 5    | 3     | 10         | null   | null   | 2 [cela A] | 1 [celas] |
+| id | nome    | habilidade_briga | vida | forca | tempo_vida | gangue | nivel | missao | lugar      | `regiao`  |
+|----|---------|------------------|------|-------|------------|--------|-------|--------|------------|-----------|
+| 1  | Carimbo | 2                | 5    | 3     | 10         | NULL   | 0     | NULL   | 2 [cela A] | 1 [celas] |
 
 ---
 
