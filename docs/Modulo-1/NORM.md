@@ -276,7 +276,7 @@
 
 # Tabela Comida
 
-> id ➡ nome, tamanho, descricao
+> id ➡ nome, tamanho, descricao, raridade, quantidade, recuperacao_vida
 
 * 1ª Forma Normal: Todos os atributos são atômicos e monovalorados.
 * 2ª Forma Normal: Há apenas um único atributo como chave primária (id); portanto, não existem atributos comuns que sejam dependentes parcialmente dessa chave.
@@ -288,7 +288,7 @@
 
 # Tabela Medicamento
 
-> id ➡ nome, tamanho, descricao
+> id ➡ nome, tamanho, descricao, raridade, quantidade, cura
 
 
 * 1ª Forma Normal: Todos os atributos são atômicos e monovalorados.
@@ -301,7 +301,7 @@
 
 # Tabela Utilizavel
 
-> id ➡ nome, tamanho, durabilidade, descricao
+> id ➡ nome, tamanho, durabilidade, descricao, raridade quantidade, durabilidade
 
 
 * 1ª Forma Normal: Todos os atributos são atômicos e monovalorados.
@@ -316,11 +316,11 @@
 
 > (id ,item_fabricavel) livro_fabricacao
 
-1° Forma Normal: Todos os atributos são atômicos e monovalorados.
-2° Forma Normal: Há somente um único atributo como chave (id_item_fabricavel), logo não há atributos comuns dependentes parcialmente de uma chave.
-3° Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
-Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
-4° Forma Normal: Não há dependências multivaloradas.
+* 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
+* 2° Forma Normal: Há somente um único atributo como chave (id_item_fabricavel), logo não há atributos comuns dependentes parcialmente de uma chave.
+* 3° Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
+* Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
+* 4° Forma Normal: Não há dependências multivaloradas.
 
 ---
 
@@ -494,6 +494,5 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 | 19/07/2024 | `1.0`  | Criação do documento.                         | [João Antonio G.](https://github.com/joaoseisei)                                                                                                 |
 | 20/07/2024 | `1.1`  | Normalização do projeto.                      | [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 | 11/08/2024 | `1.2`  | Adiciona informações extras para cada tabela. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                 |
-| 11/08/2024 | `1.3`  | Corrige dependencias funcionais. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                 |
 
 </div>
