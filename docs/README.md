@@ -115,11 +115,12 @@ Além disso, você também precisa estar atento aos guardas e às rotinas da pri
 | [Correção - Modelo Relacional](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/MERL)               |
 | [Correção - Dicionário de Dados](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/DD)               |
 | [Correção - Normalização](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/NORM)                    |
-| [Tabela de Dados](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/TDs)                                                                                        |
-| [Linguagem de Definição de Dados - DDL](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DDL)                                                                  |
-| [Linguagem de Manipulação de Dados - DML](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DML)                                                                |
-| [Linguagem de Consulta de Dados - DQL](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DQL)                                                                   |
-| [Álgebra Relacional](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/AL-REL)                                                                                     |
-| [Comandos básicos em Python]()                                                                             |
+| [Tabela de Dados](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/TDs)                             |
+| [Linguagem de Definição de Dados - DDL](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DDL)       |
+| [Linguagem de Manipulação de Dados - DML](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DML)     |
+| [Linguagem de Consulta de Dados - DQL](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DQL)        |
+| [Álgebra Relacional](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/AL-REL)                       |
+| [Roadmap](https://sbd1.github.io/2024.1-Prison-Trading/#/Jogo/Roadmap)                                     |
+| [Comandos básicos em Python](https://sbd1.github.io/2024.1-Prison-Trading/#/Jogo/Info)                     |
 
 </div>

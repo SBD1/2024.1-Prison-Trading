@@ -109,4 +109,11 @@
   - [DML](Modulo-2/DML.md)
   - [DQL](Modulo-2/DQL.md)
   - [Álgebra Relacional](Modulo-2/AL-REL.md)
+  - [Apresentação](Modulo-2/Modulo2.md)
+    * [Histórico de versão](Modulo-2/Modulo2.md#histórico-de-versão)
 
+[//]: # (* Módulo 3)
+* Jogo
+  - [Roadmap](Jogo/Roadmap.md)
+  - [Wiki?](Jogo/Wiki.md)
+  - [Como Jogar?](Jogo/Info.md)
