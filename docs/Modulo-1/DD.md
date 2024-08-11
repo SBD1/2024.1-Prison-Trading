@@ -146,15 +146,15 @@
 | **Descrição**   | Tabela para armazenar comidas que podem eventualmente serem utilizados para curar o jogador, caso sejam utilizados a comida some do inventário do jogador. |
 | **Observações** | A Tabela [Item_Nao_Fabricavel](#tabela-item_nao_fabricavel) possui os mesmos nome_item como chave primária e é a chave estrangeira.                        | 
 
-| Nome       | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
-|:-----------|:----------------------------------------------------------------------------------------------------------|:-----------------------|---------|:------------------------------------------------------|
-| id         | Chave primária que define o número de identificação da comida                                             | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
-| nome       | Atributo que define o nome da comida mencionada                                                           | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
-| tamanho    | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
-| descricao  | Atributo que descreve um breve resumo da função do item mencionado                                        | TEXT                   | -       | NOT NULL                                              |
-| raridade   | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
-| quantidade | Atributo que define a quantidade disponivel de uma comida por espaço, (EX: 3 pães ocupam 1 tamanho)       | SMALLINT               | -       | NOT NULL                                              |
-| cura       | Atributo que define quanto de vida uma comida pode recuperar                                              | SMALLINT               | -       | NOT NULL                                              |
+| Nome             | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
+| :--------------- | :-------------------------------------------------------------------------------------------------------- | :--------------------- | ------- | :---------------------------------------------------- |
+| id               | Chave primária que define o número de identificação da comida                                             | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
+| nome             | Atributo que define o nome da comida mencionada                                                           | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
+| tamanho          | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
+| descricao        | Atributo que descreve um breve resumo da função do item mencionado                                        | TEXT                   | -       | NOT NULL                                              |
+| raridade         | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
+| quantidade       | Atributo que define a quantidade disponivel de uma comida por espaço, (EX: 3 pães ocupam 1 tamanho)       | SMALLINT               | -       | NOT NULL                                              |
+| recuperacao_vida | Atributo que define quanto de vida uma comida pode recuperar                                              | SMALLINT               | -       | NOT NULL                                              |
 ---
 
 # Tabela Medicamento
@@ -183,14 +183,16 @@
 | **Descrição**   | Tabela para armazenar itens que podem eventualmente serem utilizados, caso sejam utilizados o item some do inventário do jogador.   |
 | **Observações** | A Tabela [Item_Nao_Fabricavel](#tabela-item_nao_fabricavel) possui os mesmos nome_item como chave primária e é a chave estrangeira. | 
 
-| Nome       | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
-| :--------- | :-------------------------------------------------------------------------------------------------------- | :--------------------- | ------- | :---------------------------------------------------- |
-| id         | Chave primária que define o número de identificação do item utilizável                                    | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
-| nome       | Atributo que define o nome do utilizavel mencionado                                                       | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
-| tamanho    | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
-| descricao  | Atributo que descreve um breve resumo da função e do efeito, sobre um item mencionado                     | TEXT                   | -       | NOT NULL                                              |
-| raridade   | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
-| quantidade | Atributo que define a quantidade disponivel de um Utilizavel por espaço                                   | SMALLINT               | -       | NOT NULL                                              |
+| Nome         | Definição Lógica                                                                                          | Tipo e Formato de Dado | Tamanho | Restrições de Domínio                                 |
+| :----------- | :-------------------------------------------------------------------------------------------------------- | :--------------------- | ------- | :---------------------------------------------------- |
+| id           | Chave primária que define o número de identificação do item utilizável                                    | INTEGER                | -       | PRIMARY KEY, FOREIGN KEY                              |
+| nome         | Atributo que define o nome do utilizavel mencionado                                                       | CHAR                   | 25      | UNIQUE, NOT NULL                                      |
+| tamanho      | Atributo que define o espaço que o item ocupará no inventário                                             | SMALLINT               | -       | NOT NULL, DEFAULT 1                                   |
+| descricao    | Atributo que descreve um breve resumo da função e do efeito, sobre um item mencionado                     | TEXT                   | -       | NOT NULL                                              |
+| raridade     | Atributo que define a raridade de um item, podendo ter 3 possiveis valores 0=normal, 1=raro e 2=ultrararo | SMALLINT               | -       | NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2) |
+| quantidade   | Atributo que define a quantidade disponivel de um Utilizavel por espaço                                   | SMALLINT               | -       | NOT NULL                                              |
+| durabilidade | Atributo que define a durabilidade disponivel de um Utilizavel, antes que ele se quebre                   | SMALLINT               | -       | NOT NULL                                              |
+
 
 ---
 
@@ -248,7 +250,6 @@
 | id        | Chave primária que define o número de identificação da prisão          | SERIAL                 | -       | PRIMARY KEY           |
 | nome      | Atributo que define o nome da prisão                                   | CHAR                   | 25      | NOT NULL              |
 | descricao | Atributo que descreve um breve resumo da prisao e suas caracteristicas | TEXT                   | -       | NOT NULL              |
-| objetivo  | Atributo que define o objetivo para conseguir fugir da prisão          | TEXT                   | -       | NOT NULL              |
 
 ---
 
