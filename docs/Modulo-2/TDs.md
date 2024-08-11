@@ -380,9 +380,9 @@
 
 # Tabela Prisao
 
-| id | nome    |
-|----|---------|
-| 1  | Basilio |
+| id | nome    | descricao |
+|----|---------|-----------|
+| 1  | Basilio |           |
 
 ---
 
