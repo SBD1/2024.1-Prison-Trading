@@ -502,9 +502,10 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão | Descrição               | Autores                                                                                                                                          |
-|:----------:|:------:|-------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
-| 19/07/2024 | `1.0`  | Criação do documento.   | [João Antonio G.](https://github.com/joaoseisei)                                                                                                 |
-| 20/07/2024 | `1.1`  | Normalização do projeto | [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+|    Data    | Versão | Descrição                                     | Autores                                                                                                                                          |
+|:----------:|:------:|-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| 19/07/2024 | `1.0`  | Criação do documento.                         | [João Antonio G.](https://github.com/joaoseisei)                                                                                                 |
+| 20/07/2024 | `1.1`  | Normalização do projeto.                      | [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 11/08/2024 | `1.2`  | Adiciona informações extras para cada tabela. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                 |
 
 </div>
