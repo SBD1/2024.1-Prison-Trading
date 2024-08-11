@@ -119,7 +119,7 @@ VALUES
 (12, 'Corda com Cerol', 1, 'Corda revestida com vidro moído para causar cortes.', 3),
 (13, 'Garrafa Quebrada', 1, 'Garrafa de vidro quebrada, usada como arma cortante.', 3);
 
-INSERT INTO utilizavel(id, nome, tamanho, descricao_efeito, raridade, quantidade)
+INSERT INTO utilizavel(id, nome, tamanho, descricao, raridade, quantidade)
 VALUES
 (14, 'Sabao', 1, 'Serve para remover sujeira e impurezas de superfícies e objetos, também é um material para fabricação de itens.', 0, 1),
 (15, 'Pedra', 1, 'A pedra serve para construção e também é um material para fabricação de itens.', 0, 3),
@@ -142,7 +142,7 @@ VALUES
 (29, 'Morfina', 1, 'Analgésico opiáceo potente utilizado para aliviar dores intensas.', 1, 10, 2),
 (30, 'Bandagem', 1, 'Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo.', 0, 2, 5);
 
-INSERT INTO comida(id, nome, tamanho, descricao, raridade, quantidade, cura)
+INSERT INTO comida(id, nome, tamanho, descricao, raridade, quantidade, recuperacao_vida)
 VALUES
 (31, 'Pao seco', 1, 'Um pão tão seco e duro, que parece que o próprio vendendor amassou ele.', 0, 1, 0),
 (32, 'Pao', 1, 'Alimento básico feito a partir de farinha, água e fermento.', 0, 3, 1),
@@ -385,8 +385,8 @@ INSERT INTO Informante (id, nome, dano_infomante, lugar) VALUES
 (19, 'Cubano', 200, 'banheiroC'),
 (20, 'Chileno', 200, 'Enfermaria A');
 
-INSERT INTO Jogador (id, nome, habilidade_briga, vida, força, tempo_vida, gangue, lugar, missao) VALUES
-(1, 'Carimbo', 2, 5, 3, 10, null, 'celaA', null);
+INSERT INTO Jogador (id, nome, habilidade_briga, vida, força, tempo_vida, gangue, lugar, missao, nivel) VALUES
+(1, 'Carimbo', 2, 5, 3, 10, null, 'celaA', null, 0);
 
 COMMIT;
 ```
@@ -401,11 +401,13 @@ COMMIT;
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão | Descrição                | Autores                                          |
-| :--------: | :----: | ------------------------ | ------------------------------------------------ |
-| 28/07/2024 | `1.0`  | Criação do documento.    | [João Antonio G.](https://github.com/joaoseisei) |
-| 07/08/2024 | `1.1`  | Adiciona fabricacao.     | [João Antonio G.](https://github.com/joaoseisei) |
-| 07/08/2024 | `1.2`  | adição parte do fernando | [Fernando Gabriel](https://github.com/show-dawn) |
-| 07/08/2024 | `1.3`  | Adiciona parte do Júlio. | [Júlio Cesar](https://github.com/Julio1099)      |
+|    Data    | Versão | Descrição                | Autores                                                                                                                                       |
+| :--------: | :----: | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| 28/07/2024 | `1.0`  | Criação do documento.    | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
+| 07/08/2024 | `1.1`  | Adiciona fabricacao.     | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
+| 07/08/2024 | `1.2`  | adição parte do fernando | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
+| 07/08/2024 | `1.3`  | Adiciona parte do Júlio. | [Júlio Cesar](https://github.com/Julio1099)                                                                                                   |
+| 10/08/2024 | `1.4`  | corrige dml              | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
+
 
 </div>
