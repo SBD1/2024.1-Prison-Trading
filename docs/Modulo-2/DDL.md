@@ -22,6 +22,8 @@ BEGIN TRANSACTION;
 CREATE TYPE TipoItem AS ENUM('fabricavel', 'nao_fabricavel');
 CREATE TYPE TipoItemFabricavel AS ENUM('ferramenta', 'arma');
 CREATE TYPE TipoItemNaoFabricavel AS ENUM('comida', 'medicamento', 'utilizavel');
+CREATE TYPE TipoPessoa AS ENUM('prisioneiro', 'policial', 'informante','jogador');
+CREATE TYPE TipoJogador AS ENUM('polvo', 'palhaco');
 
 CREATE TABLE item(
 	id SERIAL NOT NULL,
@@ -175,7 +177,7 @@ BEGIN TRANSACTION;
 -- Tabela Pessoa
 CREATE TABLE pessoa (
     id SERIAL NOT NULL,
-    tipo ENUM('policia', 'prisioneiro', 'informante', 'jogador') NOT NULL,
+    tipo ENUM('policial', 'prisioneiro', 'informante', 'jogador') NOT NULL,
     PRIMARY KEY (id)
 );
 
