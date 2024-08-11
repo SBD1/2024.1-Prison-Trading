@@ -16,12 +16,12 @@
 
 <center>
 
-#### Versão atual - V1.2 - Adiciona correções do professor.
+#### Versão atual - V1.4 - Finaliza alterações de rotas de fuga.
 
 </center>
 
 <div align="center">
-<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/MERLV1-3.png?raw=true"/></div>
+<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/MERLV1-4.png?raw=true"/></div>
 </div>
 
 ---
@@ -59,6 +59,14 @@
 
 </details>
 
+<details>
+  <summary>V1.3 - Adiciona correções do professor. </summary>
+
+<div align="center">
+<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/MERLV1-3.png?raw=true"/></div>
+</div>
+
+</details>
 
 ---
 
@@ -76,5 +84,6 @@
 | 20/07/2024 | `1.1`  | Adição da Introdução.                                    | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                                                                                    |
 | 20/07/2024 | `1.2`  | Adição das versões antigas e atual do Modelo Relacional. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
 | 06/08/2024 | `1.3`  | Adiciona correções do professor.                         | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                         |
+| 10/08/2024 | `1.4`  | Finaliza alterações de rotas de fuga.                    | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099)  |
 
 </div>

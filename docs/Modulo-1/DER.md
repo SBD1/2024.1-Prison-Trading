@@ -15,12 +15,12 @@
 
 <center>
 
-#### Versão atual - 2.5 - Adiciona correções do professor.
+#### Versão atual - 2.6 - Finaliza alterações de rotas de fuga.
 
 </center>
 
 <div align="center">
-<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/DERV2-5.png?raw=true"/></div>
+<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/DERV2-6.png?raw=true"/></div>
 </div>
 
 
@@ -114,6 +114,15 @@
 
 </details>
 
+<details>
+  <summary>V2.5 - Adiciona correções do professor.</summary>
+
+<div align="center">
+<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/DERV2-5.png?raw=true"/></div>
+</div>
+
+</details>
+
 ---
 <center>
 
@@ -135,5 +144,6 @@
 | 20/07/2024 | `2.3`  | Corrige participação total de pessoa.                  | [João Antonio G.](https://github.com/joaoseisei), [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                                 |
 | 20/07/2024 | `2.4`  | Corrige respeito de jogador.                           | [João Antonio G.](https://github.com/joaoseisei), [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                                 |
 | 06/08/2024 | `2.5`  | Adiciona correções do professor.                       | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
+| 10/08/2024 | `2.6`  | Finaliza alterações de rotas de fuga.                  | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 
 </div>
