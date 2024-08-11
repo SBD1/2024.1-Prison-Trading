@@ -381,9 +381,9 @@
 
 # Tabela Prisao
 
-| id | nome    |
-|----|---------|
-| 1  | Basilio |
+| id | nome    | objetivo             |
+|----|---------|----------------------|
+| 1  | Basilio | Fugir pela floresta. |
 
 ---
 
