@@ -98,7 +98,7 @@
 | 2  | 2 [Pa]                       | 28 [Oficina A]           | 6        | NULL       | NULL     |
 | 3  | 3 [Martelo]                  | 29 [Oficina B]           | 6        | NULL       | NULL     |
 | 4  | 4 [Picareta]                 | 29 [Oficina B]           | 6        | NULL       | NULL     |
-| 5  | 5 [Lock pick]                | 28 [Oficina A]           | 6        | NULL       | NULL     |
+| 5  | 20 [Pedaco grande de metal]  | 28 [Oficina A]           | 6        | NULL       | NULL     |
 | 6  | 6 [Corda]                    | 29 [Oficina B]           | 6        | NULL       | NULL     |
 | 7  | 7 [Faca]                     | 11 [Banheiro A]          | 2        | NULL       | NULL     |
 | 8  | 8 [Adaga]                    | 11 [Banheiro A]          | 2        | NULL       | NULL     |
@@ -167,7 +167,7 @@
 | 71 | 17 [Linha]                   | NULL                     | NULL     | 7          | 7        |
 | 72 | 12 [Corda com Cerol]         | NULL                     | NULL     | 7          | 7        |
 | 73 | 10 [Faca curta]              | NULL                     | NULL     | 8          | 8        |
-| 74 | 4 [Picareta]                 | NULL                     | NULL     | 8          | 8        |
+| 74 | 20 [Pedaco grande de metal]  | NULL                     | NULL     | 8          | 8        |
 | 75 | 9 [Soco ingles]              | NULL                     | NULL     | 9          | 9        |
 | 76 | 31 [Pao seco]                | NULL                     | NULL     | 9          | 9        |
 | 77 | 27 [Cigarro]                 | NULL                     | NULL     | 10         | 10       |
@@ -272,48 +272,47 @@
 
 ---
 
-# Tabela Medicamento
+# Tabela Comida
 
-| id  | nome              | tamanho | descricao                                                                          | raridade | cura | quantidade |
-| --- | ----------------- | ------- | ---------------------------------------------------------------------------------- | -------- | ---- | ---------- |
-| 28  | anti-inflamatorio | 1       | Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.             | 2        | 3    | 5          |
-| 29  | Morfina           | 1       | Analgésico opiáceo potente utilizado para aliviar dores intensas.                  | 1        | 10   | 2          |
-| 30  | Bandagem          | 1       | Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo. | 0        | 2    | 5          |
+| id  | nome     | tamanho | descricao                                                                        | raridade | quantidade | recuperacao_vida |
+| --- | -------- | ------- | -------------------------------------------------------------------------------- | -------- | ---------- |------------------|
+| 31  | Pao seco | 1       | um pão tão seco e duro, que parece que o proprio vandor amassou ele.             | 0        | 1          | 0                |
+| 32  | Pao      | 1       | alimento básico feito a partir de farinha, água e fermento.                      | 0        | 3          | 1                |
+| 33  | Queijo   | 1       | produto lácteo sólido feito a partir da coagulação do leite.                     | 0        | 3          | 1                |
+| 34  | Carne    | 2       | é o tecido muscular de animais, como bovinos ou suínos, consumido como alimento. | 2        | 1          | 5                |
+| 35  | Peixe    | 1       | tecido muscular de peixe, consumido como alimento.                               | 1        | 2          | 3                |
+| 36  | Laranja  | 1       | fruta cítrica, suculenta e doce.                                                 | 0        | 3          | 1                |
 
 ---
 
-# Tabela Comida
+# Tabela Medicamento
 
-| id  | nome     | tamanho | descricao                                                                        | raridade | quantidade | cura |
-| --- | -------- | ------- | -------------------------------------------------------------------------------- | -------- | ---------- | ---- |
-| 31  | Pao seco | 1       | um pão tão seco e duro, que parece que o proprio vandor amassou ele.             | 0        | 1          | 0    |
-| 32  | Pao      | 1       | alimento básico feito a partir de farinha, água e fermento.                      | 0        | 3          | 1    |
-| 33  | Queijo   | 1       | produto lácteo sólido feito a partir da coagulação do leite.                     | 0        | 3          | 1    |
-| 34  | Carne    | 2       | é o tecido muscular de animais, como bovinos ou suínos, consumido como alimento. | 2        | 1          | 5    |
-| 35  | Peixe    | 1       | tecido muscular de peixe, consumido como alimento.                               | 1        | 2          | 3    |
-| 36  | Laranja  | 1       | fruta cítrica, suculenta e doce.                                                 | 0        | 3          | 1    |
-
+| id  | nome              | tamanho | descricao                                                                          | raridade | quantidade | cura |
+| --- | ----------------- | ------- | ---------------------------------------------------------------------------------- | -------- | ---------- | ---- |
+| 28  | anti-inflamatorio | 1       | Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.             | 2        | 5          | 3    |
+| 29  | Morfina           | 1       | Analgésico opiáceo potente utilizado para aliviar dores intensas.                  | 1        | 2          | 10   |
+| 30  | Bandagem          | 1       | Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo. | 0        | 5          | 2    |
   
 ---
 
 # Tabela Utilizavel
 
-| id  | nome                    | tamanho | descricao_Efeito                                                                                                | Raridade | quantidade |
-| --- | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------- | -------- | ---------- |
-| 14  | Sabao                   | 1       | serve para remover sujeira e impurezas de superfícies e objetos, também é um material para fabricação de itens. | 0        | 1          |
-| 15  | Pedra                   | 1       | A pedra serve para construção e também é um material para fabricação de itens.                                  | 0        | 3          |
-| 16  | graveto                 | 1       | Produto de origem vegetal, é usado como material para fabricação de itens.                                      | 0        | 3          |
-| 17  | linha                   | 1       | fio fino e flexível utilizado como material para fabricação de itens.                                           | 0        | 3          |
-| 18  | pedaco pequeno de metal | 1       | Corda revestida com vidro moído para causar cortes.                                                             | 1        | 3          |
-| 19  | vidro                   | 1       | utilizado como material para fabricação de cerol.                                                               | 0        | 1          |
-| 20  | pedaco grande de metal  | 3       | Garrafa de vidro quebrada, usada como arma cortante.                                                            | 2        | 1          |
-| 21  | alcool                  | 1       | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                                   | 1        | 1          |
-| 22  | tecido                  | 1       | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                           | 1        | 3          |
-| 23  | garrada de vidro        | 2       | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                                   | 1        | 1          |
-| 24  | plastico                | 1       | Corda revestida com vidro moído para causar cortes.                                                             | 0        | 3          |
-| 25  | Isqueiro                | 1       | Isqueiro é um dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas.        | 1        | 1          |
-| 26  | Lanterna                | 1       | Lanterna é um dispositivo portátil que emite luz.                                                               | 1        | 1          |
-| 27  | cigarro                 | 1       | Moeda de troca do jogo, além de poder ser utilizado para acalmar.                                               | 1        | 10         |
+| id  | nome                    | tamanho | descricao_Efeito                                                                                                | raridade | quantidade | durabilidae |
+| --- | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------- |----------| ---------- |-------------|
+| 14  | Sabao                   | 1       | serve para remover sujeira e impurezas de superfícies e objetos, também é um material para fabricação de itens. | 0        | 1          | 1           |
+| 15  | Pedra                   | 1       | A pedra serve para construção e também é um material para fabricação de itens.                                  | 0        | 3          | 1           |
+| 16  | graveto                 | 1       | Produto de origem vegetal, é usado como material para fabricação de itens.                                      | 0        | 3          | 1           |
+| 17  | linha                   | 1       | fio fino e flexível utilizado como material para fabricação de itens.                                           | 0        | 3          | 1           |
+| 18  | pedaco pequeno de metal | 1       | Corda revestida com vidro moído para causar cortes.                                                             | 1        | 3          | 1           |
+| 19  | vidro                   | 1       | utilizado como material para fabricação de cerol.                                                               | 0        | 1          | 1           |
+| 20  | pedaco grande de metal  | 3       | Garrafa de vidro quebrada, usada como arma cortante.                                                            | 2        | 1          | 1           |
+| 21  | alcool                  | 1       | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                                   | 1        | 1          | 1           |
+| 22  | tecido                  | 1       | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                           | 1        | 3          | 1           |
+| 23  | garrada de vidro        | 2       | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                                   | 1        | 1          | 1           |
+| 24  | plastico                | 1       | Corda revestida com vidro moído para causar cortes.                                                             | 0        | 3          | 1           |
+| 25  | Isqueiro                | 1       | Isqueiro é um dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas.        | 1        | 1          | 1           |
+| 26  | Lanterna                | 1       | Lanterna é um dispositivo portátil que emite luz.                                                               | 1        | 1          | 1           |
+| 27  | cigarro                 | 1       | Moeda de troca do jogo, além de poder ser utilizado para acalmar.                                               | 1        | 10         | 1           |
 
 ---
 
@@ -438,103 +437,103 @@
 
 # Tabela Lugar_Origem_Destino
 
-| lugar_origem             | regiao_origem  | lugar_destino            | regiao_destino |
-|--------------------------|----------------|--------------------------|----------------|
-| 1 [solitaria Oeste]      | 1 [celas]      | 2 [cela A]               | 1 [celas]      |
-| 1 [solitaria Oeste]      | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
-| 2 [cela A]               | 1 [celas]      | 1 [solitaria Oeste]      | 1 [celas]      |
-| 2 [cela A]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
-| 3 [cela B]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
-| 4 [cela C]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
-| 5 [cela D]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
-| 6 [cela E]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
-| 7 [cela F]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
-| 8 [cela G]               | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
-| 9 [solitaria Leste]      | 1 [celas]      | 10 [corredor Celas]      | 1 [celas]      |
-| 10 [corredor Celas]      | 1 [celas]      | 1 [solitaria Oeste]      | 1 [celas]      |
-| 10 [corredor Celas]      | 1 [celas]      | 2 [cela A]               | 1 [celas]      |
-| 10 [corredor Celas]      | 1 [celas]      | 3 [cela B]               | 1 [celas]      |
-| 10 [corredor Celas]      | 1 [celas]      | 4 [cela C]               | 1 [celas]      |
-| 10 [corredor Celas]      | 1 [celas]      | 5 [cela D]               | 1 [celas]      |
-| 10 [corredor Celas]      | 1 [celas]      | 6 [cela E]               | 1 [celas]      |
-| 10 [corredor Celas]      | 1 [celas]      | 7 [cela F]               | 1 [celas]      |
-| 10 [corredor Celas]      | 1 [celas]      | 8 [cela G]               | 1 [celas]      |
-| 10 [corredor Celas]      | 1 [celas]      | 9 [solitaria Leste]      | 1 [celas]      |
-| 10 [corredor Celas]      | 1 [celas]      | 15 [corredor Banheiros]  | 2 [banheiros]  |
-| 11 [banheiro A]          | 2 [banheiros]  | 15 [corredor Banheiros]  | 2 [banheiros]  |
-| 12 [banheiro B]          | 2 [banheiros]  | 15 [corredor Banheiros]  | 2 [banheiros]  |
-| 13 [banheiro C]          | 2 [banheiros]  | 15 [corredor Banheiros]  | 2 [banheiros]  |
-| 14 [banheiro D]          | 2 [banheiros]  | 15 [corredor Banheiros]  | 2 [banheiros]  |
-| 15 [corredor Banheiros]  | 2 [banheiros]  | 10 [corredor Celas]      | 1 [celas]      |
-| 15 [corredor Banheiros]  | 2 [banheiros]  | 11 [banheiro A]          | 2 [banheiros]  |
-| 15 [corredor Banheiros]  | 2 [banheiros]  | 12 [banheiro B]          | 2 [banheiros]  |
-| 15 [corredor Banheiros]  | 2 [banheiros]  | 13 [banheiro C]          | 2 [banheiros]  |
-| 15 [corredor Banheiros]  | 2 [banheiros]  | 14 [banheiro D]          | 2 [banheiros]  |
-| 15 [corredor Banheiros]  | 2 [banheiros]  | 19 [corredor Enfermaria] | 3 [enfermaria] |
-| 15 [corredor Banheiros]  | 2 [banheiros]  | 22 [corredor Refeitorio] | 4 [refeitorio] |
-| 16 [sala A]              | 3 [enfermaria] | 17 [sala B]              | 3 [enfermaria] |
-| 16 [sala A]              | 3 [enfermaria] | 19 [corredor Enfermaria] | 3 [enfermaria] |
-| 17 [sala B]              | 3 [enfermaria] | 16 [sala A]              | 3 [enfermaria] |
-| 17 [sala B]              | 3 [enfermaria] | 18 [sala C]              | 3 [enfermaria] |
-| 17 [sala B]              | 3 [enfermaria] | 19 [corredor Enfermaria] | 3 [enfermaria] |
-| 18 [sala C]              | 3 [enfermaria] | 17 [sala B]              | 3 [enfermaria] |
-| 18 [sala C]              | 3 [enfermaria] | 19 [corredor Enfermaria] | 3 [enfermaria] |
-| 19 [corredor Enfermaria] | 3 [enfermaria] | 15 [corredor Banheiros]  | 2 [banheiros]  |
-| 19 [corredor Enfermaria] | 3 [enfermaria] | 16 [sala A]              | 3 [enfermaria] |
-| 19 [corredor Enfermaria] | 3 [enfermaria] | 17 [sala B]              | 3 [enfermaria] |
-| 19 [corredor Enfermaria] | 3 [enfermaria] | 18 [sala C]              | 3 [enfermaria] |
-| 20 [mesa Esquerda]       | 4 [refeitorio] | 22 [corredor Refeitorio] | 4 [refeitorio] |
-| 21 [mesa Direita]        | 4 [refeitorio] | 22 [corredor Refeitorio] | 4 [refeitorio] |
-| 22 [corredor Refeitorio] | 4 [refeitorio] | 15 [corredor Banheiros]  | 2 [banheiros]  |
-| 22 [corredor Refeitorio] | 4 [refeitorio] | 20 [mesa Esquerda]       | 4 [refeitorio] |
-| 22 [corredor Refeitorio] | 4 [refeitorio] | 21 [mesa Direita]        | 4 [refeitorio] |
-| 22 [corredor Refeitorio] | 4 [refeitorio] | 27 [corredor Patio ]     | 5 [patio]      |
-| 23 [academia Simples]    | 5 [patio]      | 24 [quadra De Basquete]  | 5 [patio]      |
-| 23 [academia Simples]    | 5 [patio]      | 27 [corredor Patio ]     | 5 [patio]      |
-| 24 [quadra De Basquete]  | 5 [patio]      | 23 [academia Simples]    | 5 [patio]      |
-| 24 [quadra De Basquete]  | 5 [patio]      | 25 [arquibancada]        | 5 [patio]      |
-| 24 [quadra De Basquete]  | 5 [patio]      | 27 [corredor Patio ]     | 5 [patio]      |
-| 25 [arquibancada]        | 5 [patio]      | 24 [quadra De Basquete]  | 5 [patio]      |
-| 25 [arquibancada]        | 5 [patio]      | 26 [area De Lazer]       | 5 [patio]      |
-| 25 [arquibancada]        | 5 [patio]      | 27 [corredor Patio ]     | 5 [patio]      |
-| 26 [area De Lazer]       | 5 [patio]      | 25 [arquibancada]        | 5 [patio]      |
-| 26 [area De Lazer]       | 5 [patio]      | 27 [corredor Patio ]     | 5 [patio]      |
-| 27 [corredor Patio ]     | 5 [patio]      | 22 [corredor Refeitorio] | 4 [refeitorio] |
-| 27 [corredor Patio ]     | 5 [patio]      | 23 [academia Simples]    | 5 [patio]      |
-| 27 [corredor Patio ]     | 5 [patio]      | 24 [quadra De Basquete]  | 5 [patio]      |
-| 27 [corredor Patio ]     | 5 [patio]      | 25 [arquibancada]        | 5 [patio]      |
-| 27 [corredor Patio ]     | 5 [patio]      | 26 [area De Lazer]       | 5 [patio]      |
-| 27 [corredor Patio ]     | 5 [patio]      | 28 [oficina A]           | 6 [oficinas]   |
-| 27 [corredor Patio ]     | 5 [patio]      | 29 [oficina B]           | 6 [oficinas]   |
-| 28 [oficina A]           | 6 [oficinas]   | 27 [corredor Patio ]     | 5 [patio]      |
-| 29 [oficina B]           | 6 [oficinas]   | 27 [corredor Patio ]     | 5 [patio]      |
+| lugar_origem             | `regiao_origem` | lugar_destino            | `regiao_destino` |
+|--------------------------|-----------------|--------------------------|------------------|
+| 1 [solitaria Oeste]      | 1 [celas]       | 2 [cela A]               | 1 [celas]        |
+| 1 [solitaria Oeste]      | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
+| 2 [cela A]               | 1 [celas]       | 1 [solitaria Oeste]      | 1 [celas]        |
+| 2 [cela A]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
+| 3 [cela B]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
+| 4 [cela C]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
+| 5 [cela D]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
+| 6 [cela E]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
+| 7 [cela F]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
+| 8 [cela G]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
+| 9 [solitaria Leste]      | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
+| 10 [corredor Celas]      | 1 [celas]       | 1 [solitaria Oeste]      | 1 [celas]        |
+| 10 [corredor Celas]      | 1 [celas]       | 2 [cela A]               | 1 [celas]        |
+| 10 [corredor Celas]      | 1 [celas]       | 3 [cela B]               | 1 [celas]        |
+| 10 [corredor Celas]      | 1 [celas]       | 4 [cela C]               | 1 [celas]        |
+| 10 [corredor Celas]      | 1 [celas]       | 5 [cela D]               | 1 [celas]        |
+| 10 [corredor Celas]      | 1 [celas]       | 6 [cela E]               | 1 [celas]        |
+| 10 [corredor Celas]      | 1 [celas]       | 7 [cela F]               | 1 [celas]        |
+| 10 [corredor Celas]      | 1 [celas]       | 8 [cela G]               | 1 [celas]        |
+| 10 [corredor Celas]      | 1 [celas]       | 9 [solitaria Leste]      | 1 [celas]        |
+| 10 [corredor Celas]      | 1 [celas]       | 15 [corredor Banheiros]  | 2 [banheiros]    |
+| 11 [banheiro A]          | 2 [banheiros]   | 15 [corredor Banheiros]  | 2 [banheiros]    |
+| 12 [banheiro B]          | 2 [banheiros]   | 15 [corredor Banheiros]  | 2 [banheiros]    |
+| 13 [banheiro C]          | 2 [banheiros]   | 15 [corredor Banheiros]  | 2 [banheiros]    |
+| 14 [banheiro D]          | 2 [banheiros]   | 15 [corredor Banheiros]  | 2 [banheiros]    |
+| 15 [corredor Banheiros]  | 2 [banheiros]   | 10 [corredor Celas]      | 1 [celas]        |
+| 15 [corredor Banheiros]  | 2 [banheiros]   | 11 [banheiro A]          | 2 [banheiros]    |
+| 15 [corredor Banheiros]  | 2 [banheiros]   | 12 [banheiro B]          | 2 [banheiros]    |
+| 15 [corredor Banheiros]  | 2 [banheiros]   | 13 [banheiro C]          | 2 [banheiros]    |
+| 15 [corredor Banheiros]  | 2 [banheiros]   | 14 [banheiro D]          | 2 [banheiros]    |
+| 15 [corredor Banheiros]  | 2 [banheiros]   | 19 [corredor Enfermaria] | 3 [enfermaria]   |
+| 15 [corredor Banheiros]  | 2 [banheiros]   | 22 [corredor Refeitorio] | 4 [refeitorio]   |
+| 16 [sala A]              | 3 [enfermaria]  | 17 [sala B]              | 3 [enfermaria]   |
+| 16 [sala A]              | 3 [enfermaria]  | 19 [corredor Enfermaria] | 3 [enfermaria]   |
+| 17 [sala B]              | 3 [enfermaria]  | 16 [sala A]              | 3 [enfermaria]   |
+| 17 [sala B]              | 3 [enfermaria]  | 18 [sala C]              | 3 [enfermaria]   |
+| 17 [sala B]              | 3 [enfermaria]  | 19 [corredor Enfermaria] | 3 [enfermaria]   |
+| 18 [sala C]              | 3 [enfermaria]  | 17 [sala B]              | 3 [enfermaria]   |
+| 18 [sala C]              | 3 [enfermaria]  | 19 [corredor Enfermaria] | 3 [enfermaria]   |
+| 19 [corredor Enfermaria] | 3 [enfermaria]  | 15 [corredor Banheiros]  | 2 [banheiros]    |
+| 19 [corredor Enfermaria] | 3 [enfermaria]  | 16 [sala A]              | 3 [enfermaria]   |
+| 19 [corredor Enfermaria] | 3 [enfermaria]  | 17 [sala B]              | 3 [enfermaria]   |
+| 19 [corredor Enfermaria] | 3 [enfermaria]  | 18 [sala C]              | 3 [enfermaria]   |
+| 20 [mesa Esquerda]       | 4 [refeitorio]  | 22 [corredor Refeitorio] | 4 [refeitorio]   |
+| 21 [mesa Direita]        | 4 [refeitorio]  | 22 [corredor Refeitorio] | 4 [refeitorio]   |
+| 22 [corredor Refeitorio] | 4 [refeitorio]  | 15 [corredor Banheiros]  | 2 [banheiros]    |
+| 22 [corredor Refeitorio] | 4 [refeitorio]  | 20 [mesa Esquerda]       | 4 [refeitorio]   |
+| 22 [corredor Refeitorio] | 4 [refeitorio]  | 21 [mesa Direita]        | 4 [refeitorio]   |
+| 22 [corredor Refeitorio] | 4 [refeitorio]  | 27 [corredor Patio ]     | 5 [patio]        |
+| 23 [academia Simples]    | 5 [patio]       | 24 [quadra De Basquete]  | 5 [patio]        |
+| 23 [academia Simples]    | 5 [patio]       | 27 [corredor Patio ]     | 5 [patio]        |
+| 24 [quadra De Basquete]  | 5 [patio]       | 23 [academia Simples]    | 5 [patio]        |
+| 24 [quadra De Basquete]  | 5 [patio]       | 25 [arquibancada]        | 5 [patio]        |
+| 24 [quadra De Basquete]  | 5 [patio]       | 27 [corredor Patio ]     | 5 [patio]        |
+| 25 [arquibancada]        | 5 [patio]       | 24 [quadra De Basquete]  | 5 [patio]        |
+| 25 [arquibancada]        | 5 [patio]       | 26 [area De Lazer]       | 5 [patio]        |
+| 25 [arquibancada]        | 5 [patio]       | 27 [corredor Patio ]     | 5 [patio]        |
+| 26 [area De Lazer]       | 5 [patio]       | 25 [arquibancada]        | 5 [patio]        |
+| 26 [area De Lazer]       | 5 [patio]       | 27 [corredor Patio ]     | 5 [patio]        |
+| 27 [corredor Patio ]     | 5 [patio]       | 22 [corredor Refeitorio] | 4 [refeitorio]   |
+| 27 [corredor Patio ]     | 5 [patio]       | 23 [academia Simples]    | 5 [patio]        |
+| 27 [corredor Patio ]     | 5 [patio]       | 24 [quadra De Basquete]  | 5 [patio]        |
+| 27 [corredor Patio ]     | 5 [patio]       | 25 [arquibancada]        | 5 [patio]        |
+| 27 [corredor Patio ]     | 5 [patio]       | 26 [area De Lazer]       | 5 [patio]        |
+| 27 [corredor Patio ]     | 5 [patio]       | 28 [oficina A]           | 6 [oficinas]     |
+| 27 [corredor Patio ]     | 5 [patio]       | 29 [oficina B]           | 6 [oficinas]     |
+| 28 [oficina A]           | 6 [oficinas]    | 27 [corredor Patio ]     | 5 [patio]        |
+| 29 [oficina B]           | 6 [oficinas]    | 27 [corredor Patio ]     | 5 [patio]        |
 
 ---
 
 # Tabela Pessoa
 
-| Id | tipo          |
+| id | tipo          |
 |----|---------------|
-| 1  | 'Jogador'     |
-| 2  | 'Prisioneiro' |
-| 3  | 'Prisioneiro' |
-| 4  | 'Prisioneiro' |
-| 5  | 'Prisioneiro' |
-| 6  | 'Prisioneiro' |
-| 7  | 'Prisioneiro' |
-| 8  | 'Prisioneiro' |
-| 9  | 'Prisioneiro' |
-| 10 | 'Prisioneiro' |
-| 11 | 'Prisioneiro' |
-| 12 | 'Prisioneiro' |
-| 13 | 'Prisioneiro' |
-| 14 | 'Policial'    |
-| 15 | 'Policial'    |
-| 16 | 'Policial'    |
-| 17 | 'Policial'    |
-| 18 | 'Policial'    |
-| 19 | 'Informante'  |
-| 20 | 'Informante'  |
+| 1  | 'jogador'     |
+| 2  | 'prisioneiro' |
+| 3  | 'prisioneiro' |
+| 4  | 'prisioneiro' |
+| 5  | 'prisioneiro' |
+| 6  | 'prisioneiro' |
+| 7  | 'prisioneiro' |
+| 8  | 'prisioneiro' |
+| 9  | 'prisioneiro' |
+| 10 | 'prisioneiro' |
+| 11 | 'prisioneiro' |
+| 12 | 'prisioneiro' |
+| 13 | 'prisioneiro' |
+| 14 | 'policial'    |
+| 15 | 'policial'    |
+| 16 | 'policial'    |
+| 17 | 'policial'    |
+| 18 | 'policial'    |
+| 19 | 'informante'  |
+| 20 | 'informante'  |
 
 ---
 
@@ -567,67 +566,71 @@
 
 # Tabela Prisioneiro
 
-| id | nome         | habilidade_briga | vida | força | gangue     | lugar            |
-|----|--------------|------------------|------|-------|------------|------------------|
-| 2  | Rivas        | 4                | 9    | 7     | 'Palhacos' | quadraDesportiva |
-| 3  | Filomano     | 6                | 7    | 4     | 'Polvos'   | celaB            |
-| 4  | Fragas       | 5                | 11   | 5     | 'Palhacos' | banheiroA        |
-| 5  | Glaucão      | 3                | 6    | 8     | 'Polvos'   | mesaEsquerda     |
-| 6  | Ucraniano    | 7                | 5    | 6     | 'Palhacos' | celaC            |
-| 7  | Rispomático  | 6                | 12   | 6     | 'Polvos'   | academiaSimples  |
-| 8  | Manogaz      | 4                | 8    | 5     | 'Palhacos' | celaG            |
-| 9  | Dado         | 5                | 10   | 6     | 'Polvos'   | banheiroB        |
-| 10 | Fabrilton    | 4                | 7    | 5     | 'Palhacos' | mesaDireita      |
-| 11 | Eneido       | 6                | 6    | 6     | 'Polvos'   | solitariaOeste   |
-| 12 | Carlos       | 5                | 9    | 7     | 'Palhacos' | arquibancada     |
-| 13 | Silvio Serra | 6                | 8    | 5     | 'Polvos'   | celaE            |
+| id | nome         | habilidade_briga | vida | força | gangue     | lugar                 | `regiao`       |
+|----|--------------|------------------|------|-------|------------|-----------------------|----------------|
+| 2  | Rivas        | 4                | 9    | 7     | 'Palhacos' | 24 [quadraDeBasquete] | 5 [patio]      |
+| 3  | Filomano     | 6                | 7    | 4     | 'Polvos'   | 3 [cela B]            | 1 [celas]      |
+| 4  | Fragas       | 5                | 11   | 5     | 'Palhacos' | 11 [banheiro A]       | 2 [banheiros]  |
+| 5  | Glaucão      | 3                | 6    | 8     | 'Polvos'   | 20 [mesa Esquerda]    | 4 [refeitorio] |
+| 6  | Ucraniano    | 7                | 5    | 6     | 'Palhacos' | 4 [cela C]            | 1 [celas]      |
+| 7  | Rispomático  | 6                | 12   | 6     | 'Polvos'   | 23 [academia Simples] | 5 [patio]      |
+| 8  | Manogaz      | 4                | 8    | 5     | 'Palhacos' | 8 [cela G]            | 1 [celas]      |
+| 9  | Dado         | 5                | 10   | 6     | 'Polvos'   | 12 [banheiro B]       | 2 [banheiros]  |
+| 10 | Fabrilton    | 4                | 7    | 5     | 'Palhacos' | 21 [mesa Direita]     | 4 [refeitorio] |
+| 11 | Eneido       | 6                | 6    | 6     | 'Polvos'   | 1 [solitaria Oeste]   | 1 [celas]      |
+| 12 | Carlos       | 5                | 9    | 7     | 'Palhacos' | 25 [arquibancada]     | 5 [patio]      |
+| 13 | Silvio Serra | 6                | 8    | 5     | 'Polvos'   | 6 [cela E]            | 1 [celas]      |
+
 
 -----
 
 # Tabela Policial
 
-| id | nome                | lugar            | corrupto |
-|----|---------------------|------------------|----------|
-| 14 | Italo Dimetrio      | solitariaOeste   | true     |
-| 15 | Sargento Nascimento | mesaDireita      | false    |
-| 16 | Capitão Mathias     | quadraDesportiva | false    |
-| 17 | Capitão Brad        | solitariaLeste   | true     |
-| 18 | Lil Chico           | arquibancada     | true     |
+| id | nome                | corrupto | lugar                   | `regiao`       |
+|----|---------------------|----------|-------------------------|----------------|
+| 14 | Italo Dimetrio      | true     | 1 [solitaria Oeste]     | 1 [celas]      |
+| 15 | Sargento Nascimento | false    | 21 [mesa Direita]       | 4 [refeitorio] |
+| 16 | Capitão Mathias     | false    | 24 [quadra De Basquete] | 5 [patio]      |
+| 17 | Capitão Brad        | true     | 9 [solitaria Leste]     | 1 [celas]      |
+| 18 | Lil Chico           | true     | 25 [arquibancada]       | 5 [patio]      |
+
 
 ---
 
 # Tabela Informante
 
-| id | nome    | dano_infomante | lugar        |
-|----|---------|----------------|--------------|
-| 19 | Cubano  | 200            | banheiroC    |
-| 20 | Chileno | 200            | Enfermaria A |
+| id | nome    | dano_infomante | lugar           | `regiao`       |
+|----|---------|----------------|-----------------|----------------|
+| 19 | Cubano  | 200            | 13 [banheiro C] | 2 [banheiros]  |
+| 20 | Chileno | 200            | 16 [sala A]     | 3 [enfermaria] |
+
 
 ---
 
 # Tabela Jogador
 
-| id | nome    | habilidade_briga | vida | força | tempo_vida | gangue | lugar | missao |
-|----|---------|------------------|------|-------|------------|--------|-------|--------|
-| 01 | Carimbo | 2                | 5    | 3     | 10         | null   | celaA | null   |
+| id | nome    | habilidade_briga | vida | força | tempo_vida | gangue | missao | lugar      | `regiao`  |
+|----|---------|------------------|------|-------|------------|--------|--------|------------|-----------|
+| 1  | Carimbo | 2                | 5    | 3     | 10         | null   | null   | 2 [cela A] | 1 [celas] |
 
 ---
 
 # Tabela Missao
 
-| id | item                   | lugar | nome                      | descricao                                                                  |
-|----|------------------------|-------|---------------------------|----------------------------------------------------------------------------|
-| 1  | chave oficina A        | 1     | Fuja da solitaria oeste   | Escape da cela de isolamento leste sem ser pego.                           |
-| 2  | chave oficina B        | 9     | Fuja da solitaria leste   | Escape da cela de isolamento oeste sem ser pego.                           |
-| 3  | BANDAGEM               | 5     | Observar  cela            | Observe e memorize os detalhes da cela para planejar uma fuga.             |
-| 4  | FACA PEQUENA           | NULL  | Escolher gangue           | Escolha a gangue com a qual se aliar na prisão.                            |
-| 5  | NULL                   | NULL  | explorar o mapa           | Explore os locais no mapa da prisão, para um melhor entendimento do mesmo. |
-| 6  | CARNE                  | NULL  | Brigue com alguém         | Inicie e participe de uma briga com outro prisioneiro.                     |
-| 7  | REMEDIO                | NULL  | Vença uma briga           | Vença uma briga                                                            |
-| 8  | NULL                   | NULL  | Fuja da prisão            | Fuja da prisão                                                             |
-| 9  | pedaco grande de metal | NULL  | encontre o informante     | encontre o informante                                                      |
-| 10 | Isqueiro               | 24    | vença um jogo de basquete | vença um jogo de basquete                                                  |
-| 11 | CARNE                  | 23    | Fique maromba             | Va na academia                                                             |
+| id | item                   | nome                      | descricao                                                                  | lugar                   | regiao    |
+|----|------------------------|---------------------------|----------------------------------------------------------------------------|-------------------------|-----------|
+| 1  | chave oficina A        | Fuja da solitaria oeste   | Escape da cela de isolamento leste sem ser pego.                           | 1 [solitaria Oeste]     | 1 [celas] |
+| 2  | chave oficina B        | Fuja da solitaria leste   | Escape da cela de isolamento oeste sem ser pego.                           | 9 [solitaria Leste]     | 1 [celas] |
+| 3  | BANDAGEM               | Observar  cela            | Observe e memorize os detalhes da cela para planejar uma fuga.             | 5 [cela D]              | 1 [celas] |
+| 4  | FACA PEQUENA           | Escolher gangue           | Escolha a gangue com a qual se aliar na prisão.                            | NULL                    | NULL      |
+| 5  | NULL                   | explorar o mapa           | Explore os locais no mapa da prisão, para um melhor entendimento do mesmo. | NULL                    | NULL      |
+| 6  | CARNE                  | Brigue com alguém         | Inicie e participe de uma briga com outro prisioneiro.                     | NULL                    | NULL      |
+| 7  | REMEDIO                | Vença uma briga           | Vença uma briga                                                            | NULL                    | NULL      |
+| 8  | NULL                   | Fuja da prisão            | Fuja da prisão                                                             | NULL                    | NULL      |
+| 9  | pedaco grande de metal | encontre o informante     | encontre o informante                                                      | NULL                    | NULL      |
+| 10 | Isqueiro               | vença um jogo de basquete | vença um jogo de basquete                                                  | 24 [quadra De Basquete] | 5 [patio] |
+| 11 | CARNE                  | Fique maromba             | Va na academia                                                             | 23 [academia Simples]   | 5 [patio] |
+
 
 ---
 
@@ -639,23 +642,24 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-| Data       | Versão |                                                              Descrição                                                                                                       | Autores                                               |
-|------------|--------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|-------------------------------------------------------|
-| 26/07/2024 | `1.0`  |                                                        Criação do documento.                                                                                                 | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 28/07/2024 | `1.1`  |                                           Desenvolvimento de algumas tabelas e correções.                                                                                    | [João Antonio G.](https://github.com/joaoseisei)      |
-| 28/07/2024 | `1.2`  |                                                   Desenvolvimento algumas tabelas.                                                                                           | [Fernando Gabriel](https://github.com/show-dawn)      |
-| 28/07/2024 | `1.3`  |                                                   Desenvolvimento algumas tabelas.                                                                                           | [Julio Cesar](https://github.com/Julio1099)           |
-| 29/07/2024 | `1.4`  |                                                 Completa a tabela [`Lugar`](#Lugar)                                                                                          | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 29/07/2024 | `1.5`  |                                                        Ajustes tabela Pessoa                                                                                                 | [Júlio Cesar](https://github.com/julio1099)           |
-| 29/07/2024 | `1.6`  |                                                   Desenvolvimento algumas tabelas.                                                                                           | [Fernando Gabriel](https://github.com/show-dawn)      |
-| 02/08/2024 | `1.7`  |                                                       Correção tabela Pessoa.                                                                                                | [Júlio Cesar](https://github.com/Julio1099)           |
-| 04/08/2024 | `1.8`  |                                                         Adiciona os crafts.                                                                                                  | [João Antonio G.](https://github.com/joaoseisei)      |
-| 04/08/2024 | `1.9`  | Corrige as tabelas [`Prisao`](#Prisao), [`Regiao`](#Regiao) e [`Lugar`](#Lugar), e cria a tabela [`Lugar_Anterior`](#Lugar_Anterior)                                         | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 05/08/2024 | `2.0`  |                                                  Adiciona missao e formata tabelas.                                                                                          | [Fernando Gabriel](https://github.com/show-dawn)      |
-| 06/08/2024 | `2.1`  |                                         Corrige a tabela [`Lugar_Proximo`](#Lugar_Proximo).                                                                                  | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 06/08/2024 | `2.2`  |                                           Popula instancia de item e lista de fabricacao.                                                                                    | [João Antonio G.](https://github.com/joaoseisei)      |
-| 06/08/2024 | `2.3`  |                     Termina de corrigir a tabela [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino).                                                              | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 07/08/2024 | `2.4`  |                                   Adiciona chaves compostas em lista_fabricacao e instancia_item.                                                                            | [João Antonio G.](https://github.com/joaoseisei)      |
-| 09/08/2024 | `2.5`  |                     Correção das tabelas [`Tabela-Regiao`](#Tabela-Regiao), [`Tabela-Lugar`](#Tabela-Lugar) e [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino). | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| Data       | Versão |                                                                        Descrição                                                                         | Autores                                               |
+|------------|--------|:--------------------------------------------------------------------------------------------------------------------------------------------------------:|-------------------------------------------------------|
+| 26/07/2024 | `1.0`  |                                                                  Criação do documento.                                                                   | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 28/07/2024 | `1.1`  |                                                     Desenvolvimento de algumas tabelas e correções.                                                      | [João Antonio G.](https://github.com/joaoseisei)      |
+| 28/07/2024 | `1.2`  |                                                             Desenvolvimento algumas tabelas.                                                             | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 28/07/2024 | `1.3`  |                                                             Desenvolvimento algumas tabelas.                                                             | [Julio Cesar](https://github.com/Julio1099)           |
+| 29/07/2024 | `1.4`  |                                                           Completa a tabela [`Lugar`](#Lugar)                                                            | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 29/07/2024 | `1.5`  |                                                                  Ajustes tabela Pessoa                                                                   | [Júlio Cesar](https://github.com/julio1099)           |
+| 29/07/2024 | `1.6`  |                                                             Desenvolvimento algumas tabelas.                                                             | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 02/08/2024 | `1.7`  |                                                                 Correção tabela Pessoa.                                                                  | [Júlio Cesar](https://github.com/Julio1099)           |
+| 04/08/2024 | `1.8`  |                                                                   Adiciona os crafts.                                                                    | [João Antonio G.](https://github.com/joaoseisei)      |
+| 04/08/2024 | `1.9`  |           Corrige as tabelas [`Prisao`](#Prisao), [`Regiao`](#Regiao) e [`Lugar`](#Lugar), e cria a tabela [`Lugar_Anterior`](#Lugar_Anterior)           | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 05/08/2024 | `2.0`  |                                                            Adiciona missao e formata tabelas.                                                            | [Fernando Gabriel](https://github.com/show-dawn)      |
+| 06/08/2024 | `2.1`  |                                                   Corrige a tabela [`Lugar_Proximo`](#Lugar_Proximo).                                                    | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 06/08/2024 | `2.2`  |                                                     Popula instancia de item e lista de fabricacao.                                                      | [João Antonio G.](https://github.com/joaoseisei)      |
+| 06/08/2024 | `2.3`  |                               Termina de corrigir a tabela [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino).                                | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 07/08/2024 | `2.4`  |                                             Adiciona chaves compostas em lista_fabricacao e instancia_item.                                              | [João Antonio G.](https://github.com/joaoseisei)      |
+| 09/08/2024 | `2.5`  | Correção das tabelas [`Tabela-Regiao`](#Tabela-Regiao), [`Tabela-Lugar`](#Tabela-Lugar) e [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino). | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 10/08/2024 | `2.6`  |                                                                     Adiciona regiao.                                                                     |  [João Antonio G.](https://github.com/joaoseisei)                                                     |
 
 </div>
