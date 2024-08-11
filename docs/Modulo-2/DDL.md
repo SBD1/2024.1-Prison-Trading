@@ -25,6 +25,41 @@ CREATE TYPE TipoItemNaoFabricavel AS ENUM('comida', 'medicamento', 'utilizavel')
 CREATE TYPE TipoPessoa AS ENUM('prisioneiro', 'policial', 'informante','jogador');
 CREATE TYPE TipoJogador AS ENUM('polvo', 'palhaco');
 
+CREATE TABLE prisao(
+    id SERIAL NOT NULL,
+    nome CHAR(25) NOT NULL,
+    descricao TEXT NOT NULL,
+    PRIMARY KEY (id)
+); 
+
+CREATE TABLE regiao(
+    id SERIAL NOT NULL,
+    nome CHAR(25) NOT NULL UNIQUE,
+    prisao INTEGER NOT NULL,
+    descricao TEXT NOT NULL,
+    PRIMARY KEY (id), 
+    FOREIGN KEY (prisao) REFERENCES prisao(id)
+);
+
+CREATE TABLE lugar(
+    id SERIAL NOT NULL, 
+    regiao INTEGER NOT NULL,
+    nome CHAR(25) NOT NULL UNIQUE,
+    descricao TEXT NOT NULL,
+    PRIMARY KEY (id, regiao),
+    FOREIGN KEY (regiao) REFERENCES regiao(id)
+);
+
+CREATE TABLE lugar_origem_destino(
+    lugar_origem INTEGER NOT NULL,
+    regiao_origem INTEGER NOT NULL,
+    lugar_destino INTEGER NOT NULL,
+    regiao_destino INTEGER NOT NULL,
+    FOREIGN KEY (lugar_origem, regiao_origem) REFERENCES lugar(id, regiao),
+    FOREIGN KEY (lugar_destino, regiao_destino) REFERENCES lugar(id, regiao)
+);
+
+
 CREATE TABLE item(
 	id SERIAL NOT NULL,
 	tipo TipoItem NOT NULL,
@@ -125,11 +160,11 @@ CREATE TABLE item_nao_fabricavel(
 CREATE TABLE medicamento(
 	id INTEGER NOT NULL,
 	nome CHAR(25) NOT NULL UNIQUE,
-	tamanho SMALLINT NOT NULL DEFAULT 1 
+	tamanho SMALLINT NOT NULL DEFAULT 1, 
 	descricao TEXT NOT NULL,
-	raridade SMALLINT NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2)
+	raridade SMALLINT NOT NULL DEFAULT 0 CHECK (raridade BETWEEN 0 AND 2),
 	cura SMALLINT NOT NULL,
-	quantidade SMALLINT NOT NULL DEFAULT 5
+	quantidade SMALLINT NOT NULL DEFAULT 5,
 	PRIMARY KEY (id),
 	FOREIGN KEY (id) REFERENCES item_nao_fabricavel(id)
 );
@@ -139,8 +174,9 @@ CREATE TABLE comida(
 	nome CHAR(25) NOT NULL UNIQUE,
 	tamanho SMALLINT NOT NULL DEFAULT 1 
 	descricao TEXT NOT NULL,
-	raridade SMALLINT NOT NULL, DEFAULT 0, CHECK (raridade BETWEEN 0 AND 2)
-	quantidade SMALLINT NOT NULL DEFAULT 3
+	raridade SMALLINT NOT NULL DEFAULT 0 CHECK (raridade BETWEEN 0 AND 2),
+	quantidade SMALLINT NOT NULL DEFAULT 3,
+	recuperacao_vida SMALLINT NOT NULL,
 	PRIMARY KEY (id),
 	FOREIGN KEY (id) REFERENCES item_nao_fabricavel(id)
 );
@@ -238,6 +274,7 @@ CREATE TABLE jogador (
     forca SMALLINT NOT NULL CHECK (forca BETWEEN 1 AND 10),
     tempo_vida SMALLINT NOT NULL CHECK (tempo_vida BETWEEN 1 AND 10),
     gangue ENUM('polvo', 'palhaco') NOT NULL,
+	nivel SMALLINT NOT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (id) REFERENCES pessoa(id),
     FOREIGN KEY (lugar) REFERENCES lugar(id),
@@ -257,11 +294,13 @@ COMMIT;
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão | Descrição                          | Autores                                          |
-| :--------: | :----: | ---------------------------------- | ------------------------------------------------ |
-| 28/07/2024 | `1.0`  | Criação do documento.              | [João Antonio G.](https://github.com/joaoseisei) |
-| 06/08/2024 | `1.1`  | Adiciona DDL Prevido de fabricacao | [João Antonio G.](https://github.com/joaoseisei) |
-| 07/08/2024 | `1.2`  | Adiciona parte do fernando         | [Fernando Gabriel](https://github.com/show-dawn) |
-| 10/08/2024 | `1.3`  | Adiciona parte do Júlio e corrige Fernando         | [Júlio Cesar](https://github.com/Julio1099) |
+|    Data    | Versão | Descrição                                  | Autores                                                                                                                                       |
+| :--------: | :----: | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| 28/07/2024 | `1.0`  | Criação do documento.                      | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
+| 06/08/2024 | `1.1`  | Adiciona DDL Prevido de fabricacao         | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
+| 07/08/2024 | `1.2`  | Adiciona parte do fernando                 | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
+| 10/08/2024 | `1.3`  | Adiciona parte do Júlio e corrige Fernando | [Júlio Cesar](https://github.com/Julio1099)                                                                                                   |
+| 10/08/2024 | `1.4`  | corrige ddl                                | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
+
 
 </div>
