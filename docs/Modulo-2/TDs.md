@@ -393,7 +393,7 @@
 | 1  | celas          | 1 [Basilio] | Local onde estão as celas e solitárias dos prisioneiros.                                            |
 | 2  | banheiros      | 1 [Basilio] | Local onde os prisioneiros se banham.                                                               |
 | 3  | enfermaria     | 1 [Basilio] | Local onde os prisioneiros podem se tratar/curar.                                                   |
-| 4  | administracao  | 1 [Basilio] | Local onde tem o controle geral elétríco da prisão.                                                 |
+| 4  | administracao  | 1 [Basilio] | Local onde tem o controle geral elétrico da prisão.                                                 |
 | 5  | refeitorio     | 1 [Basilio] | Local onde os prisioneiros fazem suas refeições.                                                    |
 | 6  | patio          | 1 [Basilio] | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futsal e relaxar. |
 | 7  | oficinas       | 1 [Basilio] | Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.                                 |
@@ -443,76 +443,53 @@
 
 # Tabela Lugar_Origem_Destino
 
-| lugar_origem             | `regiao_origem` | lugar_destino            | `regiao_destino` |
-|--------------------------|-----------------|--------------------------|------------------|
-| 1 [solitaria Oeste]      | 1 [celas]       | 2 [cela A]               | 1 [celas]        |
-| 1 [solitaria Oeste]      | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
-| 2 [cela A]               | 1 [celas]       | 1 [solitaria Oeste]      | 1 [celas]        |
-| 2 [cela A]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
-| 3 [cela B]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
-| 4 [cela C]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
-| 5 [cela D]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
-| 6 [cela E]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
-| 7 [cela F]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
-| 8 [cela G]               | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
-| 9 [solitaria Leste]      | 1 [celas]       | 10 [corredor Celas]      | 1 [celas]        |
-| 10 [corredor Celas]      | 1 [celas]       | 1 [solitaria Oeste]      | 1 [celas]        |
-| 10 [corredor Celas]      | 1 [celas]       | 2 [cela A]               | 1 [celas]        |
-| 10 [corredor Celas]      | 1 [celas]       | 3 [cela B]               | 1 [celas]        |
-| 10 [corredor Celas]      | 1 [celas]       | 4 [cela C]               | 1 [celas]        |
-| 10 [corredor Celas]      | 1 [celas]       | 5 [cela D]               | 1 [celas]        |
-| 10 [corredor Celas]      | 1 [celas]       | 6 [cela E]               | 1 [celas]        |
-| 10 [corredor Celas]      | 1 [celas]       | 7 [cela F]               | 1 [celas]        |
-| 10 [corredor Celas]      | 1 [celas]       | 8 [cela G]               | 1 [celas]        |
-| 10 [corredor Celas]      | 1 [celas]       | 9 [solitaria Leste]      | 1 [celas]        |
-| 10 [corredor Celas]      | 1 [celas]       | 15 [corredor Banheiros]  | 2 [banheiros]    |
-| 11 [banheiro A]          | 2 [banheiros]   | 15 [corredor Banheiros]  | 2 [banheiros]    |
-| 12 [banheiro B]          | 2 [banheiros]   | 15 [corredor Banheiros]  | 2 [banheiros]    |
-| 13 [banheiro C]          | 2 [banheiros]   | 15 [corredor Banheiros]  | 2 [banheiros]    |
-| 14 [banheiro D]          | 2 [banheiros]   | 15 [corredor Banheiros]  | 2 [banheiros]    |
-| 15 [corredor Banheiros]  | 2 [banheiros]   | 10 [corredor Celas]      | 1 [celas]        |
-| 15 [corredor Banheiros]  | 2 [banheiros]   | 11 [banheiro A]          | 2 [banheiros]    |
-| 15 [corredor Banheiros]  | 2 [banheiros]   | 12 [banheiro B]          | 2 [banheiros]    |
-| 15 [corredor Banheiros]  | 2 [banheiros]   | 13 [banheiro C]          | 2 [banheiros]    |
-| 15 [corredor Banheiros]  | 2 [banheiros]   | 14 [banheiro D]          | 2 [banheiros]    |
-| 15 [corredor Banheiros]  | 2 [banheiros]   | 19 [corredor Enfermaria] | 3 [enfermaria]   |
-| 15 [corredor Banheiros]  | 2 [banheiros]   | 22 [corredor Refeitorio] | 4 [refeitorio]   |
-| 16 [sala A]              | 3 [enfermaria]  | 17 [sala B]              | 3 [enfermaria]   |
-| 16 [sala A]              | 3 [enfermaria]  | 19 [corredor Enfermaria] | 3 [enfermaria]   |
-| 17 [sala B]              | 3 [enfermaria]  | 16 [sala A]              | 3 [enfermaria]   |
-| 17 [sala B]              | 3 [enfermaria]  | 18 [sala C]              | 3 [enfermaria]   |
-| 17 [sala B]              | 3 [enfermaria]  | 19 [corredor Enfermaria] | 3 [enfermaria]   |
-| 18 [sala C]              | 3 [enfermaria]  | 17 [sala B]              | 3 [enfermaria]   |
-| 18 [sala C]              | 3 [enfermaria]  | 19 [corredor Enfermaria] | 3 [enfermaria]   |
-| 19 [corredor Enfermaria] | 3 [enfermaria]  | 15 [corredor Banheiros]  | 2 [banheiros]    |
-| 19 [corredor Enfermaria] | 3 [enfermaria]  | 16 [sala A]              | 3 [enfermaria]   |
-| 19 [corredor Enfermaria] | 3 [enfermaria]  | 17 [sala B]              | 3 [enfermaria]   |
-| 19 [corredor Enfermaria] | 3 [enfermaria]  | 18 [sala C]              | 3 [enfermaria]   |
-| 20 [mesa Esquerda]       | 4 [refeitorio]  | 22 [corredor Refeitorio] | 4 [refeitorio]   |
-| 21 [mesa Direita]        | 4 [refeitorio]  | 22 [corredor Refeitorio] | 4 [refeitorio]   |
-| 22 [corredor Refeitorio] | 4 [refeitorio]  | 15 [corredor Banheiros]  | 2 [banheiros]    |
-| 22 [corredor Refeitorio] | 4 [refeitorio]  | 20 [mesa Esquerda]       | 4 [refeitorio]   |
-| 22 [corredor Refeitorio] | 4 [refeitorio]  | 21 [mesa Direita]        | 4 [refeitorio]   |
-| 22 [corredor Refeitorio] | 4 [refeitorio]  | 27 [corredor Patio ]     | 5 [patio]        |
-| 23 [academia Simples]    | 5 [patio]       | 24 [quadra De Basquete]  | 5 [patio]        |
-| 23 [academia Simples]    | 5 [patio]       | 27 [corredor Patio ]     | 5 [patio]        |
-| 24 [quadra De Basquete]  | 5 [patio]       | 23 [academia Simples]    | 5 [patio]        |
-| 24 [quadra De Basquete]  | 5 [patio]       | 25 [arquibancada]        | 5 [patio]        |
-| 24 [quadra De Basquete]  | 5 [patio]       | 27 [corredor Patio ]     | 5 [patio]        |
-| 25 [arquibancada]        | 5 [patio]       | 24 [quadra De Basquete]  | 5 [patio]        |
-| 25 [arquibancada]        | 5 [patio]       | 26 [area De Lazer]       | 5 [patio]        |
-| 25 [arquibancada]        | 5 [patio]       | 27 [corredor Patio ]     | 5 [patio]        |
-| 26 [area De Lazer]       | 5 [patio]       | 25 [arquibancada]        | 5 [patio]        |
-| 26 [area De Lazer]       | 5 [patio]       | 27 [corredor Patio ]     | 5 [patio]        |
-| 27 [corredor Patio ]     | 5 [patio]       | 22 [corredor Refeitorio] | 4 [refeitorio]   |
-| 27 [corredor Patio ]     | 5 [patio]       | 23 [academia Simples]    | 5 [patio]        |
-| 27 [corredor Patio ]     | 5 [patio]       | 24 [quadra De Basquete]  | 5 [patio]        |
-| 27 [corredor Patio ]     | 5 [patio]       | 25 [arquibancada]        | 5 [patio]        |
-| 27 [corredor Patio ]     | 5 [patio]       | 26 [area De Lazer]       | 5 [patio]        |
-| 27 [corredor Patio ]     | 5 [patio]       | 28 [oficina A]           | 6 [oficinas]     |
-| 27 [corredor Patio ]     | 5 [patio]       | 29 [oficina B]           | 6 [oficinas]     |
-| 28 [oficina A]           | 6 [oficinas]    | 27 [corredor Patio ]     | 5 [patio]        |
-| 29 [oficina B]           | 6 [oficinas]    | 27 [corredor Patio ]     | 5 [patio]        |
+| lugar_origem             | `regiao_origem`    | lugar_destino            | `regiao_destino`    |
+|--------------------------|--------------------|--------------------------|---------------------|
+| 1 [solitaria Oeste]      | 1 [celas]          | 2 [cela A]               | 1 [celas]           |
+| 1 [solitaria Oeste]      | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
+| 2 [cela A]               | 1 [celas]          | 1 [solitaria Oeste]      | 1 [celas]           |
+| 2 [cela A]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
+| 3 [cela B]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
+| 4 [cela C]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
+| 5 [cela D]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
+| 6 [cela E]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
+| 7 [cela F]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
+| 8 [cela G]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
+| 9 [solitaria Leste]      | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
+| 10 [corredor Celas]      | 1 [celas]          | 1 [solitaria Oeste]      | 1 [celas]           |
+| 10 [corredor Celas]      | 1 [celas]          | 2 [cela A]               | 1 [celas]           |
+| 10 [corredor Celas]      | 1 [celas]          | 3 [cela B]               | 1 [celas]           |
+| 10 [corredor Celas]      | 1 [celas]          | 4 [cela C]               | 1 [celas]           |
+| 10 [corredor Celas]      | 1 [celas]          | 5 [cela D]               | 1 [celas]           |
+| 10 [corredor Celas]      | 1 [celas]          | 6 [cela E]               | 1 [celas]           |
+| 10 [corredor Celas]      | 1 [celas]          | 7 [cela F]               | 1 [celas]           |
+| 10 [corredor Celas]      | 1 [celas]          | 8 [cela G]               | 1 [celas]           |
+| 10 [corredor Celas]      | 1 [celas]          | 9 [solitaria Leste]      | 1 [celas]           |
+| 10 [corredor Celas]      | 1 [celas]          | 15 [corredor Banheiros]  | 2 [banheiros]       |
+| 11 [banheiro A]          | 2 [banheiros]      | 15 [corredor Banheiros]  | 2 [banheiros]       |
+| 12 [banheiro B]          | 2 [banheiros]      | 15 [corredor Banheiros]  | 2 [banheiros]       |
+| 13 [banheiro C]          | 2 [banheiros]      | 15 [corredor Banheiros]  | 2 [banheiros]       |
+| 13 [banheiro C]          | 2 [banheiros]      | 31 [esgoto]              | 8 [exterior]        |
+| 14 [banheiro D]          | 2 [banheiros]      | 15 [corredor Banheiros]  | 2 [banheiros]       |
+| 15 [corredor Banheiros]  | 2 [banheiros]      | 10 [corredor Celas]      | 1 [celas]           |
+| 15 [corredor Banheiros]  | 2 [banheiros]      | 11 [banheiro A]          | 2 [banheiros]       |
+| 15 [corredor Banheiros]  | 2 [banheiros]      | 12 [banheiro B]          | 2 [banheiros]       |
+| 15 [corredor Banheiros]  | 2 [banheiros]      | 13 [banheiro C]          | 2 [banheiros]       |
+| 15 [corredor Banheiros]  | 2 [banheiros]      | 14 [banheiro D]          | 2 [banheiros]       |
+| 15 [corredor Banheiros]  | 2 [banheiros]      | 19 [corredor Enfermaria] | 3 [enfermaria]      |
+| 15 [corredor Banheiros]  | 2 [banheiros]      | 23 [corredor Refeitorio] | 5 [refeitorio]      |
+| 16 [sala A]              | 3 [enfermaria]     | 17 [sala B]              | 3 [enfermaria]      |
+| 16 [sala A]              | 3 [enfermaria]     | 19 [corredor Enfermaria] | 3 [enfermaria]      |
+| 17 [sala B]              | 3 [enfermaria]     | 16 [sala A]              | 3 [enfermaria]      |
+| 17 [sala B]              | 3 [enfermaria]     | 18 [sala C]              | 3 [enfermaria]      |
+| 17 [sala B]              | 3 [enfermaria]     | 19 [corredor Enfermaria] | 3 [enfermaria]      |
+| 18 [sala C]              | 3 [enfermaria]     | 17 [sala B]              | 3 [enfermaria]      |
+| 18 [sala C]              | 3 [enfermaria]     | 19 [corredor Enfermaria] | 3 [enfermaria]      |
+| 19 [corredor Enfermaria] | 3 [enfermaria]     | 15 [corredor Banheiros]  | 2 [banheiros]       |
+| 19 [corredor Enfermaria] | 3 [enfermaria]     | 16 [sala A]              | 3 [enfermaria]      |
+| 19 [corredor Enfermaria] | 3 [enfermaria]     | 17 [sala B]              | 3 [enfermaria]      |
+| 19 [corredor Enfermaria] | 3 [enfermaria]     | 18 [sala C]              | 3 [enfermaria]      |
+| 19 [corredor Enfermaria] | 3 [enfermaria]     | 20 [sala De Controle]    | 4 [administracao]   |
 
 ---
 
