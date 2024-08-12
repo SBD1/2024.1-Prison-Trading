@@ -429,7 +429,7 @@
 | 22 | mesa Direita        | 5 [refeitorio]    | Mesa onde a gangue 2 faz suas refeições.                                                                         |
 | 23 | corredor Refeitorio | 5 [refeitorio]    | Corredor para se deslocar entre as mesas do refeitório e os corredores dos banheiros e do pátio.                 |
 | 24 | academia Simples    | 6 [patio]         | Uma área com equipamentos simples de exercício.                                                                  |
-| 25 | quadra De Basquete  | 6 [patio]         | Quadra onde os prisioneiros jogam basquete/futsal para se distrair e se exercitar.                               |
+| 25 | quadra De Basquete  | 6 [patio]         | Quadra onde os prisioneiros jogam basquete para se distrair e se exercitar.                                      |
 | 26 | arquibancada        | 6 [patio]         | Arquibancada onde os prisioneiros podem conversar e assistir os jogos.                                           |
 | 27 | area De Lazer       | 6 [patio]         | Bancos onde os prisioneiros podem sentar e conversar. Há um área no chão com terra fresca.                       |
 | 28 | corredor Patio      | 6 [patio]         | Corredor para se deslocar entre as áreas do pátio, as oficinas e entrada.                                        |
