@@ -216,10 +216,10 @@
 
 # Tabela Instancia_Item
 
-> id_item ➡ item, lugar, inventario
+> (id, item), lugar, inventario
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
-* 2° Forma Normal: Há somente um único atributo como chave (id_item), logo não há atributos comuns dependentes parcialmente de uma chave.
+* 2° Forma Normal: Há somente um único atributo como chave (id), logo não há atributos comuns dependentes parcialmente de uma chave.
 * 3° Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
 * Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
 * 4° Forma Normal: Não há dependências multivaloradas.
@@ -229,7 +229,6 @@
 # Tabela Item_Fabricavel
 
 > id, tipo
-
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
 * 2° Forma Normal: Há somente um único atributo como chave (id), logo não há atributos comuns dependentes parcialmente de uma chave.
@@ -253,10 +252,10 @@
 
 # Tabela Ferramenta
 
-> id ➡ nome, tamanho, descricao, utilidade
+> id ➡ nome, tamanho , utilidade, descricao
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
-* 2° Forma Normal: Há somente um único atributo como chave (id), logo não há atributos comuns dependentes parcialmente de uma chave.
+* 2° Forma Normal: Há apenas um único atributo como chave primária (id); portanto, não existem atributos comuns que sejam dependentes parcialmente dessa chave.
 * 3° Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
 * Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
 * 4° Forma Normal: Não há dependências multivaloradas.
@@ -268,7 +267,7 @@
 > id ➡ nome, tamanho, dano, descricao
 
 * 1ª Forma Normal: Todos os atributos são atômicos e monovalorados.
-* 2ª Forma Normal: A tabela está em 2FN, pois a chave primária id determina todos os outros atributos.
+* 2ª Forma Normal: Há apenas um único atributo como chave primária (id); portanto, não existem atributos comuns que sejam dependentes parcialmente dessa chave.
 * 3ª Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
 * Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
 * 4ª Forma Normal: Não há dependências multivaloradas.
@@ -277,10 +276,10 @@
 
 # Tabela Comida
 
-> id ➡ nome, tamanho, descricao
+> id ➡ nome, tamanho, descricao, raridade, quantidade, recuperacao_vida
 
 * 1ª Forma Normal: Todos os atributos são atômicos e monovalorados.
-* 2ª Forma Normal: A tabela está em 2FN, pois a chave primária id determina todos os outros atributos.
+* 2ª Forma Normal: Há apenas um único atributo como chave primária (id); portanto, não existem atributos comuns que sejam dependentes parcialmente dessa chave.
 * 3ª Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
 * Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
 * 4ª Forma Normal: Não há dependências multivaloradas.
@@ -289,11 +288,11 @@
 
 # Tabela Medicamento
 
-> id ➡ nome, tamanho, descricao
+> id ➡ nome, tamanho, descricao, raridade, quantidade, cura
 
 
 * 1ª Forma Normal: Todos os atributos são atômicos e monovalorados.
-* 2ª Forma Normal: A tabela está em 2FN, pois a chave primária id determina todos os outros atributos.
+* 2ª Forma Normal: Há apenas um único atributo como chave primária (id); portanto, não existem atributos comuns que sejam dependentes parcialmente dessa chave.
 * 3ª Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
 * Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
 * 4ª Forma Normal: Não há dependências multivaloradas.
@@ -302,11 +301,11 @@
 
 # Tabela Utilizavel
 
-> id ➡ nome, tamanho, descricao, durabilidade
+> id ➡ nome, tamanho, durabilidade, descricao, raridade quantidade, durabilidade
 
 
 * 1ª Forma Normal: Todos os atributos são atômicos e monovalorados.
-* 2ª Forma Normal: A tabela está em 2FN, pois a chave primária id determina todos os outros atributos.
+* 2ª Forma Normal: Há apenas um único atributo como chave primária (id); portanto, não existem atributos comuns que sejam dependentes parcialmente dessa chave.
 * 3ª Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
 * Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
 * 4ª Forma Normal: Não há dependências multivaloradas.
@@ -315,13 +314,13 @@
 
 # Tabela Fabricacao
 
-> id_item_fabricavel ➡ item_fabricavel, livro_fabricacao
+> (id ,item_fabricavel) livro_fabricacao
 
-1° Forma Normal: Todos os atributos são atômicos e monovalorados.
-2° Forma Normal: Há somente um único atributo como chave (id_item_fabricavel), logo não há atributos comuns dependentes parcialmente de uma chave.
-3° Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
-Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
-4° Forma Normal: Não há dependências multivaloradas.
+* 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
+* 2° Forma Normal: Há somente um único atributo como chave (id_item_fabricavel), logo não há atributos comuns dependentes parcialmente de uma chave.
+* 3° Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
+* Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
+* 4° Forma Normal: Não há dependências multivaloradas.
 
 ---
 
@@ -341,17 +340,17 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 
 > id ➡ nome
 
-1° Forma Normal: Todos os atributos são atômicos e monovalorados.
-2° Forma Normal: Há somente um único atributo como chave (id), logo não há atributos comuns dependentes parcialmente de uma chave.
-3° Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
-Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
-4° Forma Normal: Não há dependências multivaloradas.
+* 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
+* 2° Forma Normal: Há apenas um único atributo como chave primária (id); portanto, não existem atributos comuns que sejam dependentes parcialmente dessa chave.
+* 3° Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
+* Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
+* 4° Forma Normal: Não há dependências multivaloradas.
 
 ---
 
 # Tabela Prisao
 
-> id ➡ nome, descricao
+> id, nome, descricao
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
 * 2° Forma Normal: Há somente um único atributo como chave (id), logo não há atributos comuns dependentes parcialmente de uma chave.
@@ -363,7 +362,7 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 
 # Tabela Regiao
 
-> id ➡ nome, descricao, prisoes
+> id ➡ nome, descricao, prisao
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
 * 2° Forma Normal: Há somente um único atributo como chave (id), logo não há atributos comuns dependentes parcialmente de uma chave.
@@ -375,7 +374,7 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 
 # Tabela Lugar
 
-> id ➡ id_regiao, nome, descricao, regiao
+> (id, regiao) ➡ nome, descricao
 
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
@@ -400,7 +399,7 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 
 # Tabela Pessoa
 
-> id ➡ tipo
+> id, tipo
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
 * 2° Forma Normal: Há somente um único atributo como chave (id), logo não há atributos comuns dependentes parcialmente de uma chave.
@@ -412,7 +411,7 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 
 # Tabela Inventario
 
-> id_pessoa ➡ pessoa, tamanho, tamanho_ocupado
+> (id, pessoa), tamanho, tamanho_ocupado
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
 * 2° Forma Normal: Há somente um único atributo como chave (id_pessoa), logo não há atributos comuns dependentes parcialmente de uma chave.
@@ -424,7 +423,7 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 
 # Tabela Prisioneiro
 
-> id ➡ lugar, nome, habilidade_briga, vida, forca, gangue
+> id, lugar, nome, habilidade_briga, vida, forca, gangue
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
 * 2° Forma Normal: Há somente um único atributo como chave (id), logo não há atributos comuns dependentes parcialmente de uma chave.
@@ -436,7 +435,7 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 
 # Tabela Policial
 
-> id ➡ lugar, nome, corrupto
+> id, lugar, nome, corrupto
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
 * 2° Forma Normal: Há somente um único atributo como chave (id), logo não há atributos comuns dependentes parcialmente de uma chave.
@@ -448,7 +447,7 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 
 # Tabela Informante
 
-> id ➡ lugar, nome, dano
+> id, lugar, nome, dano
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
 * 2° Forma Normal: Há somente um único atributo como chave (id), logo não há atributos comuns dependentes parcialmente de uma chave.
@@ -460,7 +459,7 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 
 # Tabela Jogador
 
-> id  ➡ lugar, missao, nome, habilidade_briga, vida, forca, tempo_vida, gangue, nivel
+> id, lugar, missao, nome, habilidade_briga, vida, forca, tempo_vida, gangue, nivel
 
 * 1° Forma Normal: Todos os atributos são atômicos e monovalorados.
 * 2° Forma Normal: Há somente um único atributo como chave (id), logo não há atributos comuns dependentes parcialmente de uma chave.
@@ -470,21 +469,9 @@ Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é
 
 ---
 
-# Tabela Inventario
-
-> id_pessoa ➡ pessoa, tamanho, tamanho_ocupado
-
-1° Forma Normal: Todos os atributos são atômicos e monovalorados.
-2° Forma Normal: Há somente um único atributo como chave (id_pessoa), logo não há atributos comuns dependentes parcialmente de uma chave.
-3° Forma Normal: Nenhum atributo comum depende transitivamente de qualquer superchave.
-Forma Normal de Boyce-Codd: Para cada dependência funcional, o lado esquerdo é uma chave candidata.
-4° Forma Normal: Não há dependências multivaloradas.
-
----
-
 # Tabela Missao
 
-> id ➡ item_nao_fabricavel, lugar, nome, descricao
+> id, item_nao_fabricavel, lugar, nome, descricao
 
 * 1ª Forma Normal: Todos os atributos são atômicos e monovalorados.
 * 2ª Forma Normal: A tabela está em 2FN, pois a chave primária id determina todos os outros atributos.
