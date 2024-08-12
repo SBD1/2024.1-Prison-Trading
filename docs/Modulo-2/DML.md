@@ -388,6 +388,138 @@ INSERT INTO Informante (id, nome, dano_infomante, lugar) VALUES
 INSERT INTO Jogador (id, nome, habilidade_briga, vida, força, tempo_vida, gangue, lugar, missao, nivel) VALUES
 (1, 'Carimbo', 2, 5, 3, 10, null, 'celaA', null, 0);
 
+
+INSERT INTO prisao(id, nome, descricao)
+VALUES
+(1, 'Basilio', 'Uma prisão cercada por muralhas altas, com uma floresta que separa ela da cidade mais próxima.');
+
+INSERT INTO regiao(id, nome, prisao, descricao)
+VALUES
+(1, 'celas', 1, 'Local onde estão as celas e solitárias dos prisioneiros.'),
+(2, 'banheiros', 1, 'Local onde os prisioneiros se banham.'),
+(3, 'enfermaria', 1, 'Local onde os prisioneiros podem se tratar/curar.'),
+(4, 'administracao', 1, 'Local onde tem o controle geral elétrico da prisão.'),
+(5, 'refeitorio', 1, 'Local onde os prisioneiros fazem suas refeições.'),
+(6, 'patio', 1, 'Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete e relaxar.'),
+(7, 'oficinas', 1, 'Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.'),
+(8, 'exterior', 1, 'Localização fora da prisão.');
+
+INSERT INTO lugar(id, nome, regiao, descricao)
+VALUES
+(1, 'solitaria Oeste', 1, 'Cela para os prisioneiros levadinhos. Na parede direita há uma mancha de cimento fresco.'),
+(2, 'cela A', 1, 'Cela onde dormem os prisioneiros 1 e 2.'),
+(3, 'cela B', 1, 'Cela onde dormem os prisioneiros 3 e 4.'),
+(4, 'cela C', 1, 'Cela onde dormem os prisioneiros 5 e 6.'),
+(5, 'cela D', 1, 'Cela onde dormem os prisioneiros 7 e 8.'),
+(6, 'cela E', 1, 'Cela onde dormem os prisioneiros 9 e 10.'),
+(7, 'cela F', 1, 'Cela onde dormem os prisioneiros 11 e 12.'),
+(8, 'cela G', 1, 'Cela onde dormem os prisioneiros 13 e o jogador.'),
+(9, 'solitaria Leste', 1, 'Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.'),
+(10, 'corredor Celas', 1, 'Corredor para se deslocar entre as celas e as solitárias.'),
+(11, 'banheiro A', 2, 'Banheiro onde os prisioneiros tomam banho.'),
+(12, 'banheiro B', 2, 'Banheiro onde os prisioneiros tomam banho.'),
+(13, 'banheiro C', 2, 'Banheiro quebrado em manutenção com a porta trancada.'),
+(14, 'banheiro D', 2, 'Banheiro onde os prisioneiros tomam banho.'),
+(15, 'corredor Banheiros', 2, 'Corredor para se deslocar entre os banheiros e os corredores da enfermaria e do refeitório.'),
+(16, 'sala A', 3, 'Sala com uma maca e armário com remédios e kits de primeiro-socorro.'),
+(17, 'sala B', 3, 'Sala com uma maca e armário com remédios e kits de primeiro-socorro.'),
+(18, 'sala C', 3, 'Sala com uma maca e armário com remédios e kits de primeiro-socorro.'),
+(19, 'corredor Enfermaria', 3, 'Corredor para se deslocar entre as salas da enfermaria e a sala de controle.'),
+(20, 'sala De Controle', 4, 'Sala onde tem o controle da prisão, no final do corredor da enfermaria. Há um uniforme policial do lado da mesa.'),
+(21, 'mesa Esquerda', 5, 'Mesa onde a gangue 1 faz suas refeições.'),
+(22, 'mesa Direita', 5, 'Mesa onde a gangue 2 faz suas refeições.'),
+(23, 'corredor Refeitorio', 5, 'Corredor para se deslocar entre as mesas do refeitório e os corredores dos banheiros e do pátio.'),
+(24, 'academia Simples', 6, 'Uma área com equipamentos simples de exercício.'),
+(25, 'quadra De Basquete', 6, 'Quadra onde os prisioneiros jogam basquete para se distrair e se exercitar.'),
+(26, 'arquibancada', 6, 'Arquibancada onde os prisioneiros podem conversar e assistir os jogos.'),
+(27, 'area De Lazer', 6, 'Bancos onde os prisioneiros podem sentar e conversar. Há um área no chão com terra fresca.'),
+(28, 'corredor Patio', 6, 'Corredor para se deslocar entre as áreas do pátio, as oficinas e entrada.'),
+(29, 'oficina A', 7, 'Oficina de marcenaria onde os prisioneiros trabalham.'),
+(30, 'oficina B', 7, 'Oficina de impressão de placas de carro onde os prisioneiros trabalham'),
+(31, 'esgoto', 8, 'Local subterrâneo apertado que dá para fora da prisão.'),
+(32, 'entrada', 8, 'Local onde os policias e prisioneiros entram e sai da prisão que dá no corredor do pátio.'),
+(33, 'floresta', 8, 'Local cheio de árvores adjacente a prisão.');
+
+INSERT INTO lugar_origem_destino (lugar_origem, regiao_origem, lugar_destino, regiao_destino)
+VALUES
+(1, 1, 2, 1),
+(1, 1, 10, 1),
+(2, 1, 1, 1),
+(2, 1, 10, 1),
+(3, 1, 10, 1),
+(4, 1, 10, 1),
+(5, 1, 10, 1),
+(6, 1, 10, 1),
+(7, 1, 10, 1),
+(8, 1, 10, 1),
+(9, 1, 10, 1),
+(10, 1, 1, 1),
+(10, 1, 2, 1),
+(10, 1, 3, 1),
+(10, 1, 4, 1),
+(10, 1, 5, 1),
+(10, 1, 6, 1),
+(10, 1, 7, 1),
+(10, 1, 8, 1),
+(10, 1, 9, 1),
+(10, 1, 15, 2),
+(11, 2, 15, 2),
+(12, 2, 15, 2),
+(13, 2, 15, 2),
+(13, 2, 31, 8),
+(14, 2, 15, 2),
+(15, 2, 10, 1),
+(15, 2, 11, 2),
+(15, 2, 12, 2),
+(15, 2, 13, 2),
+(15, 2, 14, 2),
+(15, 2, 19, 3),
+(15, 2, 23, 5),
+(16, 3, 17, 3),
+(16, 3, 19, 3),
+(17, 3, 16, 3),
+(17, 3, 18, 3),
+(17, 3, 19, 3),
+(18, 3, 17, 3),
+(18, 3, 19, 3),
+(19, 3, 15, 2),
+(19, 3, 16, 3),
+(19, 3, 17, 3),
+(19, 3, 18, 3),
+(19, 3, 20, 4),
+(20, 4, 19, 3),
+(21, 5, 23, 5),
+(22, 5, 23, 5),
+(23, 5, 15, 2),
+(23, 5, 21, 5),
+(23, 5, 22, 5),
+(23, 5, 28, 6),
+(24, 6, 25, 6),
+(24, 6, 28, 6),
+(25, 6, 24, 6),
+(25, 6, 26, 6),
+(25, 6, 28, 6),
+(26, 6, 25, 6),
+(26, 6, 27, 6),
+(26, 6, 28, 6),
+(27, 6, 26, 6),
+(27, 6, 28, 6),
+(27, 6, 33, 8),
+(28, 6, 23, 5),
+(28, 6, 24, 6),
+(28, 6, 25, 6),
+(28, 6, 26, 6),
+(28, 6, 27, 6),
+(28, 6, 29, 7),
+(28, 6, 30, 7),
+(28, 6, 32, 8),
+(29, 7, 28, 6),
+(30, 7, 28, 6),
+(31, 8, 13, 2),
+(32, 8, 28, 6),
+(33, 8, 27, 6);
+
+
 COMMIT;
 ```
 
@@ -408,6 +540,6 @@ COMMIT;
 | 07/08/2024 | `1.2`  | adição parte do fernando | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
 | 07/08/2024 | `1.3`  | Adiciona parte do Júlio. | [Júlio Cesar](https://github.com/Julio1099)                                                                                                   |
 | 10/08/2024 | `1.4`  | corrige dml              | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
-
+| 12/08/2024 | `1.5`  | Adiciona parte do bob.   | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 
 </div>
