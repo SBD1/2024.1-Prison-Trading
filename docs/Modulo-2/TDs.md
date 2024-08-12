@@ -395,7 +395,7 @@
 | 3  | enfermaria     | 1 [Basilio] | Local onde os prisioneiros podem se tratar/curar.                                                   |
 | 4  | administracao  | 1 [Basilio] | Local onde tem o controle geral elétrico da prisão.                                                 |
 | 5  | refeitorio     | 1 [Basilio] | Local onde os prisioneiros fazem suas refeições.                                                    |
-| 6  | patio          | 1 [Basilio] | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futsal e relaxar. |
+| 6  | patio          | 1 [Basilio] | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete e relaxar.        |
 | 7  | oficinas       | 1 [Basilio] | Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.                                 |
 | 8  | exterior       | 1 [Basilio] | Localização fora da prisão.                                                                         |
 
