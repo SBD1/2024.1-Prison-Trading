@@ -380,58 +380,64 @@
 
 # Tabela Prisao
 
-| id | nome    | descricao |
-|----|---------|-----------|
-| 1  | Basilio |           |
+| id | nome    | descricao                                                                                      |
+|----|---------|------------------------------------------------------------------------------------------------|
+| 1  | Basilio | Uma prisão cercada por muralhas altas, com uma floresta que separa ela da cidade mais próxima. |
 
 ---
 
 # Tabela Regiao
 
-| id | nome       | prisao      | descricao                                                                                           |
-|----|------------|-------------|-----------------------------------------------------------------------------------------------------|
-| 1  | celas      | 1 [Basilio] | Local onde estão as celas e solitárias dos prisioneiros.                                            |
-| 2  | banheiros  | 1 [Basilio] | Local onde os prisioneiros se banham.                                                               |
-| 3  | enfermaria | 1 [Basilio] | Local onde os prisioneiros podem se tratar/curar.                                                   |
-| 4  | refeitorio | 1 [Basilio] | Local onde os prisioneiros fazem suas refeições.                                                    |
-| 5  | patio      | 1 [Basilio] | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futsal e relaxar. |
-| 6  | oficinas   | 1 [Basilio] | Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.                                 |
+| id | nome           | prisao      | descricao                                                                                           |
+|----|----------------|-------------|-----------------------------------------------------------------------------------------------------|
+| 1  | celas          | 1 [Basilio] | Local onde estão as celas e solitárias dos prisioneiros.                                            |
+| 2  | banheiros      | 1 [Basilio] | Local onde os prisioneiros se banham.                                                               |
+| 3  | enfermaria     | 1 [Basilio] | Local onde os prisioneiros podem se tratar/curar.                                                   |
+| 4  | administracao  | 1 [Basilio] | Local onde tem o controle geral elétríco da prisão.                                                 |
+| 5  | refeitorio     | 1 [Basilio] | Local onde os prisioneiros fazem suas refeições.                                                    |
+| 6  | patio          | 1 [Basilio] | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete/futsal e relaxar. |
+| 7  | oficinas       | 1 [Basilio] | Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.                                 |
+| 8  | exterior       | 1 [Basilio] | Localização fora da prisão.                                                                         |
 
 ---
 
 # Tabela Lugar
 
-| id | nome                | *regiao*       | descricao                                                                                |
-|----|---------------------|----------------|------------------------------------------------------------------------------------------|
-| 1  | solitaria Oeste     | 1 [celas]      | Cela para os prisioneiros levadinhos. Na parede direita há uma mancha de cimento fresco. |
-| 2  | cela A              | 1 [celas]      | Cela onde dormem os prisioneiros 1 e 2.                                                  |
-| 3  | cela B              | 1 [celas]      | Cela onde dormem os prisioneiros 3 e 4.                                                  |
-| 4  | cela C              | 1 [celas]      | Cela onde dormem os prisioneiros 5 e 6.                                                  |
-| 5  | cela D              | 1 [celas]      | Cela onde dormem os prisioneiros 7 e 8.                                                  |
-| 6  | cela E              | 1 [celas]      | Cela onde dormem os prisioneiros 9 e 10.                                                 |
-| 7  | cela F              | 1 [celas]      | Cela onde dormem os prisioneiros 11 e 12.                                                |
-| 8  | cela G              | 1 [celas]      | Cela onde dormem o prisioneiro 13 e o jogador.                                           |
-| 9  | solitaria Leste     | 1 [celas]      | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.   |
-| 10 | corredor Celas      | 1 [celas]      | Corredor para se deslocar entre as celas e as solitárias.                                |
-| 11 | banheiro A          | 2 [banheiros]  | Banheiro onde os prisioneiros tomam banho.                                               |
-| 12 | banheiro B          | 2 [banheiros]  | Banheiro onde os prisioneiros tomam banho.                                               |
-| 13 | banheiro C          | 2 [banheiros]  | Banheiro onde os prisioneiros tomam banho.                                               |
-| 14 | banheiro D          | 2 [banheiros]  | Banheiro onde os prisioneiros tomam banho.                                               |
-| 15 | corredor Banheiros  | 2 [banheiros]  | Corredor para se deslocar entre os banheiros.                                            |
-| 16 | sala A              | 3 [enfermaria] | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
-| 17 | sala B              | 3 [enfermaria] | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
-| 18 | sala C              | 3 [enfermaria] | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
-| 19 | corredor Enfermaria | 3 [enfermaria] | Corredor para se deslocar entre as salas da enfermaria.                                  |
-| 20 | mesa Esquerda       | 4 [refeitorio] | Mesa onde a gangue 1 faz suas refeições.                                                 |
-| 21 | mesa Direita        | 4 [refeitorio] | Mesa onde a gangue 2 faz suas refeições.                                                 |
-| 22 | corredor Refeitorio | 4 [refeitorio] | Corredor para se deslocar entre as mesas do refeitório.                                  |
-| 23 | academia Simples    | 5 [patio]      | Uma área com equipamentos simples de exercício.                                          |
-| 24 | quadra De Basquete  | 5 [patio]      | Quadra onde os prisioneiros jogam basquete/futsal para se distrair e se exercitar.       |
-| 25 | arquibancada        | 5 [patio]      | Arquibancada onde os prisioneiros podem conversar e assistir os jogos.                   |
-| 26 | area De Lazer       | 5 [patio]      | Bancos onde os prisioneiros podem sentar e conversar.                                    |
-| 27 | corredor Patio      | 5 [patio]      | Corredor para se deslocar entre as áreas do pátio e as oficinas.                         |
-| 28 | oficina A           | 6 [oficinas]   | Oficina de marcenaria onde os prisioneiros trabalham.                                    |
-| 29 | oficina B           | 6 [oficinas]   | Oficina de impressão de placas de carro onde os prisioneiros trabalham.                  |
+| id | nome                | *regiao*          | descricao                                                                                |
+|----|---------------------|-------------------|------------------------------------------------------------------------------------------|
+| 1  | solitaria Oeste     | 1 [celas]         | Cela para os prisioneiros levadinhos. Na parede direita há uma mancha de cimento fresco. |
+| 2  | cela A              | 1 [celas]         | Cela onde dormem os prisioneiros 1 e 2.                                                  |
+| 3  | cela B              | 1 [celas]         | Cela onde dormem os prisioneiros 3 e 4.                                                  |
+| 4  | cela C              | 1 [celas]         | Cela onde dormem os prisioneiros 5 e 6.                                                  |
+| 5  | cela D              | 1 [celas]         | Cela onde dormem os prisioneiros 7 e 8.                                                  |
+| 6  | cela E              | 1 [celas]         | Cela onde dormem os prisioneiros 9 e 10.                                                 |
+| 7  | cela F              | 1 [celas]         | Cela onde dormem os prisioneiros 11 e 12.                                                |
+| 8  | cela G              | 1 [celas]         | Cela onde dormem o prisioneiro 13 e o jogador.                                           |
+| 9  | solitaria Leste     | 1 [celas]         | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.   |
+| 10 | corredor Celas      | 1 [celas]         | Corredor para se deslocar entre as celas e as solitárias.                                |
+| 11 | banheiro A          | 2 [banheiros]     | Banheiro onde os prisioneiros tomam banho.                                               |
+| 12 | banheiro B          | 2 [banheiros]     | Banheiro onde os prisioneiros tomam banho.                                               |
+| 13 | banheiro C          | 2 [banheiros]     | Banheiro onde os prisioneiros tomam banho.                                               |
+| 14 | banheiro D          | 2 [banheiros]     | Banheiro onde os prisioneiros tomam banho.                                               |
+| 15 | corredor Banheiros  | 2 [banheiros]     | Corredor para se deslocar entre os banheiros.                                            |
+| 16 | sala A              | 3 [enfermaria]    | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
+| 17 | sala B              | 3 [enfermaria]    | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
+| 18 | sala C              | 3 [enfermaria]    | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                     |
+| 19 | corredor Enfermaria | 3 [enfermaria]    | Corredor para se deslocar entre as salas da enfermaria.                                  |
+| 20 | sala De Controle    | 4 [administracao] | Sala onde tem o controle da prisão. Há um uniforme policial do lado da mesa.             |
+| 21 | mesa Esquerda       | 5 [refeitorio]    | Mesa onde a gangue 1 faz suas refeições.                                                 |
+| 22 | mesa Direita        | 5 [refeitorio]    | Mesa onde a gangue 2 faz suas refeições.                                                 |
+| 23 | corredor Refeitorio | 5 [refeitorio]    | Corredor para se deslocar entre as mesas do refeitório.                                  |
+| 24 | academia Simples    | 6 [patio]         | Uma área com equipamentos simples de exercício.                                          |
+| 25 | quadra De Basquete  | 6 [patio]         | Quadra onde os prisioneiros jogam basquete/futsal para se distrair e se exercitar.       |
+| 26 | arquibancada        | 6 [patio]         | Arquibancada onde os prisioneiros podem conversar e assistir os jogos.                   |
+| 27 | area De Lazer       | 6 [patio]         | Bancos onde os prisioneiros podem sentar e conversar.                                    |
+| 28 | corredor Patio      | 6 [patio]         | Corredor para se deslocar entre as áreas do pátio e as oficinas.                         |
+| 29 | oficina A           | 7 [oficinas]      | Oficina de marcenaria onde os prisioneiros trabalham.                                    |
+| 30 | oficina B           | 7 [oficinas]      | Oficina de impressão de placas de carro onde os prisioneiros trabalham.                  |
+| 31 | esgoto              | 8 [exterior]      | Local subterrâneo apertado que dá para fora da prisão.                                   |
+| 32 | entrada             | 8 [exterior]      | Local onde os policias e prisioneiros entram e sai da prisão.                            |
+| 33 | floresta            | 8 [exterior]      | Local cheio de árvores adjacente a prisão.                                               |
 
 ---
 
@@ -660,6 +666,7 @@
 | 06/08/2024 | `2.3`  |                               Termina de corrigir a tabela [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino).                                | [Breno Alexandre](https://github.com/brenoalexandre0) |
 | 07/08/2024 | `2.4`  |                                             Adiciona chaves compostas em lista_fabricacao e instancia_item.                                              | [João Antonio G.](https://github.com/joaoseisei)      |
 | 09/08/2024 | `2.5`  | Correção das tabelas [`Tabela-Regiao`](#Tabela-Regiao), [`Tabela-Lugar`](#Tabela-Lugar) e [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino). | [Breno Alexandre](https://github.com/brenoalexandre0) |
-| 10/08/2024 | `2.6`  |                                                                     Adiciona regiao.                                                                     |  [João Antonio G.](https://github.com/joaoseisei)                                                     |
+| 10/08/2024 | `2.6`  |                                                                     Adiciona regiao.                                                                     |  [João Antonio G.](https://github.com/joaoseisei)     |
+| 12/08/2024 | `2.7`  | Correção das tabelas [`Tabela-Regiao`](#Tabela-Regiao), [`Tabela-Lugar`](#Tabela-Lugar) e [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino). | [Breno Alexandre](https://github.com/brenoalexandre0) |
 
 </div>
