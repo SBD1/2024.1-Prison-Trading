@@ -490,6 +490,37 @@
 | 19 [corredor Enfermaria] | 3 [enfermaria]     | 17 [sala B]              | 3 [enfermaria]      |
 | 19 [corredor Enfermaria] | 3 [enfermaria]     | 18 [sala C]              | 3 [enfermaria]      |
 | 19 [corredor Enfermaria] | 3 [enfermaria]     | 20 [sala De Controle]    | 4 [administracao]   |
+| 20 [sala De Controle]    | 4 [administracao]  | 19 [corredor Enfermaria] | 3 [enfermaria]      |
+| 21 [mesa Esquerda]       | 5 [refeitorio]     | 23 [corredor Refeitorio] | 5 [refeitorio]      |
+| 22 [mesa Direita]        | 5 [refeitorio]     | 23 [corredor Refeitorio] | 5 [refeitorio]      |
+| 23 [corredor Refeitorio] | 5 [refeitorio]     | 15 [corredor Banheiros]  | 2 [banheiros]       | 
+| 23 [corredor Refeitorio] | 5 [refeitorio]     | 21 [mesa Esquerda]       | 5 [refeitorio]      |
+| 23 [corredor Refeitorio] | 5 [refeitorio]     | 22 [mesa Direita]        | 5 [refeitorio]      |
+| 23 [corredor Refeitorio] | 5 [refeitorio]     | 28 [corredor Patio]      | 6 [patio]           |
+| 24 [academia Simples]    | 6 [patio]          | 25 [quadra De Basquete]  | 6 [patio]           |
+| 24 [academia Simples]    | 6 [patio]          | 28 [corredor Patio]      | 6 [patio]           |
+| 25 [quadra De Basquete]  | 6 [patio]          | 24 [academia Simples]    | 6 [patio]           |
+| 25 [quadra De Basquete]  | 6 [patio]          | 26 [arquibancada]        | 6 [patio]           |
+| 25 [quadra De Basquete]  | 6 [patio]          | 28 [corredor Patio]      | 6 [patio]           |
+| 26 [arquibancada]        | 6 [patio]          | 25 [quadra De Basquete]  | 6 [patio]           |
+| 26 [arquibancada]        | 6 [patio]          | 27 [area De Lazer]       | 6 [patio]           |
+| 26 [arquibancada]        | 6 [patio]          | 28 [corredor Patio]      | 6 [patio]           |
+| 27 [area De Lazer]       | 6 [patio]          | 26 [arquibancada]        | 6 [patio]           |
+| 27 [area De Lazer]       | 6 [patio]          | 28 [corredor Patio]      | 6 [patio]           |
+| 27 [area De Lazer]       | 6 [patio]          | 33 [floresta]            | 8 [exterior]        |
+| 28 [corredor Patio]      | 6 [patio]          | 23 [corredor Refeitorio] | 5 [refeitorio]      |
+| 28 [corredor Patio]      | 6 [patio]          | 24 [academia Simples]    | 6 [patio]           |
+| 28 [corredor Patio]      | 6 [patio]          | 25 [quadra De Basquete]  | 6 [patio]           |
+| 28 [corredor Patio]      | 6 [patio]          | 26 [arquibancada]        | 6 [patio]           |
+| 28 [corredor Patio]      | 6 [patio]          | 27 [area De Lazer]       | 6 [patio]           |
+| 28 [corredor Patio]      | 6 [patio]          | 29 [oficina A]           | 7 [oficinas]        |
+| 28 [corredor Patio]      | 6 [patio]          | 30 [oficina B]           | 7 [oficinas]        |
+| 28 [corredor Patio]      | 6 [patio]          | 32 [entrada]             | 8 [exterior]        |
+| 29 [oficina A]           | 7 [oficinas]       | 28 [corredor Patio]      | 6 [patio]           |
+| 30 [oficina B]           | 7 [oficinas]       | 28 [corredor Patio]      | 6 [patio]           |
+| 31 [esgoto]              | 8 [exterior]       | 13 [banheiro C]          | 2 [banheiros]       |
+| 32 [entrada]             | 8 [exterior]       | 28 [corredor Patio]      | 6 [patio]           |
+| 33 [floresta]            | 8 [exterior]       | 27 [area De Lazer]       | 6 [patio]           |
 
 ---
 
