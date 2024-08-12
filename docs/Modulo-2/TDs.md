@@ -427,7 +427,7 @@
 | 20 | sala De Controle    | 4 [administracao] | Sala onde tem o controle da prisão, no final do corredor da enfermaria. Há um uniforme policial do lado da mesa. |
 | 21 | mesa Esquerda       | 5 [refeitorio]    | Mesa onde a gangue 1 faz suas refeições.                                                                         |
 | 22 | mesa Direita        | 5 [refeitorio]    | Mesa onde a gangue 2 faz suas refeições.                                                                         |
-| 23 | corredor Refeitorio | 5 [refeitorio]    | Corredor para se deslocar entre as mesas do refeitório.                                                          |
+| 23 | corredor Refeitorio | 5 [refeitorio]    | Corredor para se deslocar entre as mesas do refeitório e os corredores dos banheiros e do pátio.                 |
 | 24 | academia Simples    | 6 [patio]         | Uma área com equipamentos simples de exercício.                                                                  |
 | 25 | quadra De Basquete  | 6 [patio]         | Quadra onde os prisioneiros jogam basquete/futsal para se distrair e se exercitar.                               |
 | 26 | arquibancada        | 6 [patio]         | Arquibancada onde os prisioneiros podem conversar e assistir os jogos.                                           |
