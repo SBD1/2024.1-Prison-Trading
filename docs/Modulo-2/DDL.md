@@ -286,6 +286,56 @@ COMMIT;
 
 ---
 
+>PARTE BOB
+
+```sql
+BEGIN TRANSACTION;
+
+-- Tabela Prisao
+CREATE TABLE prisao (
+	id SERIAL NOT NULL,
+	nome CHAR(25) NOT NULL,
+	descricao TEXT NOT NULL,
+	PRIMARY KEY(id)
+);
+
+-- Tabela Regiao
+CREATE TABLE regiao (
+	id SERIAL NOT NULL,
+	nome CHAR(25) UNIQUE NOT NULL,
+	prisao INTEGER NOT NULL,
+	descricao TEXT NOT NULL,
+	PRIMARY KEY(id),
+	FOREIGN KEY (prisao) REFERENCES prisao(id)
+);
+
+-- Tabela Lugar
+CREATE TABLE lugar (
+	id SERIAL NOT NULL,
+	nome CHAR(25) UNIQUE NOT NULL,
+	regiao INTEGER NOT NULL,
+	descricao TEXT NOT NULL,
+	PRIMARY KEY(id, regiao),
+	FOREIGN KEY (regiao) REFERENCES regiao(id)
+);
+
+-- Tabela Lugar_Origem_Destino
+CREATE TABLE lugar_origem_destino (
+	lugar_origem INTEGER NOT NULL,
+	regiao_origem INTEGER NOT NULL,
+	lugar_destino INTEGER NOT NULL,
+	regiao_destino INTEGER NOT NULL,
+	FOREIGN KEY (lugar_origem) REFERENCES lugar(id),
+	FOREIGN KEY (lugar_destino) REFERENCES lugar(id),
+	FOREIGN KEY (regiao_origem) REFERENCES regiao(id),
+	FOREIGN KEY (regiao_destino) REFERENCES regiao(id),
+);
+
+
+COMMIT;
+```
+---
+
 <center>
 
 # Histórico de versão
@@ -301,6 +351,7 @@ COMMIT;
 | 07/08/2024 | `1.2`  | Adiciona parte do fernando                 | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
 | 10/08/2024 | `1.3`  | Adiciona parte do Júlio e corrige Fernando | [Júlio Cesar](https://github.com/Julio1099)                                                                                                   |
 | 10/08/2024 | `1.4`  | corrige ddl                                | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
+| 12/08/2024 | `1.5`  | Adiciona parte bob.                        | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 
 
 </div>
