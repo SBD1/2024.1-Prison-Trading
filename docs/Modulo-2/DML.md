@@ -76,7 +76,7 @@ VALUES
 (12, 'arma'),
 (13, 'arma');
 
-INSERT INTO item_nao_fabricavel(id_item, tipo_nao_fabricavel)
+INSERT INTO item_nao_fabricavel(id, tipo)
 VALUES
 (14, 'utilizavel'),
 (15, 'utilizavel'),
