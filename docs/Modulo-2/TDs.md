@@ -88,6 +88,8 @@
 | 35 [Peixe]                   | 'nao fabricavel' |
 | 36 [Laranja]                 | 'nao fabricavel' |
 | 37 [Cracha]                  | 'nao fabricavel' |
+| 38 [Chave Oficina A]         | 'nao fabricavel' |
+| 39 [Chave Oficina B]         | 'nao fabricavel' |
 
 ---
 
@@ -190,9 +192,9 @@
 | 93 | 23 [Garrafa de Vidro]        | NULL                     | NULL     | 18         | 18       |
 | 94 | 22 [Tecido]                  | NULL                     | NULL     | 18         | 18       |
 | 95 | 11 [Coquetel Molotov]        | NULL                     | NULL     | 19         | 19       |
-| 96 | 28 [Anti inflamatorio]       | NULL                     | NULL     | 19         | 19       |
+| 96 | 38 [Chave Oficina A]         | NULL                     | NULL     | 19         | 19       |
 | 97 | 12 [Corda com Cerol]         | NULL                     | NULL     | 20         | 20       |
-| 98 | 20 [Pedaco Grande de Metal]  | NULL                     | NULL     | 20         | 20       |
+| 98 | 39 [Chave Oficina B]         | NULL                     | NULL     | 20         | 20       |
 
 ---
 
@@ -244,6 +246,8 @@
 | 35 [Peixe]                   | 'comida'      |
 | 36 [Laranja]                 | 'comida'      |
 | 37 [Cracha]                  | 'utilizavel'  |
+| 38 [Chave Oficina A]         | 'utilizavel'  |
+| 39 [Chave Oficina B]         | 'utilizavel'  |
 
 ---
 
@@ -316,6 +320,8 @@
 | 26 | Lanterna                | 1       | Lanterna é um dispositivo portátil que emite luz.                                                               | 1        | 1          | 1           |
 | 27 | Cigarro                 | 1       | Moeda de troca do jogo, além de poder ser utilizado para acalmar.                                               | 1        | 10         | 1           |
 | 37 | Cracha                  | 1       | Crachá de identificação, item ultra raro que pode ser usado para ativar a entrada.                              | 2        | 1          | 1           |
+| 38 | Chave Oficina A         | 1       | Chave usada para abrir a oficina A.                                                                             | 2        | 1          | 1           |
+| 39 | Chave Oficina B         | 1       | Chave usada para abrir a oficina B.                                                                             | 2        | 1          | 1           |
 
 ---
 
@@ -637,8 +643,8 @@
 
 | id | item                        | nome                      | descricao                                                                  | lugar                   | `regiao ` |
 |----|-----------------------------|---------------------------|----------------------------------------------------------------------------|-------------------------|-----------|
-| 1  | 31 [Pao seco]               | Fuja da solitaria oeste   | Escape da cela de isolamento leste sem ser pego.                           | 1 [Solitaria Oeste]     | 1 [Celas] |
-| 2  | 23 [Garrafa de Vidro]       | Fuja da solitaria leste   | Escape da cela de isolamento oeste sem ser pego.                           | 9 [Solitaria Leste]     | 1 [Celas] |
+| 1  | 38 [Chave Oficina A]        | Fuja da solitaria oeste   | Escape da cela de isolamento leste sem ser pego.                           | 1 [Solitaria Oeste]     | 1 [Celas] |
+| 2  | 39 [Chave Oficina B]        | Fuja da solitaria leste   | Escape da cela de isolamento oeste sem ser pego.                           | 9 [Solitaria Leste]     | 1 [Celas] |
 | 3  | 30 [Bandagem]               | Observar  cela            | Observe e memorize os detalhes da cela para planejar uma fuga.             | 5 [Cela D]              | 1 [Celas] |
 | 4  | 27 [Cigarro]                | Escolher gangue           | Escolha a gangue com a qual se aliar na prisão.                            | NULL                    | NULL      |
 | 5  | NULL                        | explorar o mapa           | Explore os locais no mapa da prisão, para um melhor entendimento do mesmo. | NULL                    | NULL      |
