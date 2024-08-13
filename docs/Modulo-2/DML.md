@@ -56,6 +56,8 @@ VALUES
 ('nao fabricavel'),
 ('nao fabricavel'),
 ('nao fabricavel'),
+('nao fabricavel'),
+('nao fabricavel'),
 ('nao fabricavel');
 
 INSERT INTO item_fabricavel(id, tipo)
