@@ -49,44 +49,45 @@
 
 # Tabela Item
 
-| id                          | tipo             |
-|-----------------------------|------------------|
-| 1[Chave de fenda]           | 'fabricavel'     |
-| 2[Pa]                       | 'fabricavel'     |
-| 3[Martelo]                  | 'fabricavel'     |
-| 4[Picareta]                 | 'fabricavel'     |
-| 5[Lock pick]                | 'fabricavel'     |
-| 6[Corda]                    | 'fabricavel'     |
-| 7[Faca]                     | 'fabricavel'     |
-| 8[Adaga]                    | 'fabricavel'     |
-| 9[Soco ingles]              | 'fabricavel'     |
-| 10[Faca curta]              | 'fabricavel'     |
-| 11[Coquetel Molotov]        | 'fabricavel'     |
-| 12[Corda com Cerol]         | 'fabricavel'     |
-| 13[Garrafa quebrada]        | 'fabricavel'     |
-| 14[Sabao]                   | 'nao fabricavel' |
-| 15[Pedra]                   | 'nao fabricavel' |
-| 16[Graveto]                 | 'nao fabricavel' |
-| 17[Linha]                   | 'nao fabricavel' |
-| 18[Pedaco pequeno de metal] | 'nao fabricavel' |
-| 19[Vidro]                   | 'nao fabricavel' |
-| 20[Pedaco grande de metal]  | 'nao fabricavel' |
-| 21[Alcool]                  | 'nao fabricavel' |
-| 22[Tecido]                  | 'nao fabricavel' |
-| 23[Garrada de vidro]        | 'nao fabricavel' |
-| 24[Plastico]                | 'nao fabricavel' |
-| 25[Isqueiro]                | 'nao fabricavel' |
-| 26[Lanterna]                | 'nao fabricavel' |
-| 27[Cigarro]                 | 'nao fabricavel' |
-| 28[Anti-inflamatorio]       | 'nao fabricavel' |
-| 29[Morfina]                 | 'nao fabricavel' |
-| 30[Bandagem]                | 'nao fabricavel' |
-| 31[Pao seco]                | 'nao fabricavel' |
-| 32[Pao]                     | 'nao fabricavel' |
-| 33[Queijo]                  | 'nao fabricavel' |
-| 34[Carne]                   | 'nao fabricavel' |
-| 35[Peixe]                   | 'nao fabricavel' |
-| 36[Laranja]                 | 'nao fabricavel' |
+| id                           | tipo             |
+|------------------------------|------------------|
+| 1 [Chave de Fenda]           | 'fabricavel'     |
+| 2 [Pa]                       | 'fabricavel'     |
+| 3 [Martelo]                  | 'fabricavel'     |
+| 4 [Picareta]                 | 'fabricavel'     |
+| 5 [Lock Pick]                | 'fabricavel'     |
+| 6 [Corda]                    | 'fabricavel'     |
+| 7 [Faca]                     | 'fabricavel'     |
+| 8 [Adaga]                    | 'fabricavel'     |
+| 9 [Soco Ingles]              | 'fabricavel'     |
+| 10 [Faca Curta]              | 'fabricavel'     |
+| 11 [Coquetel Molotov]        | 'fabricavel'     |
+| 12 [Corda com Cerol]         | 'fabricavel'     |
+| 13 [Garrafa Quebrada]        | 'fabricavel'     |
+| 14 [Sabao]                   | 'nao fabricavel' |
+| 15 [Pedra]                   | 'nao fabricavel' |
+| 16 [Graveto]                 | 'nao fabricavel' |
+| 17 [Linha]                   | 'nao fabricavel' |
+| 18 [Pedaco Pequeno de Metal] | 'nao fabricavel' |
+| 19 [Vidro]                   | 'nao fabricavel' |
+| 20 [Pedaco Grande de Metal]  | 'nao fabricavel' |
+| 21 [Alcool]                  | 'nao fabricavel' |
+| 22 [Tecido]                  | 'nao fabricavel' |
+| 23 [Garrada de Vidro]        | 'nao fabricavel' |
+| 24 [Plastico]                | 'nao fabricavel' |
+| 25 [Isqueiro]                | 'nao fabricavel' |
+| 26 [Lanterna]                | 'nao fabricavel' |
+| 27 [Cigarro]                 | 'nao fabricavel' |
+| 28 [Anti inflamatorio]       | 'nao fabricavel' |
+| 29 [Morfina]                 | 'nao fabricavel' |
+| 30 [Bandagem]                | 'nao fabricavel' |
+| 31 [Pao Seco]                | 'nao fabricavel' |
+| 32 [Pao]                     | 'nao fabricavel' |
+| 33 [Queijo]                  | 'nao fabricavel' |
+| 34 [Carne]                   | 'nao fabricavel' |
+| 35 [Peixe]                   | 'nao fabricavel' |
+| 36 [Laranja]                 | 'nao fabricavel' |
+| 37 [Cracha]                  | 'nao fabricavel' |
 
 ---
 
@@ -94,104 +95,104 @@
 
 | id | *item*                       | lugar                    | `regiao` | inventario | `pessoa` |
 |----|:-----------------------------|--------------------------|----------|------------|----------|
-| 1  | 1 [Chave de fenda]           | 28 [Oficina A]           | 6        | NULL       | NULL     |
-| 2  | 2 [Pa]                       | 28 [Oficina A]           | 6        | NULL       | NULL     |
-| 3  | 3 [Martelo]                  | 29 [Oficina B]           | 6        | NULL       | NULL     |
-| 4  | 4 [Picareta]                 | 29 [Oficina B]           | 6        | NULL       | NULL     |
-| 5  | 20 [Pedaco grande de metal]  | 28 [Oficina A]           | 6        | NULL       | NULL     |
-| 6  | 6 [Corda]                    | 29 [Oficina B]           | 6        | NULL       | NULL     |
+| 1  | 1 [Chave de Fenda]           | 29 [Oficina A]           | 7        | NULL       | NULL     |
+| 2  | 2 [Pa]                       | 29 [Oficina A]           | 7        | NULL       | NULL     |
+| 3  | 3 [Martelo]                  | 30 [Oficina B]           | 7        | NULL       | NULL     |
+| 4  | 4 [Picareta]                 | 30 [Oficina B]           | 7        | NULL       | NULL     |
+| 5  | 20 [Pedaco Grande de Metal]  | 29 [Oficina A]           | 7        | NULL       | NULL     |
+| 6  | 6 [Corda]                    | 30 [Oficina B]           | 7        | NULL       | NULL     |
 | 7  | 7 [Faca]                     | 11 [Banheiro A]          | 2        | NULL       | NULL     |
 | 8  | 8 [Adaga]                    | 11 [Banheiro A]          | 2        | NULL       | NULL     |
-| 9  | 9 [Soco ingles]              | 8 [Cela G]               | 1        | NULL       | NULL     |
-| 10 | 10 [Faca curta]              | 6 [Cela F]               | 1        | NULL       | NULL     |
-| 11 | 11 [Coquetel molotov]        | 7 [Solitaria leste]      | 1        | NULL       | NULL     |
-| 12 | 12 [Corda com cerol]         | 6 [Cela E]               | 1        | NULL       | NULL     |
-| 13 | 13 [Garrafa quebrada]        | 27 [Corredor patio]      | 5        | NULL       | NULL     |
+| 9  | 9 [Soco Ingles]              | 8 [Cela G]               | 1        | NULL       | NULL     |
+| 10 | 10 [Faca Curta]              | 7 [Cela F]               | 1        | NULL       | NULL     |
+| 11 | 11 [Coquetel Molotov]        | 9 [Solitaria Leste]      | 1        | NULL       | NULL     |
+| 12 | 12 [Corda com Cerol]         | 6 [Cela E]               | 1        | NULL       | NULL     |
+| 13 | 13 [Garrafa Quebrada]        | 28 [Corredor Patio]      | 6        | NULL       | NULL     |
 | 14 | 14 [Sabao]                   | 12 [Banheiro B]          | 2        | NULL       | NULL     |
-| 15 | 15 [Pedra]                   | 26 [Area de lazer]       | 5        | NULL       | NULL     |
-| 16 | 16 [Graveto]                 | 26 [Area de lazer]       | 5        | NULL       | NULL     |
+| 15 | 15 [Pedra]                   | 27 [Area De Lazer]       | 6        | NULL       | NULL     |
+| 16 | 16 [Graveto]                 | 27 [Area De Lazer]       | 6        | NULL       | NULL     |
 | 17 | 17 [Linha]                   | 16 [Sala A]              | 3        | NULL       | NULL     |
-| 18 | 18 [Pedaco pequeno de metal] | 28 [Oficina A]           | 6        | NULL       | NULL     |
+| 18 | 18 [Pedaco Pequeno de Metal] | 29 [Oficina A]           | 7        | NULL       | NULL     |
 | 19 | 19 [Vidro]                   | 3 [Cela B]               | 1        | NULL       | NULL     |
-| 20 | 20 [Pedaco grande de metal]  | 4 [Cela A]               | 1        | NULL       | NULL     |
-| 21 | 21 [Alcool]                  | 16 [Sala B]              | 3        | NULL       | NULL     |
-| 22 | 22 [Tecido]                  | 16 [Sala B]              | 3        | NULL       | NULL     |
-| 23 | 23 [Garrafa de vidro]        | 16 [Sala B]              | 3        | NULL       | NULL     |
-| 24 | 24 [Plastico]                | 19 [Corredor enfermaria] | 3        | NULL       | NULL     |
+| 20 | 20 [Pedaco Grande de Metal]  | 4 [Cela C]               | 1        | NULL       | NULL     |
+| 21 | 21 [Alcool]                  | 17 [Sala B]              | 3        | NULL       | NULL     |
+| 22 | 22 [Tecido]                  | 17 [Sala B]              | 3        | NULL       | NULL     |
+| 23 | 23 [Garrafa de Vidro]        | 17 [Sala B]              | 3        | NULL       | NULL     |
+| 24 | 24 [Plastico]                | 19 [Corredor Enfermaria] | 3        | NULL       | NULL     |
 | 25 | 25 [Isqueiro]                | 4 [Cela C]               | 1        | NULL       | NULL     |
-| 26 | 26 [Lanterna]                | 1 [Solitaria oeste]      | 1        | NULL       | NULL     |
-| 27 | 27 [Cigarro]                 | 13 [Corredor patio]      | 5        | NULL       | NULL     |
-| 28 | 28 [Anti inflamatorio]       | 17 [Enfermaria A]        | 3        | NULL       | NULL     |
-| 29 | 29 [Morfina]                 | 18 [Enfermaria B]        | 3        | NULL       | NULL     |
-| 30 | 30 [Bandagem]                | 19 [Enfermaria C]        | 3        | NULL       | NULL     |
-| 31 | 31 [Pao seco]                | 20 [Mesa esquerda]       | 4        | NULL       | NULL     |
-| 32 | 32 [Pao]                     | 20 [Mesa esquerda]       | 4        | NULL       | NULL     |
-| 33 | 33 [Queijo]                  | 20 [Mesa esquerda]       | 4        | NULL       | NULL     |
-| 34 | 34 [Carne]                   | 21 [Mesa direita]        | 4        | NULL       | NULL     |
-| 35 | 35 [Peixe]                   | 21 [Mesa direita]        | 4        | NULL       | NULL     |
-| 36 | 36 [Laranja]                 | 21 [Mesa direita]        | 4        | NULL       | NULL     |
+| 26 | 26 [Lanterna]                | 1 [Solitaria Oeste]      | 1        | NULL       | NULL     |
+| 27 | 27 [Cigarro]                 | 28 [Corredor Patio]      | 6        | NULL       | NULL     |
+| 28 | 28 [Anti inflamatorio]       | 16 [Sala A]              | 3        | NULL       | NULL     |
+| 29 | 29 [Morfina]                 | 18 [Sala C]              | 3        | NULL       | NULL     |
+| 30 | 30 [Bandagem]                | 19 [Corredor Enfermaria] | 3        | NULL       | NULL     |
+| 31 | 31 [Pao seco]                | 21 [Mesa Esquerda]       | 5        | NULL       | NULL     |
+| 32 | 32 [Pao]                     | 21 [Mesa Esquerda]       | 5        | NULL       | NULL     |
+| 33 | 33 [Queijo]                  | 21 [Mesa Esquerda]       | 5        | NULL       | NULL     |
+| 34 | 34 [Carne]                   | 22 [Mesa Direita]        | 5        | NULL       | NULL     |
+| 35 | 35 [Peixe]                   | 22 [Mesa Direita]        | 5        | NULL       | NULL     |
+| 36 | 36 [Laranja]                 | 22 [Mesa Direita]        | 5        | NULL       | NULL     |
 | 37 | 14 [Sabao]                   | 11 [Banheiro A]          | 2        | NULL       | NULL     |
 | 38 | 15 [Pedra]                   | 11 [Banheiro A]          | 2        | NULL       | NULL     |
 | 39 | 16 [Graveto]                 | 8 [Cela G]               | 1        | NULL       | NULL     |
 | 40 | 17 [Linha]                   | 8 [Cela G]               | 1        | NULL       | NULL     |
-| 41 | 18 [Pedaco pequeno de metal] | 12 [Banheiro B]          | 2        | NULL       | NULL     |
+| 41 | 18 [Pedaco Pequeno de Metal] | 12 [Banheiro B]          | 2        | NULL       | NULL     |
 | 42 | 19 [Vidro]                   | 12 [Banheiro B]          | 2        | NULL       | NULL     |
-| 43 | 20 [Pedaco grande de metal]  | 19 [Corredor enfermaria] | 3        | NULL       | NULL     |
-| 44 | 21 [Alcool]                  | 19 [Corredor enfermaria] | 3        | NULL       | NULL     |
+| 43 | 20 [Pedaco Grande de Metal]  | 19 [Corredor Enfermaria] | 3        | NULL       | NULL     |
+| 44 | 21 [Alcool]                  | 19 [Corredor Enfermaria] | 3        | NULL       | NULL     |
 | 45 | 22 [Tecido]                  | 6 [Cela E]               | 1        | NULL       | NULL     |
-| 46 | 23 [Garrafa de vidro]        | 6 [Cela E]               | 1        | NULL       | NULL     |
-| 47 | 24 [Plastico]                | 27 [Corredor patio]      | 5        | NULL       | NULL     |
-| 48 | 25 [Isqueiro]                | 27 [Corredor patio]      | 5        | NULL       | NULL     |
+| 46 | 23 [Garrafa de Vidro]        | 6 [Cela E]               | 1        | NULL       | NULL     |
+| 47 | 24 [Plastico]                | 28 [Corredor Patio]      | 6        | NULL       | NULL     |
+| 48 | 25 [Isqueiro]                | 28 [Corredor Patio]      | 6        | NULL       | NULL     |
 | 49 | 26 [Lanterna]                | 16 [Sala A]              | 3        | NULL       | NULL     |
 | 50 | 27 [Cigarro]                 | 16 [Sala A]              | 3        | NULL       | NULL     |
-| 51 | 14 [Sabao]                   | 26 [Area de lazer]       | 5        | NULL       | NULL     |
-| 52 | 15 [Pedra]                   | 26 [Area de lazer]       | 5        | NULL       | NULL     |
-| 53 | 16 [Graveto]                 | 1 [Solitaria oeste]      | 1        | NULL       | NULL     |
-| 54 | 17 [Linha]                   | 1 [Solitaria oeste]      | 1        | NULL       | NULL     |
-| 55 | 18 [Pedaco pequeno de metal] | 3 [Cela B]               | 1        | NULL       | NULL     |
+| 51 | 14 [Sabao]                   | 27 [Area De Lazer]       | 6        | NULL       | NULL     |
+| 52 | 15 [Pedra]                   | 27 [Area De Lazer]       | 6        | NULL       | NULL     |
+| 53 | 16 [Graveto]                 | 1 [Solitaria Oeste]      | 1        | NULL       | NULL     |
+| 54 | 17 [Linha]                   | 1 [Solitaria Oeste]      | 1        | NULL       | NULL     |
+| 55 | 18 [Pedaco Pequeno de Metal] | 3 [Cela B]               | 1        | NULL       | NULL     |
 | 56 | 19 [Vidro]                   | 3 [Cela B]               | 1        | NULL       | NULL     |
-| 57 | 20 [Pedaco grande de metal]  | 4 [Cela C]               | 1        | NULL       | NULL     |
+| 57 | 20 [Pedaco Grande de Metal]  | 4 [Cela C]               | 1        | NULL       | NULL     |
 | 58 | 21 [Alcool]                  | 4 [Cela C]               | 1        | NULL       | NULL     |
-| 59 | 22 [Tecido]                  | 28 [Oficina A]           | 6        | NULL       | NULL     |
-| 60 | 23 [Garrafa de vidro]        | 28 [Oficina A]           | 6        | NULL       | NULL     |
-| 61 | 1 [Chave de fenda]           | NULL                     | NULL     | 2          | 2        |
-| 62 | 20 [Pedaco grande de metal]  | NULL                     | NULL     | 2          | 2        |
+| 59 | 22 [Tecido]                  | 29 [Oficina A]           | 7        | NULL       | NULL     |
+| 60 | 37 [Cracha]                  | 20 [Sala de Controle]    | 4        | NULL       | NULL     |
+| 61 | 1 [Chave de Fenda]           | NULL                     | NULL     | 2          | 2        |
+| 62 | 20 [Pedaco Grande de Metal]  | NULL                     | NULL     | 2          | 2        |
 | 63 | 2 [Pa]                       | NULL                     | NULL     | 3          | 3        |
-| 64 | 18 [Pedaco pequeno de metal] | NULL                     | NULL     | 3          | 3        |
-| 65 | 10 [Faca curta]              | NULL                     | NULL     | 4          | 4        |
+| 64 | 18 [Pedaco Pequeno de Metal] | NULL                     | NULL     | 3          | 3        |
+| 65 | 10 [Faca Curta]              | NULL                     | NULL     | 4          | 4        |
 | 66 | 2 [Pa]                       | NULL                     | NULL     | 4          | 4        |
-| 67 | 20 [Pedaco grande de metal]  | NULL                     | NULL     | 5          | 5        |
+| 67 | 20 [Pedaco Grande de Metal]  | NULL                     | NULL     | 5          | 5        |
 | 68 | 33 [Queijo]                  | NULL                     | NULL     | 5          | 5        |
 | 69 | 3 [Martelo]                  | NULL                     | NULL     | 6          | 6        |
 | 70 | 36 [Laranja]                 | NULL                     | NULL     | 6          | 6        |
 | 71 | 17 [Linha]                   | NULL                     | NULL     | 7          | 7        |
 | 72 | 12 [Corda com Cerol]         | NULL                     | NULL     | 7          | 7        |
-| 73 | 10 [Faca curta]              | NULL                     | NULL     | 8          | 8        |
-| 74 | 20 [Pedaco grande de metal]  | NULL                     | NULL     | 8          | 8        |
-| 75 | 9 [Soco ingles]              | NULL                     | NULL     | 9          | 9        |
-| 76 | 31 [Pao seco]                | NULL                     | NULL     | 9          | 9        |
+| 73 | 10 [Faca Curta]              | NULL                     | NULL     | 8          | 8        |
+| 74 | 20 [Pedaco Grande de Metal]  | NULL                     | NULL     | 8          | 8        |
+| 75 | 9 [Soco Ingles]              | NULL                     | NULL     | 9          | 9        |
+| 76 | 31 [Pao Seco]                | NULL                     | NULL     | 9          | 9        |
 | 77 | 27 [Cigarro]                 | NULL                     | NULL     | 10         | 10       |
-| 78 | 5 [Lock pick]                | NULL                     | NULL     | 10         | 10       |
-| 79 | 23 [Garrafa de vidro]        | NULL                     | NULL     | 11         | 11       |
+| 78 | 5 [Lock Pick]                | NULL                     | NULL     | 10         | 10       |
+| 79 | 23 [Garrafa de Vidro]        | NULL                     | NULL     | 11         | 11       |
 | 80 | 21 [Alcool]                  | NULL                     | NULL     | 11         | 11       |
 | 81 | 24 [Plastico]                | NULL                     | NULL     | 12         | 12       |
 | 82 | 10 [Faca curta]              | NULL                     | NULL     | 12         | 12       |
 | 83 | 16 [Graveto]                 | NULL                     | NULL     | 13         | 13       |
-| 84 | 9 [Soco ingles]              | NULL                     | NULL     | 13         | 13       |
+| 84 | 9 [Soco Ingles]              | NULL                     | NULL     | 13         | 13       |
 | 85 | 27 [Cigarro]                 | NULL                     | NULL     | 14         | 14       |
 | 86 | 25 [Isqueiro]                | NULL                     | NULL     | 14         | 14       |
 | 87 | 26 [Lanterna]                | NULL                     | NULL     | 15         | 15       |
 | 88 | 28 [Anti inflamatorio]       | NULL                     | NULL     | 15         | 15       |
 | 89 | 25 [Isqueiro]                | NULL                     | NULL     | 16         | 16       |
 | 80 | 30 [Bandagem]                | NULL                     | NULL     | 16         | 16       |
-| 91 | 23 [Garrafa de vidro]        | NULL                     | NULL     | 17         | 17       |
+| 91 | 23 [Garrafa de Vidro]        | NULL                     | NULL     | 17         | 17       |
 | 92 | 21 [Alcool]                  | NULL                     | NULL     | 17         | 17       |
-| 93 | 23 [Garrafa de vidro]        | NULL                     | NULL     | 18         | 18       |
+| 93 | 23 [Garrafa de Vidro]        | NULL                     | NULL     | 18         | 18       |
 | 94 | 22 [Tecido]                  | NULL                     | NULL     | 18         | 18       |
 | 95 | 11 [Coquetel Molotov]        | NULL                     | NULL     | 19         | 19       |
-| 96 | 28 [Anti-inflamatorio]       | NULL                     | NULL     | 19         | 19       |
-| 97 | 12 [Corda com cerol]         | NULL                     | NULL     | 20         | 20       |
-| 98 | 20 [Pedaco grande de metal]  | NULL                     | NULL     | 20         | 20       |
+| 96 | 28 [Anti inflamatorio]       | NULL                     | NULL     | 19         | 19       |
+| 97 | 12 [Corda com Cerol]         | NULL                     | NULL     | 20         | 20       |
+| 98 | 20 [Pedaco Grande de Metal]  | NULL                     | NULL     | 20         | 20       |
 
 ---
 
@@ -199,49 +200,50 @@
 
 | nome                  | tipo         |
 |-----------------------|--------------|
-| 1 [Chave de fenda]    | 'ferramenta' |
+| 1 [Chave de Fenda]    | 'ferramenta' |
 | 2 [Pa]                | 'ferramenta' |
 | 3 [Martelo]           | 'ferramenta' |
 | 4 [Picareta]          | 'ferramenta' |
-| 5 [Lock pick]         | 'ferramenta' |
+| 5 [Lock Pick]         | 'ferramenta' |
 | 6 [Corda]             | 'ferramenta' |
 | 7 [Faca]              | 'arma'       |
 | 8 [Adaga]             | 'arma'       |
-| 9 [Soco ingles]       | 'arma'       |
-| 10 [Faca curta]       | 'arma'       |
-| 11 [Coquetel molotov] | 'arma'       |
-| 12 [Corda com cerol]  | 'arma'       |
-| 13 [Garrafa quebrada] | 'arma'       |
+| 9 [Soco Ingles]       | 'arma'       |
+| 10 [Faca Curta]       | 'arma'       |
+| 11 [Coquetel Molotov] | 'arma'       |
+| 12 [Corda com Cerol]  | 'arma'       |
+| 13 [Garrafa Quebrada] | 'arma'       |
 
 ---
 
 # Tabela Item_nao_Fabricavel
 
-| id                          | tipo          |
-|-----------------------------|---------------|
-| 14[sabao]                   | 'utilizavel'  |
-| 15[pedra]                   | 'utilizavel'  |
-| 16[graveto]                 | 'utilizavel'  |
-| 17[linha]                   | 'utilizavel'  |
-| 18[pedaco pequeno de metal] | 'utilizavel'  |
-| 19[vidro]                   | 'utilizavel'  |
-| 20[pedaco grande de metal]  | 'utilizavel'  |
-| 21[alcool]                  | 'utilizavel'  |
-| 22[tecido]                  | 'utilizavel'  |
-| 23[garrada de vidro]        | 'utilizavel'  |
-| 24[plastico]                | 'utilizavel'  |
-| 25[Isqueiro]                | 'utilizavel'  |
-| 26[lanterna]                | 'utilizavel'  |
-| 27[cigarro]                 | 'utilizavel'  |
-| 28[Anti-inflamatorio]       | 'medicamento' |
-| 29[Morfina]                 | 'medicamento' |
-| 30[Bandagem]                | 'medicamento' |
-| 31[pao seco]                | 'comida'      |
-| 32[pao]                     | 'comida'      |
-| 33[queijo]                  | 'comida'      |
-| 34[carne]                   | 'comida'      |
-| 35[Peixe]                   | 'comida'      |
-| 36[Laranja]                 | 'comida'      |
+| id                           | tipo          |
+|------------------------------|---------------|
+| 14 [sabao]                   | 'utilizavel'  |
+| 15 [Pedra]                   | 'utilizavel'  |
+| 16 [Graveto]                 | 'utilizavel'  |
+| 17 [Linha]                   | 'utilizavel'  |
+| 18 [Pedaco Pequeno de Metal] | 'utilizavel'  |
+| 19 [Vidro]                   | 'utilizavel'  |
+| 20 [Pedaco Grande de Metal]  | 'utilizavel'  |
+| 21 [Alcool]                  | 'utilizavel'  |
+| 22 [Tecido]                  | 'utilizavel'  |
+| 23 [Garrada de Vidro]        | 'utilizavel'  |
+| 24 [Plastico]                | 'utilizavel'  |
+| 25 [Isqueiro]                | 'utilizavel'  |
+| 26 [Lanterna]                | 'utilizavel'  |
+| 27 [Cigarro]                 | 'utilizavel'  |
+| 28 [Anti inflamatorio]       | 'medicamento' |
+| 29 [Morfina]                 | 'medicamento' |
+| 30 [Bandagem]                | 'medicamento' |
+| 31 [Pao seco]                | 'comida'      |
+| 32 [Pao]                     | 'comida'      |
+| 33 [Queijo]                  | 'comida'      |
+| 34 [Carne]                   | 'comida'      |
+| 35 [Peixe]                   | 'comida'      |
+| 36 [Laranja]                 | 'comida'      |
+| 37 [Cracha]                  | 'utilizavel'  |
 
 ---
 
@@ -274,45 +276,46 @@
 
 # Tabela Comida
 
-| id  | nome     | tamanho | descricao                                                                        | raridade | quantidade | recuperacao_vida |
-| --- | -------- | ------- | -------------------------------------------------------------------------------- | -------- | ---------- |------------------|
-| 31  | Pao seco | 1       | um pão tão seco e duro, que parece que o proprio vandor amassou ele.             | 0        | 1          | 0                |
-| 32  | Pao      | 1       | alimento básico feito a partir de farinha, água e fermento.                      | 0        | 3          | 1                |
-| 33  | Queijo   | 1       | produto lácteo sólido feito a partir da coagulação do leite.                     | 0        | 3          | 1                |
-| 34  | Carne    | 2       | é o tecido muscular de animais, como bovinos ou suínos, consumido como alimento. | 2        | 1          | 5                |
-| 35  | Peixe    | 1       | tecido muscular de peixe, consumido como alimento.                               | 1        | 2          | 3                |
-| 36  | Laranja  | 1       | fruta cítrica, suculenta e doce.                                                 | 0        | 3          | 1                |
+| id | nome     | tamanho | descricao                                                                        | raridade | quantidade | recuperacao_vida |
+|----|----------|---------|----------------------------------------------------------------------------------|----------|------------|------------------|
+| 31 | Pao Seco | 1       | um pão tão seco e duro, que parece que o proprio vandor amassou ele.             | 0        | 1          | 0                |
+| 32 | Pao      | 1       | alimento básico feito a partir de farinha, água e fermento.                      | 0        | 3          | 1                |
+| 33 | Queijo   | 1       | produto lácteo sólido feito a partir da coagulação do leite.                     | 0        | 3          | 1                |
+| 34 | Carne    | 2       | é o tecido muscular de animais, como bovinos ou suínos, consumido como alimento. | 2        | 1          | 5                |
+| 35 | Peixe    | 1       | tecido muscular de peixe, consumido como alimento.                               | 1        | 2          | 3                |
+| 36 | Laranja  | 1       | fruta cítrica, suculenta e doce.                                                 | 0        | 3          | 1                |
 
 ---
 
 # Tabela Medicamento
 
-| id  | nome              | tamanho | descricao                                                                          | raridade | quantidade | cura |
-| --- | ----------------- | ------- | ---------------------------------------------------------------------------------- | -------- | ---------- | ---- |
-| 28  | anti-inflamatorio | 1       | Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.             | 2        | 5          | 3    |
-| 29  | Morfina           | 1       | Analgésico opiáceo potente utilizado para aliviar dores intensas.                  | 1        | 2          | 10   |
-| 30  | Bandagem          | 1       | Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo. | 0        | 5          | 2    |
+| id | nome              | tamanho | descricao                                                                          | raridade | quantidade | cura |
+|----|-------------------|---------|------------------------------------------------------------------------------------|----------|------------|------|
+| 28 | Anti inflamatorio | 1       | Medicamento utilizado para reduzir a inflamação, dor e febre no corpo.             | 2        | 5          | 3    |
+| 29 | Morfina           | 1       | Analgésico opiáceo potente utilizado para aliviar dores intensas.                  | 1        | 2          | 10   |
+| 30 | Bandagem          | 1       | Material flexível utilizado para proporcionar suporte a áreas lesionadas do corpo. | 0        | 5          | 2    |
   
 ---
 
 # Tabela Utilizavel
 
-| id  | nome                    | tamanho | descricao_Efeito                                                                                                | raridade | quantidade | durabilidae |
-| --- | ----------------------- | ------- | --------------------------------------------------------------------------------------------------------------- |----------| ---------- |-------------|
-| 14  | Sabao                   | 1       | serve para remover sujeira e impurezas de superfícies e objetos, também é um material para fabricação de itens. | 0        | 1          | 1           |
-| 15  | Pedra                   | 1       | A pedra serve para construção e também é um material para fabricação de itens.                                  | 0        | 3          | 1           |
-| 16  | graveto                 | 1       | Produto de origem vegetal, é usado como material para fabricação de itens.                                      | 0        | 3          | 1           |
-| 17  | linha                   | 1       | fio fino e flexível utilizado como material para fabricação de itens.                                           | 0        | 3          | 1           |
-| 18  | pedaco pequeno de metal | 1       | Corda revestida com vidro moído para causar cortes.                                                             | 1        | 3          | 1           |
-| 19  | vidro                   | 1       | utilizado como material para fabricação de cerol.                                                               | 0        | 1          | 1           |
-| 20  | pedaco grande de metal  | 3       | Garrafa de vidro quebrada, usada como arma cortante.                                                            | 2        | 1          | 1           |
-| 21  | alcool                  | 1       | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                                   | 1        | 1          | 1           |
-| 22  | tecido                  | 1       | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                           | 1        | 3          | 1           |
-| 23  | garrada de vidro        | 2       | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                                   | 1        | 1          | 1           |
-| 24  | plastico                | 1       | Corda revestida com vidro moído para causar cortes.                                                             | 0        | 3          | 1           |
-| 25  | Isqueiro                | 1       | Isqueiro é um dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas.        | 1        | 1          | 1           |
-| 26  | Lanterna                | 1       | Lanterna é um dispositivo portátil que emite luz.                                                               | 1        | 1          | 1           |
-| 27  | cigarro                 | 1       | Moeda de troca do jogo, além de poder ser utilizado para acalmar.                                               | 1        | 10         | 1           |
+| id | nome                    | tamanho | descricao                                                                                                       | raridade | quantidade | durabilidae |
+|----|-------------------------|---------|-----------------------------------------------------------------------------------------------------------------|----------|------------|-------------|
+| 14 | Sabao                   | 1       | serve para remover sujeira e impurezas de superfícies e objetos, também é um material para fabricação de itens. | 0        | 1          | 1           |
+| 15 | Pedra                   | 1       | A pedra serve para construção e também é um material para fabricação de itens.                                  | 0        | 3          | 1           |
+| 16 | Graveto                 | 1       | Produto de origem vegetal, é usado como material para fabricação de itens.                                      | 0        | 3          | 1           |
+| 17 | Linha                   | 1       | fio fino e flexível utilizado como material para fabricação de itens.                                           | 0        | 3          | 1           |
+| 18 | Pedaco Pequeno de Metal | 1       | Corda revestida com vidro moído para causar cortes.                                                             | 1        | 3          | 1           |
+| 19 | Vidro                   | 1       | utilizado como material para fabricação de cerol.                                                               | 0        | 1          | 1           |
+| 20 | Pedaco Grande de Metal  | 3       | Garrafa de vidro quebrada, usada como arma cortante.                                                            | 2        | 1          | 1           |
+| 21 | Alcool                  | 1       | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                                   | 1        | 1          | 1           |
+| 22 | Tecido                  | 1       | Garrafa cheia de líquido inflamável e um pavio, usada como explosivo.                                           | 1        | 3          | 1           |
+| 23 | Garrada de Vidro        | 2       | utilizado como material para fabricação de coctel molotov e garrafa quebrada.                                   | 1        | 1          | 1           |
+| 24 | Plastico                | 1       | Corda revestida com vidro moído para causar cortes.                                                             | 0        | 3          | 1           |
+| 25 | Isqueiro                | 1       | Isqueiro é um dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas.        | 1        | 1          | 1           |
+| 26 | Lanterna                | 1       | Lanterna é um dispositivo portátil que emite luz.                                                               | 1        | 1          | 1           |
+| 27 | Cigarro                 | 1       | Moeda de troca do jogo, além de poder ser utilizado para acalmar.                                               | 1        | 10         | 1           |
+| 37 | Cracha                  | 1       | Crachá de identificação, item ultra raro que pode ser usado para ativar a entrada.                              | 2        | 1          | 1           |
 
 ---
 
@@ -580,20 +583,21 @@
 
 # Tabela Prisioneiro
 
-| id | nome         | habilidade_briga | vida | forca | gangue     | lugar                 | `regiao`       |
-|----|--------------|------------------|------|-------|------------|-----------------------|----------------|
-| 2  | Rivas        | 4                | 9    | 7     | 'Palhacos' | 24 [quadraDeBasquete] | 5 [patio]      |
-| 3  | Filomano     | 6                | 7    | 4     | 'Polvos'   | 3 [cela B]            | 1 [celas]      |
-| 4  | Fragas       | 5                | 11   | 5     | 'Palhacos' | 11 [banheiro A]       | 2 [banheiros]  |
-| 5  | Glaucão      | 3                | 6    | 8     | 'Polvos'   | 20 [mesa Esquerda]    | 4 [refeitorio] |
-| 6  | Ucraniano    | 7                | 5    | 6     | 'Palhacos' | 4 [cela C]            | 1 [celas]      |
-| 7  | Rispomático  | 6                | 12   | 6     | 'Polvos'   | 23 [academia Simples] | 5 [patio]      |
-| 8  | Manogaz      | 4                | 8    | 5     | 'Palhacos' | 8 [cela G]            | 1 [celas]      |
-| 9  | Dado         | 5                | 10   | 6     | 'Polvos'   | 12 [banheiro B]       | 2 [banheiros]  |
-| 10 | Fabrilton    | 4                | 7    | 5     | 'Palhacos' | 21 [mesa Direita]     | 4 [refeitorio] |
-| 11 | Eneido       | 6                | 6    | 6     | 'Polvos'   | 1 [solitaria Oeste]   | 1 [celas]      |
-| 12 | Carlos       | 5                | 9    | 7     | 'Palhacos' | 25 [arquibancada]     | 5 [patio]      |
-| 13 | Silvio Serra | 6                | 8    | 5     | 'Polvos'   | 6 [cela E]            | 1 [celas]      |
+| id | nome         | habilidade_briga | vida | forca | gangue     | lugar                   | `regiao`       |
+|----|--------------|------------------|------|-------|------------|-------------------------|----------------|
+| 2  | Rivas        | 4                | 9    | 7     | 'Palhacos' | 25 [Quadra de Basquete] | 6 [Pátio]      |
+| 3  | Filomano     | 6                | 7    | 4     | 'Polvos'   | 3 [Cela B]              | 1 [Celas]      |
+| 4  | Fragas       | 5                | 11   | 5     | 'Palhacos' | 11 [Banheiro A]         | 2 [Banheiros]  |
+| 5  | Glaucão      | 3                | 6    | 8     | 'Polvos'   | 21 [Mesa Esquerda]      | 5 [Refeitório] |
+| 6  | Ucraniano    | 7                | 5    | 6     | 'Palhacos' | 4 [Cela C]              | 1 [Celas]      |
+| 7  | Rispomático  | 6                | 12   | 6     | 'Polvos'   | 24 [Academia Simples]   | 6 [Pátio]      |
+| 8  | Manogaz      | 4                | 8    | 5     | 'Palhacos' | 8 [Cela G]              | 1 [Celas]      |
+| 9  | Dado         | 5                | 10   | 6     | 'Polvos'   | 12 [Banheiro B]         | 2 [Banheiros]  |
+| 10 | Fabrilton    | 4                | 7    | 5     | 'Palhacos' | 22 [Mesa Direita]       | 5 [Refeitório] |
+| 11 | Eneido       | 6                | 6    | 6     | 'Polvos'   | 1 [Solitária Oeste]     | 1 [Celas]      |
+| 12 | Carlos       | 5                | 9    | 7     | 'Palhacos' | 26 [Arquibancada]       | 6 [Pátio]      |
+| 13 | Silvio Serra | 6                | 8    | 5     | 'Polvos'   | 6 [Cela E]              | 1 [Celas]      |
+
 
 
 -----
@@ -602,11 +606,11 @@
 
 | id | nome                | corrupto | lugar                   | `regiao`       |
 |----|---------------------|----------|-------------------------|----------------|
-| 14 | Italo Dimetrio      | true     | 1 [solitaria Oeste]     | 1 [celas]      |
-| 15 | Sargento Nascimento | false    | 21 [mesa Direita]       | 4 [refeitorio] |
-| 16 | Capitão Mathias     | false    | 24 [quadra De Basquete] | 5 [patio]      |
-| 17 | Capitão Brad        | true     | 9 [solitaria Leste]     | 1 [celas]      |
-| 18 | Lil Chico           | true     | 25 [arquibancada]       | 5 [patio]      |
+| 14 | Italo Dimetrio      | true     | 1 [Solitária Oeste]     | 1 [Celas]      |
+| 15 | Sargento Nascimento | false    | 22 [Mesa Direita]       | 5 [Refeitório] |
+| 16 | Capitão Mathias     | false    | 25 [Quadra de Basquete] | 6 [Pátio]      |
+| 17 | Capitão Brad        | true     | 9 [Solitária Leste]     | 1 [Celas]      |
+| 18 | Lil Chico           | true     | 26 [Arquibancada]       | 6 [Pátio]      |
 
 
 ---
@@ -631,19 +635,19 @@
 
 # Tabela Missao
 
-| id | item                   | nome                      | descricao                                                                  | lugar                   | regiao    |
-|----|------------------------|---------------------------|----------------------------------------------------------------------------|-------------------------|-----------|
-| 1  | chave oficina A        | Fuja da solitaria oeste   | Escape da cela de isolamento leste sem ser pego.                           | 1 [solitaria Oeste]     | 1 [celas] |
-| 2  | chave oficina B        | Fuja da solitaria leste   | Escape da cela de isolamento oeste sem ser pego.                           | 9 [solitaria Leste]     | 1 [celas] |
-| 3  | BANDAGEM               | Observar  cela            | Observe e memorize os detalhes da cela para planejar uma fuga.             | 5 [cela D]              | 1 [celas] |
-| 4  | FACA PEQUENA           | Escolher gangue           | Escolha a gangue com a qual se aliar na prisão.                            | NULL                    | NULL      |
-| 5  | NULL                   | explorar o mapa           | Explore os locais no mapa da prisão, para um melhor entendimento do mesmo. | NULL                    | NULL      |
-| 6  | CARNE                  | Brigue com alguém         | Inicie e participe de uma briga com outro prisioneiro.                     | NULL                    | NULL      |
-| 7  | REMEDIO                | Vença uma briga           | Vença uma briga                                                            | NULL                    | NULL      |
-| 8  | NULL                   | Fuja da prisão            | Fuja da prisão                                                             | NULL                    | NULL      |
-| 9  | pedaco grande de metal | encontre o informante     | encontre o informante                                                      | NULL                    | NULL      |
-| 10 | Isqueiro               | vença um jogo de basquete | vença um jogo de basquete                                                  | 24 [quadra De Basquete] | 5 [patio] |
-| 11 | CARNE                  | Fique maromba             | Va na academia                                                             | 23 [academia Simples]   | 5 [patio] |
+| id | item                        | nome                      | descricao                                                                  | lugar                   | `regiao ` |
+|----|-----------------------------|---------------------------|----------------------------------------------------------------------------|-------------------------|-----------|
+| 1  | 31 [Pao seco]               | Fuja da solitaria oeste   | Escape da cela de isolamento leste sem ser pego.                           | 1 [Solitaria Oeste]     | 1 [Celas] |
+| 2  | 23 [Garrafa de Vidro]       | Fuja da solitaria leste   | Escape da cela de isolamento oeste sem ser pego.                           | 9 [Solitaria Leste]     | 1 [Celas] |
+| 3  | 30 [Bandagem]               | Observar  cela            | Observe e memorize os detalhes da cela para planejar uma fuga.             | 5 [Cela D]              | 1 [Celas] |
+| 4  | 27 [Cigarro]                | Escolher gangue           | Escolha a gangue com a qual se aliar na prisão.                            | NULL                    | NULL      |
+| 5  | NULL                        | explorar o mapa           | Explore os locais no mapa da prisão, para um melhor entendimento do mesmo. | NULL                    | NULL      |
+| 6  | 34 [Carne]                  | Brigue com alguém         | Inicie e participe de uma briga com outro prisioneiro.                     | NULL                    | NULL      |
+| 7  | 29 [Morfina]                | Vença uma briga           | Vença uma briga.                                                           | NULL                    | NULL      |
+| 8  | NULL                        | Fuja da prisão            | Fuja da prisão.                                                            | NULL                    | NULL      |
+| 9  | 20 [Pedaco Grande de Metal] | Encontre o informante     | Encontre o informante.                                                     | NULL                    | NULL      |
+| 10 | 25 [Isqueiro]               | Venca um jogo de basquete | Vença um jogo de basquete.                                                 | 25 [Quadra De Basquete] | 6 [Patio] |
+| 11 | 34 [Carne]                  | Fique maromba             | Vá na academia.                                                            | 24 [Academia Simples]   | 6 [Patio] |
 
 
 ---
