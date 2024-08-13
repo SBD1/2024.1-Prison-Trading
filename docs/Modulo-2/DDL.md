@@ -353,6 +353,6 @@ COMMIT;
 | 10/08/2024 | `1.3`  | Adiciona parte do Júlio e corrige Fernando             | [Júlio Cesar](https://github.com/Julio1099)                                                                                                   |
 | 10/08/2024 | `1.4`  | corrige ddl                                            | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
 | 12/08/2024 | `1.5`  | Adiciona parte bob.                                    | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
-| 12/08/2024 | `1.6`  | Adiciona atributo `rota_final_fuga` em `Tabela Lugar`. | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
+| 13/08/2024 | `1.6`  | Adiciona atributo `rota_final_fuga` em `Tabela Lugar`. | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 
 </div>
