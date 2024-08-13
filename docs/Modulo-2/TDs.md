@@ -390,54 +390,54 @@
 
 | id | nome           | prisao      | descricao                                                                                           |
 |----|----------------|-------------|-----------------------------------------------------------------------------------------------------|
-| 1  | celas          | 1 [Basilio] | Local onde estão as celas e solitárias dos prisioneiros.                                            |
-| 2  | banheiros      | 1 [Basilio] | Local onde os prisioneiros se banham.                                                               |
-| 3  | enfermaria     | 1 [Basilio] | Local onde os prisioneiros podem se tratar/curar.                                                   |
-| 4  | administracao  | 1 [Basilio] | Local onde tem o controle geral elétrico da prisão.                                                 |
-| 5  | refeitorio     | 1 [Basilio] | Local onde os prisioneiros fazem suas refeições.                                                    |
-| 6  | patio          | 1 [Basilio] | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete e relaxar.        |
-| 7  | oficinas       | 1 [Basilio] | Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.                                 |
-| 8  | exterior       | 1 [Basilio] | Localização fora da prisão.                                                                         |
+| 1  | Celas          | 1 [Basilio] | Local onde estão as celas e solitárias dos prisioneiros.                                            |
+| 2  | Banheiros      | 1 [Basilio] | Local onde os prisioneiros se banham.                                                               |
+| 3  | Enfermaria     | 1 [Basilio] | Local onde os prisioneiros podem se tratar/curar.                                                   |
+| 4  | Administracao  | 1 [Basilio] | Local onde tem o controle geral elétrico da prisão.                                                 |
+| 5  | Refeitorio     | 1 [Basilio] | Local onde os prisioneiros fazem suas refeições.                                                    |
+| 6  | Patio          | 1 [Basilio] | Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete e relaxar.        |
+| 7  | Oficinas       | 1 [Basilio] | Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.                                 |
+| 8  | Exterior       | 1 [Basilio] | Localização fora da prisão.                                                                         |
 
 ---
 
 # Tabela Lugar
 
-| id | nome                | *regiao*          | descricao                                                                                                        |
-|----|---------------------|-------------------|------------------------------------------------------------------------------------------------------------------|
-| 1  | solitaria Oeste     | 1 [celas]         | Cela para os prisioneiros levadinhos. Na parede direita há uma mancha de cimento fresco.                         |
-| 2  | cela A              | 1 [celas]         | Cela onde dormem os prisioneiros 1 e 2.                                                                          |
-| 3  | cela B              | 1 [celas]         | Cela onde dormem os prisioneiros 3 e 4.                                                                          |
-| 4  | cela C              | 1 [celas]         | Cela onde dormem os prisioneiros 5 e 6.                                                                          |
-| 5  | cela D              | 1 [celas]         | Cela onde dormem os prisioneiros 7 e 8.                                                                          |
-| 6  | cela E              | 1 [celas]         | Cela onde dormem os prisioneiros 9 e 10.                                                                         |
-| 7  | cela F              | 1 [celas]         | Cela onde dormem os prisioneiros 11 e 12.                                                                        |
-| 8  | cela G              | 1 [celas]         | Cela onde dormem o prisioneiro 13 e o jogador.                                                                   |
-| 9  | solitaria Leste     | 1 [celas]         | Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.                           |
-| 10 | corredor Celas      | 1 [celas]         | Corredor para se deslocar entre as celas e as solitárias.                                                        |
-| 11 | banheiro A          | 2 [banheiros]     | Banheiro onde os prisioneiros tomam banho.                                                                       |
-| 12 | banheiro B          | 2 [banheiros]     | Banheiro onde os prisioneiros tomam banho.                                                                       |
-| 13 | banheiro C          | 2 [banheiros]     | Banheiro quebrado em manutenção com a porta trancada.                                                            |
-| 14 | banheiro D          | 2 [banheiros]     | Banheiro onde os prisioneiros tomam banho.                                                                       |
-| 15 | corredor Banheiros  | 2 [banheiros]     | Corredor para se deslocar entre os banheiros e os corredores da enfermaria e do refeitório.                      |
-| 16 | sala A              | 3 [enfermaria]    | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                                             |
-| 17 | sala B              | 3 [enfermaria]    | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                                             |
-| 18 | sala C              | 3 [enfermaria]    | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                                             |
-| 19 | corredor Enfermaria | 3 [enfermaria]    | Corredor para se deslocar entre as salas da enfermaria e a sala de controle.                                     |
-| 20 | sala De Controle    | 4 [administracao] | Sala onde tem o controle da prisão, no final do corredor da enfermaria. Há um uniforme policial do lado da mesa. |
-| 21 | mesa Esquerda       | 5 [refeitorio]    | Mesa onde a gangue 1 faz suas refeições.                                                                         |
-| 22 | mesa Direita        | 5 [refeitorio]    | Mesa onde a gangue 2 faz suas refeições.                                                                         |
-| 23 | corredor Refeitorio | 5 [refeitorio]    | Corredor para se deslocar entre as mesas do refeitório e os corredores dos banheiros e do pátio.                 |
-| 24 | academia Simples    | 6 [patio]         | Uma área com equipamentos simples de exercício.                                                                  |
-| 25 | quadra De Basquete  | 6 [patio]         | Quadra onde os prisioneiros jogam basquete para se distrair e se exercitar.                                      |
-| 26 | arquibancada        | 6 [patio]         | Arquibancada onde os prisioneiros podem conversar e assistir os jogos.                                           |
-| 27 | area De Lazer       | 6 [patio]         | Bancos onde os prisioneiros podem sentar e conversar. Há um área no chão com terra fresca.                       |
-| 28 | corredor Patio      | 6 [patio]         | Corredor para se deslocar entre as áreas do pátio, as oficinas e entrada.                                        |
-| 29 | oficina A           | 7 [oficinas]      | Oficina de marcenaria onde os prisioneiros trabalham.                                                            |
-| 30 | oficina B           | 7 [oficinas]      | Oficina de impressão de placas de carro onde os prisioneiros trabalham.                                          |
-| 31 | esgoto              | 8 [exterior]      | Local subterrâneo apertado que dá para fora da prisão.                                                           |
-| 32 | entrada             | 8 [exterior]      | Local onde os policias e prisioneiros entram e sai da prisão que dá no corredor do pátio.                        |
-| 33 | floresta            | 8 [exterior]      | Local cheio de árvores adjacente a prisão.                                                                       |
+| id | nome                | *regiao*          | descricao                                                                                                        | rota_final_fuga |
+|----|---------------------|-------------------|------------------------------------------------------------------------------------------------------------------|-----------------|
+| 1  | Solitaria Oeste     | 1 [Celas]         | Sala escura para os prisioneiros indisciplinados. Na parede direita há uma mancha de cimento fresco.             | false           |
+| 2  | Cela A              | 1 [Celas]         | Cela velha com 178 riscos na parede e o piso está rachado e com partes soltas.                                   | false           |
+| 3  | Cela B              | 1 [Celas]         | Cela com uma beliche e há varias camisinhas de sabor pequi espalhadas embaixo dela.                              | false           |
+| 4  | Cela C              | 1 [Celas]         | Cela que fede a azeitona em conserva. Tem vários desenhos da folha de oliva e de azeitonas na parede.            | false           |
+| 5  | Cela D              | 1 [Celas]         | Cela normal. Exceto pela montanha de pelos castanhos misturada com uma gosma preta no meio cela.                 | false           |
+| 6  | Cela E              | 1 [Celas]         | Cela com piso e paredes marrom. Barras enferrujadas. Camas marrom.                                               | false           |
+| 7  | Cela F              | 1 [Celas]         | Cela com posteres de mulheres nuas nas paredes. O piso é da cor bege sujo. Há um buraco de rato na parede.       | false           |
+| 8  | Cela G              | 1 [Celas]         | Cela normal. Tem 321 nomes escritos na parede. No teto há varios bonecos de palha pendurados pelo pescoço.       | false           |
+| 9  | Solitaria Leste     | 1 [Celas]         | Sala escura para os prisioneiros indisciplinados. Ela fede a álcool por algum motivo.                            | false           |
+| 10 | Corredor Celas      | 1 [Celas]         | Corredor para se deslocar entre as celas e as solitárias.                                                        | false           |
+| 11 | Banheiro A          | 2 [Banheiros]     | Banheiro onde os prisioneiros tomam banho.                                                                       | false           |
+| 12 | Banheiro B          | 2 [Banheiros]     | Banheiro onde os prisioneiros tomam banho.                                                                       | false           |
+| 13 | Banheiro C          | 2 [Banheiros]     | Banheiro quebrado em manutenção com a porta trancada.                                                            | false           |
+| 14 | Banheiro D          | 2 [Banheiros]     | Banheiro onde os prisioneiros tomam banho.                                                                       | false           |
+| 15 | Corredor Banheiros  | 2 [Banheiros]     | Corredor para se deslocar entre os banheiros e os corredores da enfermaria e do refeitório.                      | false           |
+| 16 | Sala A              | 3 [Enfermaria]    | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                                             | false           |
+| 17 | Sala B              | 3 [Enfermaria]    | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                                             | false           |
+| 18 | Sala C              | 3 [Enfermaria]    | Sala com uma maca e armário com remédios e kits de primeiro-socorro.                                             | false           |
+| 19 | Corredor Enfermaria | 3 [Enfermaria]    | Corredor para se deslocar entre as salas da enfermaria e a sala de controle.                                     | false           |
+| 20 | Sala De Controle    | 4 [Administracao] | Sala onde tem o controle da prisão, no final do corredor da enfermaria. Há um uniforme policial do lado da mesa. | false           |
+| 21 | Mesa Esquerda       | 5 [Refeitorio]    | Mesa onde a gangue do Palhaço faz suas refeições.                                                                | false           |
+| 22 | Mesa Direita        | 5 [Refeitorio]    | Mesa onde a gangue do Polvo faz suas refeições.                                                                  | false           |
+| 23 | Corredor Refeitorio | 5 [Refeitorio]    | Corredor para se deslocar entre as mesas do refeitório e os corredores dos banheiros e do pátio.                 | false           |
+| 24 | Academia Simples    | 6 [Patio]         | Uma área com equipamentos simples de exercício.                                                                  | false           |
+| 25 | Quadra De Basquete  | 6 [Patio]         | Quadra onde os prisioneiros jogam basquete para se distrair e se exercitar.                                      | false           |
+| 26 | Arquibancada        | 6 [Patio]         | Arquibancada onde os prisioneiros podem conversar e assistir os jogos.                                           | false           |
+| 27 | Area De Lazer       | 6 [Patio]         | Bancos onde os prisioneiros podem sentar e conversar. Há um área no chão com terra fresca.                       | false           |
+| 28 | Corredor Patio      | 6 [Patio]         | Corredor para se deslocar entre as áreas do pátio, as oficinas e entrada.                                        | false           |
+| 29 | Oficina A           | 7 [Oficinas]      | Oficina de marcenaria onde os prisioneiros trabalham.                                                            | false           |
+| 30 | Oficina B           | 7 [Oficinas]      | Oficina de impressão de placas de carro onde os prisioneiros trabalham.                                          | false           |
+| 31 | Esgoto              | 8 [exterior]      | Local subterrâneo apertado que dá para fora da prisão.                                                           | true            |
+| 32 | Entrada             | 8 [Exterior]      | Local onde os policias e prisioneiros entram e sai da prisão que dá no corredor do pátio.                        | true            |
+| 33 | Floresta            | 8 [Exterior]      | Local cheio de árvores adjacente a prisão.                                                                       | true            |
 
 ---
 
@@ -445,82 +445,82 @@
 
 | lugar_origem             | `regiao_origem`    | lugar_destino            | `regiao_destino`    |
 |--------------------------|--------------------|--------------------------|---------------------|
-| 1 [solitaria Oeste]      | 1 [celas]          | 2 [cela A]               | 1 [celas]           |
-| 1 [solitaria Oeste]      | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
-| 2 [cela A]               | 1 [celas]          | 1 [solitaria Oeste]      | 1 [celas]           |
-| 2 [cela A]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
-| 3 [cela B]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
-| 4 [cela C]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
-| 5 [cela D]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
-| 6 [cela E]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
-| 7 [cela F]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
-| 8 [cela G]               | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
-| 9 [solitaria Leste]      | 1 [celas]          | 10 [corredor Celas]      | 1 [celas]           |
-| 10 [corredor Celas]      | 1 [celas]          | 1 [solitaria Oeste]      | 1 [celas]           |
-| 10 [corredor Celas]      | 1 [celas]          | 2 [cela A]               | 1 [celas]           |
-| 10 [corredor Celas]      | 1 [celas]          | 3 [cela B]               | 1 [celas]           |
-| 10 [corredor Celas]      | 1 [celas]          | 4 [cela C]               | 1 [celas]           |
-| 10 [corredor Celas]      | 1 [celas]          | 5 [cela D]               | 1 [celas]           |
-| 10 [corredor Celas]      | 1 [celas]          | 6 [cela E]               | 1 [celas]           |
-| 10 [corredor Celas]      | 1 [celas]          | 7 [cela F]               | 1 [celas]           |
-| 10 [corredor Celas]      | 1 [celas]          | 8 [cela G]               | 1 [celas]           |
-| 10 [corredor Celas]      | 1 [celas]          | 9 [solitaria Leste]      | 1 [celas]           |
-| 10 [corredor Celas]      | 1 [celas]          | 15 [corredor Banheiros]  | 2 [banheiros]       |
-| 11 [banheiro A]          | 2 [banheiros]      | 15 [corredor Banheiros]  | 2 [banheiros]       |
-| 12 [banheiro B]          | 2 [banheiros]      | 15 [corredor Banheiros]  | 2 [banheiros]       |
-| 13 [banheiro C]          | 2 [banheiros]      | 15 [corredor Banheiros]  | 2 [banheiros]       |
-| 13 [banheiro C]          | 2 [banheiros]      | 31 [esgoto]              | 8 [exterior]        |
-| 14 [banheiro D]          | 2 [banheiros]      | 15 [corredor Banheiros]  | 2 [banheiros]       |
-| 15 [corredor Banheiros]  | 2 [banheiros]      | 10 [corredor Celas]      | 1 [celas]           |
-| 15 [corredor Banheiros]  | 2 [banheiros]      | 11 [banheiro A]          | 2 [banheiros]       |
-| 15 [corredor Banheiros]  | 2 [banheiros]      | 12 [banheiro B]          | 2 [banheiros]       |
-| 15 [corredor Banheiros]  | 2 [banheiros]      | 13 [banheiro C]          | 2 [banheiros]       |
-| 15 [corredor Banheiros]  | 2 [banheiros]      | 14 [banheiro D]          | 2 [banheiros]       |
-| 15 [corredor Banheiros]  | 2 [banheiros]      | 19 [corredor Enfermaria] | 3 [enfermaria]      |
-| 15 [corredor Banheiros]  | 2 [banheiros]      | 23 [corredor Refeitorio] | 5 [refeitorio]      |
-| 16 [sala A]              | 3 [enfermaria]     | 17 [sala B]              | 3 [enfermaria]      |
-| 16 [sala A]              | 3 [enfermaria]     | 19 [corredor Enfermaria] | 3 [enfermaria]      |
-| 17 [sala B]              | 3 [enfermaria]     | 16 [sala A]              | 3 [enfermaria]      |
-| 17 [sala B]              | 3 [enfermaria]     | 18 [sala C]              | 3 [enfermaria]      |
-| 17 [sala B]              | 3 [enfermaria]     | 19 [corredor Enfermaria] | 3 [enfermaria]      |
-| 18 [sala C]              | 3 [enfermaria]     | 17 [sala B]              | 3 [enfermaria]      |
-| 18 [sala C]              | 3 [enfermaria]     | 19 [corredor Enfermaria] | 3 [enfermaria]      |
-| 19 [corredor Enfermaria] | 3 [enfermaria]     | 15 [corredor Banheiros]  | 2 [banheiros]       |
-| 19 [corredor Enfermaria] | 3 [enfermaria]     | 16 [sala A]              | 3 [enfermaria]      |
-| 19 [corredor Enfermaria] | 3 [enfermaria]     | 17 [sala B]              | 3 [enfermaria]      |
-| 19 [corredor Enfermaria] | 3 [enfermaria]     | 18 [sala C]              | 3 [enfermaria]      |
-| 19 [corredor Enfermaria] | 3 [enfermaria]     | 20 [sala De Controle]    | 4 [administracao]   |
-| 20 [sala De Controle]    | 4 [administracao]  | 19 [corredor Enfermaria] | 3 [enfermaria]      |
-| 21 [mesa Esquerda]       | 5 [refeitorio]     | 23 [corredor Refeitorio] | 5 [refeitorio]      |
-| 22 [mesa Direita]        | 5 [refeitorio]     | 23 [corredor Refeitorio] | 5 [refeitorio]      |
-| 23 [corredor Refeitorio] | 5 [refeitorio]     | 15 [corredor Banheiros]  | 2 [banheiros]       | 
-| 23 [corredor Refeitorio] | 5 [refeitorio]     | 21 [mesa Esquerda]       | 5 [refeitorio]      |
-| 23 [corredor Refeitorio] | 5 [refeitorio]     | 22 [mesa Direita]        | 5 [refeitorio]      |
-| 23 [corredor Refeitorio] | 5 [refeitorio]     | 28 [corredor Patio]      | 6 [patio]           |
-| 24 [academia Simples]    | 6 [patio]          | 25 [quadra De Basquete]  | 6 [patio]           |
-| 24 [academia Simples]    | 6 [patio]          | 28 [corredor Patio]      | 6 [patio]           |
-| 25 [quadra De Basquete]  | 6 [patio]          | 24 [academia Simples]    | 6 [patio]           |
-| 25 [quadra De Basquete]  | 6 [patio]          | 26 [arquibancada]        | 6 [patio]           |
-| 25 [quadra De Basquete]  | 6 [patio]          | 28 [corredor Patio]      | 6 [patio]           |
-| 26 [arquibancada]        | 6 [patio]          | 25 [quadra De Basquete]  | 6 [patio]           |
-| 26 [arquibancada]        | 6 [patio]          | 27 [area De Lazer]       | 6 [patio]           |
-| 26 [arquibancada]        | 6 [patio]          | 28 [corredor Patio]      | 6 [patio]           |
-| 27 [area De Lazer]       | 6 [patio]          | 26 [arquibancada]        | 6 [patio]           |
-| 27 [area De Lazer]       | 6 [patio]          | 28 [corredor Patio]      | 6 [patio]           |
-| 27 [area De Lazer]       | 6 [patio]          | 33 [floresta]            | 8 [exterior]        |
-| 28 [corredor Patio]      | 6 [patio]          | 23 [corredor Refeitorio] | 5 [refeitorio]      |
-| 28 [corredor Patio]      | 6 [patio]          | 24 [academia Simples]    | 6 [patio]           |
-| 28 [corredor Patio]      | 6 [patio]          | 25 [quadra De Basquete]  | 6 [patio]           |
-| 28 [corredor Patio]      | 6 [patio]          | 26 [arquibancada]        | 6 [patio]           |
-| 28 [corredor Patio]      | 6 [patio]          | 27 [area De Lazer]       | 6 [patio]           |
-| 28 [corredor Patio]      | 6 [patio]          | 29 [oficina A]           | 7 [oficinas]        |
-| 28 [corredor Patio]      | 6 [patio]          | 30 [oficina B]           | 7 [oficinas]        |
-| 28 [corredor Patio]      | 6 [patio]          | 32 [entrada]             | 8 [exterior]        |
-| 29 [oficina A]           | 7 [oficinas]       | 28 [corredor Patio]      | 6 [patio]           |
-| 30 [oficina B]           | 7 [oficinas]       | 28 [corredor Patio]      | 6 [patio]           |
-| 31 [esgoto]              | 8 [exterior]       | 13 [banheiro C]          | 2 [banheiros]       |
-| 32 [entrada]             | 8 [exterior]       | 28 [corredor Patio]      | 6 [patio]           |
-| 33 [floresta]            | 8 [exterior]       | 27 [area De Lazer]       | 6 [patio]           |
+| 1 [Solitaria Oeste]      | 1 [Celas]          | 2 [Cela A]               | 1 [Celas]           |
+| 1 [Solitaria Oeste]      | 1 [Celas]          | 10 [Corredor Celas]      | 1 [Celas]           |
+| 2 [Cela A]               | 1 [Celas]          | 1 [Solitaria Oeste]      | 1 [Celas]           |
+| 2 [Cela A]               | 1 [Celas]          | 10 [Corredor Celas]      | 1 [Celas]           |
+| 3 [Cela B]               | 1 [Celas]          | 10 [Corredor Celas]      | 1 [Celas]           |
+| 4 [Cela C]               | 1 [Celas]          | 10 [Corredor Celas]      | 1 [Celas]           |
+| 5 [Cela D]               | 1 [Celas]          | 10 [Corredor Celas]      | 1 [Celas]           |
+| 6 [Cela E]               | 1 [Celas]          | 10 [Corredor Celas]      | 1 [Celas]           |
+| 7 [Cela F]               | 1 [Celas]          | 10 [Corredor Celas]      | 1 [Celas]           |
+| 8 [Cela G]               | 1 [Celas]          | 10 [Corredor Celas]      | 1 [Celas]           |
+| 9 [Solitaria Leste]      | 1 [Celas]          | 10 [Corredor Celas]      | 1 [Celas]           |
+| 10 [Corredor Celas]      | 1 [Celas]          | 1 [Solitaria Oeste]      | 1 [Celas]           |
+| 10 [Corredor Celas]      | 1 [Celas]          | 2 [Cela A]               | 1 [Celas]           |
+| 10 [Corredor Celas]      | 1 [Celas]          | 3 [Cela B]               | 1 [Celas]           |
+| 10 [Corredor Celas]      | 1 [Celas]          | 4 [Cela C]               | 1 [Celas]           |
+| 10 [Corredor Celas]      | 1 [Celas]          | 5 [Cela D]               | 1 [Celas]           |
+| 10 [Corredor Celas]      | 1 [Celas]          | 6 [Cela E]               | 1 [Celas]           |
+| 10 [Corredor Celas]      | 1 [Celas]          | 7 [Cela F]               | 1 [Celas]           |
+| 10 [Corredor Celas]      | 1 [Celas]          | 8 [Cela G]               | 1 [Celas]           |
+| 10 [Corredor Celas]      | 1 [Celas]          | 9 [Solitaria Leste]      | 1 [Celas]           |
+| 10 [Corredor Celas]      | 1 [Celas]          | 15 [Corredor Banheiros]  | 2 [Banheiros]       |
+| 11 [Banheiro A]          | 2 [Banheiros]      | 15 [Corredor Banheiros]  | 2 [Banheiros]       |
+| 12 [Banheiro B]          | 2 [Banheiros]      | 15 [Corredor Banheiros]  | 2 [Banheiros]       |
+| 13 [Banheiro C]          | 2 [Banheiros]      | 15 [Corredor Banheiros]  | 2 [Banheiros]       |
+| 13 [Banheiro C]          | 2 [Banheiros]      | 31 [Esgoto]              | 8 [Exterior]        |
+| 14 [Banheiro D]          | 2 [Banheiros]      | 15 [Corredor Banheiros]  | 2 [Banheiros]       |
+| 15 [Corredor Banheiros]  | 2 [Banheiros]      | 10 [Corredor Celas]      | 1 [Celas]           |
+| 15 [Corredor Banheiros]  | 2 [Banheiros]      | 11 [Banheiro A]          | 2 [Banheiros]       |
+| 15 [Corredor Banheiros]  | 2 [Banheiros]      | 12 [Banheiro B]          | 2 [Banheiros]       |
+| 15 [Corredor Banheiros]  | 2 [Banheiros]      | 13 [Banheiro C]          | 2 [Banheiros]       |
+| 15 [Corredor Banheiros]  | 2 [Banheiros]      | 14 [Banheiro D]          | 2 [Banheiros]       |
+| 15 [Corredor Banheiros]  | 2 [Banheiros]      | 19 [Corredor Enfermaria] | 3 [Enfermaria]      |
+| 15 [Corredor Banheiros]  | 2 [Banheiros]      | 23 [Corredor Refeitorio] | 5 [Refeitorio]      |
+| 16 [Sala A]              | 3 [Enfermaria]     | 17 [Sala B]              | 3 [Enfermaria]      |
+| 16 [Sala A]              | 3 [Enfermaria]     | 19 [Corredor Enfermaria] | 3 [Enfermaria]      |
+| 17 [Sala B]              | 3 [Enfermaria]     | 16 [Sala A]              | 3 [Enfermaria]      |
+| 17 [Sala B]              | 3 [Enfermaria]     | 18 [Sala C]              | 3 [Enfermaria]      |
+| 17 [Sala B]              | 3 [Enfermaria]     | 19 [Corredor Enfermaria] | 3 [Enfermaria]      |
+| 18 [Sala C]              | 3 [Enfermaria]     | 17 [Sala B]              | 3 [Enfermaria]      |
+| 18 [Sala C]              | 3 [Enfermaria]     | 19 [Corredor Enfermaria] | 3 [Enfermaria]      |
+| 19 [Corredor Enfermaria] | 3 [Enfermaria]     | 15 [Corredor Banheiros]  | 2 [Banheiros]       |
+| 19 [Corredor Enfermaria] | 3 [Enfermaria]     | 16 [Sala A]              | 3 [Enfermaria]      |
+| 19 [Corredor Enfermaria] | 3 [Enfermaria]     | 17 [Sala B]              | 3 [Enfermaria]      |
+| 19 [Corredor Enfermaria] | 3 [Enfermaria]     | 18 [Sala C]              | 3 [Enfermaria]      |
+| 19 [Corredor Enfermaria] | 3 [Enfermaria]     | 20 [Sala De Controle]    | 4 [Administracao]   |
+| 20 [Sala De Controle]    | 4 [Administracao]  | 19 [Corredor Enfermaria] | 3 [Enfermaria]      |
+| 21 [Mesa Esquerda]       | 5 [Refeitorio]     | 23 [Corredor Refeitorio] | 5 [Refeitorio]      |
+| 22 [Mesa Direita]        | 5 [Refeitorio]     | 23 [Corredor Refeitorio] | 5 [Refeitorio]      |
+| 23 [Corredor Refeitorio] | 5 [Refeitorio]     | 15 [Corredor Banheiros]  | 2 [Banheiros]       | 
+| 23 [Corredor Refeitorio] | 5 [Refeitorio]     | 21 [Mesa Esquerda]       | 5 [Refeitorio]      |
+| 23 [Corredor Refeitorio] | 5 [Refeitorio]     | 22 [Mesa Direita]        | 5 [Refeitorio]      |
+| 23 [Corredor Refeitorio] | 5 [Refeitorio]     | 28 [Corredor Patio]      | 6 [Patio]           |
+| 24 [Academia Simples]    | 6 [Patio]          | 25 [Quadra De Basquete]  | 6 [Patio]           |
+| 24 [Academia Simples]    | 6 [Patio]          | 28 [Corredor Patio]      | 6 [Patio]           |
+| 25 [Quadra De Basquete]  | 6 [Patio]          | 24 [Academia Simples]    | 6 [Patio]           |
+| 25 [Quadra De Basquete]  | 6 [Patio]          | 26 [Arquibancada]        | 6 [Patio]           |
+| 25 [Quadra De Basquete]  | 6 [Patio]          | 28 [Corredor Patio]      | 6 [Patio]           |
+| 26 [Arquibancada]        | 6 [Patio]          | 25 [Quadra De Basquete]  | 6 [Patio]           |
+| 26 [Arquibancada]        | 6 [Patio]          | 27 [Area De Lazer]       | 6 [Patio]           |
+| 26 [Arquibancada]        | 6 [Patio]          | 28 [Corredor Patio]      | 6 [Patio]           |
+| 27 [Area De Lazer]       | 6 [Patio]          | 26 [Arquibancada]        | 6 [Patio]           |
+| 27 [Area De Lazer]       | 6 [Patio]          | 28 [Corredor Patio]      | 6 [Patio]           |
+| 27 [Area De Lazer]       | 6 [Patio]          | 33 [Floresta]            | 8 [Exterior]        |
+| 28 [Corredor Patio]      | 6 [Patio]          | 23 [Corredor Refeitorio] | 5 [Refeitorio]      |
+| 28 [Corredor Patio]      | 6 [Patio]          | 24 [Academia Simples]    | 6 [Patio]           |
+| 28 [Corredor Patio]      | 6 [Patio]          | 25 [Quadra De Basquete]  | 6 [Patio]           |
+| 28 [Corredor Patio]      | 6 [Patio]          | 26 [Arquibancada]        | 6 [Patio]           |
+| 28 [Corredor Patio]      | 6 [Patio]          | 27 [Area De Lazer]       | 6 [Patio]           |
+| 28 [Corredor Patio]      | 6 [Patio]          | 29 [Oficina A]           | 7 [Oficinas]        |
+| 28 [Corredor Patio]      | 6 [Patio]          | 30 [Oficina B]           | 7 [Oficinas]        |
+| 28 [Corredor Patio]      | 6 [Patio]          | 32 [Entrada]             | 8 [Exterior]        |
+| 29 [Oficina A]           | 7 [Oficinas]       | 28 [Corredor Patio]      | 6 [Patio]           |
+| 30 [Oficina B]           | 7 [Oficinas]       | 28 [Corredor Patio]      | 6 [Patio]           |
+| 31 [Esgoto]              | 8 [Exterior]       | 13 [Banheiro C]          | 2 [Banheiros]       |
+| 32 [Entrada]             | 8 [Exterior]       | 28 [Corredor Patio]      | 6 [Patio]           |
+| 33 [Floresta]            | 8 [Exterior]       | 27 [Area De Lazer]       | 6 [Patio]           |
 
 ---
 
@@ -676,5 +676,6 @@
 | 09/08/2024 | `2.5`  | Correção das tabelas [`Tabela-Regiao`](#Tabela-Regiao), [`Tabela-Lugar`](#Tabela-Lugar) e [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino). | [Breno Alexandre](https://github.com/brenoalexandre0) |
 | 10/08/2024 | `2.6`  |                                                                     Adiciona regiao.                                                                     |  [João Antonio G.](https://github.com/joaoseisei)     |
 | 12/08/2024 | `2.7`  | Correção das tabelas [`Tabela-Regiao`](#Tabela-Regiao), [`Tabela-Lugar`](#Tabela-Lugar) e [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino). | [Breno Alexandre](https://github.com/brenoalexandre0) |
+| 13/08/2024 | `2.8`  | Correção das tabelas [`Tabela-Regiao`](#Tabela-Regiao), [`Tabela-Lugar`](#Tabela-Lugar) e [`Tabela-Lugar_Origem_Destino`](#Tabela-Lugar_Origem_Destino). | [Breno Alexandre](https://github.com/brenoalexandre0) |
 
 </div>
