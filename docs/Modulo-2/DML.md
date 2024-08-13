@@ -395,50 +395,50 @@ VALUES
 
 INSERT INTO regiao(id, nome, prisao, descricao)
 VALUES
-(1, 'celas', 1, 'Local onde estão as celas e solitárias dos prisioneiros.'),
-(2, 'banheiros', 1, 'Local onde os prisioneiros se banham.'),
-(3, 'enfermaria', 1, 'Local onde os prisioneiros podem se tratar/curar.'),
-(4, 'administracao', 1, 'Local onde tem o controle geral elétrico da prisão.'),
-(5, 'refeitorio', 1, 'Local onde os prisioneiros fazem suas refeições.'),
-(6, 'patio', 1, 'Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete e relaxar.'),
-(7, 'oficinas', 1, 'Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.'),
-(8, 'exterior', 1, 'Localização fora da prisão.');
+(1, 'Celas', 1, 'Local onde estão as celas e solitárias dos prisioneiros.'),
+(2, 'Banheiros', 1, 'Local onde os prisioneiros se banham.'),
+(3, 'Enfermaria', 1, 'Local onde os prisioneiros podem se tratar/curar.'),
+(4, 'Administracao', 1, 'Local onde tem o controle geral elétrico da prisão.'),
+(5, 'Refeitorio', 1, 'Local onde os prisioneiros fazem suas refeições.'),
+(6, 'Patio', 1, 'Local onde os prisioneiros podem interagir entre si, se exercitar, jogar basquete e relaxar.'),
+(7, 'Oficinas', 1, 'Local onde os prisioneiros trabalham e ganham um pouco de dinheiro.'),
+(8, 'Exterior', 1, 'Localização fora da prisão.');
 
-INSERT INTO lugar(id, nome, regiao, descricao)
+INSERT INTO lugar(id, nome, regiao, descricao, rota_final_fuga)
 VALUES
-(1, 'solitaria Oeste', 1, 'Cela para os prisioneiros levadinhos. Na parede direita há uma mancha de cimento fresco.'),
-(2, 'cela A', 1, 'Cela onde dormem os prisioneiros 1 e 2.'),
-(3, 'cela B', 1, 'Cela onde dormem os prisioneiros 3 e 4.'),
-(4, 'cela C', 1, 'Cela onde dormem os prisioneiros 5 e 6.'),
-(5, 'cela D', 1, 'Cela onde dormem os prisioneiros 7 e 8.'),
-(6, 'cela E', 1, 'Cela onde dormem os prisioneiros 9 e 10.'),
-(7, 'cela F', 1, 'Cela onde dormem os prisioneiros 11 e 12.'),
-(8, 'cela G', 1, 'Cela onde dormem os prisioneiros 13 e o jogador.'),
-(9, 'solitaria Leste', 1, 'Cela onde prisioneiros levadinhos são levados para ficarem segregados dos coleguinhas.'),
-(10, 'corredor Celas', 1, 'Corredor para se deslocar entre as celas e as solitárias.'),
-(11, 'banheiro A', 2, 'Banheiro onde os prisioneiros tomam banho.'),
-(12, 'banheiro B', 2, 'Banheiro onde os prisioneiros tomam banho.'),
-(13, 'banheiro C', 2, 'Banheiro quebrado em manutenção com a porta trancada.'),
-(14, 'banheiro D', 2, 'Banheiro onde os prisioneiros tomam banho.'),
-(15, 'corredor Banheiros', 2, 'Corredor para se deslocar entre os banheiros e os corredores da enfermaria e do refeitório.'),
-(16, 'sala A', 3, 'Sala com uma maca e armário com remédios e kits de primeiro-socorro.'),
-(17, 'sala B', 3, 'Sala com uma maca e armário com remédios e kits de primeiro-socorro.'),
-(18, 'sala C', 3, 'Sala com uma maca e armário com remédios e kits de primeiro-socorro.'),
-(19, 'corredor Enfermaria', 3, 'Corredor para se deslocar entre as salas da enfermaria e a sala de controle.'),
-(20, 'sala De Controle', 4, 'Sala onde tem o controle da prisão, no final do corredor da enfermaria. Há um uniforme policial do lado da mesa.'),
-(21, 'mesa Esquerda', 5, 'Mesa onde a gangue 1 faz suas refeições.'),
-(22, 'mesa Direita', 5, 'Mesa onde a gangue 2 faz suas refeições.'),
-(23, 'corredor Refeitorio', 5, 'Corredor para se deslocar entre as mesas do refeitório e os corredores dos banheiros e do pátio.'),
-(24, 'academia Simples', 6, 'Uma área com equipamentos simples de exercício.'),
-(25, 'quadra De Basquete', 6, 'Quadra onde os prisioneiros jogam basquete para se distrair e se exercitar.'),
-(26, 'arquibancada', 6, 'Arquibancada onde os prisioneiros podem conversar e assistir os jogos.'),
-(27, 'area De Lazer', 6, 'Bancos onde os prisioneiros podem sentar e conversar. Há um área no chão com terra fresca.'),
-(28, 'corredor Patio', 6, 'Corredor para se deslocar entre as áreas do pátio, as oficinas e entrada.'),
-(29, 'oficina A', 7, 'Oficina de marcenaria onde os prisioneiros trabalham.'),
-(30, 'oficina B', 7, 'Oficina de impressão de placas de carro onde os prisioneiros trabalham'),
-(31, 'esgoto', 8, 'Local subterrâneo apertado que dá para fora da prisão.'),
-(32, 'entrada', 8, 'Local onde os policias e prisioneiros entram e sai da prisão que dá no corredor do pátio.'),
-(33, 'floresta', 8, 'Local cheio de árvores adjacente a prisão.');
+(1, 'Solitaria  Oeste', 1, 'Sala escura para os prisioneiros indisciplinados. Na parede direita há uma mancha de cimento fresco.', false),
+(2, 'Cela A', 1, 'Cela velha com 178 riscos na parede e o piso está rachado e com partes soltas.', false),
+(3, 'Cela B', 1, 'Cela com uma beliche e há varias camisinhas de sabor pequi espalhadas embaixo dela.', false),
+(4, 'Cela C', 1, 'Cela que fede a azeitona em conserva. Tem vários desenhos da folha de oliva e de azeitonas na parede.', false),
+(5, 'Cela D', 1, 'Cela normal. Exceto pela montanha de pelos castanhos misturada com uma gosma preta no meio cela.', false),
+(6, 'Cela E', 1, 'Cela com piso e paredes marrom. Barras enferrujadas. Camas marrom.', false),
+(7, 'Cela F', 1, 'Cela com posteres de mulheres nuas nas paredes. O piso é da cor bege sujo. Há um buraco de rato na parede.', false),
+(8, 'Cela G', 1, 'Cela normal. Tem 321 nomes escritos na parede. No teto há varios bonecos de palha pendurados pelo pescoço.', false),
+(9, 'Solitaria Leste', 1, 'Sala escura para os prisioneiros indisciplinados. Ela fede a álcool por algum motivo.', false),
+(10, 'Corredor Celas', 1, 'Corredor para se deslocar entre as celas e as solitárias.', false),
+(11, 'Banheiro A', 2, 'Banheiro onde os prisioneiros tomam banho.', false),
+(12, 'Banheiro B', 2, 'Banheiro onde os prisioneiros tomam banho.', false),
+(13, 'Banheiro C', 2, 'Banheiro quebrado em manutenção com a porta trancada.', false),
+(14, 'Banheiro D', 2, 'Banheiro onde os prisioneiros tomam banho.', false),
+(15, 'Corredor Banheiros', 2, 'Corredor para se deslocar entre os banheiros e os corredores da enfermaria e do refeitório.', false),
+(16, 'Sala A', 3, 'Sala com uma maca e armário com remédios e kits de primeiro-socorro.', false),
+(17, 'Sala B', 3, 'Sala com uma maca e armário com remédios e kits de primeiro-socorro.', false),
+(18, 'Sala C', 3, 'Sala com uma maca e armário com remédios e kits de primeiro-socorro.', false),
+(19, 'Corredor Enfermaria', 3, 'Corredor para se deslocar entre as salas da enfermaria e a sala de controle.', false),
+(20, 'Sala De Controle', 4, 'Sala onde tem o controle da prisão, no final do corredor da enfermaria. Há um uniforme policial do lado da mesa.', false),
+(21, 'Mesa Esquerda', 5, 'Mesa onde a gangue 1 faz suas refeições.', false),
+(22, 'Mesa Direita', 5, 'Mesa onde a gangue 2 faz suas refeições.', false),
+(23, 'Corredor Refeitorio', 5, 'Corredor para se deslocar entre as mesas do refeitório e os corredores dos banheiros e do pátio.', false),
+(24, 'Academia Simples', 6, 'Uma área com equipamentos simples de exercício.', false),
+(25, 'Quadra De Basquete', 6, 'Quadra onde os prisioneiros jogam basquete para se distrair e se exercitar.', false),
+(26, 'Arquibancada', 6, 'Arquibancada onde os prisioneiros podem conversar e assistir os jogos.', false),
+(27, 'Area De Lazer', 6, 'Bancos onde os prisioneiros podem sentar e conversar. Há um área no chão com terra fresca.', false),
+(28, 'Corredor Patio', 6, 'Corredor para se deslocar entre as áreas do pátio, as oficinas e entrada.', false),
+(29, 'Oficina A', 7, 'Oficina de marcenaria onde os prisioneiros trabalham.', false),
+(30, 'Oficina B', 7, 'Oficina de impressão de placas de carro onde os prisioneiros trabalham', false),
+(31, 'Esgoto', 8, 'Local subterrâneo apertado que dá para fora da prisão.', true),
+(32, 'Entrada', 8, 'Local onde os policias e prisioneiros entram e sai da prisão que dá no corredor do pátio.', true),
+(33, 'Floresta', 8, 'Local cheio de árvores adjacente a prisão.', true);
 
 INSERT INTO lugar_origem_destino (lugar_origem, regiao_origem, lugar_destino, regiao_destino)
 VALUES
@@ -541,5 +541,6 @@ COMMIT;
 | 07/08/2024 | `1.3`  | Adiciona parte do Júlio. | [Júlio Cesar](https://github.com/Julio1099)                                                                                                   |
 | 10/08/2024 | `1.4`  | corrige dml              | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
 | 12/08/2024 | `1.5`  | Adiciona parte do bob.   | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
+| 13/08/2024 | `1.6`  | Edita parte do bob.      | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 
 </div>
