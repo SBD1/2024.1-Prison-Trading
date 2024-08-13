@@ -88,17 +88,21 @@ VALUES
 (23, 'utilizavel'),
 (24, 'utilizavel'),
 (25, 'utilizavel'),
-(26, 'utilizavel');
-(27, 'utilizavel');
-(28, 'medicamento');
-(29, 'medicamento');
-(30, 'medicamento');
-(31, 'comida');
-(32, 'comida');
-(33, 'comida');
-(34, 'comida');
-(35, 'comida');
-(36, 'comida');
+(26, 'utilizavel'),
+(27, 'utilizavel'),
+(28, 'medicamento'),
+(29, 'medicamento'),
+(30, 'medicamento'),
+(31, 'comida'),
+(32, 'comida'),
+(33, 'comida'),
+(34, 'comida'),
+(35, 'comida'),
+(36, 'comida'),
+(37, 'utilizavel'),
+(38, 'utilizavel'),
+(39, 'utilizavel');
+
 
 INSERT INTO ferramenta(id, nome, tamanho, descricao, utilidade)
 VALUES
@@ -119,22 +123,27 @@ VALUES
 (12, 'Corda com Cerol', 1, 'Corda revestida com vidro moído para causar cortes.', 3),
 (13, 'Garrafa Quebrada', 1, 'Garrafa de vidro quebrada, usada como arma cortante.', 3);
 
-INSERT INTO utilizavel(id, nome, tamanho, descricao, raridade, quantidade)
+INSERT INTO utilizavel(id, nome, tamanho, descricao, raridade, quantidade, durabilidade)
 VALUES
-(14, 'Sabao', 1, 'Serve para remover sujeira e impurezas de superfícies e objetos, também é um material para fabricação de itens.', 0, 1),
-(15, 'Pedra', 1, 'A pedra serve para construção e também é um material para fabricação de itens.', 0, 3),
-(16, 'Graveto', 1, 'Produto de origem vegetal, é usado como material para fabricação de itens.', 0, 3),
-(17, 'Linha', 1, 'Fio fino e flexível utilizado como material para fabricação de itens.', 0, 3),
-(18, 'Pedaco pequeno de metal', 1, 'Material para fabricação de itens.', 1, 3),
-(19, 'Vidro', 1, 'Utilizado como material para fabricação de cerol.', 0, 1),
-(20, 'Pedaco grande de metal', 3, 'Material para fabricação de itens pesados.', 2, 1),
-(21, 'Alcool', 1, 'Utilizado como material para fabricação de coquetel molotov e garrafa quebrada.', 1, 1),
-(22, 'Tecido', 1, 'Utilizado como material para fabricação de explosivos.', 1, 3),
-(23, 'Garrafa de vidro', 2, 'Utilizado como material para fabricação de coquetel molotov e garrafa quebrada.', 1, 1),
-(24, 'Plastico', 1, 'Material versátil utilizado para várias criações.', 0, 3),
-(25, 'Isqueiro', 1, 'Dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas.', 1, 1),
-(26, 'Lanterna', 1, 'Dispositivo portátil que emite luz.', 1, 1),
-(27, 'Cigarro', 1, 'Moeda de troca do jogo, além de poder ser utilizado para acalmar.', 1, 10);
+(14, 'Sabao', 1, 'Serve para remover sujeira e impurezas de superfícies e objetos, também é um material para fabricação de itens.', 0, 1, 1),
+(15, 'Pedra', 1, 'A pedra serve para construção e também é um material para fabricação de itens.', 0, 3, 1),
+(16, 'Graveto', 1, 'Produto de origem vegetal, é usado como material para fabricação de itens.', 0, 3, 1),
+(17, 'Linha', 1, 'Fio fino e flexível utilizado como material para fabricação de itens.', 0, 3, 1),
+(18, 'Pedaco pequeno de metal', 1, 'Material para fabricação de itens.', 1, 3, 1),
+(19, 'Vidro', 1, 'Utilizado como material para fabricação de cerol.', 0, 1, 1),
+(20, 'Pedaco grande de metal', 3, 'Material para fabricação de itens pesados.', 2, 1, 1),
+(21, 'Alcool', 1, 'Utilizado como material para fabricação de coquetel molotov e garrafa quebrada.', 1, 1, 1),
+(22, 'Tecido', 1, 'Utilizado como material para fabricação de explosivos.', 1, 3, 1),
+(23, 'Garrafa de vidro', 2, 'Utilizado como material para fabricação de coquetel molotov e garrafa quebrada.', 1, 1, 1),
+(24, 'Plastico', 1, 'Material versátil utilizado para várias criações.', 0, 3, 1),
+(25, 'Isqueiro', 1, 'Dispositivo portátil utilizado para gerar fogo, podendo ser utilizado para queimar coisas.', 1, 1, 1),
+(26, 'Lanterna', 1, 'Dispositivo portátil que emite luz.', 1, 1, 1),
+(27, 'Cigarro', 1, 'Moeda de troca do jogo, além de poder ser utilizado para acalmar.', 1, 10, 1),
+(37, 'Cracha', 1, 'Crachá de identificação, item ultra raro que pode ser usado para ativar a entrada.', 2, 1, 1),
+(38, 'Chave Oficina A', 1, 'Chave usada para abrir a oficina A.', 2, 1, 1),
+(39, 'Chave Oficina B', 1, 'Chave usada para abrir a oficina B.', 2, 1, 1);
+
+
 
 INSERT INTO medicamento(id, nome, tamanho, descricao, raridade, cura, quantidade)
 VALUES
@@ -151,19 +160,19 @@ VALUES
 (35, 'Peixe', 1, 'Tecido muscular de peixe, consumido como alimento.', 1, 2, 3),
 (36, 'Laranja', 1, 'Fruta cítrica, suculenta e doce.', 0, 3, 1);
 
-INSERT INTO missao(id, item, lugar, nome, descricao)
+INSERT INTO missao (item_nao_fabricavel, lugar, regiao, nome, descricao)
 VALUES
-(1, 'Chave Oficina A', 1, 'Fuja da solitária oeste', 'Escape da cela de isolamento leste sem ser pego.'),
-(2, 'Chave Oficina B', 9, 'Fuja da solitária leste', 'Escape da cela de isolamento oeste sem ser pego.'),
-(3, 'Bandagem', 5, 'Observar cela', 'Observe e memorize os detalhes da cela para planejar uma fuga.'),
-(4, 'Faca Pequena', 'NULL', 'Escolher gangue', 'Escolha a gangue com a qual se aliar na prisão.'),
-(5, 'NULL', 'NULL', 'Explorar o mapa', 'Explore os locais no mapa da prisão para um melhor entendimento do mesmo.'),
-(6, 'Carne', 'NULL', 'Brigue com alguém', 'Inicie e participe de uma briga com outro prisioneiro.'),
-(7, 'Remédio', 'NULL', 'Vença uma briga', 'Vença uma briga contra qualquer prisioneiro.'),
-(8, 'NULL', 'NULL', 'Fuja da prisão', 'Fuja da prisão e reconquiste a sua liberdade.'),
-(9, 'Pedaco grande de metal', 'NULL', 'Encontre o informante', 'Encontre o informante que está infiltrado na prisão.'),
-(10, 'Isqueiro', 24, 'Vença um jogo de basquete', 'Vença um jogo de basquete contra os outros presos.'),
-(11, 'Carne', 23, 'Fique maromba', 'Vá na academia.');
+(38, 1, 1, 'Fuja da solitaria oeste', 'Escape da cela de isolamento leste sem ser pego.'),
+(39, 9, 1, 'Fuja da solitaria leste', 'Escape da cela de isolamento oeste sem ser pego.'),
+(30, 5, 1, 'Observar cela', 'Observe e memorize os detalhes da cela para planejar uma fuga.'),
+(27, NULL, NULL, 'Escolher gangue', 'Escolha a gangue com a qual se aliar na prisão.'),
+(NULL, NULL, NULL, 'explorar o mapa', 'Explore os locais no mapa da prisão, para um melhor entendimento do mesmo.'),
+(34, NULL, NULL, 'Brigue com alguém', 'Inicie e participe de uma briga com outro prisioneiro.'),
+(29, NULL, NULL, 'Vença uma briga', 'Vença uma briga.'),
+(NULL, NULL, NULL, 'Fuja da prisão', 'Fuja da prisão.'),
+(20, NULL, NULL, 'Encontre o informante', 'Encontre o informante.'),
+(25, 25, 6, 'Venca um jogo de basquete', 'Vença um jogo de basquete.'),
+(34, 24, 6, 'Fique maromba', 'Vá na academia.');
 
 INSERT INTO livro_fabricacao(nome)
 VALUES
@@ -542,5 +551,6 @@ COMMIT;
 | 10/08/2024 | `1.4`  | corrige dml              | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
 | 12/08/2024 | `1.5`  | Adiciona parte do bob.   | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 | 13/08/2024 | `1.6`  | Edita parte do bob.      | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
+| 14/08/2024 | `1.4`  | corrige dml              | [João Antonio G.](https://github.com/joaoseisei),[Fernando Gabriel](https://github.com/show-dawn)                                             |
 
 </div>
