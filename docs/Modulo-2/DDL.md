@@ -17,7 +17,6 @@
 ---
 
 ```sql
-
 BEGIN TRANSACTION;
 
 
