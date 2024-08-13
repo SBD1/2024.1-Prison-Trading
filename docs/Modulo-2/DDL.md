@@ -315,6 +315,7 @@ CREATE TABLE lugar (
 	nome CHAR(25) UNIQUE NOT NULL,
 	regiao INTEGER NOT NULL,
 	descricao TEXT NOT NULL,
+	rota_final_fuga BOOLEAN NOT NULL,
 	PRIMARY KEY(id, regiao),
 	FOREIGN KEY (regiao) REFERENCES regiao(id)
 );
@@ -344,14 +345,14 @@ COMMIT;
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão | Descrição                                  | Autores                                                                                                                                       |
-| :--------: | :----: | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| 28/07/2024 | `1.0`  | Criação do documento.                      | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
-| 06/08/2024 | `1.1`  | Adiciona DDL Prevido de fabricacao         | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
-| 07/08/2024 | `1.2`  | Adiciona parte do fernando                 | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
-| 10/08/2024 | `1.3`  | Adiciona parte do Júlio e corrige Fernando | [Júlio Cesar](https://github.com/Julio1099)                                                                                                   |
-| 10/08/2024 | `1.4`  | corrige ddl                                | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
-| 12/08/2024 | `1.5`  | Adiciona parte bob.                        | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
-
+|    Data    | Versão | Descrição                                              | Autores                                                                                                                                       |
+| :--------: | :----: | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| 28/07/2024 | `1.0`  | Criação do documento.                                  | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
+| 06/08/2024 | `1.1`  | Adiciona DDL Prevido de fabricacao                     | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
+| 07/08/2024 | `1.2`  | Adiciona parte do fernando                             | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
+| 10/08/2024 | `1.3`  | Adiciona parte do Júlio e corrige Fernando             | [Júlio Cesar](https://github.com/Julio1099)                                                                                                   |
+| 10/08/2024 | `1.4`  | corrige ddl                                            | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
+| 12/08/2024 | `1.5`  | Adiciona parte bob.                                    | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
+| 12/08/2024 | `1.6`  | Adiciona atributo `rota_final_fuga` em `Tabela Lugar`. | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 
 </div>
