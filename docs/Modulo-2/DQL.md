@@ -52,6 +52,22 @@ WHERE pessoa = 2;
 SELECT item 
 FROM instancia_item
 WHERE inventario = 2;
+
+---
+
+SELECT t.item, COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome) AS nome
+FROM instancia_item t
+LEFT JOIN arma a 
+ON a.id = t.item
+LEFT JOIN ferramenta f 
+ON f.id = t.item
+LEFT JOIN comida c 
+ON c.id = t.item
+LEFT JOIN medicamento m 
+ON m.id = t.item
+LEFT JOIN utilizavel u 
+ON u.id = t.item
+WHERE t.inventario = 2;
 ```
 
 > Perguntar se coloca um JOIN aqui.
@@ -258,8 +274,14 @@ CÓDIGO AQUI
 * Ver uma fabricação especifica.
 
 ```sql
-SELECT (item) FROM lista_fabricacao
-WHERE fabricacao = 1;
+
+---
+
+SELECT u.nome
+FROM lista_fabricacao t
+LEFT JOIN utilizavel u 
+ON u.id = t.item
+WHERE t.fabricacao = 1;
 ```
 
 > Inspiração:
@@ -274,6 +296,17 @@ WHERE fabricacao = 1;
 ```sql
 SELECT (item_fabricavel) FROM lista_fabricacao
 WHERE item = 20;
+
+---
+
+SELECT COALESCE(a.nome, f.nome) AS nome
+FROM lista_fabricacao l
+LEFT JOIN arma a
+ON a.id = l.fabricacao
+LEFT JOIN ferramenta f
+on f.id = l.fabricacao
+WHERE l.item = 20;
+
 ```
 
 > Inspiração:
