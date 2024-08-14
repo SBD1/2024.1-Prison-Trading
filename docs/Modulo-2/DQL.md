@@ -291,12 +291,11 @@ CÓDIGO AQUI
 
 </center>
 
-* Ver o tipo do item.
+* Ver o tipo de um item especifico.
 
 ```sql
-
-CÓDIGO AQUI
-
+SELECT tipo FROM item
+WHERE id = 1;
 ```
 
 ---
@@ -306,12 +305,11 @@ CÓDIGO AQUI
 
 </center>
 
-* Ver o tipo do item fabricavel.
+* Ver o tipo do item fabricavel especifico.
 
 ```sql
-
-CÓDIGO AQUI
-
+SELECT tipo FROM item_fabricavel
+WHERE id = 1;
 ```
 
 ---
@@ -321,7 +319,7 @@ CÓDIGO AQUI
 
 </center>
 
-* Ver o tipo do item não fabricavel.
+* Ver o tipo do item não fabricavel especifico.
 
 ```sql
 
@@ -339,9 +337,8 @@ CÓDIGO AQUI
 * Ver os atributos de arma.
 
 ```sql
-
-CÓDIGO AQUI
-
+SELECT nome, tamanho, descricao, dano FROM arma
+WHERE id = 8;
 ```
 
 ---
@@ -354,9 +351,8 @@ CÓDIGO AQUI
 * Ver os atributos de ferramenta.
 
 ```sql
-
-CÓDIGO AQUI
-
+SELECT nome, tamanho, descricao, utilidade FROM ferramenta
+WHERE id = 2;
 ```
 
 ---
