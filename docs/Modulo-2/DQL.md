@@ -235,25 +235,22 @@ CÓDIGO AQUI
 * Ver uma fabricação especifica.
 
 ```sql
-
-CÓDIGO AQUI
-
+SELECT (item) FROM lista_fabricacao
+WHERE fabricacao = 1;
 ```
 
 * Ver fabricações possiveis com um item especifico.
 
 ```sql
-
-CÓDIGO AQUI
-
+SELECT (item_fabricavel) FROM lista_fabricacao
+WHERE item = 20;
 ```
 
-* Ver todas as fabricações de um livro.
+* Ver todas as fabricações de um livro. (1)
 
 ```sql
-
-CÓDIGO AQUI
-
+SELECT * FROM fabricacao
+WHERE livro_fabricacao = 2;
 ```
 
 ---
