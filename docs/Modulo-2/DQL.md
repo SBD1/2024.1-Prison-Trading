@@ -42,19 +42,15 @@ WHERE id = <ID_da_pessoa>;
 * Acessar o inventario de qualquer pessoa (tamanho_ocupado... todos os atributos).
 
 ```sql
-
-SELECT * 
-FROM Inventario
-WHERE pessoa = <ID_da_pessoa>;
-
+SELECT * FROM Inventario
+WHERE pessoa = 2;
 ```
 
 * Ver os itens do inventario de qualquer pessoa.
 
 ```sql
-
-CÓDIGO AQUI
-
+SELECT item FROM instancia_item
+WHERE inventario = 2;
 ```
 
 > Perguntar se coloca um JOIN aqui.
@@ -303,7 +299,7 @@ WHERE fabricacao = 1;
 > Inspiração:
 
 <div align="center">
-    <img style="width: 5vw;" src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/random/jei2.png?raw=true"/>
+    <img style="width: 25vw;" src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/random/jei2.png?raw=true"/>
 </div>
 
 
@@ -318,7 +314,7 @@ WHERE item = 20;
 
 <center>
 <div align="center">
-    <img style="width: 5vw;" src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/random/jei1.gif?raw=true"/>
+    <img style="width: 25vw;" src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/random/jei1.gif?raw=true"/>
 </div>
 
 </center>
