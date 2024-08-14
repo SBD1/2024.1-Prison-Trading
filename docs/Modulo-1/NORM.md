@@ -388,7 +388,7 @@
 
 # Tabela Prisao
 
-> id, nome, descricao
+> id, nome, descricao, motim
 
 * **1ª Forma Normal**: A 1ª Forma Normal exige que todos os atributos sejam atômicos e monovalorados. A tabela `Prisao` atende a essa forma, pois `id`, `nome` e `descricao` são valores atômicos e não compostos.
 
@@ -421,7 +421,7 @@
 
 # Tabela Lugar
 
-> (id, regiao) ➡ nome, descricao
+> (id, regiao) ➡ nome, descricao, rota_final_fuga
 
 * **1ª Forma Normal**: A 1ª Forma Normal requer que todos os atributos sejam atômicos e monovalorados. A tabela `Lugar` está em conformidade com esta forma, pois `id`, `nome`, `descricao` e `regiao` são valores atômicos e não compostos.
 
