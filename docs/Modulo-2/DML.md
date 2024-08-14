@@ -372,7 +372,7 @@ INSERT INTO Inventario (pessoa, inventario_ocupado, tamanho) VALUES
 (20, 4, 5);
 
 INSERT INTO Prisioneiro (id, nome, habilidade_briga, vida, força, gangue, lugar) VALUES
-(2, 'Rivas', 4, 9, 7, 'Palhacos', 'quadraDesportiva'),
+(2, 'Rivas', 4, 9, 7, 'palhaco', 'Quadra De Basquete'),
 (3, 'Filomano', 6, 7, 4, 'Polvos', 'celaB'),
 (4, 'Fragas', 5, 11, 5, 'Palhacos', 'banheiroA'),
 (5, 'Glaucão', 3, 6, 8, 'Polvos', 'mesaEsquerda'),
@@ -388,7 +388,7 @@ INSERT INTO Prisioneiro (id, nome, habilidade_briga, vida, força, gangue, lugar
 INSERT INTO Policial (id, nome, lugar, corrupto) VALUES
 (14, 'Italo Dimetrio', 'solitariaOeste', true),
 (15, 'Sargento Nascimento', 'mesaDireita', false),
-(16, 'Capitão Mathias', 'quadraDesportiva', false),
+(16, 'Capitão Mathias', 'Quadra De Basquete', false),
 (17, 'Capitão Brad', 'solitariaLeste', true),
 (18, 'Lil Chico', 'arquibancada', true);
 
