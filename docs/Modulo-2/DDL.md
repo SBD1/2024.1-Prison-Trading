@@ -246,7 +246,7 @@ CREATE TABLE lista_fabricacao(
 
 CREATE TABLE missao(
     id SERIAL NOT NULL,
-    item_nao_fabricavel INTEGER NOT NULL,
+    item_nao_fabricavel INTEGER NULL,
     lugar INTEGER NULL,
     regiao INTEGER NULL,
     nome CHAR(25) NOT NULL UNIQUE,
