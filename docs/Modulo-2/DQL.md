@@ -49,7 +49,8 @@ WHERE pessoa = 2;
 * Ver os itens do inventario de qualquer pessoa.
 
 ```sql
-SELECT item FROM instancia_item
+SELECT item 
+FROM instancia_item
 WHERE inventario = 2;
 ```
 
@@ -76,15 +77,9 @@ WHERE nome = 'Carimbo';
 
 ```sql
 
-SELECT 
-    nome, 
-    tempo_vida, 
-    gangue, 
-    nivel
-FROM 
-    Jogador
-WHERE 
-    id = 1;
+SELECT nome, tempo_vida, gangue, nivel
+FROM Jogador
+WHERE id = 1;
 
 ```
 
@@ -92,16 +87,10 @@ WHERE
 
 ```sql
 
-SELECT 
-    j.id AS jogador_id,
-    j.nome AS jogador_nome,
-    j.missao AS missao
-FROM 
-    Jogador j
-LEFT JOIN 
-    Missao m ON j.missao = m.id
-WHERE 
-    j.id = 1;
+SELECT j.nome, m.nome, m.descricao
+FROM Jogador j
+LEFT JOIN Missao m ON j.missao = m.id
+WHERE j.id = 1;
 
 ```
 
@@ -109,14 +98,9 @@ WHERE
 
 ```sql
 
-SELECT 
-    j.id AS jogador_id,
-    j.nome AS jogador_nome,
-    j.lugar AS lugar
-FROM 
-    Jogador j
-WHERE 
-    j.id = 1;
+SELECT j.id AS jogador_id, j.nome AS jogador_nome, j.lugar AS lugar
+FROM Jogador j
+WHERE j.id = 1;
 
 ```
 
@@ -131,12 +115,9 @@ WHERE
 
 ```sql
 
-SELECT 
-    nome
-FROM 
-    Informante
-WHERE 
-    id = id_informante;
+SELECT nome
+FROM Informante
+WHERE id = id_informante;
 
 ```
 
@@ -152,12 +133,9 @@ WHERE
 
 ```sql
 
-SELECT 
-    id, nome
-FROM 
-    Policial
-WHERE 
-    corrupto = true;
+SELECT id, nome
+FROM Policial
+WHERE corrupto = true;
 
 ```
 
@@ -165,12 +143,9 @@ WHERE
 
 ```sql
 
-SELECT 
-    id, nome, lugar, regiao, corrupto
-FROM 
-    Policial
-WHERE 
-    id = id_policial;
+SELECT id, nome, lugar, regiao, corrupto
+FROM Policial
+WHERE id = id_policial;
 
 ```
 
@@ -185,12 +160,9 @@ WHERE
 
 ```sql
 
-SELECT 
-    id, nome, habilidade_briga, vida, forca, gangue, lugar, regiao
-FROM 
-    Prisioneiro
-WHERE 
-    gangue = 'X';
+SELECT id, nome, habilidade_briga, vida, forca, gangue, lugar, regiao
+FROM Prisioneiro
+WHERE gangue = 'X';
 
 ```
 
@@ -198,12 +170,9 @@ WHERE
 
 ```sql
 
-SELECT 
-    habilidade_briga, vida, forca
-FROM 
-    Prisioneiro
-WHERE 
-    id = :id_prisioneiro;
+SELECT habilidade_briga, vida, forca
+FROM Prisioneiro
+WHERE id = :id_prisioneiro;
 
 ```
 
@@ -211,12 +180,9 @@ WHERE
 
 ```sql
 
-SELECT 
-    nome
-FROM 
-    Prisioneiro
-WHERE 
-    id = :id_prisioneiro;
+SELECT nome
+FROM Prisioneiro
+WHERE id = :id_prisioneiro;
 
 
 ```
