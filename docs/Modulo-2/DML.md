@@ -371,34 +371,33 @@ INSERT INTO Inventario (pessoa, inventario_ocupado, tamanho) VALUES
 (19, 2, 5),
 (20, 4, 5);
 
-INSERT INTO Prisioneiro (id, nome, habilidade_briga, vida, força, gangue, lugar) VALUES
-(2, 'Rivas', 4, 9, 7, 'palhaco', 'Quadra De Basquete'),
-(3, 'Filomano', 6, 7, 4, 'Polvos', 'celaB'),
-(4, 'Fragas', 5, 11, 5, 'Palhacos', 'banheiroA'),
-(5, 'Glaucão', 3, 6, 8, 'Polvos', 'mesaEsquerda'),
-(6, 'Ucraniano', 7, 5, 6, 'Palhacos', 'celaC'),
-(7, 'Rispomático', 6, 12, 6, 'Polvos', 'academiaSimples'),
-(8, 'Manogaz', 4, 8, 5, 'Palhacos', 'celaG'),
-(9, 'Dado', 5, 10, 6, 'Polvos', 'banheiroB'),
-(10, 'Fabrilton', 4, 7, 5, 'Palhacos', 'mesaDireita'),
-(11, 'Eneido', 6, 6, 6, 'Polvos', 'solitariaOeste'),
-(12, 'Carlos', 5, 9, 7, 'Palhacos', 'arquibancada'),
-(13, 'Silvio Serra', 6, 8, 5, 'Polvos', 'celaE');
+INSERT INTO Prisioneiro (id, nome, habilidade_briga, vida, forca, gangue, lugar, regiao) VALUES
+(2, 'Rivas', 4, 9, 7, 'Palhaco', 'Quadra De Basquete', 6),
+(3, 'Filomano', 6, 7, 4, 'Polvo', 'celaB', 1),
+(4, 'Fragas', 5, 11, 5, 'Palhaco', 'banheiroA', 2),
+(5, 'Glaucão', 3, 6, 8, 'Polvo', 'mesaEsquerda', 5),
+(6, 'Ucraniano', 7, 5, 6, 'Palhaco', 'celaC', 1),
+(7, 'Rispomático', 6, 12, 6, 'Polvo', 'academiaSimples', 6),
+(8, 'Manogaz', 4, 8, 5, 'Palhaco', 'celaG', 1),
+(9, 'Dado', 5, 10, 6, 'Polvo', 'banheiroB', 2),
+(10, 'Fabrilton', 4, 7, 5, 'Palhaco', 'mesaDireita', 5),
+(11, 'Eneido', 6, 6, 6, 'Polvo', 'solitariaOeste', 1),
+(12, 'Carlos', 5, 9, 7, 'Palhaco', 'arquibancada', 6),
+(13, 'Silvio Serra', 6, 8, 5, 'Polvo', 'celaE', 1);
 
-INSERT INTO Policial (id, nome, lugar, corrupto) VALUES
-(14, 'Italo Dimetrio', 'solitariaOeste', true),
-(15, 'Sargento Nascimento', 'mesaDireita', false),
-(16, 'Capitão Mathias', 'Quadra De Basquete', false),
-(17, 'Capitão Brad', 'solitariaLeste', true),
-(18, 'Lil Chico', 'arquibancada', true);
+INSERT INTO Policial (id, nome, corrupto, lugar, regiao) VALUES
+(14, 'Italo Dimetrio', true, 'solitariaOeste', 1),
+(15, 'Sargento Nascimento', false, 'mesaDireita', 5),
+(16, 'Capitão Mathias', false, 'quadraDesportiva', 6),
+(17, 'Capitão Brad', true, 'solitariaLeste', 1),
+(18, 'Lil Chico', true, 'arquibancada', 6);
 
-INSERT INTO Informante (id, nome, dano_infomante, lugar) VALUES
-(19, 'Cubano', 200, 'banheiroC'),
-(20, 'Chileno', 200, 'Enfermaria A');
+INSERT INTO Informante (id, nome, dano_infomante, lugar, regiao) VALUES
+(19, 'Cubano', 200, 'banheiroC', 2),
+(20, 'Chileno', 200, 'salaA', 3);
 
-INSERT INTO Jogador (id, nome, habilidade_briga, vida, força, tempo_vida, gangue, lugar, missao, nivel) VALUES
-(1, 'Carimbo', 2, 5, 3, 10, null, 'celaA', null, 0);
-
+INSERT INTO Jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue, lugar, missao, nivel, regiao) VALUES
+(1, 'Carimbo', 2, 5, 3, 10, null, 'celaA', null, 0, 1);
 
 INSERT INTO prisao(id, nome, descricao)
 VALUES
@@ -553,6 +552,7 @@ COMMIT;
 | 10/08/2024 | `1.4`  | corrige dml              | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
 | 12/08/2024 | `1.5`  | Adiciona parte do bob.   | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 | 13/08/2024 | `1.6`  | Edita parte do bob.      | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
-| 14/08/2024 | `1.4`  | corrige dml              | [João Antonio G.](https://github.com/joaoseisei),[Fernando Gabriel](https://github.com/show-dawn)                                             |
-
+| 14/08/2024 | `1.7`  | corrige dml              | [João Antonio G.](https://github.com/joaoseisei),[Fernando Gabriel](https://github.com/show-dawn)                                             |
+| 14/08/2024 | `1.8`  | corrige dml              | [Julio Cesar](https://github.com/Julio1099)                                                                                                   |
+|            |        |                          |                                                                                                                                               |
 </div>
