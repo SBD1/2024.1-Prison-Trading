@@ -28,6 +28,8 @@ CÓDIGO AQUI
 
 ```
 
+> Perguntar se o id de pessoa vai buscar diretamente os detalhes de uma pessoa x em multiplas tabelas.
+
 ---
 <center>
 
@@ -50,6 +52,8 @@ CÓDIGO AQUI
 CÓDIGO AQUI
 
 ```
+
+> Perguntar se coloca um JOIN aqui.
 
 ---
 <center>
@@ -160,6 +164,35 @@ CÓDIGO AQUI
 
 ```
 
+---
+<center>
+
+# Prisao
+
+</center>
+
+* Ver (nome, descricao, motim) de uma prisão X.
+
+```sql
+
+CÓDIGO AQUI
+
+```
+
+---
+<center>
+
+# Região
+
+</center>
+
+* Ver (nome, descricao) de uma região X.
+
+```sql
+
+CÓDIGO AQUI
+
+```
 
 ---
 <center>
@@ -224,10 +257,21 @@ CÓDIGO AQUI
 ```
 
 ---
+<center>
 
-# DETALHES/ATRIBUTOS
+# Missão
 
-* Buscar os atributos de um item qualquer.
+</center>
+
+* Ver o item que uma missao vai dar.
+
+```sql
+
+CÓDIGO AQUI
+
+```
+
+* Ver o lugar que uma missao está.
 
 ```sql
 
@@ -235,13 +279,142 @@ CÓDIGO AQUI
 
 ```
 
-* Ver atributos de uma pessoa especifica.
+* Ver o (nome, descrição) de uma missão.
 
 ```sql
 
 CÓDIGO AQUI
 
 ```
+
+---
+<center>
+
+# Item
+
+</center>
+
+* Ver o tipo do item.
+
+```sql
+
+CÓDIGO AQUI
+
+```
+
+---
+<center>
+
+# Item_Fabricavel
+
+</center>
+
+* Ver o tipo do item fabricavel.
+
+```sql
+
+CÓDIGO AQUI
+
+```
+
+---
+<center>
+
+# Item_Não_Fabricavel
+
+</center>
+
+* Ver o tipo do item não fabricavel.
+
+```sql
+
+CÓDIGO AQUI
+
+```
+
+---
+<center>
+
+# Arma
+
+</center>
+
+* Ver os atributos de arma.
+
+```sql
+
+CÓDIGO AQUI
+
+```
+
+---
+<center>
+
+# Ferramenta
+
+</center>
+
+* Ver os atributos de ferramenta.
+
+```sql
+
+CÓDIGO AQUI
+
+```
+
+---
+<center>
+
+# Comida
+
+</center>
+
+* Ver os atributos de comida.
+
+```sql
+
+CÓDIGO AQUI
+
+```
+
+---
+<center>
+
+# Medicamento
+
+</center>
+
+* Ver os atributos de medicamento.
+
+```sql
+
+CÓDIGO AQUI
+
+```
+
+---
+<center>
+
+# Utilizavel
+
+</center>
+
+* Ver os atributos de utilizavel.
+
+```sql
+
+CÓDIGO AQUI
+
+```
+
+---
+<center>
+
+# Instancia_item
+
+</center>
+
+?????
 
 ---
 
