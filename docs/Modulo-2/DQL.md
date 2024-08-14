@@ -23,11 +23,9 @@
 * Ver o tipo de uma pessoa.
 
 ```sql
-
 SELECT tipo
 FROM Pessoa
-WHERE id = <ID_da_pessoa>;
-
+WHERE id = 3;
 ```
 
 > Perguntar se o id de pessoa vai buscar diretamente os detalhes de uma pessoa x em multiplas tabelas.
@@ -42,7 +40,8 @@ WHERE id = <ID_da_pessoa>;
 * Acessar o inventario de qualquer pessoa (tamanho_ocupado... todos os atributos).
 
 ```sql
-SELECT * FROM Inventario
+SELECT pessoa, tamanho, inventario_ocupado
+FROM Inventario
 WHERE pessoa = 2;
 ```
 
@@ -82,42 +81,37 @@ WHERE t.inventario = 2;
 * Ver (habilidade_briga, vida e força) de um jogador X.
 
 ```sql
-
 SELECT habilidade_briga, vida, forca
 FROM Jogador
-WHERE nome = 'Carimbo';
-
+WHERE id = 1;
 ```
 
 * Ver (nome, tempo_vida, gangue e nivel) de um jogador X.
 
 ```sql
-
 SELECT nome, tempo_vida, gangue, nivel
 FROM Jogador
 WHERE id = 1;
-
 ```
 
 * Buscar missão de um jogador. (JOIN)
 
 ```sql
-
 SELECT j.nome, m.nome, m.descricao
-FROM Jogador j
-LEFT JOIN Missao m ON j.missao = m.id
+FROM jogador j
+LEFT JOIN missao m 
+ON j.missao = m.id
 WHERE j.id = 1;
-
 ```
 
 * Buscar Lugar de um jogador. (JOIN)
 
 ```sql
-
-SELECT j.id AS jogador_id, j.nome AS jogador_nome, j.lugar AS lugar
+SELECT l.nome, l.descricao
 FROM Jogador j
+LEFT JOIN lugar l
+ON l.id = j.lugar
 WHERE j.id = 1;
-
 ```
 
 ---
@@ -130,11 +124,9 @@ WHERE j.id = 1;
 * Ver o nome do informante.
 
 ```sql
-
 SELECT nome
 FROM Informante
-WHERE id = id_informante;
-
+WHERE id = 19;
 ```
 
 ---
@@ -148,21 +140,17 @@ WHERE id = id_informante;
 * Ver quais policiais são corruptos.
 
 ```sql
-
-SELECT id, nome
+SELECT nome
 FROM Policial
 WHERE corrupto = true;
-
 ```
 
 * Ver estatisticas de um policial X.
 
 ```sql
-
-SELECT id, nome, lugar, regiao, corrupto
+SELECT nome, lugar, regiao, corrupto
 FROM Policial
-WHERE id = id_policial;
-
+WHERE id = 16;
 ```
 
 ---
@@ -175,38 +163,31 @@ WHERE id = id_policial;
 * Ver quais Prisioneiro estão em uma gangue X.
 
 ```sql
-
-SELECT id, nome, habilidade_briga, vida, forca, gangue, lugar, regiao
+SELECT nome
 FROM Prisioneiro
-WHERE gangue = 'X';
-
+WHERE gangue = 'polvo';
 ```
 
 * Ver (habilidade_briga, vida e forca) de um prisioneiro X.
 
 ```sql
-
 SELECT habilidade_briga, vida, forca
 FROM Prisioneiro
-WHERE id = :id_prisioneiro;
-
+WHERE id = 3;
 ```
 
 * Ver nome de um prisioneiro X.
 
 ```sql
-
 SELECT nome
 FROM Prisioneiro
-WHERE id = :id_prisioneiro;
-
-
+WHERE id = 3;
 ```
 
 ---
 <center>
 
-# Prisao
+# Prisão
 
 </center>
 
@@ -324,6 +305,16 @@ WHERE l.item = 20;
 ```sql
 SELECT * FROM fabricacao
 WHERE livro_fabricacao = 2;
+
+---
+
+SELECT COALESCE(a.nome, f.nome) AS nome
+FROM fabricacao l
+LEFT JOIN arma a
+ON a.id = l.item_fabricavel
+LEFT JOIN ferramenta f
+on f.id = l.item_fabricavel
+WHERE l.livro_fabricacao = 2;
 ```
 
 ---
@@ -376,7 +367,8 @@ CÓDIGO AQUI
 * Ver o tipo de um item especifico.
 
 ```sql
-SELECT tipo FROM item
+SELECT tipo 
+FROM item
 WHERE id = 1;
 ```
 
@@ -390,7 +382,8 @@ WHERE id = 1;
 * Ver o tipo do item fabricavel especifico.
 
 ```sql
-SELECT tipo FROM item_fabricavel
+SELECT tipo 
+FROM item_fabricavel
 WHERE id = 1;
 ```
 
@@ -419,7 +412,8 @@ CÓDIGO AQUI
 * Ver os atributos de arma.
 
 ```sql
-SELECT nome, tamanho, descricao, dano FROM arma
+SELECT nome, tamanho, descricao, dano 
+FROM arma
 WHERE id = 8;
 ```
 
@@ -433,7 +427,8 @@ WHERE id = 8;
 * Ver os atributos de ferramenta.
 
 ```sql
-SELECT nome, tamanho, descricao, utilidade FROM ferramenta
+SELECT nome, tamanho, descricao, utilidade 
+FROM ferramenta
 WHERE id = 2;
 ```
 
