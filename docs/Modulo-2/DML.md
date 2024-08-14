@@ -1038,6 +1038,42 @@ VALUES
 (25, 25, 6, 'Venca um jogo de basquete', 'Vença um jogo de basquete.'),
 (34, 24, 6, 'Fique maromba', 'Vá na academia.');
 
+
+INSERT INTO Prisioneiro (id, nome, habilidade_briga, vida, forca, gangue, lugar, regiao) 
+VALUES
+(2, 'Rivas', 4, 9, 7, 'palhaco', 25, 6),
+(3, 'Filomano', 6, 7, 4, 'polvo', 3, 1),
+(4, 'Fragas', 5, 10, 5, 'palhaco', 11, 2),
+(5, 'Glaucão', 3, 6, 8, 'polvo', 21, 5),
+(6, 'Ucraniano', 7, 5, 6, 'palhaco', 4, 1),
+(7, 'Rispomático', 6, 10, 6, 'polvo', 24, 6),
+(8, 'Manogaz', 4, 8, 5, 'palhaco', 8, 1),
+(9, 'Dado', 5, 10, 6, 'polvo', 12, 2),
+(10, 'Fabrilton', 4, 7, 5, 'palhaco', 22, 5),
+(11, 'Eneido', 6, 6, 6, 'polvo', 1, 1),
+(12, 'Carlos', 5, 9, 7, 'palhaco', 26, 6),
+(13, 'Silvio Serra', 6, 8, 5, 'polvo', 6, 1);
+
+
+INSERT INTO Policial (id, nome, lugar, regiao, corrupto) 
+VALUES
+(14, 'Italo Dimetrio', 1, 1, true),
+(15, 'Sargento Nascimento', 22, 5, false),
+(16, 'Capitão Mathias', 25, 6, false),
+(17, 'Capitão Brad', 9, 1, true),
+(18, 'Lil Chico', 26, 6, true);
+
+
+INSERT INTO Informante (id, nome, dano, lugar, regiao) 
+VALUES
+(19, 'Cubano', 200, 13, 2),
+(20, 'Chileno', 200, 16, 3);
+
+
+INSERT INTO Jogador (id, nome, habilidade_briga, vida, força, tempo_vida, gangue, lugar, missao, nivel, regiao) VALUES
+(1, 'Carimbo', 2, 5, 3, 10, null, 2, null, 0, 1);
+
+
 COMMIT;
 
 ```
