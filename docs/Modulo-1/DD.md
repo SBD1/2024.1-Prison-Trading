@@ -250,6 +250,7 @@
 | id        | Chave primária que define o número de identificação da prisão          | SERIAL                 | -       | PRIMARY KEY           |
 | nome      | Atributo que define o nome da prisão                                   | CHAR                   | 25      | NOT NULL              |
 | descricao | Atributo que descreve um breve resumo da prisao e suas caracteristicas | TEXT                   | -       | NOT NULL              |
+| motim     | descreve se um motim está acontecendo atualmente ou não                | BOOLEAN                | -       | NOT NULL              |
 
 ---
 
@@ -276,12 +277,13 @@
 | **Descrição**   | Lugar é uma tabela que contém informações de cada local, bem como uma descrição mais especifica, é uma entidade fraca de [Regiao](#tabela-regiao). |
 | **Observações** | Possui chave composta vindo de [Regiao](#tabela-regiao).                                                                                           |
 
-| Nome       | Definição Lógica                                                                                  | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
-|:-----------|:--------------------------------------------------------------------------------------------------|:-----------------------|---------|:----------------------|
-| id, regiao | Chave composta de nome_lugar e regiao, regiao é a chave primária de Regiao                        | SERIAL                 | -       | PRIMARY KEY           |
-| nome       | Atributo que define o nome do lugar mencionado                                                    | CHAR                   | 25      | UNIQUE, NOT NULL      |
-| regiao     | Chave estrangeira que tem o valor da chave primária de regiao, usada para compor a chave composta | INTEGER                | -       | FOREIGN KEY, NOT NULL |
-| descricao  | Atributo que contém uma descrição mais especifica de um lugar, como detalhes do ambiente          | TEXT                   | -       | NOT NULL              |
+| Nome            | Definição Lógica                                                                                  | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+| :-------------- | :------------------------------------------------------------------------------------------------ | :--------------------- | ------- | :-------------------- |
+| id, regiao      | Chave composta de nome_lugar e regiao, regiao é a chave primária de Regiao                        | SERIAL                 | -       | PRIMARY KEY           |
+| nome            | Atributo que define o nome do lugar mencionado                                                    | CHAR                   | 25      | UNIQUE, NOT NULL      |
+| regiao          | Chave estrangeira que tem o valor da chave primária de regiao, usada para compor a chave composta | INTEGER                | -       | FOREIGN KEY, NOT NULL |
+| descricao       | Atributo que contém uma descrição mais especifica de um lugar, como detalhes do ambiente          | TEXT                   | -       | NOT NULL              |
+| rota_final_fuga | Descreve se um lugar é a rota final para escapar                                                  | BOOLEAN                | -       | NOT NULL              |
 
 ---
 

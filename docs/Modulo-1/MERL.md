@@ -79,11 +79,12 @@
 <div style="margin: 0 auto; width: fit-content;">
 
 |    Data    | Versão | Descrição                                                | Autores                                                                                                                                                                                                  |
-|:----------:|:------:|----------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| :--------: | :----: | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 19/07/2024 | `1.0`  | Criação do documento.                                    | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                         |
 | 20/07/2024 | `1.1`  | Adição da Introdução.                                    | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                                                                                    |
 | 20/07/2024 | `1.2`  | Adição das versões antigas e atual do Modelo Relacional. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099), |
 | 06/08/2024 | `1.3`  | Adiciona correções do professor.                         | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                         |
 | 10/08/2024 | `1.4`  | Finaliza alterações de rotas de fuga.                    | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099)  |
+| 13/08/2024 | `1.5`  | correções prisão, lugar                                  | [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),                                                                                                      |
 
 </div>

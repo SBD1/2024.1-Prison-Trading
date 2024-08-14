@@ -46,11 +46,11 @@
 
 # Atributos
 
-- **Prisao**: <ins>id</ins>, nome, descricao
+- **Prisao**: <ins>id</ins>, nome, descricao, motim
 - **Regiao**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span>,
   descricao
 - **Lugar**: <ins>id</ins>,  <span style="text-decoration: underline; text-decoration-style: double;">nome</span>
-  descricao
+  descricao, rota_final_fuga
 - **Pessoa**: <ins>id</ins>, nome, tipo
     - **Prisioneiro**: habilidade_briga, vida, forca, gangue
     - **Policial**:  corrupto
