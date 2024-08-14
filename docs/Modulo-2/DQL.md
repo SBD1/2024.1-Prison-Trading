@@ -239,6 +239,13 @@ SELECT (item) FROM lista_fabricacao
 WHERE fabricacao = 1;
 ```
 
+> Inspiração:
+
+<div align="center">
+    <img style="width: 5vw;" src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/random/jei2.png?raw=true"/>
+</div>
+
+
 * Ver fabricações possiveis com um item especifico.
 
 ```sql
@@ -246,7 +253,17 @@ SELECT (item_fabricavel) FROM lista_fabricacao
 WHERE item = 20;
 ```
 
-* Ver todas as fabricações de um livro. (1)
+> Inspiração:
+
+<center>
+<div align="center">
+    <img style="width: 5vw;" src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/random/jei1.gif?raw=true"/>
+</div>
+
+</center>
+
+
+* Ver todas as fabricações de um livro. 
 
 ```sql
 SELECT * FROM fabricacao
