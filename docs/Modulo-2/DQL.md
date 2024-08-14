@@ -24,7 +24,9 @@
 
 ```sql
 
-CÓDIGO AQUI
+SELECT tipo
+FROM Pessoa
+WHERE id = <ID_da_pessoa>;
 
 ```
 
@@ -41,7 +43,9 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT * 
+FROM Inventario
+WHERE pessoa = <ID_da_pessoa>;
 
 ```
 
@@ -66,7 +70,9 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT habilidade_briga, vida, forca
+FROM Jogador
+WHERE nome = 'Carimbo';
 
 ```
 
@@ -74,7 +80,15 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT 
+    nome, 
+    tempo_vida, 
+    gangue, 
+    nivel
+FROM 
+    Jogador
+WHERE 
+    id = 1;
 
 ```
 
@@ -82,7 +96,16 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT 
+    j.id AS jogador_id,
+    j.nome AS jogador_nome,
+    j.missao AS missao
+FROM 
+    Jogador j
+LEFT JOIN 
+    Missao m ON j.missao = m.id
+WHERE 
+    j.id = 1;
 
 ```
 
@@ -90,7 +113,14 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT 
+    j.id AS jogador_id,
+    j.nome AS jogador_nome,
+    j.lugar AS lugar
+FROM 
+    Jogador j
+WHERE 
+    j.id = 1;
 
 ```
 
@@ -105,7 +135,12 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT 
+    nome
+FROM 
+    Informante
+WHERE 
+    id = id_informante;
 
 ```
 
@@ -121,7 +156,12 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT 
+    id, nome
+FROM 
+    Policial
+WHERE 
+    corrupto = true;
 
 ```
 
@@ -129,7 +169,12 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT 
+    id, nome, lugar, regiao, corrupto
+FROM 
+    Policial
+WHERE 
+    id = id_policial;
 
 ```
 
@@ -144,7 +189,12 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT 
+    id, nome, habilidade_briga, vida, forca, gangue, lugar, regiao
+FROM 
+    Prisioneiro
+WHERE 
+    gangue = 'X';
 
 ```
 
@@ -152,7 +202,12 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT 
+    habilidade_briga, vida, forca
+FROM 
+    Prisioneiro
+WHERE 
+    id = :id_prisioneiro;
 
 ```
 
@@ -160,7 +215,13 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT 
+    nome
+FROM 
+    Prisioneiro
+WHERE 
+    id = :id_prisioneiro;
+
 
 ```
 
@@ -437,7 +498,8 @@ CÓDIGO AQUI
 <div style="margin: 0 auto; width: fit-content;">
 
 |    Data    | Versão | Descrição             | Autores                                          |
-|:----------:|:------:|-----------------------|--------------------------------------------------|
+| :--------: | :----: | --------------------- | ------------------------------------------------ |
 | 28/07/2024 | `1.0`  | Criação do documento. | [João Antonio G.](https://github.com/joaoseisei) |
+| 14/08/2024 | `1.1`  | adiciona dql pessoa   | [Júlio Cesar](https://github.com/Julio1099)      |
 
 </div>
