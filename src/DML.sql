@@ -1,22 +1,14 @@
-<center>
+-- --------------------------------------------------------------------------------------
+-- Data de Criação ........: 14/08/20224                                               --
+-- Autor(es) ..............: Breno Alexandre, Fernando Gabriel, João A. e Julio Cesar  --
+-- Versão .................: 1.8                                                       --
+-- Banco de Dados .........: PostgreSQL                                                --
+-- Descrição ..............: Popula as tabelas para o jogo Prison Trading.             --
+-- --------------------------------------------------------------------------------------
 
-# Linguagem de Manipulação de Dados - DML
 
-</center>
-
----
-<Center>
-
-# O que é?
-
-</center>
-
-> É um subconjunto da SQL (Structured Query Language) usado para manipular e interagir com os dados armazenados em um banco de dados.
-
----
-
-```
 BEGIN TRANSACTION;
+
 
 INSERT INTO prisao(nome, descricao, motim)
 VALUES
@@ -554,29 +546,3 @@ INSERT INTO Jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue
 
 
 COMMIT;
-
-```
-
----
-
-<center>
-
-# Histórico de versão
-
-</center>
-
-<div style="margin: 0 auto; width: fit-content;">
-
-|    Data    | Versão | Descrição                | Autores                                                                                                                                       |
-| :--------: | :----: | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| 28/07/2024 | `1.0`  | Criação do documento.    | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
-| 07/08/2024 | `1.1`  | Adiciona fabricacao.     | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
-| 07/08/2024 | `1.2`  | adição parte do fernando | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
-| 07/08/2024 | `1.3`  | Adiciona parte do Júlio. | [Júlio Cesar](https://github.com/Julio1099)                                                                                                   |
-| 10/08/2024 | `1.4`  | corrige dml              | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
-| 12/08/2024 | `1.5`  | Adiciona parte do bob.   | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
-| 13/08/2024 | `1.6`  | Edita parte do bob.      | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
-| 14/08/2024 | `1.7`  | corrige dml              | [João Antonio G.](https://github.com/joaoseisei),[Fernando Gabriel](https://github.com/show-dawn)                                             |
-| 14/08/2024 | `1.8`  | corrige dml              | [Julio Cesar](https://github.com/Julio1099)                                                                                                   |
-
-</div>
