@@ -389,9 +389,9 @@
 
 # Tabela Prisao
 
-| id | nome    | descricao                                                                                      |
-|----|---------|------------------------------------------------------------------------------------------------|
-| 1  | Basilio | Uma prisão cercada por muralhas altas, com uma floresta que separa ela da cidade mais próxima. |
+| id | nome    | descricao                                                                                      | motim |
+|----|---------|------------------------------------------------------------------------------------------------|-------|
+| 1  | Basilio | Uma prisão cercada por muralhas altas, com uma floresta que separa ela da cidade mais próxima. | false |
 
 ---
 
@@ -593,10 +593,10 @@
 |----|--------------|------------------|------|-------|------------|-------------------------|----------------|
 | 2  | Rivas        | 4                | 9    | 7     | 'Palhacos' | 25 [Quadra de Basquete] | 6 [Pátio]      |
 | 3  | Filomano     | 6                | 7    | 4     | 'Polvos'   | 3 [Cela B]              | 1 [Celas]      |
-| 4  | Fragas       | 5                | 11   | 5     | 'Palhacos' | 11 [Banheiro A]         | 2 [Banheiros]  |
+| 4  | Fragas       | 5                | 10   | 5     | 'Palhacos' | 11 [Banheiro A]         | 2 [Banheiros]  |
 | 5  | Glaucão      | 3                | 6    | 8     | 'Polvos'   | 21 [Mesa Esquerda]      | 5 [Refeitório] |
 | 6  | Ucraniano    | 7                | 5    | 6     | 'Palhacos' | 4 [Cela C]              | 1 [Celas]      |
-| 7  | Rispomático  | 6                | 12   | 6     | 'Polvos'   | 24 [Academia Simples]   | 6 [Pátio]      |
+| 7  | Rispomático  | 6                | 10   | 6     | 'Polvos'   | 24 [Academia Simples]   | 6 [Pátio]      |
 | 8  | Manogaz      | 4                | 8    | 5     | 'Palhacos' | 8 [Cela G]              | 1 [Celas]      |
 | 9  | Dado         | 5                | 10   | 6     | 'Polvos'   | 12 [Banheiro B]         | 2 [Banheiros]  |
 | 10 | Fabrilton    | 4                | 7    | 5     | 'Palhacos' | 22 [Mesa Direita]       | 5 [Refeitório] |

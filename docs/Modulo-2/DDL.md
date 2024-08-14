@@ -30,6 +30,7 @@ CREATE TABLE prisao (
     id SERIAL NOT NULL,
     nome CHAR(25) NOT NULL,
     descricao TEXT NOT NULL,
+    motim boolean NOT NULL,
     PRIMARY KEY(id)
 );
 

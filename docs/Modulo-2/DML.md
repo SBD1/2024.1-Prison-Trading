@@ -539,9 +539,9 @@ COMMIT;
 ```
 BEGIN TRANSACTION;
 
-INSERT INTO prisao(nome, descricao)
+INSERT INTO prisao(nome, descricao, motim)
 VALUES
-('Basilio', 'Uma prisão cercada por muralhas altas, com uma floresta que separa ela da cidade mais próxima.');
+('Basilio', 'Uma prisão cercada por muralhas altas, com uma floresta que separa ela da cidade mais próxima.', false);
 
 
 INSERT INTO regiao(nome, prisao, descricao)
