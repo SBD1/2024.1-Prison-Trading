@@ -316,6 +316,15 @@ CÓDIGO AQUI
 
 ```
 
+```sql  (junção de nome e id da missão com o nome do lugar )
+
+SELECT  m.id, m.nome, l.nome
+FROM missao m
+LEFT JOIN lugar l 
+ON m.lugar = l.id
+ORDER BY m.id;
+
+```
 * Ver o (nome, descrição) de uma missão.
 
 ```sql
