@@ -549,7 +549,7 @@ VALUES
 (20, 'Chileno', 200, 16, 3);
 
 
-INSERT INTO Jogador (id, nome, habilidade_briga, vida, força, tempo_vida, gangue, lugar, missao, nivel, regiao) VALUES
+INSERT INTO Jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue, lugar, missao, nivel, regiao) VALUES
 (1, 'Carimbo', 2, 5, 3, 10, null, 2, null, 0, 1);
 
 
@@ -579,5 +579,5 @@ COMMIT;
 | 13/08/2024 | `1.6`  | Edita parte do bob.      | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 | 14/08/2024 | `1.7`  | corrige dml              | [João Antonio G.](https://github.com/joaoseisei),[Fernando Gabriel](https://github.com/show-dawn)                                             |
 | 14/08/2024 | `1.8`  | corrige dml              | [Julio Cesar](https://github.com/Julio1099)                                                                                                   |
-|            |        |                          |                                                                                                                                               |
+
 </div>
