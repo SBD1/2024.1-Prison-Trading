@@ -519,20 +519,43 @@ FROM medicamento;
 * Ver os atributos de utilizavel.
 
 ```sql
-
 SELECT nome, tamanho, descricao, raridade, quantidade, durabilidade
 FROM utilizavel;
-
 ```
 
 ---
+
 <center>
 
-# Instancia_item
+# Outos
 
 </center>
 
-?????
+> Comando usado para verificar inconsistencias no tamanho_ocupado do inventario, optamos por usar um SUM
+> ao invés de um COUNT pois itens tem tamanhos diferentes. O COALESCE foi usado para colocar todos os tamanhos em
+> uma única coluna para fazermos o SUM em cima dela.
+>
+> O comando irá retornar tuplas que tem o tamanho_ocupado inconsistente.
+
+```sql
+SELECT t.inventario, i.inventario_ocupado, SUM(COALESCE(a.tamanho, f.tamanho, c.tamanho, m.tamanho, u.tamanho)) AS tamanho_calculado
+FROM instancia_item t
+LEFT JOIN arma a 
+ON a.id = t.item
+LEFT JOIN ferramenta f 
+ON f.id = t.item
+LEFT JOIN comida c 
+ON c.id = t.item
+LEFT JOIN medicamento m 
+ON m.id = t.item
+LEFT JOIN utilizavel u 
+ON u.id = t.item
+LEFT JOIN inventario i
+ON t.inventario = i.id
+GROUP BY t.inventario, i.inventario_ocupado
+HAVING i.inventario_ocupado != SUM(COALESCE(a.tamanho, f.tamanho, c.tamanho, m.tamanho, u.tamanho))
+ORDER BY t.inventario;
+```
 
 ---
 
