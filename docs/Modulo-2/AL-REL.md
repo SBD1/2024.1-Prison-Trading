@@ -41,10 +41,13 @@ $$
 $$
 \pi_{\text{item}} \left( \sigma_{\text{inventario} = 2} (\text{instancia\_item}) \right)
 $$
+
 ---
+
 $$
 \pi_{t.\text{item}, \text{nome}} \left( \sigma_{t.\text{inventario} = 2} \left( \text{instancia\_item} \bowtie \text{arma} \cup \text{ferramenta} \cup \text{comida} \cup \text{medicamento} \cup \text{utilizavel} \right) \right)
 $$
+
 ---
 <center>
 
@@ -63,6 +66,7 @@ $$
 $$
 \pi_{\text{nome}, \text{tempo\_vida}, \text{gangue}, \text{nivel}} \left( \sigma_{\text{id} = 1} (\text{Jogador}) \right)
 $$
+
 
 ## Buscar missão de um jogador. (JOIN)
 
@@ -127,6 +131,7 @@ $$
 $$
 \pi_{\text{habilidade\_briga}, \text{vida}, \text{forca}} \left( \sigma_{\text{id} = 3} (\text{Prisioneiro}) \right)
 $$
+
 
 ## Ver nome de um prisioneiro X.
 
