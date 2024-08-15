@@ -28,15 +28,13 @@ $$
 
 # Inventario
 
-</center>
-
 ## Acessar o inventario de qualquer pessoa (tamanho_ocupado... todos os atributos).
 
 $$
 \pi_{\text{pessoa}, \text{tamanho}, \text{inventario\_ocupado}} \left( \sigma_{\text{pessoa} = 2} (\text{Inventario}) \right)
 $$
 
-## Ver os itens do inventario de qualquer pessoa.
+## Ver os itens do inventário de qualquer pessoa.
 
 $$
 \pi_{\text{item}} \left( \sigma_{\text{inventario} = 2} (\text{instancia\_item}) \right)
@@ -45,15 +43,12 @@ $$
 ---
 
 $$
-\pi_{t.\text{item}, \text{nome}} \left( \sigma_{t.\text{inventario} = 2} \left( \text{instancia\_item} \bowtie \text{arma} \cup \text{ferramenta} \cup \text{comida} \cup \text{medicamento} \cup \text{utilizavel} \right) \right)
+\pi_{t.\text{item}, \text{nome}} \left( \sigma_{t.\text{inventario} = 2} \left( \text{instancia\_item} \bowtie \left( \text{arma} \cup \text{ferramenta} \cup \text{comida} \cup \text{medicamento} \cup \text{utilizavel} \right) \right) \right)
 $$
 
 ---
-<center>
 
 # Jogador
-
-</center>
 
 ## Ver (habilidade_briga, vida e força) de um jogador X.
 
@@ -66,7 +61,6 @@ $$
 $$
 \pi_{\text{nome}, \text{tempo\_vida}, \text{gangue}, \text{nivel}} \left( \sigma_{\text{id} = 1} (\text{Jogador}) \right)
 $$
-
 
 ## Buscar missão de um jogador. (JOIN)
 
