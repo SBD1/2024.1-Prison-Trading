@@ -250,23 +250,38 @@ ORDER BY l.nome;
 * Ver quais pessoas estão em um lugar X.
 
 ```sql
-
-SELECT p.id AS id_pessoa,p.nome AS nome_pessoa
-FROM Pessoa_Lugar pl
-JOIN Pessoa p ON pl.pessoa_id = p.id
-WHERE pl.lugar_id = @Cela B;
-
+WITH Pessoas AS (
+    SELECT nome, lugar FROM jogador
+    UNION ALL
+    SELECT nome, lugar FROM policial
+    UNION ALL
+    SELECT nome, lugar FROM prisioneiro
+    UNION ALL
+    SELECT nome, lugar FROM informante
+)
+SELECT nome AS pessoa
+FROM Pessoas
+WHERE lugar = 22
+ORDER BY pessoa;
 ```
 
 * Ver quais itens estão em um lugar X.
 
 ```sql
-
-SELECT i.id AS id_item, i.nome AS nome_item
-FROM Item_Lugar il
-JOIN Item i ON il.item_id = i.id
-WHERE il.lugar_id = @Cela C;
-
+SELECT COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome) AS nome
+FROM instancia_item t
+LEFT JOIN arma a 
+ON a.id = t.item
+LEFT JOIN ferramenta f 
+ON f.id = t.item
+LEFT JOIN comida c 
+ON c.id = t.item
+LEFT JOIN medicamento m 
+ON m.id = t.item
+LEFT JOIN utilizavel u 
+ON u.id = t.item
+WHERE t.lugar = 11
+ORDER BY COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome);
 ```
 ---
 
