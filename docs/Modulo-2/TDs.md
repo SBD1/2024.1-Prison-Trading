@@ -29,7 +29,7 @@
 | [Medicamento](#tabela-medicamento)                   |
 | [Utilizavel](#tabela-utilizavel)                     |
 | [Fabricacao](#tabela-fabricacao)                     |
-| [Lista_Fabricacao](#tabela-livro_fabricacao)         |
+| [Lista_Fabricacao](#tabela-lista_fabricacao)         |
 | [Livro_Fabricacoes](#tabela-livro_fabricacao)        |
 | [Prisao](#tabela-prisao)                             |
 | [Regiao](#tabela-regiao)                             |

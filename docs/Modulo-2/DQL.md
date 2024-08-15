@@ -294,14 +294,20 @@ ORDER BY COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome);
 * Ver uma fabricação especifica.
 
 ```sql
-
----
-
-SELECT u.nome
+SELECT t.item, COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome) AS nome
 FROM lista_fabricacao t
+LEFT JOIN arma a 
+ON a.id = t.item
+LEFT JOIN ferramenta f 
+ON f.id = t.item
+LEFT JOIN comida c 
+ON c.id = t.item
+LEFT JOIN medicamento m 
+ON m.id = t.item
 LEFT JOIN utilizavel u 
 ON u.id = t.item
-WHERE t.fabricacao = 1;
+WHERE t.fabricacao = 12
+ORDER BY COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome);
 ```
 
 > Inspiração:
@@ -314,19 +320,14 @@ WHERE t.fabricacao = 1;
 * Ver fabricações possiveis com um item especifico.
 
 ```sql
-SELECT (item_fabricavel) FROM lista_fabricacao
-WHERE item = 20;
-
----
-
 SELECT COALESCE(a.nome, f.nome) AS nome
 FROM lista_fabricacao l
 LEFT JOIN arma a
 ON a.id = l.fabricacao
 LEFT JOIN ferramenta f
 on f.id = l.fabricacao
-WHERE l.item = 20;
-
+WHERE l.item = 20
+ORDER BY COALESCE(a.nome, f.nome);
 ```
 
 > Inspiração:
@@ -342,18 +343,14 @@ WHERE l.item = 20;
 * Ver todas as fabricações de um livro. 
 
 ```sql
-SELECT * FROM fabricacao
-WHERE livro_fabricacao = 2;
-
----
-
 SELECT COALESCE(a.nome, f.nome) AS nome
 FROM fabricacao l
 LEFT JOIN arma a
 ON a.id = l.item_fabricavel
 LEFT JOIN ferramenta f
 on f.id = l.item_fabricavel
-WHERE l.livro_fabricacao = 2;
+WHERE l.livro_fabricacao = 2
+ORDER BY COALESCE(a.nome, f.nome);
 ```
 
 ---
