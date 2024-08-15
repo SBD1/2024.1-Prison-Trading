@@ -222,11 +222,9 @@ WHERE id = 1;
 * Ver (nome, descricao) de uma região X.
 
 ```sql
-
 SELECT nome, descricao
-FROM Regiao
+FROM regiao
 WHERE id = 6;
-
 ```
 
 ---
@@ -239,13 +237,14 @@ WHERE id = 6;
 * Ver todas as conexões de um lugar X.
 
 ```sql
-
-SELECT l_destino.id AS id_lugar_destino, l_destino.nome AS nome_lugar_destino
-FROM Lugar_Origem_Destino lod
-JOIN Lugar l_destino ON lod.lugar_destino = l_destino.id
-WHERE lod.lugar_origem = @Cela A
-
-
+SELECT l.nome, r.nome
+FROM lugar_origem_destino o
+JOIN lugar l
+ON o.lugar_destino = l.id
+JOIN regiao r
+ON l.regiao = r.id
+WHERE o.lugar_origem = 10
+ORDER BY l.nome;
 ```
 
 * Ver quais pessoas estão em um lugar X.
