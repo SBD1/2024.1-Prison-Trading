@@ -23,6 +23,7 @@
 * Ver o tipo de uma pessoa.
 
 ```sql
+
 SELECT tipo
 FROM Pessoa
 WHERE id = 3;
@@ -33,7 +34,7 @@ WHERE id = 3;
 ---
 <center>
 
-# Inventário
+# Inventario
 
 </center>
 
@@ -81,6 +82,7 @@ WHERE t.inventario = 2;
 * Ver (habilidade_briga, vida e força) de um jogador X.
 
 ```sql
+
 SELECT habilidade_briga, vida, forca
 FROM Jogador
 WHERE id = 1;
@@ -89,19 +91,23 @@ WHERE id = 1;
 * Ver (nome, tempo_vida, gangue e nivel) de um jogador X.
 
 ```sql
+
 SELECT nome, tempo_vida, gangue, nivel
 FROM Jogador
 WHERE id = 1;
+
 ```
 
 * Buscar missão de um jogador. (JOIN)
 
 ```sql
+
 SELECT j.nome, m.nome, m.descricao
 FROM jogador j
 LEFT JOIN missao m 
 ON j.missao = m.id
 WHERE j.id = 1;
+
 ```
 
 * Buscar Lugar de um jogador. (JOIN)
@@ -112,6 +118,7 @@ FROM Jogador j
 LEFT JOIN lugar l
 ON l.id = j.lugar
 WHERE j.id = 1;
+
 ```
 
 ---
@@ -124,6 +131,7 @@ WHERE j.id = 1;
 * Ver o nome do informante.
 
 ```sql
+
 SELECT nome
 FROM Informante
 WHERE id = 19;
@@ -143,6 +151,7 @@ WHERE id = 19;
 SELECT nome
 FROM Policial
 WHERE corrupto = true;
+
 ```
 
 * Ver estatisticas de um policial X.
@@ -171,6 +180,7 @@ WHERE gangue = 'polvo';
 * Ver (habilidade_briga, vida e forca) de um prisioneiro X.
 
 ```sql
+
 SELECT habilidade_briga, vida, forca
 FROM Prisioneiro
 WHERE id = 3;
@@ -179,6 +189,7 @@ WHERE id = 3;
 * Ver nome de um prisioneiro X.
 
 ```sql
+
 SELECT nome
 FROM Prisioneiro
 WHERE id = 3;
@@ -187,7 +198,7 @@ WHERE id = 3;
 ---
 <center>
 
-# Prisão
+# Prisao
 
 </center>
 
@@ -202,7 +213,7 @@ CÓDIGO AQUI
 ---
 <center>
 
-# Região
+# Regiao
 
 </center>
 
@@ -248,7 +259,7 @@ CÓDIGO AQUI
 
 <center>
 
-# Fabricação
+# Fabricaçao
 
 </center>
 
@@ -320,7 +331,7 @@ WHERE l.livro_fabricacao = 2;
 ---
 <center>
 
-# Missão
+# Missao
 
 </center>
 
@@ -328,7 +339,8 @@ WHERE l.livro_fabricacao = 2;
 
 ```sql
 
-CÓDIGO AQUI
+SELECT id, nome, item_nao_fabricavel
+FROM missao;
 
 ```
 
@@ -336,7 +348,8 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT id, nome, lugar
+FROM missao;
 
 ```
 
@@ -353,8 +366,22 @@ ORDER BY m.id;
 
 ```sql
 
-CÓDIGO AQUI
+SELECT nome, descricao
+FROM missao m
 
+
+```
+
+```sql (junção de nome e id da missão com a recompensa respectiva)
+SELECT m.id, m.nome, COALESCE( c.nome, r.nome, u.nome) AS nome
+FROM missao m
+LEFT JOIN utilizavel u 
+ON m.item_nao_fabricavel = u.id
+LEFT JOIN comida c 
+ON m.item_nao_fabricavel = c.id
+LEFT JOIN medicamento r 
+ON m.item_nao_fabricavel = r.id
+ORDER BY m.id;
 ```
 
 ---
@@ -394,11 +421,19 @@ WHERE id = 1;
 
 </center>
 
-* Ver o tipo do item não fabricavel especifico.
+* Ver o id, o tipo do item e o seu nome especifico.
 
 ```sql
 
-CÓDIGO AQUI
+SELECT inf.id, inf.tipo, COALESCE( c.nome, r.nome, u.nome) AS nome
+FROM item_nao_fabricavel inf
+LEFT JOIN utilizavel u 
+ON inf.id = u.id
+LEFT JOIN comida c 
+ON inf.id = c.id
+LEFT JOIN medicamento r 
+ON inf.id = r.id
+ORDER BY inf.id;
 
 ```
 
@@ -442,9 +477,8 @@ WHERE id = 2;
 * Ver os atributos de comida.
 
 ```sql
-
-CÓDIGO AQUI
-
+SELECT nome, tamanho, descricao, raridade, quantidade, recuperacao_vida
+FROM comida;
 ```
 
 ---
@@ -457,9 +491,8 @@ CÓDIGO AQUI
 * Ver os atributos de medicamento.
 
 ```sql
-
-CÓDIGO AQUI
-
+SELECT nome, tamanho, descricao, raridade, cura, quantidade
+FROM medicamento;
 ```
 
 ---
@@ -473,7 +506,8 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT nome, tamanho, descricao, raridade, quantidade, durabilidade
+FROM utilizavel;
 
 ```
 
@@ -496,9 +530,11 @@ CÓDIGO AQUI
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão | Descrição             | Autores                                          |
-| :--------: | :----: | --------------------- | ------------------------------------------------ |
-| 28/07/2024 | `1.0`  | Criação do documento. | [João Antonio G.](https://github.com/joaoseisei) |
-| 14/08/2024 | `1.1`  | adiciona dql pessoa   | [Júlio Cesar](https://github.com/Julio1099)      |
+|    Data    | Versão | Descrição                   | Autores                                          |
+| :--------: | :----: | --------------------------- | ------------------------------------------------ |
+| 28/07/2024 | `1.0`  | Criação do documento.       | [João Antonio G.](https://github.com/joaoseisei) |
+| 14/08/2024 | `1.1`  | adiciona dql pessoa         | [Júlio Cesar](https://github.com/Julio1099)      |
+| 14/08/2024 | `1.2`  | adiciona dql parte fernando | [Fernando Gabriel](https://github.com/show-dawn) |
+
 
 </div>
