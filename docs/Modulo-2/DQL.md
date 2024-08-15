@@ -206,7 +206,9 @@ WHERE id = 3;
 
 ```sql
 
-CÓDIGO AQUI
+SELECT nome, descricao, motim
+FROM Prisao
+WHERE id = 1;
 
 ```
 
@@ -221,7 +223,9 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT nome, descricao
+FROM Regiao
+WHERE id = 6;
 
 ```
 
@@ -236,7 +240,11 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT l_destino.id AS id_lugar_destino, l_destino.nome AS nome_lugar_destino
+FROM Lugar_Origem_Destino lod
+JOIN Lugar l_destino ON lod.lugar_destino = l_destino.id
+WHERE lod.lugar_origem = @Cela A
+
 
 ```
 
@@ -244,7 +252,10 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT p.id AS id_pessoa,p.nome AS nome_pessoa
+FROM Pessoa_Lugar pl
+JOIN Pessoa p ON pl.pessoa_id = p.id
+WHERE pl.lugar_id = @Cela B;
 
 ```
 
@@ -252,7 +263,10 @@ CÓDIGO AQUI
 
 ```sql
 
-CÓDIGO AQUI
+SELECT i.id AS id_item, i.nome AS nome_item
+FROM Item_Lugar il
+JOIN Item i ON il.item_id = i.id
+WHERE il.lugar_id = @Cela C;
 
 ```
 ---
