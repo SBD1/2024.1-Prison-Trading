@@ -577,7 +577,60 @@ UPDATE jogador
 SET lugar = 2, regiao = 1
 WHERE id = 1;
 
+COMANDO
+
+--- Atualizar vida de um Jogador.
+
+UPDATE jogador 
+SET vida = 5
+WHERE id = 1;
+
+COMANDO
+
+--- Subir o nivel de um jogador.
+
+UPDATE jogador 
+SET nivel = 0
+WHERE id = 1;
+
+COMANDO
+
+--- Escolher gangue de um Jogador.
+
+UPDATE jogador 
+SET gangue = 'palhaco'
+WHERE id = 1;
+
+COMANDO
+
+--- Atualiza o tempo de vida de um Jogador
+
+UPDATE jogador 
+SET tempo_vida = 10
+WHERE id = 1;
+
+COMANDO
+
+--- Atualizar missao de um Jogador
+
+UPDATE jogador 
+SET missao = 0
+WHERE id = 1;
+
+COMANDO
+
+--- Atualizar força de um Jogador
+
+UPDATE jogador 
+SET forca = 3
+WHERE lugar = 24
+AND regiao = 6
+AND id = 1;
+
+COMANDO
+
 --- Atualiza posição de um Prisioneiro
+
 
 COMANDO
 
@@ -586,6 +639,7 @@ COMANDO
 COMANDO
 
 --- Atualiza posição de um Informante
+
 
 COMANDO
 
@@ -607,33 +661,15 @@ COMANDO
 
 --- Atualizar vida de um Prisioneiro.
 
-COMANDO
+UPDATE prisioneiro
+SET vida = 9
+WHERE id = 2;
 
---- Atualizar vida de um Jogador.
-
-COMANDO
-
---- Subir o nivel de um jogador.
-
-COMANDO
-
---- Escolher gangue de um Jogador.
 
 COMANDO
 
 --- Atualizar o motim de uma Prisao.
 
-COMANDO
-
---- Atualiza o tempo de vida de um Jogador
-
-COMANDO
-
---- Atualizar missao de um Jogador
-
-COMANDO
-
---- Atualizar força de um Jogador
 
 COMANDO
 
@@ -670,6 +706,8 @@ COMANDO
 | 12/08/2024 | `1.5`  | Adiciona parte do bob.   | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 | 13/08/2024 | `1.6`  | Edita parte do bob.      | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 | 14/08/2024 | `1.7`  | corrige dml              | [João Antonio G.](https://github.com/joaoseisei),[Fernando Gabriel](https://github.com/show-dawn)                                             |
-| 14/08/2024 | `1.8`  | corrige dml              | [Julio Cesar](https://github.com/Julio1099)                                                                                                   |
+| 14/08/2024 | `1.8`  | corrige dml              | [Julio Cesar](https://github.com/Julio1099)         
+| 15/08/2024 | `1.2`  | adição parte do fernando | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
+                                                                                          |
 
 </div>
