@@ -104,7 +104,7 @@
 
 **Instancia_Item _Está_ em Lugar**
 
-- Instância de Item está em um único lugar (1,1)
+- Instância de Item está em nenhum, ou em um único lugar (0,1)
 - Lugar acomoda nenhuma ou várias Instancias de itens (0,N)
 
 **Pessoa _Possui_ Inventario**
@@ -115,7 +115,7 @@
 **Inventario _Possui_ Instancia_Item**
 
 - Inventário possui nenhuma ou várias instâncias de itens (0,N)
-- Instância de Item pertence a apenas um único inventário (1,1)
+- Instância de Item pertence a nenhum, ou à apenas um único inventário (0,1)
 
 **Item _Possui_ Instancia_Item**
 

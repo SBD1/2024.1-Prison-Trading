@@ -132,6 +132,15 @@
 
 </details>
 
+<details>
+  <summary>V2.7 - Atualiza motim e lugar de fuga, corrções menores.</summary>
+
+<div align="center">
+<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/DERV2-7.png?raw=true"/></div>
+</div>
+
+</details>
+
 ---
 <center>
 
@@ -142,7 +151,7 @@
 <div style="margin: 0 auto; width: fit-content;">
 
 |    Data    | Versão | Descrição                                              | Autores                                                                                                                                                                                                 |
-|:----------:|:------:|--------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| :--------: | :----: | ------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 6/04/2024  | `1.0`  | Criação da primeira versão.                            | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 | 11/04/2024 | `1.1`  | Segunda Versão.                                        | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 | 13/04/2024 | `1.2`  | Refatora o diagrama.                                   | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
@@ -155,5 +164,6 @@
 | 06/08/2024 | `2.5`  | Adiciona correções do professor.                       | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
 | 10/08/2024 | `2.6`  | Finaliza alterações de rotas de fuga.                  | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 | 13/08/2024 | `2.7`  | Atualiza motim e lugar de fuga.                        | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 16/08/2024 | `2.8`  | pequenas correções.                                    | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 
 </div>
