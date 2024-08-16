@@ -664,7 +664,10 @@ AND pessoa = 14;
 
 --- Inserir item no inventario de uma Pessoa
 
-COMANDO
+INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+VALUES
+(5, NULL, NULL, 7, 7);
+
 
 --- Atualizar vida de um Prisioneiro.
 
