@@ -213,15 +213,21 @@ $$
 
 ## Ver o item que uma missao vai dar.
 
-?????
+$$
+\pi_{\text{COALESCE(c.nome, u.nome, r.nome)} \rightarrow \text{nome}, \text{COALESCE(c.descricao, u.descricao, r.descricao)} \rightarrow \text{descricao}} \left( \sigma_{m.id = 1} \left( \text{missao} \bowtie_{m.item\_nao\_fabricavel = c.id} \text{comida} \bowtie_{m.item\_nao\_fabricavel = u.id} \text{utilizavel} \bowtie_{m.item\_nao\_fabricavel = r.id} \text{medicamento} \right) \right)
+$$
 
 ## Ver o lugar que uma missao está.
 
-?????
+$$
+\pi_{\text{lugar.nome}, \text{lugar.descricao}} \left( \sigma_{\text{missao.id} = 2} \left( \text{missao} \bowtie_{\text{missao.lugar} = \text{lugar.id}} \text{lugar} \right) \right)
+$$
 
 ## Ver o (nome, descrição) de uma missão.
 
-?????
+$$
+\pi_{\text{nome}, \text{descricao}} \left( \sigma_{\text{id} = 3} \left( \text{missao} \right) \right)
+$$
 
 ---
 <center>
@@ -232,7 +238,9 @@ $$
 
 ## Ver o tipo de um item especifico.
 
-?????
+$$
+\pi_{\text{tipo}} \left( \sigma_{\text{id} = 1} \left( \text{item} \right) \right)
+$$
 
 ---
 <center>
@@ -243,7 +251,9 @@ $$
 
 ## Ver o tipo do item fabricavel especifico.
 
-?????
+$$
+\pi_{\text{tipo}} \left( \sigma_{\text{id} = 1} \left( \text{item\_fabricavel} \right) \right)
+$$
 
 ---
 <center>
@@ -254,7 +264,9 @@ $$
 
 ## Ver o id, o tipo do item e o seu nome especifico.
 
-?????
+$$
+\pi_{\text{tipo}} \left( \sigma_{\text{id} = 17} \left( \text{item\_nao\_fabricavel} \right) \right)
+$$
 
 ---
 <center>
@@ -265,7 +277,9 @@ $$
 
 ## Ver os atributos de arma.
 
-?????
+$$
+\pi_{\text{nome}, \text{tamanho}, \text{descricao}, \text{dano}} \left( \sigma_{\text{id} = 8} \left( \text{arma} \right) \right)
+$$
 
 ---
 <center>
@@ -276,7 +290,9 @@ $$
 
 ## Ver os atributos de ferramenta.
 
-?????
+$$
+\pi_{\text{nome}, \text{tamanho}, \text{descricao}, \text{utilidade}} \left( \sigma_{\text{id} = 2} \left( \text{ferramenta} \right) \right)
+$$
 
 ---
 <center>
@@ -287,7 +303,9 @@ $$
 
 ## Ver os atributos de comida.
 
-?????
+$$
+\pi_{\text{nome}, \text{tamanho}, \text{descricao}, \text{raridade}, \text{quantidade}, \text{recuperacao\_vida}} \left( \sigma_{\text{id} = 32} \left( \text{comida} \right) \right)
+$$
 
 ---
 <center>
@@ -298,7 +316,10 @@ $$
 
 ## Ver os atributos de medicamento.
 
-?????
+$$
+\pi_{\text{nome}, \text{tamanho}, \text{descricao}, \text{raridade}, \text{cura}, \text{quantidade}} \left( \sigma_{\text{id} = 29} \left( \text{medicamento} \right) \right)
+$$
+
 ---
 <center>
 
@@ -308,7 +329,9 @@ $$
 
 ## Ver os atributos de utilizavel.
 
-?????
+$$
+\pi_{\text{nome}, \text{tamanho}, \text{descricao}, \text{raridade}, \text{quantidade}, \text{durabilidade}} \left( \sigma_{\text{ID} = 18} \left( \text{utilizavel} \right) \right)
+$$
 
 ---
 <center>
@@ -317,7 +340,9 @@ $$
 
 </center>
 
-?????
+$$
+\pi_{\text{t.inventario}, \text{i.inventario\_ocupado}, \text{tamanho\_calculado}} \left( \sigma_{\text{i.inventario\_ocupado} \neq \text{tamanho\_calculado}} \left( \gamma_{\text{t.inventario}, \text{i.inventario\_ocupado}; \text{tamanho\_calculado} = \text{SUM(COALESCE(a.tamanho, f.tamanho, c.tamanho, m.tamanho, u.tamanho))}} \left( (\text{instancia\_item} \bowtie_{\text{t.item} = \text{a.id}} \text{arma}) \bowtie_{\text{t.item} = \text{f.id}} \text{ferramenta} \bowtie_{\text{t.item} = \text{c.id}} \text{comida} \bowtie_{\text{t.item} = \text{m.id}} \text{medicamento} \bowtie_{\text{t.item} = \text{u.id}} \text{utilizavel} \bowtie_{\text{t.inventario} = \text{i.id}} \text{inventario} \right) \right) \right)
+$$
 
 ---
 
@@ -329,9 +354,10 @@ $$
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão | Descrição             | Autores                                          |
-|:----------:|:------:|-----------------------|--------------------------------------------------|
-| 28/07/2024 | `1.0`  | Criação do documento. | [João Antonio G.](https://github.com/joaoseisei) |
-| 14/08/2024 | `1.1`  | Atualização do documento. | [Júlio Cesar](https://github.com/Julio1099) |
+|    Data    | Versão | Descrição                 | Autores                                          |
+| :--------: | :----: | ------------------------- | ------------------------------------------------ |
+| 28/07/2024 | `1.0`  | Criação do documento.     | [João Antonio G.](https://github.com/joaoseisei) |
+| 14/08/2024 | `1.1`  | Atualização do documento. | [Júlio Cesar](https://github.com/Julio1099)      |
+| 15/08/2024 | `1.2`  | Adição de novos itens.    | [Júlio Cesar](https://github.com/Julio1099)      |
 
 </div>
