@@ -24,7 +24,7 @@
 
 ```sql
 SELECT tipo
-FROM Pessoa
+FROM pessoa
 WHERE id = 3;
 ```
 
@@ -39,7 +39,7 @@ WHERE id = 3;
 
 ```sql
 SELECT pessoa, tamanho, inventario_ocupado
-FROM Inventario
+FROM inventario
 WHERE pessoa = 2;
 ```
 
@@ -140,7 +140,7 @@ WHERE corrupto = true;
 
 ```sql
 SELECT nome, lugar, regiao, corrupto
-FROM Policial
+FROM policial
 WHERE id = 16;
 ```
 
@@ -155,25 +155,23 @@ WHERE id = 16;
 
 ```sql
 SELECT nome
-FROM Prisioneiro
+FROM prisioneiro
 WHERE gangue = 'polvo';
 ```
 
 * Ver (habilidade_briga, vida e forca) de um prisioneiro X.
 
 ```sql
-
 SELECT habilidade_briga, vida, forca
-FROM Prisioneiro
+FROM prisioneiro
 WHERE id = 3;
 ```
 
 * Ver nome de um prisioneiro X.
 
 ```sql
-
 SELECT nome
-FROM Prisioneiro
+FROM prisioneiro
 WHERE id = 3;
 ```
 
@@ -187,11 +185,9 @@ WHERE id = 3;
 * Ver (nome, descricao, motim) de uma prisão X.
 
 ```sql
-
 SELECT nome, descricao, motim
-FROM Prisao
+FROM prisao
 WHERE id = 1;
-
 ```
 
 ---
@@ -313,7 +309,7 @@ ORDER BY COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome);
 
 </center>
 
-* Ver uma fabricação especifica.
+* Ver uma fabricação específica.
 
 ```sql
 SELECT t.item, COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome) AS nome
@@ -339,7 +335,7 @@ ORDER BY COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome);
 </div>
 
 
-* Ver fabricações possiveis com um item especifico.
+* Ver fabricações possiveis com um item específico.
 
 ```sql
 SELECT COALESCE(a.nome, f.nome) AS nome
@@ -362,7 +358,7 @@ ORDER BY COALESCE(a.nome, f.nome);
 </center>
 
 
-* Ver todas as fabricações de um livro. 
+* Ver todas as fabricações de um livro específico. 
 
 ```sql
 SELECT COALESCE(a.nome, f.nome) AS nome
@@ -378,55 +374,38 @@ ORDER BY COALESCE(a.nome, f.nome);
 ---
 <center>
 
-# Missao
+# Missão
 
 </center>
 
-* Ver o item que uma missao vai dar.
+* Ver o item que uma missão X vai dar.
 
 ```sql
-SELECT id, nome, item_nao_fabricavel
-FROM missao;
-```
-
-* Ver o lugar que uma missao está.
-
-```sql
-
-SELECT id, nome, lugar
-FROM missao;
-
-```
-
-```sql  (junção de nome e id da missão com o nome do lugar )
-
-SELECT  m.id, m.nome, l.nome
+SELECT COALESCE(c.nome, u.nome, r.nome) AS nome, COALESCE(c.descricao, u.descricao, r.descricao) AS descricao
 FROM missao m
-LEFT JOIN lugar l 
-ON m.lugar = l.id
-ORDER BY m.id;
-
+LEFT JOIN comida c
+ON m.item_nao_fabricavel = c.id
+LEFT JOIN utilizavel u
+ON m.item_nao_fabricavel = u.id
+LEFT JOIN medicamento r
+ON m.item_nao_fabricavel = r.id
+WHERE m.id = 1;
 ```
-* Ver o (nome, descrição) de uma missão.
+
+* Ver o lugar que uma missão X está.
 
 ```sql
+SELECT lugar.nome, lugar.descricao
+FROM missao, lugar
+WHERE missao.lugar = lugar.id AND missao.id = 2;
+```
 
+* Ver o (nome, descrição) de uma missão específica.
+
+```sql
 SELECT nome, descricao
 FROM missao m
-
-
-```
-
-```sql (junção de nome e id da missão com a recompensa respectiva)
-SELECT m.id, m.nome, COALESCE( c.nome, r.nome, u.nome) AS nome
-FROM missao m
-LEFT JOIN utilizavel u 
-ON m.item_nao_fabricavel = u.id
-LEFT JOIN comida c 
-ON m.item_nao_fabricavel = c.id
-LEFT JOIN medicamento r 
-ON m.item_nao_fabricavel = r.id
-ORDER BY m.id;
+WHERE id = 3;
 ```
 
 ---
@@ -436,7 +415,7 @@ ORDER BY m.id;
 
 </center>
 
-* Ver o tipo de um item especifico.
+* Ver o tipo de um item específico.
 
 ```sql
 SELECT tipo 
@@ -451,7 +430,7 @@ WHERE id = 1;
 
 </center>
 
-* Ver o tipo do item fabricavel especifico.
+* Ver o tipo do item fabricavel específico.
 
 ```sql
 SELECT tipo 
@@ -466,20 +445,12 @@ WHERE id = 1;
 
 </center>
 
-* Ver o id, o tipo do item e o seu nome especifico.
+* Ver o tipo do item não fabricavel e o seu nome especifico.
 
 ```sql
-
-SELECT inf.id, inf.tipo, COALESCE( c.nome, r.nome, u.nome) AS nome
-FROM item_nao_fabricavel inf
-LEFT JOIN utilizavel u 
-ON inf.id = u.id
-LEFT JOIN comida c 
-ON inf.id = c.id
-LEFT JOIN medicamento r 
-ON inf.id = r.id
-ORDER BY inf.id;
-
+SELECT tipo 
+FROM item_nao_fabricavel
+WHERE id = 17;
 ```
 
 ---
@@ -489,7 +460,7 @@ ORDER BY inf.id;
 
 </center>
 
-* Ver os atributos de arma.
+* Ver os atributos de uma arma específica.
 
 ```sql
 SELECT nome, tamanho, descricao, dano 
@@ -504,7 +475,7 @@ WHERE id = 8;
 
 </center>
 
-* Ver os atributos de ferramenta.
+* Ver os atributos de uma ferramenta específica.
 
 ```sql
 SELECT nome, tamanho, descricao, utilidade 
@@ -519,11 +490,12 @@ WHERE id = 2;
 
 </center>
 
-* Ver os atributos de comida.
+* Ver os atributos de uma comida específica.
 
 ```sql
 SELECT nome, tamanho, descricao, raridade, quantidade, recuperacao_vida
-FROM comida;
+FROM comida
+WHERE id = 32;
 ```
 
 ---
@@ -533,11 +505,12 @@ FROM comida;
 
 </center>
 
-* Ver os atributos de medicamento.
+* Ver os atributos de um medicamento específico.
 
 ```sql
 SELECT nome, tamanho, descricao, raridade, cura, quantidade
-FROM medicamento;
+FROM medicamento
+WHERE id = 29;
 ```
 
 ---
@@ -547,11 +520,12 @@ FROM medicamento;
 
 </center>
 
-* Ver os atributos de utilizavel.
+* Ver os atributos de um utilizavel específico.
 
 ```sql
 SELECT nome, tamanho, descricao, raridade, quantidade, durabilidade
-FROM utilizavel;
+FROM utilizavel
+WHERE ID = 18;
 ```
 
 ---
