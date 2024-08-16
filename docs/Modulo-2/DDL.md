@@ -40,7 +40,7 @@ CREATE TABLE regiao (
     prisao INTEGER NOT NULL,
     descricao TEXT NOT NULL,
     PRIMARY KEY(id),
-    FOREIGN KEY (prisao) REFERENCES prisao(id)
+    FOREIGN KEY (prisao) REFERENCES prisao(id) ON DELETE RESTRICT
 );
 
 
@@ -51,7 +51,7 @@ CREATE TABLE lugar (
     descricao TEXT NOT NULL,
     rota_final_fuga BOOLEAN NOT NULL,
     PRIMARY KEY(id, regiao),
-    FOREIGN KEY (regiao) REFERENCES regiao(id)
+    FOREIGN KEY (regiao) REFERENCES regiao(id) ON DELETE RESTRICT
 );
 
 
@@ -61,8 +61,8 @@ CREATE TABLE lugar_origem_destino (
     lugar_destino INTEGER NOT NULL,
     regiao_destino INTEGER NOT NULL,
     PRIMARY KEY (lugar_origem, regiao_origem, lugar_destino, regiao_destino), 
-    FOREIGN KEY (lugar_origem, regiao_origem) REFERENCES lugar(id, regiao),
-    FOREIGN KEY (lugar_destino, regiao_destino) REFERENCES lugar(id, regiao)
+    FOREIGN KEY (lugar_origem, regiao_origem) REFERENCES lugar(id, regiao) ON DELETE RESTRICT,
+    FOREIGN KEY (lugar_destino, regiao_destino) REFERENCES lugar(id, regiao) ON DELETE RESTRICT
 );
 
 
@@ -79,7 +79,7 @@ CREATE TABLE inventario (
     tamanho SMALLINT NOT NULL DEFAULT 5,
     inventario_ocupado SMALLINT NOT NULL CHECK (inventario_ocupado BETWEEN 0 AND 5),
     PRIMARY KEY (id, pessoa),
-    FOREIGN KEY (pessoa) REFERENCES pessoa(id)
+    FOREIGN KEY (pessoa) REFERENCES pessoa(id) ON DELETE RESTRICT
 );
 
 
@@ -93,8 +93,8 @@ CREATE TABLE prisioneiro(
     forca SMALLINT NOT NULL CHECK (forca BETWEEN 1 AND 10),
     gangue TipoGangue NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES pessoa(id),
-    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao)
+    FOREIGN KEY (id) REFERENCES pessoa(id) ON DELETE RESTRICT,
+    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao) ON DELETE RESTRICT
 );
 
 
@@ -105,8 +105,8 @@ CREATE TABLE policial(
     nome CHAR(60) NOT NULL,
     corrupto BOOLEAN NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES pessoa(id),
-    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao)
+    FOREIGN KEY (id) REFERENCES pessoa(id) ON DELETE RESTRICT,
+    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao) ON DELETE RESTRICT
 );
 
 
@@ -117,8 +117,8 @@ CREATE TABLE informante(
     nome CHAR(60) NOT NULL,
     dano SMALLINT NOT NULL DEFAULT 200,
     PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES pessoa(id),
-    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao)
+    FOREIGN KEY (id) REFERENCES pessoa(id) ON DELETE RESTRICT,
+    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao) ON DELETE RESTRICT
 );
 
 
@@ -137,9 +137,9 @@ CREATE TABLE instancia_item(
     inventario INTEGER NULL,
     pessoa INTEGER NULL,
     PRIMARY KEY (id, item),
-    FOREIGN KEY (item) REFERENCES item (id),
-    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao),
-    FOREIGN KEY (inventario, pessoa) REFERENCES inventario(id, pessoa)
+    FOREIGN KEY (item) REFERENCES item (id) ON DELETE RESTRICT,
+    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao) ON DELETE RESTRICT,
+    FOREIGN KEY (inventario, pessoa) REFERENCES inventario(id, pessoa) ON DELETE RESTRICT
 );
 
 
@@ -147,7 +147,7 @@ CREATE TABLE item_fabricavel(
     id INTEGER NOT NULL,
     tipo TipoItemFabricavel NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES item(id)
+    FOREIGN KEY (id) REFERENCES item(id) ON DELETE RESTRICT
 );
 
 
@@ -155,7 +155,7 @@ CREATE TABLE item_nao_fabricavel(
     id INTEGER NOT NULL,
     tipo TipoItemNaoFabricavel NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES item(id)
+    FOREIGN KEY (id) REFERENCES item(id) ON DELETE RESTRICT
 );
 
 
@@ -166,7 +166,7 @@ CREATE TABLE ferramenta(
     descricao TEXT NOT NULL,
     utilidade TEXT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES item_fabricavel(id)
+    FOREIGN KEY (id) REFERENCES item_fabricavel(id) ON DELETE RESTRICT
 );
 
 
@@ -177,7 +177,7 @@ CREATE TABLE arma(
     descricao TEXT NOT NULL,
     dano SMALLINT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES item_fabricavel(id)
+    FOREIGN KEY (id) REFERENCES item_fabricavel(id) ON DELETE RESTRICT
 );
 
 
@@ -190,7 +190,7 @@ CREATE TABLE comida(
 	quantidade SMALLINT NOT NULL DEFAULT 3,
 	recuperacao_vida SMALLINT NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (id) REFERENCES item_nao_fabricavel(id)
+	FOREIGN KEY (id) REFERENCES item_nao_fabricavel(id) ON DELETE RESTRICT
 );
 
 
@@ -203,7 +203,7 @@ CREATE TABLE medicamento(
 	cura SMALLINT NOT NULL,
 	quantidade SMALLINT NOT NULL DEFAULT 5,
 	PRIMARY KEY (id),
-	FOREIGN KEY (id) REFERENCES item_nao_fabricavel(id)
+	FOREIGN KEY (id) REFERENCES item_nao_fabricavel(id) ON DELETE RESTRICT
 );
 
 
@@ -216,7 +216,7 @@ CREATE TABLE utilizavel(
 	quantidade SMALLINT NOT NULL DEFAULT 1,
 	durabilidade SMALLINT NOT NULL,
 	PRIMARY KEY (id),
-	FOREIGN KEY (id) REFERENCES item_nao_fabricavel(id)
+	FOREIGN KEY (id) REFERENCES item_nao_fabricavel(id) ON DELETE RESTRICT
 );
 
 
@@ -232,8 +232,8 @@ CREATE TABLE fabricacao(
     item_fabricavel INTEGER NOT NULL,
     livro_fabricacao INTEGER NOT NULL,
     PRIMARY KEY (id, item_fabricavel),
-    FOREIGN KEY (item_fabricavel) REFERENCES item_fabricavel(id),
-    FOREIGN KEY (livro_fabricacao) REFERENCES livro_fabricacao(id)
+    FOREIGN KEY (item_fabricavel) REFERENCES item_fabricavel(id) ON DELETE RESTRICT,
+    FOREIGN KEY (livro_fabricacao) REFERENCES livro_fabricacao(id) ON DELETE RESTRICT
 );
 
 
@@ -242,8 +242,8 @@ CREATE TABLE lista_fabricacao(
     fabricacao INTEGER NOT NULL,
     item INTEGER NOT NULL,
     PRIMARY KEY (item_fabricavel, fabricacao, item),
-    FOREIGN KEY (item_fabricavel, fabricacao) REFERENCES fabricacao(item_fabricavel, id),
-    FOREIGN KEY (item) REFERENCES item(id)
+    FOREIGN KEY (item_fabricavel, fabricacao) REFERENCES fabricacao(item_fabricavel, id) ON DELETE RESTRICT,
+    FOREIGN KEY (item) REFERENCES item(id) ON DELETE RESTRICT
 );
 
 
@@ -255,8 +255,8 @@ CREATE TABLE missao(
     nome CHAR(25) NOT NULL UNIQUE,
     descricao TEXT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (item_nao_fabricavel) REFERENCES item_nao_fabricavel(id),
-    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao)
+    FOREIGN KEY (item_nao_fabricavel) REFERENCES item_nao_fabricavel(id) ON DELETE RESTRICT,
+    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao) ON DELETE RESTRICT
 );
 
 
@@ -273,9 +273,9 @@ CREATE TABLE jogador(
     gangue TipoGangue NULL,
     nivel SMALLINT NOT NULL,
     PRIMARY KEY (id),
-    FOREIGN KEY (id) REFERENCES pessoa(id),
-    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao),
-    FOREIGN KEY (missao) REFERENCES missao(id)
+    FOREIGN KEY (id) REFERENCES pessoa(id) ON DELETE RESTRICT,
+    FOREIGN KEY (lugar, regiao) REFERENCES lugar(id, regiao) ON DELETE RESTRICT,
+    FOREIGN KEY (missao) REFERENCES missao(id) ON DELETE RESTRICT
 );
 
 
@@ -293,7 +293,7 @@ COMMIT;
 <div style="margin: 0 auto; width: fit-content;">
 
 |    Data    | Versão | Descrição                                              | Autores                                                                                                                                       |
-|:----------:|:------:|--------------------------------------------------------| --------------------------------------------------------------------------------------------------------------------------------------------- |
+| :--------: | :----: | ------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | 28/07/2024 | `1.0`  | Criação do documento.                                  | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
 | 06/08/2024 | `1.1`  | Adiciona DDL Prevido de fabricacao.                    | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
 | 07/08/2024 | `1.2`  | Adiciona parte do fernando.                            | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
@@ -302,5 +302,6 @@ COMMIT;
 | 12/08/2024 | `1.5`  | Adiciona parte bob.                                    | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 | 13/08/2024 | `1.6`  | Adiciona atributo `rota_final_fuga` em `Tabela Lugar`. | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 | 13/08/2024 | `1.7`  | Junta todas as tabelas.                                | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
+| 16/08/2024 | `1.8`  | Adiciona cláusulas nas tabelas.                        | [Júlio Cesar](https://github.com/Julio1099)                                                                                                   |
 
 </div>
