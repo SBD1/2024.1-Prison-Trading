@@ -141,14 +141,18 @@ $$
 
 ## Ver (nome, descricao, motim) de uma prisão X.
 
-?????
+$$
+\pi_{\text{nome}, \text{descricao}, \text{motim}} \left( \sigma_{\text{id} = 1} (\text{Prisao}) \right)
+$$
 
 ---
 <center>
 
 # Regiao
 
-?????
+$$
+\pi_{\text{nome}, \text{descricao}} \left( \sigma_{\text{id} = 6} (\text{regiao}) \right)
+$$
 
 ---
 <center>
@@ -159,7 +163,9 @@ $$
 
 ## Ver todas as conexões de um lugar X.
 
-?????
+$$
+\tau_{l.nome} \left( \pi_{l.nome, r.nome} \left( \sigma_{o.lugar\_origem = 10} \left( (\text{lugar\_origem\_destino} \bowtie_{o.lugar\_destino = l.id} \text{lugar}) \bowtie_{l.regiao = r.id} \text{regiao} \right) \right) \right)
+$$
 
 ## Ver quais pessoas estão em um lugar X.
 
@@ -167,7 +173,9 @@ $$
 
 ## Ver quais itens estão em um lugar X.
 
-?????
+$$
+\tau_{\text{pessoa}} \left( \pi_{\text{nome} \rightarrow \text{pessoa}} \left( \sigma_{\text{lugar} = 22} \left( \left( \pi_{\text{nome}, \text{lugar}} (\text{jogador}) \right) \cup \left( \pi_{\text{nome}, \text{lugar}} (\text{policial}) \right) \cup \left( \pi_{\text{nome}, \text{lugar}} (\text{prisioneiro}) \right) \cup \left( \pi_{\text{nome}, \text{lugar}} (\text{informante}) \right) \right) \right) \right)
+$$
 ---
 
 <center>
@@ -178,17 +186,23 @@ $$
 
 ## Ver uma fabricação especifica.
 
-?????
+$$
+\tau_{\text{COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome)}} \left( \pi_{t.item, \text{COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome)} \rightarrow \text{nome}} \left( \sigma_{t.fabricacao = 12} \left( \text{lista\_fabricacao} \bowtie_{a.id = t.item} \text{arma} \bowtie_{f.id = t.item} \text{ferramenta} \bowtie_{c.id = t.item} \text{comida} \bowtie_{m.id = t.item} \text{medicamento} \bowtie_{u.id = t.item} \text{utilizavel} \right) \right) \right)
+$$
 
 
 ## Ver fabricações possiveis com um item especifico.
 
-?????
+$$
+\tau_{\text{COALESCE(a.nome, f.nome)}} \left( \pi_{\text{COALESCE(a.nome, f.nome)} \rightarrow \text{nome}} \left( \sigma_{l.item = 20} \left( \text{lista\_fabricacao} \bowtie_{l.fabricacao = a.id} \text{arma} \bowtie_{l.fabricacao = f.id} \text{ferramenta} \right) \right) \right)
+$$
 
 
 ## Ver todas as fabricações de um livro. 
 
-?????
+$$
+\tau_{\text{COALESCE(a.nome, f.nome)}} \left( \pi_{\text{COALESCE(a.nome, f.nome)} \rightarrow \text{nome}} \left( \sigma_{l.livro\_fabricacao = 2} \left( \text{fabricacao} \bowtie_{l.item\_fabricavel = a.id} \text{arma} \bowtie_{l.item\_fabricavel = f.id} \text{ferramenta} \right) \right) \right)
+$$
 
 ---
 <center>
