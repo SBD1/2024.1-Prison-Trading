@@ -573,11 +573,9 @@ COMMIT;
 ````sql
 --- Atualiza posição de um Jogador
 
-UPDATE jogador 
+UPDATE Jogador 
 SET lugar = 2, regiao = 1
 WHERE id = 1;
-
-COMANDO
 
 --- Atualizar vida de um Jogador.
 
@@ -585,15 +583,11 @@ UPDATE jogador
 SET vida = 5
 WHERE id = 1;
 
-COMANDO
-
 --- Subir o nivel de um jogador.
 
 UPDATE jogador 
 SET nivel = 0
 WHERE id = 1;
-
-COMANDO
 
 --- Escolher gangue de um Jogador.
 
@@ -601,23 +595,17 @@ UPDATE jogador
 SET gangue = 'palhaco'
 WHERE id = 1;
 
-COMANDO
-
 --- Atualiza o tempo de vida de um Jogador
 
 UPDATE jogador 
 SET tempo_vida = 10
 WHERE id = 1;
 
-COMANDO
-
 --- Atualizar missao de um Jogador
 
 UPDATE jogador 
 SET missao = 0
 WHERE id = 1;
-
-COMANDO
 
 --- Atualizar força de um Jogador
 
@@ -627,33 +615,52 @@ WHERE lugar = 24
 AND regiao = 6
 AND id = 1;
 
-COMANDO
-
 --- Atualiza posição de um Prisioneiro
 
-
-COMANDO
+UPDATE Prisioneiro 
+SET lugar = 3, regiao = 1
+WHERE id = 3;
 
 --- Atualiza posição de um Policial
 
-COMANDO
+UPDATE Policial 
+SET lugar = 4, regiao = 1
+WHERE id = 18;
 
 --- Atualiza posição de um Informante
 
+UPDATE Informante 
+SET lugar = 8, regiao = 1
+WHERE id = 20;
 
-COMANDO
+--- Criar uma instancia de Item (lugar)
 
---- Criar uma instancia de Item (lugar ou inventario)
+UPDATE Instancia_Item 
+SET lugar = 14, regiao = 2
+WHERE id = 14;
 
-COMANDO
+--- Criar uma instancia de Item (inventario)
 
---- Deletar uma instancia de Item (lugar ou inventario)
+UPDATE Instancia_Item 
+SET id = 13, pessoa = 13
+WHERE id = 27;
 
-COMANDO
+--- Deletar uma instancia de Item (lugar)
 
---- Atualizar um inventario de uma Pessoa
+DELETE FROM Instancia_Item
+WHERE id = 14;
 
-COMANDO
+--- Deletar uma instancia de Item (inventario)
+
+DELETE FROM Instancia_Item
+WHERE id = 27;
+
+--- Atualizar um inventario ocupado de uma Pessoa
+
+UPDATE Inventario 
+SET inventario_ocupado = 5
+WHERE id = 14
+AND pessoa = 14;
 
 --- Inserir item no inventario de uma Pessoa
 
@@ -665,25 +672,30 @@ UPDATE prisioneiro
 SET vida = 9
 WHERE id = 2;
 
-
-COMANDO
-
 --- Atualizar o motim de uma Prisao.
 
-
-COMANDO
+UPDATE Prisao 
+SET motim = true
+WHERE id = 1;
 
 --- Atualizar quantidade de Comida
 
-COMANDO
+UPDATE Comida 
+SET quantidade = 2
+WHERE id = 31;
 
 --- Atualizar quantidade de Medicamento
 
-COMANDO
+UPDATE Medicamento 
+SET quantidade = 3
+WHERE id = 29;
 
 --- Atualizar a quantidade de Utilizavel
 
-COMANDO
+UPDATE Utilizavel 
+SET quantidade = 4
+WHERE id = 16;
+
 ````
 
 ---
@@ -706,8 +718,8 @@ COMANDO
 | 12/08/2024 | `1.5`  | Adiciona parte do bob.   | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 | 13/08/2024 | `1.6`  | Edita parte do bob.      | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 | 14/08/2024 | `1.7`  | corrige dml              | [João Antonio G.](https://github.com/joaoseisei),[Fernando Gabriel](https://github.com/show-dawn)                                             |
-| 14/08/2024 | `1.8`  | corrige dml              | [Julio Cesar](https://github.com/Julio1099)         
-| 15/08/2024 | `1.2`  | adição parte do fernando | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
-                                                                                          |
+| 14/08/2024 | `1.8`  | corrige dml              | [Julio Cesar](https://github.com/Julio1099)                                                                                                   |
+| 15/08/2024 | `1.9`  | adição parte do fernando | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
+| 15/08/2024 | `2.0`  | Adiciona parte do bob.   | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
 
 </div>
