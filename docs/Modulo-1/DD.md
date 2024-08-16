@@ -29,7 +29,7 @@
 | [Medicamento](#tabela-medicamento)                   |
 | [Utilizavel](#tabela-utilizavel)                     |
 | [Fabricacao](#tabela-fabricacao)                     |
-| [Lista_Fabricacao](#tabela-livro_fabricacao)         |
+| [Lista_Fabricacao](#tabela-lista_fabricacao)         |
 | [Livro_Fabricacoes](#tabela-livro_fabricacao)        |
 | [Prisao](#tabela-prisao)                             |
 | [Regiao](#tabela-regiao)                             |
@@ -215,12 +215,13 @@
 |                 |                                                                                                                                   |   
 |-----------------|-----------------------------------------------------------------------------------------------------------------------------------| 
 | **Descrição**   | Lista_Fabricacao é uma tabela que contém informações de cada fabricacao e os itens envolvidos, foi criada uma tabela associativa. |
-| **Observações** | Só possui chaves estrangeiras vindo de [Fabricacao](#tabela-fabricacao) e [Item](#tabela-item)                                    |
+| **Observações** | Possui chaves estrangeiras vindo de [Fabricacao](#tabela-fabricacao) e [Item](#tabela-item), ambas formam a chave composta.       |
 
-| Nome       | Definição Lógica                                                                           | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
-|:-----------|:-------------------------------------------------------------------------------------------|:-----------------------|---------|:----------------------|
-| fabricacao | Chave estrangeira que tem o valor da chave primária de Fabricacao, resultado da fabricacao | INTEGER                | -       | FOREIGN KEY, NOT NULL |
-| item       | Chave estrangeira que tem o valor da chave primária de Item, item usado na fabricacao      | INTEGER                | -       | FOREIGN KEY, NOT NULL |
+| Nome             | Definição Lógica                                                                                              | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:-----------------|:--------------------------------------------------------------------------------------------------------------|:-----------------------|---------|:----------------------|
+| fabricacao, item | Chave composta de fabricacao e item, fabricacao é a chave primaria da tabela fabricacao e item da tabela item | INTEGER                | -       | PRIMARY KEY, NOT NULL |
+| fabricacao       | Chave estrangeira que tem o valor da chave primária de Fabricacao, resultado da fabricacao                    | INTEGER                | -       | FOREIGN KEY, NOT NULL |
+| item             | Chave estrangeira que tem o valor da chave primária de Item, item usado na fabricacao                         | INTEGER                | -       | FOREIGN KEY, NOT NULL |
 
 ---
 
@@ -292,12 +293,13 @@
 |                 |                                                                                                                                                    |   
 |-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------| 
 | **Descrição**   | Lugar_Origem_Destino é uma tabela que contém informações de cada lugar, foi obtido através da 2 forma normal onde é criado uma tabela associativa. |
-| **Observações** | Só possui chaves estrangeiras vindo de [Lugar](#tabela-lugar), o lugar de origem e o lugar de destino.                                             |
+| **Observações** | Possui chaves estrangeiras vindo de [Lugar](#tabela-lugar), o lugar de origem e o lugar de destino, ambas formam uma chave composta.               |
 
-| Nome          | Definição Lógica                                                                                        | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
-|:--------------|:--------------------------------------------------------------------------------------------------------|:-----------------------|---------|:----------------------|
-| lugar_origem  | Chave estrangeira que tem o valor da chave primária de lugar, usada para identificar o lugar de origem  | INTEGER                | -       | FOREIGN KEY, NOT NULL |
-| lugar_destino | Chave estrangeira que tem o valor da chave primária de lugar, usada para identificar o lugar de destino | INTEGER                | -       | FOREIGN KEY, NOT NULL |
+| Nome                        | Definição Lógica                                                                                        | Tipo e Formato de Dado | Tamanho | Restrições de Domínio |
+|:----------------------------|:--------------------------------------------------------------------------------------------------------|:-----------------------|---------|:----------------------|
+| lugar_origem, lugar_destino | Chave composta de lugar_origem e lugar_destino ambas chaves primarias de lugar                          | INTEGER                | -       | PRIMARY KEY           |
+| lugar_origem                | Chave estrangeira que tem o valor da chave primária de lugar, usada para identificar o lugar de origem  | INTEGER                | -       | FOREIGN KEY, NOT NULL |
+| lugar_destino               | Chave estrangeira que tem o valor da chave primária de lugar, usada para identificar o lugar de destino | INTEGER                | -       | FOREIGN KEY, NOT NULL |
 
 ---
 
@@ -430,7 +432,7 @@
 <div style="margin: 0 auto; width: fit-content;">
 
 |    Data    | Versão |                 Descrição                 | Autores                                                                                                                                                                                                 |
-| :--------: | :----: | :---------------------------------------: | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|:----------:|:------:|:-----------------------------------------:| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 17/07/2024 | `1.0`  |        Aumenta escopo do projeto.         | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
 | 15/07/2024 | `1.1`  | Adiciona dicionário refatorado de pessoa. | [Fernando Gabriel](https://github.com/show-dawn)                                                                                                                                                        |
 | 15/07/2024 | `1.2`  |    Termina de refatorar o dicionário.     | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
@@ -438,8 +440,9 @@
 | 20/07/2024 | `1.4`  |           Correção dicionário.            | [Júlio Cesar](https://github.com/Julio1099), [João Antonio G.](https://github.com/joaoseisei)                                                                                                           |
 | 20/07/2024 | `1.5`  |            Normaliza trabalho.            | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 | 05/08/2024 | `1.6`  |           Correção dicionário.            | [Júlio Cesar](https://github.com/Julio1099)                                                                                                                                                             |
-| 06/08/2024 | `1.8`  |                corrige DD                 | [Fernando Gabriel](https://github.com/show-dawn)                                                                                                                                                        |
+| 06/08/2024 | `1.8`  |                corrige DD.                | [Fernando Gabriel](https://github.com/show-dawn)                                                                                                                                                        |
 | 06/08/2024 | `1.9`  |           Altera tipo de dados.           | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
-| 10/08/2024 | `1.8`  |               REcorrige DD                | [Fernando Gabriel](https://github.com/show-dawn)                                                                                                                                                        |
+| 10/08/2024 | `1.8`  |               REcorrige DD.               | [Fernando Gabriel](https://github.com/show-dawn)                                                                                                                                                        |
+| 15/08/2024 | `1.9`  |        Atualiza chaves primarias.         | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                                                                         |
 
 </div>

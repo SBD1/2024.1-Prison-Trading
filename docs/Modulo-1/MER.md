@@ -57,7 +57,7 @@
     - **Informante**: dano
     - **Jogador**: habilidade_briga, vida, forca, tempo_vida, gangue, `nivel`(derivado)
 - **Inventario**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>,
-  tamanho, `tamanho_ocupado`(derivado)
+  tamanho, `inventario_ocupado`(derivado)
 - **Instancia_Item**: <span style="text-decoration: underline; text-decoration-style: dotted;">id</span>
 - **Item**: <ins>id</ins>, <span style="text-decoration: underline; text-decoration-style: double;">nome</span>, tipo,
   tamanho, descricao
