@@ -46,20 +46,20 @@ WHERE pessoa = 2;
 * Ver os itens do inventario de uma pessoa X.
 
 ```sql
-SELECT t.item, COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome) AS nome
+SELECT t.item, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
 FROM instancia_item t
-LEFT JOIN arma a 
-ON a.id = t.item
-LEFT JOIN ferramenta f 
-ON f.id = t.item
-LEFT JOIN comida c 
-ON c.id = t.item
-LEFT JOIN medicamento m 
-ON m.id = t.item
-LEFT JOIN utilizavel u 
-ON u.id = t.item
+LEFT JOIN arma arm
+ON arm.id = t.item
+LEFT JOIN ferramenta fer
+ON fer.id = t.item
+LEFT JOIN comida com
+ON com.id = t.item
+LEFT JOIN medicamento med
+ON med.id = t.item
+LEFT JOIN utilizavel uti
+ON uti.id = t.item
 WHERE t.inventario = 2
-ORDER BY COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome);
+ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
 ```
 
 ---
@@ -88,21 +88,21 @@ WHERE id = 1;
 * Buscar missão de um jogador. 
 
 ```sql
-SELECT j.nome, m.nome, m.descricao
-FROM jogador j
-LEFT JOIN missao m 
-ON j.missao = m.id
-WHERE j.id = 1;
+SELECT jog.nome, mis.nome, mis.descricao
+FROM jogador jog
+LEFT JOIN missao mis 
+ON jog.missao = mis.id
+WHERE jog.id = 1;
 ```
 
 * Buscar Lugar de um jogador. 
 
 ```sql
-SELECT l.nome, l.descricao
-FROM jogador j
-LEFT JOIN lugar l
-ON l.id = j.lugar
-WHERE j.id = 1;
+SELECT lug.nome, lug.descricao
+FROM jogador jog
+LEFT JOIN lugar lug
+ON lug.id = jog.lugar
+WHERE jog.id = 1;
 ```
 
 ---
@@ -215,14 +215,14 @@ WHERE id = 6;
 * Ver todas as conexões de um lugar X.
 
 ```sql
-SELECT l.nome, r.nome
-FROM lugar_origem_destino o
-JOIN lugar l
-ON o.lugar_destino = l.id
-JOIN regiao r
-ON l.regiao = r.id
-WHERE o.lugar_origem = 10
-ORDER BY l.nome;
+SELECT lug.nome, reg.nome
+FROM lugar_origem_destino ori
+JOIN lugar lug
+ON ori.lugar_destino = lug.id
+JOIN regiao reg
+ON lug.regiao = reg.id
+WHERE ori.lugar_origem = 10
+ORDER BY lug.nome;
 ```
 
 * Ver quais pessoas estão em um lugar X.
@@ -286,20 +286,20 @@ ORDER BY pessoa;
 * Ver quais itens estão em um lugar X.
 
 ```sql
-SELECT COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome) AS nome
-FROM instancia_item t
-LEFT JOIN arma a 
-ON a.id = t.item
-LEFT JOIN ferramenta f 
-ON f.id = t.item
-LEFT JOIN comida c 
-ON c.id = t.item
-LEFT JOIN medicamento m 
-ON m.id = t.item
-LEFT JOIN utilizavel u 
-ON u.id = t.item
-WHERE t.lugar = 11
-ORDER BY COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome);
+SELECT COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
+FROM instancia_item ins
+LEFT JOIN arma arm 
+ON arm.id = ins.item
+LEFT JOIN ferramenta fer 
+ON fer.id = ins.item
+LEFT JOIN comida com 
+ON com.id = ins.item
+LEFT JOIN medicamento med 
+ON med.id = ins.item
+LEFT JOIN utilizavel uti 
+ON uti.id = ins.item
+WHERE ins.lugar = 11
+ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
 ```
 ---
 
@@ -312,20 +312,20 @@ ORDER BY COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome);
 * Ver uma fabricação específica.
 
 ```sql
-SELECT t.item, COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome) AS nome
-FROM lista_fabricacao t
-LEFT JOIN arma a 
-ON a.id = t.item
-LEFT JOIN ferramenta f 
-ON f.id = t.item
-LEFT JOIN comida c 
-ON c.id = t.item
-LEFT JOIN medicamento m 
-ON m.id = t.item
-LEFT JOIN utilizavel u 
-ON u.id = t.item
-WHERE t.fabricacao = 12
-ORDER BY COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome);
+SELECT lis.item, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
+FROM lista_fabricacao lis
+LEFT JOIN arma arm 
+ON arm.id = lis.item
+LEFT JOIN ferramenta fer 
+ON fer.id = lis.item
+LEFT JOIN comida com 
+ON com.id = lis.item
+LEFT JOIN medicamento med 
+ON med.id = lis.item
+LEFT JOIN utilizavel uti 
+ON uti.id = lis.item
+WHERE lis.fabricacao = 12
+ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
 ```
 
 > Inspiração:
@@ -338,14 +338,14 @@ ORDER BY COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome);
 * Ver fabricações possiveis com um item específico.
 
 ```sql
-SELECT COALESCE(a.nome, f.nome) AS nome
-FROM lista_fabricacao l
-LEFT JOIN arma a
-ON a.id = l.fabricacao
-LEFT JOIN ferramenta f
-on f.id = l.fabricacao
-WHERE l.item = 20
-ORDER BY COALESCE(a.nome, f.nome);
+SELECT COALESCE(arm.nome, fer.nome) AS nome
+FROM lista_fabricacao lis
+LEFT JOIN arma arm
+ON arm.id = lis.fabricacao
+LEFT JOIN ferramenta fer
+ON fer.id = lis.fabricacao
+WHERE lis.item = 20
+ORDER BY COALESCE(arm.nome, fer.nome);
 ```
 
 > Inspiração:
@@ -361,14 +361,14 @@ ORDER BY COALESCE(a.nome, f.nome);
 * Ver todas as fabricações de um livro específico. 
 
 ```sql
-SELECT COALESCE(a.nome, f.nome) AS nome
-FROM fabricacao l
-LEFT JOIN arma a
-ON a.id = l.item_fabricavel
-LEFT JOIN ferramenta f
-on f.id = l.item_fabricavel
-WHERE l.livro_fabricacao = 2
-ORDER BY COALESCE(a.nome, f.nome);
+SELECT COALESCE(arm.nome, fer.nome) AS nome
+FROM fabricacao fab
+LEFT JOIN arma arm
+ON arm.id = fab.item_fabricavel
+LEFT JOIN ferramenta fer
+ON fer.id = fab.item_fabricavel
+WHERE fab.livro_fabricacao = 2
+ORDER BY COALESCE(arm.nome, fer.nome);
 ```
 
 ---
@@ -381,15 +381,15 @@ ORDER BY COALESCE(a.nome, f.nome);
 * Ver o item que uma missão X vai dar.
 
 ```sql
-SELECT COALESCE(c.nome, u.nome, r.nome) AS nome, COALESCE(c.descricao, u.descricao, r.descricao) AS descricao
-FROM missao m
-LEFT JOIN comida c
-ON m.item_nao_fabricavel = c.id
-LEFT JOIN utilizavel u
-ON m.item_nao_fabricavel = u.id
-LEFT JOIN medicamento r
-ON m.item_nao_fabricavel = r.id
-WHERE m.id = 1;
+SELECT COALESCE(com.nome, uti.nome, med.nome) AS nome, COALESCE(com.descricao, uti.descricao, med.descricao) AS descricao
+FROM missao mis
+LEFT JOIN comida com
+ON mis.item_nao_fabricavel = com.id
+LEFT JOIN utilizavel uti
+ON mis.item_nao_fabricavel = uti.id
+LEFT JOIN medicamento med
+ON mis.item_nao_fabricavel = med.id
+WHERE mis.id = 1;
 ```
 
 * Ver o lugar que uma missão X está.
@@ -543,23 +543,23 @@ WHERE ID = 18;
 > O comando irá retornar tuplas que tem o tamanho_ocupado inconsistente.
 
 ```sql
-SELECT t.inventario, i.inventario_ocupado, SUM(COALESCE(a.tamanho, f.tamanho, c.tamanho, m.tamanho, u.tamanho)) AS tamanho_calculado
-FROM instancia_item t
-LEFT JOIN arma a 
-ON a.id = t.item
-LEFT JOIN ferramenta f 
-ON f.id = t.item
-LEFT JOIN comida c 
-ON c.id = t.item
-LEFT JOIN medicamento m 
-ON m.id = t.item
-LEFT JOIN utilizavel u 
-ON u.id = t.item
-LEFT JOIN inventario i
-ON t.inventario = i.id
-GROUP BY t.inventario, i.inventario_ocupado
-HAVING i.inventario_ocupado != SUM(COALESCE(a.tamanho, f.tamanho, c.tamanho, m.tamanho, u.tamanho))
-ORDER BY t.inventario;
+SELECT ins.inventario, inv.inventario_ocupado, SUM(COALESCE(arm.tamanho, fer.tamanho, com.tamanho, med.tamanho, uti.tamanho)) AS tamanho_calculado
+FROM instancia_item ins
+LEFT JOIN arma arm 
+ON arm.id = ins.item
+LEFT JOIN ferramenta fer 
+ON fer.id = ins.item
+LEFT JOIN comida com 
+ON com.id = ins.item
+LEFT JOIN medicamento med 
+ON med.id = ins.item
+LEFT JOIN utilizavel uti 
+ON uti.id = ins.item
+LEFT JOIN inventario inv
+ON ins.inventario = inv.id
+GROUP BY ins.inventario, inv.inventario_ocupado
+HAVING inv.inventario_ocupado != SUM(COALESCE(arm.tamanho, fer.tamanho, com.tamanho, med.tamanho, uti.tamanho))
+ORDER BY ins.inventario;
 ```
 
 ---
@@ -575,8 +575,8 @@ ORDER BY t.inventario;
 |    Data    | Versão | Descrição                   | Autores                                          |
 | :--------: | :----: | --------------------------- | ------------------------------------------------ |
 | 28/07/2024 | `1.0`  | Criação do documento.       | [João Antonio G.](https://github.com/joaoseisei) |
-| 14/08/2024 | `1.1`  | adiciona dql pessoa         | [Júlio Cesar](https://github.com/Julio1099)      |
+| 14/08/2024 | `1.1`  | adiciona dql Julio         | [Júlio Cesar](https://github.com/Julio1099)      |
 | 14/08/2024 | `1.2`  | adiciona dql parte fernando | [Fernando Gabriel](https://github.com/show-dawn) |
-
+| 16/08/2024 | `1.3`  | Formatação dql Julio         | [Júlio Cesar](https://github.com/Julio1099)      |
 
 </div>
