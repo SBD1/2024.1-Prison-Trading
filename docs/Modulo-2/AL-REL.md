@@ -64,13 +64,13 @@ $$
 ## Buscar missão de um jogador. (JOIN)
 
 $$
-\pi_{\text{j.nome}, \text{m.nome}, \text{m.descricao}} \left( \sigma_{\text{j.id} = 1} \left( \text{jogador} \bowtie \text{missao} \right) \right)
+\pi_{\text{jog.nome}, \text{mis.nome}, \text{mis.descricao}} \left( \sigma_{\text{j.id} = 1} \left( \text{jogador} \bowtie \text{missao} \right) \right)
 $$
 
 ## Buscar Lugar de um jogador. (JOIN)
 
 $$
-\pi_{\text{l.nome}, \text{l.descricao}} \left( \sigma_{\text{j.id} = 1} \left( \text{Jogador} \bowtie \text{lugar} \right) \right)
+\pi_{\text{lug.nome}, \text{lug.descricao}} \left( \sigma_{\text{jog.id} = 1} \left( \text{Jogador} \bowtie \text{lugar} \right) \right)
 $$
 
 ---
@@ -164,7 +164,7 @@ $$
 ## Ver todas as conexões de um lugar X.
 
 $$
-\tau_{l.nome} \left( \pi_{l.nome, r.nome} \left( \sigma_{o.lugar\_origem = 10} \left( (\text{lugar\_origem\_destino} \bowtie_{o.lugar\_destino = l.id} \text{lugar}) \bowtie_{l.regiao = r.id} \text{regiao} \right) \right) \right)
+\tau_{lug.nome} \left( \pi_{lug.nome, reg.nome} \left( \sigma_{ori.lugar\_origem = 10} \left( (\text{lugar\_origem\_destino} \bowtie_{o.lugar\_destino = lug.id} \text{lugar}) \bowtie_{lug.regiao = reg.id} \text{regiao} \right) \right) \right)
 $$
 
 ## Ver quais pessoas estão em um lugar X.
@@ -187,21 +187,21 @@ $$
 ## Ver uma fabricação especifica.
 
 $$
-\tau_{\text{COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome)}} \left( \pi_{t.item, \text{COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome)} \rightarrow \text{nome}} \left( \sigma_{t.fabricacao = 12} \left( \text{lista\_fabricacao} \bowtie_{a.id = t.item} \text{arma} \bowtie_{f.id = t.item} \text{ferramenta} \bowtie_{c.id = t.item} \text{comida} \bowtie_{m.id = t.item} \text{medicamento} \bowtie_{u.id = t.item} \text{utilizavel} \right) \right) \right)
+\tau_{\text{COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome)}} \left( \pi_{t.item, \text{COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome)} \rightarrow \text{nome}} \left( \sigma_{lis.fabricacao = 12} \left( \text{lista\_fabricacao} \bowtie_{arm.id = lis.item} \text{arma} \bowtie_{fer.id = lis.item} \text{ferramenta} \bowtie_{com.id = lis.item} \text{comida} \bowtie_{med.id = lis.item} \text{medicamento} \bowtie_{uti.id = lis.item} \text{utilizavel} \right) \right) \right)
 $$
 
 
 ## Ver fabricações possiveis com um item especifico.
 
 $$
-\tau_{\text{COALESCE(a.nome, f.nome)}} \left( \pi_{\text{COALESCE(a.nome, f.nome)} \rightarrow \text{nome}} \left( \sigma_{l.item = 20} \left( \text{lista\_fabricacao} \bowtie_{l.fabricacao = a.id} \text{arma} \bowtie_{l.fabricacao = f.id} \text{ferramenta} \right) \right) \right)
+\tau_{\text{COALESCE(arm.nome, fer.nome)}} \left( \pi_{\text{COALESCE(arm.nome, fer.nome)} \rightarrow \text{nome}} \left( \sigma_{lis.item = 20} \left( \text{lista\_fabricacao} \bowtie_{lis.fabricacao = arm.id} \text{arma} \bowtie_{lis.fabricacao = fer.id} \text{ferramenta} \right) \right) \right)
 $$
 
 
 ## Ver todas as fabricações de um livro. 
 
 $$
-\tau_{\text{COALESCE(a.nome, f.nome)}} \left( \pi_{\text{COALESCE(a.nome, f.nome)} \rightarrow \text{nome}} \left( \sigma_{l.livro\_fabricacao = 2} \left( \text{fabricacao} \bowtie_{l.item\_fabricavel = a.id} \text{arma} \bowtie_{l.item\_fabricavel = f.id} \text{ferramenta} \right) \right) \right)
+\tau_{\text{COALESCE(arm.nome, fer.nome)}} \left( \pi_{\text{COALESCE(arm.nome, fer.nome)} \rightarrow \text{nome}} \left( \sigma_{fab.livro\_fabricacao = 2} \left( \text{fabricacao} \bowtie_{fab.item\_fabricavel = arm.id} \text{arma} \bowtie_{fab.item\_fabricavel = fer.id} \text{ferramenta} \right) \right) \right)
 $$
 
 ---
@@ -214,7 +214,7 @@ $$
 ## Ver o item que uma missao vai dar.
 
 $$
-\pi_{\text{COALESCE(c.nome, u.nome, r.nome)} \rightarrow \text{nome}, \text{COALESCE(c.descricao, u.descricao, r.descricao)} \rightarrow \text{descricao}} \left( \sigma_{m.id = 1} \left( \text{missao} \bowtie_{m.item\_nao\_fabricavel = c.id} \text{comida} \bowtie_{m.item\_nao\_fabricavel = u.id} \text{utilizavel} \bowtie_{m.item\_nao\_fabricavel = r.id} \text{medicamento} \right) \right)
+\pi_{\text{COALESCE(com.nome, uti.nome, med.nome)} \rightarrow \text{nome}, \text{COALESCE(com.descricao, uti.descricao, med.descricao)} \rightarrow \text{descricao}} \left( \sigma_{mis.id = 1} \left( \text{missao} \bowtie_{mis.item\_nao\_fabricavel = com.id} \text{comida} \bowtie_{mis.item\_nao\_fabricavel = uti.id} \text{utilizavel} \bowtie_{mis.item\_nao\_fabricavel = med.id} \text{medicamento} \right) \right)
 $$
 
 ## Ver o lugar que uma missao está.
@@ -341,7 +341,7 @@ $$
 </center>
 
 $$
-\pi_{\text{t.inventario}, \text{i.inventario\_ocupado}, \text{tamanho\_calculado}} \left( \sigma_{\text{i.inventario\_ocupado} \neq \text{tamanho\_calculado}} \left( \gamma_{\text{t.inventario}, \text{i.inventario\_ocupado}; \text{tamanho\_calculado} = \text{SUM(COALESCE(a.tamanho, f.tamanho, c.tamanho, m.tamanho, u.tamanho))}} \left( (\text{instancia\_item} \bowtie_{\text{t.item} = \text{a.id}} \text{arma}) \bowtie_{\text{t.item} = \text{f.id}} \text{ferramenta} \bowtie_{\text{t.item} = \text{c.id}} \text{comida} \bowtie_{\text{t.item} = \text{m.id}} \text{medicamento} \bowtie_{\text{t.item} = \text{u.id}} \text{utilizavel} \bowtie_{\text{t.inventario} = \text{i.id}} \text{inventario} \right) \right) \right)
+\pi_{\text{ins.inventario}, \text{inv.inventario\_ocupado}, \text{tamanho\_calculado}} \left( \sigma_{\text{inv.inventario\_ocupado} \neq \text{tamanho\_calculado}} \left( \gamma_{\text{t.inventario}, \text{inv.inventario\_ocupado}; \text{tamanho\_calculado} = \text{SUM(COALESCE(arm.tamanho, fer.tamanho, com.tamanho, med.tamanho, uti.tamanho))}} \left( (\text{instancia\_item} \bowtie_{\text{ins.item} = \text{arm.id}} \text{arma}) \bowtie_{\text{ins.item} = \text{fer.id}} \text{ferramenta} \bowtie_{\text{ins.item} = \text{com.id}} \text{comida} \bowtie_{\text{ins.item} = \text{med.id}} \text{medicamento} \bowtie_{\text{ins.item} = \text{uti.id}} \text{utilizavel} \bowtie_{\text{ins.inventario} = \text{inv.id}} \text{inventario} \right) \right) \right)
 $$
 
 ---
@@ -359,5 +359,6 @@ $$
 | 28/07/2024 | `1.0`  | Criação do documento.     | [João Antonio G.](https://github.com/joaoseisei) |
 | 14/08/2024 | `1.1`  | Atualização do documento. | [Júlio Cesar](https://github.com/Julio1099)      |
 | 15/08/2024 | `1.2`  | Adição de novos itens.    | [Júlio Cesar](https://github.com/Julio1099)      |
+| 16/08/2024 | `1.3`  | Adição de nova formatação.    | [Júlio Cesar](https://github.com/Julio1099)      |
 
 </div>
