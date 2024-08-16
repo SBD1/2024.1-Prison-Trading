@@ -635,15 +635,17 @@ WHERE id = 20;
 
 --- Criar uma instancia de Item (lugar)
 
-UPDATE Instancia_Item 
-SET lugar = 14, regiao = 2
-WHERE id = 14;
+INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+VALUES
+(5, 7, 7, NULL, NULL);
+
 
 --- Criar uma instancia de Item (inventario)
 
-UPDATE Instancia_Item 
-SET id = 13, pessoa = 13
-WHERE id = 27;
+INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+VALUES
+(5, NULL, NULL, 7, 7);
+
 
 --- Deletar uma instancia de Item (lugar)
 
@@ -661,13 +663,6 @@ UPDATE Inventario
 SET inventario_ocupado = 5
 WHERE id = 14
 AND pessoa = 14;
-
---- Inserir item no inventario de uma Pessoa
-
-INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
-VALUES
-(5, NULL, NULL, 7, 7);
-
 
 --- Atualizar vida de um Prisioneiro.
 
