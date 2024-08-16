@@ -392,7 +392,7 @@ VALUES
 (5, 4, 5),
 (6, 3, 5),
 (7, 2, 5),
-(8, 3, 5),
+(8, 4, 5),
 (9, 2, 5),
 (10, 2, 5),
 (11, 3, 5),
@@ -404,7 +404,7 @@ VALUES
 (17, 3, 5),
 (18, 3, 5),
 (19, 2, 5),
-(20, 4, 5);
+(20, 2, 5);
 
 
 INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa) 
@@ -542,7 +542,7 @@ VALUES
 
 INSERT INTO Policial (id, nome, lugar, regiao, corrupto) 
 VALUES
-(14, 'Italo Dimetrio', 1, 1, true),
+(14, 'Italo Dimetrio', 20, 4, true),
 (15, 'Sargento Nascimento', 22, 5, false),
 (16, 'Capitão Mathias', 25, 6, false),
 (17, 'Capitão Brad', 9, 1, true),

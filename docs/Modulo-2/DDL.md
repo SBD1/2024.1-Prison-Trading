@@ -60,6 +60,7 @@ CREATE TABLE lugar_origem_destino (
     regiao_origem INTEGER NOT NULL,
     lugar_destino INTEGER NOT NULL,
     regiao_destino INTEGER NOT NULL,
+    PRIMARY KEY (lugar_origem, regiao_origem, lugar_destino, regiao_destino), 
     FOREIGN KEY (lugar_origem, regiao_origem) REFERENCES lugar(id, regiao),
     FOREIGN KEY (lugar_destino, regiao_destino) REFERENCES lugar(id, regiao)
 );
@@ -240,6 +241,7 @@ CREATE TABLE lista_fabricacao(
     item_fabricavel INTEGER NOT NULL,
     fabricacao INTEGER NOT NULL,
     item INTEGER NOT NULL,
+    PRIMARY KEY (item_fabricavel, fabricacao, item),
     FOREIGN KEY (item_fabricavel, fabricacao) REFERENCES fabricacao(item_fabricavel, id),
     FOREIGN KEY (item) REFERENCES item(id)
 );

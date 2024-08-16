@@ -571,7 +571,7 @@
 | 5  | 5        | 4                  | 5       |
 | 6  | 6        | 3                  | 5       |
 | 7  | 7        | 2                  | 5       |
-| 8  | 8        | 3                  | 5       |
+| 8  | 8        | 4                  | 5       |
 | 9  | 9        | 2                  | 5       |
 | 10 | 10       | 2                  | 5       |
 | 11 | 11       | 3                  | 5       |
@@ -583,7 +583,7 @@
 | 17 | 17       | 3                  | 5       |
 | 18 | 18       | 3                  | 5       |
 | 19 | 19       | 2                  | 5       |
-| 20 | 20       | 4                  | 5       |
+| 20 | 20       | 2                  | 5       |
 
 ----
 
@@ -610,13 +610,13 @@
 
 # Tabela Policial
 
-| id | nome                | corrupto | lugar                   | `regiao`       |
-|----|---------------------|----------|-------------------------|----------------|
-| 14 | Italo Dimetrio      | true     | 1 [Solitária Oeste]     | 1 [Celas]      |
-| 15 | Sargento Nascimento | false    | 22 [Mesa Direita]       | 5 [Refeitório] |
-| 16 | Capitão Mathias     | false    | 25 [Quadra de Basquete] | 6 [Pátio]      |
-| 17 | Capitão Brad        | true     | 9 [Solitária Leste]     | 1 [Celas]      |
-| 18 | Lil Chico           | true     | 26 [Arquibancada]       | 6 [Pátio]      |
+| id | nome                | corrupto | lugar                   | `regiao`          |
+|----|---------------------|----------|-------------------------|-------------------|
+| 14 | Italo Dimetrio      | true     | 20	 [Sala de Controle]  | 4 [Administracao] |
+| 15 | Sargento Nascimento | false    | 22 [Mesa Direita]       | 5 [Refeitório]    |
+| 16 | Capitão Mathias     | false    | 25 [Quadra de Basquete] | 6 [Pátio]         |
+| 17 | Capitão Brad        | true     | 9 [Solitária Leste]     | 1 [Celas]         |
+| 18 | Lil Chico           | true     | 26 [Arquibancada]       | 6 [Pátio]         |
 
 
 ---
