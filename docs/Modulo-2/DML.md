@@ -15,6 +15,12 @@
 
 ---
 
+<Center>
+
+# Inserts
+
+</center>
+
 ```
 BEGIN TRANSACTION;
 
@@ -556,7 +562,93 @@ INSERT INTO Jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue
 COMMIT;
 
 ```
+---
 
+<Center>
+
+# Comandos usados
+
+</center>
+
+````sql
+--- Atualiza posição de um Jogador
+
+UPDATE jogador 
+SET lugar = 2, regiao = 1
+WHERE id = 1;
+
+--- Atualiza posição de um Prisioneiro
+
+COMANDO
+
+--- Atualiza posição de um Policial
+
+COMANDO
+
+--- Atualiza posição de um Informante
+
+COMANDO
+
+--- Criar uma instancia de Item (lugar ou inventario)
+
+COMANDO
+
+--- Deletar uma instancia de Item (lugar ou inventario)
+
+COMANDO
+
+--- Atualizar um inventario de uma Pessoa
+
+COMANDO
+
+--- Inserir item no inventario de uma Pessoa
+
+COMANDO
+
+--- Atualizar vida de um Prisioneiro.
+
+COMANDO
+
+--- Atualizar vida de um Jogador.
+
+COMANDO
+
+--- Subir o nivel de um jogador.
+
+COMANDO
+
+--- Escolher gangue de um Jogador.
+
+COMANDO
+
+--- Atualizar o motim de uma Prisao.
+
+COMANDO
+
+--- Atualiza o tempo de vida de um Jogador
+
+COMANDO
+
+--- Atualizar missao de um Jogador
+
+COMANDO
+
+--- Atualizar força de um Jogador
+
+COMANDO
+
+--- Atualizar quantidade de Comida
+
+COMANDO
+
+--- Atualizar quantidade de Medicamento
+
+COMANDO
+
+--- Atualizar a quantidade de Utilizavel
+
+COMANDO
+````
 
 ---
 

@@ -16,8 +16,7 @@
 
 </center>
 
-## Ver o tipo de uma pessoa.
-
+* Ver o tipo de uma pessoa.
 
 $$
 \pi_{\text{tipo}} \left( \sigma_{\text{id} = 3} (\text{Pessoa}) \right)

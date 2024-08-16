@@ -23,13 +23,10 @@
 * Ver o tipo de uma pessoa.
 
 ```sql
-
 SELECT tipo
 FROM Pessoa
 WHERE id = 3;
 ```
-
-> Perguntar se o id de pessoa vai buscar diretamente os detalhes de uma pessoa x em multiplas tabelas.
 
 ---
 <center>
@@ -38,7 +35,7 @@ WHERE id = 3;
 
 </center>
 
-* Acessar o inventario de qualquer pessoa (tamanho_ocupado... todos os atributos).
+* Acessar o inventario de uma pessoa X e ver os atributos (pessoa, tamanho e inventario_ocupado).
 
 ```sql
 SELECT pessoa, tamanho, inventario_ocupado
@@ -46,15 +43,9 @@ FROM Inventario
 WHERE pessoa = 2;
 ```
 
-* Ver os itens do inventario de qualquer pessoa.
+* Ver os itens do inventario de uma pessoa X.
 
 ```sql
-SELECT item 
-FROM instancia_item
-WHERE inventario = 2;
-
----
-
 SELECT t.item, COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome) AS nome
 FROM instancia_item t
 LEFT JOIN arma a 
@@ -67,10 +58,9 @@ LEFT JOIN medicamento m
 ON m.id = t.item
 LEFT JOIN utilizavel u 
 ON u.id = t.item
-WHERE t.inventario = 2;
+WHERE t.inventario = 2
+ORDER BY COALESCE(a.nome, f.nome, c.nome, m.nome, u.nome);
 ```
-
-> Perguntar se coloca um JOIN aqui.
 
 ---
 <center>
@@ -82,43 +72,37 @@ WHERE t.inventario = 2;
 * Ver (habilidade_briga, vida e força) de um jogador X.
 
 ```sql
-
 SELECT habilidade_briga, vida, forca
-FROM Jogador
+FROM jogador
 WHERE id = 1;
 ```
 
 * Ver (nome, tempo_vida, gangue e nivel) de um jogador X.
 
 ```sql
-
 SELECT nome, tempo_vida, gangue, nivel
-FROM Jogador
+FROM jogador
 WHERE id = 1;
-
 ```
 
-* Buscar missão de um jogador. (JOIN)
+* Buscar missão de um jogador. 
 
 ```sql
-
 SELECT j.nome, m.nome, m.descricao
 FROM jogador j
 LEFT JOIN missao m 
 ON j.missao = m.id
 WHERE j.id = 1;
-
 ```
 
-* Buscar Lugar de um jogador. (JOIN)
+* Buscar Lugar de um jogador. 
 
 ```sql
 SELECT l.nome, l.descricao
-FROM Jogador j
+FROM jogador j
 LEFT JOIN lugar l
 ON l.id = j.lugar
 WHERE j.id = 1;
-
 ```
 
 ---
@@ -131,9 +115,8 @@ WHERE j.id = 1;
 * Ver o nome do informante.
 
 ```sql
-
 SELECT nome
-FROM Informante
+FROM informante
 WHERE id = 19;
 ```
 
@@ -149,9 +132,8 @@ WHERE id = 19;
 
 ```sql
 SELECT nome
-FROM Policial
+FROM policial
 WHERE corrupto = true;
-
 ```
 
 * Ver estatisticas de um policial X.
@@ -263,6 +245,46 @@ SELECT nome AS pessoa
 FROM Pessoas
 WHERE lugar = 22
 ORDER BY pessoa;
+
+---
+
+SELECT nome AS pessoa
+FROM (
+    SELECT nome FROM jogador WHERE lugar = 22
+    UNION ALL
+    SELECT nome FROM policial WHERE lugar = 22
+    UNION ALL
+    SELECT nome FROM prisioneiro WHERE lugar = 22
+    UNION ALL
+    SELECT nome FROM informante WHERE lugar = 22
+) AS pessoas
+ORDER BY pessoa;
+
+----
+
+SELECT jog.nome AS pessoa
+FROM jogador jog
+WHERE jog.lugar = 22
+
+UNION ALL
+
+SELECT pol.nome AS pessoa
+FROM policial pol
+WHERE pol.lugar = 22
+
+UNION ALL
+
+SELECT pri.nome AS pessoa
+FROM prisioneiro pri
+WHERE pri.lugar = 22
+
+UNION ALL
+
+SELECT inf.nome AS pessoa
+FROM informante inf
+WHERE inf.lugar = 22
+
+ORDER BY pessoa;
 ```
 
 * Ver quais itens estão em um lugar X.
@@ -363,10 +385,8 @@ ORDER BY COALESCE(a.nome, f.nome);
 * Ver o item que uma missao vai dar.
 
 ```sql
-
 SELECT id, nome, item_nao_fabricavel
 FROM missao;
-
 ```
 
 * Ver o lugar que uma missao está.
