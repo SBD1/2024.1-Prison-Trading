@@ -132,7 +132,7 @@ VALUES
 (5, NULL, NULL, 7, 7);
 
 --- Atualizar um inventario ocupado de uma Pessoa
-UPDATE Inventario
+UPDATE Inventario 
 SET inventario_ocupado = <TAMANHO>
 WHERE id = <ITEM>
 AND pessoa = <JOGADOR>;
@@ -267,3 +267,52 @@ LEFT JOIN ferramenta fer
 ON fer.id = fab.item_fabricavel
 WHERE fab.livro_fabricacao = 2
 ORDER BY COALESCE(arm.nome, fer.nome);
+
+--- missao
+
+---Ver o lugar que uma missão X está.
+SELECT lugar.nome, lugar.descricao
+FROM missao, lugar
+WHERE missao.lugar = lugar.id AND missao.id = <LUGAR>;
+
+--- estando no lugar certo
+
+---Atualizar missao de um Jogador
+
+UPDATE jogador 
+SET missao = <MISSAO>
+WHERE id = <JOGADOR>;
+
+---Ver o item que uma missão X vai dar.
+SELECT COALESCE(com.nome, uti.nome, med.nome) AS nome, COALESCE(com.descricao, uti.descricao, med.descricao) AS descricao
+FROM missao mis
+LEFT JOIN comida com
+ON mis.item_nao_fabricavel = com.id
+LEFT JOIN utilizavel uti
+ON mis.item_nao_fabricavel = uti.id
+LEFT JOIN medicamento med
+ON mis.item_nao_fabricavel = med.id
+WHERE mis.id = <JOGADOR>;
+
+--- Caso Complete a missão
+
+---Acessar o inventario Para consultar se tem espaço 
+
+SELECT pessoa, tamanho, inventario_ocupado
+FROM inventario
+WHERE pessoa = <JOGADOR>;
+
+---Caso tenha espaço
+
+--- Criar uma instancia de Item (inventario)
+
+INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+VALUES
+(5, NULL, NULL, 7, 7);
+
+--- Atualizar um inventario ocupado de uma Pessoa
+
+UPDATE Inventario 
+SET inventario_ocupado = <TAMANHO>
+WHERE id = <ITEM>
+AND pessoa = <JOGADOR>;
