@@ -115,3 +115,19 @@ ON uti.id = t.item
 WHERE t.inventario = <JOGADOR> AND nome = <MATERIA_PRIMA>
 ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
 
+-- Realizar uma troca
+
+-- Transfere o item de uma pessoa
+UPDATE instancia_item
+SET pessoa = <PESSOA>, inventario = <INVENTARIO>
+WHERE id = <ID>;
+
+-- Transfere o item de outra pessoa
+UPDATE instancia_item
+SET pessoa = <PESSOA>, inventario = <INVENTARIO>
+WHERE id = <ID>;
+
+-- Pegar um item no chao
+UPDATE instancia_item
+SET lugar = NULL, regiao = NULL, pessoa = <PESSOA>, inventario = <INVENTARIO>
+WHERE id = <ID>;
