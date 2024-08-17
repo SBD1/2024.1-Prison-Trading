@@ -386,7 +386,7 @@ WHERE id = 1;
 ---
 <center>
 
-# Item_Fabricavel
+# Item Fabricavel
 
 </center>
 
@@ -401,7 +401,7 @@ WHERE id = 1;
 ---
 <center>
 
-# Item_Não_Fabricavel
+# Item Não Fabricavel
 
 </center>
 
@@ -492,7 +492,7 @@ WHERE ID = 18;
 
 <center>
 
-# Outos
+# Outros
 
 </center>
 

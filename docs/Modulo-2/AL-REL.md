@@ -221,7 +221,7 @@ $$
 ---
 <center>
 
-# Missao
+# Missão
 
 </center>
 
@@ -259,7 +259,7 @@ $$
 ---
 <center>
 
-# Item_Fabricavel
+# Item Fabricavel
 
 </center>
 
@@ -272,7 +272,7 @@ $$
 ---
 <center>
 
-# Item_Não_Fabricavel
+# Item Não Fabricavel
 
 </center>
 
