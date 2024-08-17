@@ -150,12 +150,13 @@ if __name__ == "__main__":
                ORDER BY lug.nome;
             """, (lugar_atual,))
             verifica = False
-            resultado = db.cursor.fetchall()
+            resultados = db.cursor.fetchall()
 
-            for resultado in resultados:
-                if str(resultado[0]) == lugar_id:
-                    verifica = True
-                    break
+            if resultados:
+                for resultado in resultados:
+                    if str(resultado[0]) == lugar_id:
+                        verifica = True
+                        break
 
             if verifica:
 
