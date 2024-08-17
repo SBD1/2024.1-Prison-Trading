@@ -83,7 +83,7 @@ Imagem:
 
 </center>
 
-> Para criação das tabelas basta utilizar o DDL do projeto encontrado [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DDL).
+> Para criação das tabelas basta utilizar o DDL do projeto encontrado [aqui](https://github.com/SBD1/2024.1-Prison-Trading/blob/main/src/DDL.sql).
 
 ---
 <center>
@@ -92,7 +92,7 @@ Imagem:
 
 </center>
 
-> Para população das tabelas basta utilizar o DML do projeto encontrado [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DML?id=inserts).
+> Para população das tabelas basta utilizar o DML do projeto encontrado [aqui](https://github.com/SBD1/2024.1-Prison-Trading/blob/main/src/DML.sql).
 
 ---
 
