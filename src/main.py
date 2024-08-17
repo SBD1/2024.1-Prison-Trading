@@ -44,7 +44,6 @@ class DatabaseConnection:
             self.connection.close()
 
 
-
 if __name__ == "__main__":
     db = DatabaseConnection()
     db.connect()
