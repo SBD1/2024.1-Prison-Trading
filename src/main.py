@@ -50,12 +50,13 @@ if __name__ == "__main__":
     db.connect()
 
     db.cursor.execute("""
-        SELECT jog.lugar
+        SELECT jog.lugar, jog.regiao
         FROM jogador jog
         WHERE jog.id = 1;
     """)
     results = db.cursor.fetchall()
     lugar_atual = results[0][0]
+    regiao_atual = results[0][1]
 
     print("Bem-vindo, digite "
           "\n'ATUAL' - Para ver sua localização atual."
@@ -132,14 +133,52 @@ if __name__ == "__main__":
             if resultado:
                 print("Itens no lugar:")
                 for resultado in resultado:
-                    print(resultado)
+                    print(resultado[0])
             else:
                 print("Nenhum item nessa sala.")
 
         elif user_input.startswith("MOVER "):
 
             _, lugar_id = user_input.split(maxsplit=1)
-            print(f"Movendo para o lugar com ID: {lugar_id}")
+
+            db.cursor.execute("""
+               SELECT lug.id
+               FROM lugar_origem_destino ori
+               JOIN lugar lug ON ori.lugar_destino = lug.id
+               JOIN regiao reg ON lug.regiao = reg.id
+               WHERE ori.lugar_origem = %s
+               ORDER BY lug.nome;
+            """, (lugar_atual,))
+            verifica = False
+            resultado = db.cursor.fetchall()
+
+            for resultado in resultados:
+                if str(resultado[0]) == lugar_id:
+                    verifica = True
+                    break
+
+            if verifica:
+
+                db.cursor.execute("""
+                   SELECT regiao 
+                   FROM lugar
+                   WHERE id = %s;
+                """, (lugar_id,))
+                results = db.cursor.fetchall()
+                regiao = results[0][0]
+
+                db.cursor.execute("""
+                    UPDATE Jogador 
+                    SET lugar = %s, regiao = %s
+                    WHERE id = 1;
+                """, (lugar_id, regiao))
+                db.connection.commit()
+
+                lugar_atual = lugar_id
+                regiao_atual = regiao
+                print("Posição movida com sucesso.")
+            else:
+                print("A sala atual não possui conexões com a que o jogador digitou.")
 
         elif user_input == "HELP":
             print("Bem-vindo, digite "
