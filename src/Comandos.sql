@@ -68,6 +68,8 @@ UPDATE jogador
 SET vida = 5
 WHERE id = <JOGADOR>;
 
+-- Usar Comida
+
 -- Verifica se tem comida no inventario
 SELECT ins.item, com.nome, ins.id
 FROM instancia_item ins
@@ -76,7 +78,7 @@ ON com.id = ins.item
 WHERE ins.inventario = <INVENTARIO>
 ORDER BY com.nome;
 
--- Caso tenha remedio atualiza a vida do jogador
+-- Caso tenha comida, atualiza a vida do jogador
 UPDATE jogador
 SET vida = 5
 WHERE id = <JOGADOR>;
@@ -114,6 +116,30 @@ LEFT JOIN utilizavel uti
 ON uti.id = t.item
 WHERE t.inventario = <JOGADOR> AND nome = <MATERIA_PRIMA>
 ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
+
+-- Acessar o inventario Para consultar se tem espaço
+
+SELECT pessoa, tamanho, inventario_ocupado
+FROM inventario
+WHERE pessoa = <JOGADOR>;
+
+--- Deletar uma instancia de Item (materia prima)
+
+DELETE FROM Instancia_Item
+WHERE id = <ITEM>;
+
+--- Criar uma instancia de Item (inventario)
+
+INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+VALUES
+(5, NULL, NULL, 7, 7);
+
+--- Atualizar um inventario ocupado de uma Pessoa
+
+UPDATE Inventario
+SET inventario_ocupado = <TAMANHO>
+WHERE id = <ITEM>
+AND pessoa = <JOGADOR>;
 
 -- Realizar uma troca
 
