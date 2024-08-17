@@ -104,8 +104,9 @@ Imagem:
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão |       Descrição       | Autores                                          |
-|:----------:|:------:|:---------------------:|--------------------------------------------------|
-| 11/08/2024 | `1.0`  | Criação do documento. | [João Antonio G.](https://github.com/joaoseisei) |
+|    Data    | Versão |        Descrição         | Autores                                          |
+|:----------:|:------:|:------------------------:|--------------------------------------------------|
+| 11/08/2024 | `1.0`  |  Criação do documento.   | [João Antonio G.](https://github.com/joaoseisei) |
+| 17/08/2024 | `1.1`  | Criação do tutorial SQL. | [João Antonio G.](https://github.com/joaoseisei)                                                 |
 
 </div>
