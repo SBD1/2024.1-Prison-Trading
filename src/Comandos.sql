@@ -118,24 +118,20 @@ WHERE t.inventario = <JOGADOR> AND nome = <MATERIA_PRIMA>
 ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
 
 -- Acessar o inventario Para consultar se tem espaço
-
 SELECT pessoa, tamanho, inventario_ocupado
 FROM inventario
 WHERE pessoa = <JOGADOR>;
 
 --- Deletar uma instancia de Item (materia prima)
-
 DELETE FROM Instancia_Item
 WHERE id = <ITEM>;
 
 --- Criar uma instancia de Item (inventario)
-
 INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
 VALUES
 (5, NULL, NULL, 7, 7);
 
 --- Atualizar um inventario ocupado de uma Pessoa
-
 UPDATE Inventario
 SET inventario_ocupado = <TAMANHO>
 WHERE id = <ITEM>
@@ -143,17 +139,131 @@ AND pessoa = <JOGADOR>;
 
 -- Realizar uma troca
 
+-- Acessar o inventario Para consultar se tem espaço
+SELECT pessoa, tamanho, inventario_ocupado
+FROM inventario
+WHERE pessoa = <JOGADOR>;
+
 -- Transfere o item de uma pessoa
 UPDATE instancia_item
 SET pessoa = <PESSOA>, inventario = <INVENTARIO>
 WHERE id = <ID>;
+
+-- NECESSITA DE UM TERCEIRO PRA FAZER O SWAP UM TEMPORARIO, PODE SER UTILIZADO EM PYTHON.
+
+--- Atualizar um inventario ocupado de uma Pessoa
+UPDATE Inventario
+SET inventario_ocupado = <TAMANHO>
+WHERE id = <ITEM>
+AND pessoa = <JOGADOR>;
+
+-- Acessar o inventario Para consultar se tem espaço
+SELECT pessoa, tamanho, inventario_ocupado
+FROM inventario
+WHERE pessoa = <JOGADOR>;
 
 -- Transfere o item de outra pessoa
 UPDATE instancia_item
 SET pessoa = <PESSOA>, inventario = <INVENTARIO>
 WHERE id = <ID>;
 
+--- Atualizar um inventario ocupado de uma Pessoa
+UPDATE Inventario
+SET inventario_ocupado = <TAMANHO>
+WHERE id = <ITEM>
+AND pessoa = <JOGADOR>;
+
 -- Pegar um item no chao
+
+-- Acessar o inventario Para consultar se tem espaço
+SELECT pessoa, tamanho, inventario_ocupado
+FROM inventario
+WHERE pessoa = <JOGADOR>;
+
+-- Pega o item
 UPDATE instancia_item
 SET lugar = NULL, regiao = NULL, pessoa = <PESSOA>, inventario = <INVENTARIO>
 WHERE id = <ID>;
+
+--- Atualizar um inventario ocupado de uma Pessoa
+UPDATE Inventario
+SET inventario_ocupado = <TAMANHO>
+WHERE id = <ITEM>
+AND pessoa = <JOGADOR>;
+
+--- Movimentação
+
+-- Verifica os lugares onde a pessoa pode ir
+SELECT lug.id
+FROM lugar_origem_destino ori
+JOIN lugar lug ON ori.lugar_destino = lug.id
+JOIN regiao reg ON lug.regiao = reg.id
+WHERE ori.lugar_origem = <LUGAR>
+ORDER BY lug.nome;
+
+-- Move a pessoa de lugar
+UPDATE Jogador
+SET lugar = <LUGAR>, regiao = <REGIAO>
+WHERE id = <JOGADOR>;
+
+-- Ver pessoas relacionadas a sala
+
+-- Ver a sala atual
+SELECT lug.nome, lug.descricao
+FROM jogador jog
+LEFT JOIN lugar lug ON lug.id = jog.lugar
+WHERE jog.id = <JOGADOR>;
+
+-- Ver as pessoas ligadas a essa sala
+WITH Pessoas AS (
+    SELECT id, nome, lugar FROM jogador
+    UNION ALL
+    SELECT id, nome, lugar FROM policial
+    UNION ALL
+    SELECT id, nome, lugar FROM prisioneiro
+    UNION ALL
+    SELECT id, nome, lugar FROM informante
+)
+SELECT pes.nome, tip.tipo
+FROM pessoas pes, pessoa tip
+WHERE pes.id = tip.id AND pes.lugar = <LUGAR>
+ORDER BY tip.tipo, pes.nome;
+
+-- Ver os itens relacionados a uma sala
+
+-- Ver a sala atual
+SELECT lug.nome, lug.descricao
+FROM jogador jog
+LEFT JOIN lugar lug ON lug.id = jog.lugar
+WHERE jog.id = <JOGADOR>;
+
+-- Ver os itens ligados a essa sala
+SELECT COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
+FROM instancia_item ins
+LEFT JOIN arma arm ON arm.id = ins.item
+LEFT JOIN ferramenta fer ON fer.id = ins.item
+LEFT JOIN comida com ON com.id = ins.item
+LEFT JOIN medicamento med ON med.id = ins.item
+LEFT JOIN utilizavel uti ON uti.id = ins.item
+WHERE ins.lugar = %s
+ORDER BY nome;
+
+-- Ver todas as fabricações de um item especifico
+SELECT COALESCE(arm.nome, fer.nome) AS nome
+FROM lista_fabricacao lis
+LEFT JOIN arma arm
+ON arm.id = lis.fabricacao
+LEFT JOIN ferramenta fer
+ON fer.id = lis.fabricacao
+WHERE lis.item = 20
+ORDER BY COALESCE(arm.nome, fer.nome);
+
+-- Consultar um livro especifico
+SELECT COALESCE(arm.nome, fer.nome) AS nome
+FROM fabricacao fab
+LEFT JOIN arma arm
+ON arm.id = fab.item_fabricavel
+LEFT JOIN ferramenta fer
+ON fer.id = fab.item_fabricavel
+WHERE fab.livro_fabricacao = 2
+ORDER BY COALESCE(arm.nome, fer.nome);
