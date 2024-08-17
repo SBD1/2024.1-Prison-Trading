@@ -229,58 +229,18 @@ ORDER BY lug.nome;
 
 ```sql
 WITH Pessoas AS (
-    SELECT nome, lugar FROM jogador
+    SELECT id, nome, lugar FROM jogador
     UNION ALL
-    SELECT nome, lugar FROM policial
+    SELECT id, nome, lugar FROM policial
     UNION ALL
-    SELECT nome, lugar FROM prisioneiro
+    SELECT id, nome, lugar FROM prisioneiro
     UNION ALL
-    SELECT nome, lugar FROM informante
+    SELECT id, nome, lugar FROM informante
 )
-SELECT nome AS pessoa
-FROM Pessoas
-WHERE lugar = 22
-ORDER BY pessoa;
-
----
-
-SELECT nome AS pessoa
-FROM (
-    SELECT nome FROM jogador WHERE lugar = 22
-    UNION ALL
-    SELECT nome FROM policial WHERE lugar = 22
-    UNION ALL
-    SELECT nome FROM prisioneiro WHERE lugar = 22
-    UNION ALL
-    SELECT nome FROM informante WHERE lugar = 22
-) AS pessoas
-ORDER BY pessoa;
-
-----
-
-SELECT jog.nome AS pessoa
-FROM jogador jog
-WHERE jog.lugar = 22
-
-UNION ALL
-
-SELECT pol.nome AS pessoa
-FROM policial pol
-WHERE pol.lugar = 22
-
-UNION ALL
-
-SELECT pri.nome AS pessoa
-FROM prisioneiro pri
-WHERE pri.lugar = 22
-
-UNION ALL
-
-SELECT inf.nome AS pessoa
-FROM informante inf
-WHERE inf.lugar = 22
-
-ORDER BY pessoa;
+SELECT pes.nome, tip.tipo
+FROM pessoas pes, pessoa tip
+WHERE pes.id = tip.id AND pes.lugar = 22
+ORDER BY tip.tipo, pes.nome;
 ```
 
 * Ver quais itens estão em um lugar X.
