@@ -9,7 +9,6 @@
 
 -- Briga
 
-
 -- Consultar os status de um prisioneiro
 SELECT nome, habilidade_briga, vida, forca
 FROM prisioneiro
@@ -27,25 +26,29 @@ UPDATE jogador
 SET vida = 1
 WHERE id = <JOGADOR>;
 
---
+-- Transfere o jogador para a enfermaria
 UPDATE jogador
 SET lugar = 16, regiao = 3
 WHERE id = <JOGADOR>;
 
+-- Diminui 1 dia do tempo de vida
 UPDATE jogador
 SET tempo_vida = 9
 WHERE id = <JOGADOR>;
 
+-- Atualiza a vida do jogador
 UPDATE jogador
 SET vida = 5
 WHERE id = <JOGADOR>;
 
 -- Caso vença a briga
 
-UPDATE jogador
-SET vida = 4
+-- Perde vida
+UPDATE prisioneiro
+SET vida = 1
 WHERE id = <JOGADOR>;
 
+-- Transfere o prisioneiro pra enfermaria
 UPDATE prisioneiro
 SET lugar = 16, regiao = 3
 WHERE id = <PRISIONEIRO>;
@@ -97,8 +100,6 @@ WHERE lis.fabricacao = <FABRICACAO>
 ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
 
 -- Consultar se o jogador possui os itens requeridos
-
-SELECT
 SELECT t.item, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
 FROM instancia_item t
 LEFT JOIN arma arm
@@ -113,3 +114,4 @@ LEFT JOIN utilizavel uti
 ON uti.id = t.item
 WHERE t.inventario = <JOGADOR> AND nome = <MATERIA_PRIMA>
 ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
+
