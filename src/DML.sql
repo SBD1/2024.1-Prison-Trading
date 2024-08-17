@@ -299,7 +299,7 @@ VALUES
 ('Livro de Crafts HARD');
 
 
-INSERT INTO fabricacao (item_fabricavel, livro_fabricacao) 
+INSERT INTO fabricacao (item_fabricavel, livro_fabricacao)
 VALUES
 (1, 1),
 (2, 1),
@@ -316,7 +316,7 @@ VALUES
 (13, 2);
 
 
-INSERT INTO lista_fabricacao (item_fabricavel, fabricacao, item) 
+INSERT INTO lista_fabricacao (item_fabricavel, fabricacao, item)
 VALUES
 (1, 1, 18),
 (1, 1, 24),
@@ -346,7 +346,7 @@ VALUES
 (13, 13, 23);
 
 
-INSERT INTO Pessoa (tipo) 
+INSERT INTO Pessoa (tipo)
 VALUES
 ('jogador'),
 ('prisioneiro'),
@@ -369,7 +369,7 @@ VALUES
 ('informante'),
 ('informante');
 
-INSERT INTO Inventario (pessoa, inventario_ocupado, tamanho) 
+INSERT INTO Inventario (pessoa, inventario_ocupado, tamanho)
 VALUES
 (1, 0, 5),
 (2, 4, 5),
@@ -378,7 +378,7 @@ VALUES
 (5, 4, 5),
 (6, 3, 5),
 (7, 2, 5),
-(8, 3, 5),
+(8, 4, 5),
 (9, 2, 5),
 (10, 2, 5),
 (11, 3, 5),
@@ -390,10 +390,10 @@ VALUES
 (17, 3, 5),
 (18, 3, 5),
 (19, 2, 5),
-(20, 4, 5);
+(20, 2, 5);
 
 
-INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa) 
+INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
 VALUES
 (1, 29, 7, NULL, NULL),
 (2, 29, 7, NULL, NULL),
@@ -510,7 +510,7 @@ VALUES
 (34, 24, 6, 'Fique maromba', 'Vá na academia.');
 
 
-INSERT INTO Prisioneiro (id, nome, habilidade_briga, vida, forca, gangue, lugar, regiao) 
+INSERT INTO Prisioneiro (id, nome, habilidade_briga, vida, forca, gangue, lugar, regiao)
 VALUES
 (2, 'Rivas', 4, 9, 7, 'palhaco', 25, 6),
 (3, 'Filomano', 6, 7, 4, 'polvo', 3, 1),
@@ -526,16 +526,16 @@ VALUES
 (13, 'Silvio Serra', 6, 8, 5, 'polvo', 6, 1);
 
 
-INSERT INTO Policial (id, nome, lugar, regiao, corrupto) 
+INSERT INTO Policial (id, nome, lugar, regiao, corrupto)
 VALUES
-(14, 'Italo Dimetrio', 1, 1, true),
+(14, 'Italo Dimetrio', 20, 4, true),
 (15, 'Sargento Nascimento', 22, 5, false),
 (16, 'Capitão Mathias', 25, 6, false),
 (17, 'Capitão Brad', 9, 1, true),
 (18, 'Lil Chico', 26, 6, true);
 
 
-INSERT INTO Informante (id, nome, dano, lugar, regiao) 
+INSERT INTO Informante (id, nome, dano, lugar, regiao)
 VALUES
 (19, 'Cubano', 200, 13, 2),
 (20, 'Chileno', 200, 16, 3);
@@ -546,3 +546,4 @@ INSERT INTO Jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue
 
 
 COMMIT;
+
