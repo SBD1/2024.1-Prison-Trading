@@ -16,6 +16,17 @@ Caso não consiga ver o vídeo, clique neste [link](https://www.youtube.com/watc
 
 </center>
 
+---
+
+<center>
+
+# Observações
+
+</center>
+
+* Para testar o jogo entrar em `Instalação` que está disponivel na aba Jogo para fazer o tutorial de instalação.
+
+* No `DML` estão disponiveis funções de manipulação de dados e no `DQL` estão disponiveis funções de busca de dados, os comandos utilizados dentro do jogo são uma mescla deles, você pode visitar eles clicando [aqui](https://github.com/SBD1/2024.1-Prison-Trading/blob/main/src/Comandos.sql).
 
 ---
 <center>
