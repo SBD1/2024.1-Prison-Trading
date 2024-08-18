@@ -1,6 +1,4 @@
 import psycopg2
-import time
-import pygame
 
 logo = """\033[91m
 
