@@ -339,13 +339,13 @@
 
 # Tabela Fabricacao
 
-> (id, item_fabricavel) livro_fabricacao
+> (id, item_fabricavel) ➡ livro_fabricacao
 
 * **1ª Forma Normal**: Na 1ª Forma Normal, todos os atributos devem ser atômicos e monovalorados. A tabela `Fabricacao` atende a essa forma, pois todos os atributos são únicos e indivisíveis.
 
 * **2ª Forma Normal**: A 2ª Forma Normal exige que todos os atributos não-chave dependam da totalidade da chave primária. A chave primária composta é `(id, item_fabricavel)`. Todos os atributos (`item_fabricavel`, `livro_fabricacao`) dependem completamente desta chave composta, satisfazendo a 2ª Forma Normal.
 
-* **3ª Forma Normal**: A 3ª Forma Normal requer que não haja dependências transitivas de atributos não-chave sobre a chave primária. Na tabela `Fabricacao`, `item_fabricavel` e `livro_fabricacao` são totalmente dependentes da chave primária composta `(id, item_fabricavel)`, e não há dependências transitivas, atendendo assim à 3ª Forma Normal.
+* **3ª Forma Normal**: A 3ª Forma Normal requer que não haja dependências transitivas de atributos não-chave sobre a chave primária. Na tabela `Fabricacao`, `livro_fabricacao` é totalmente dependente da chave primária composta `(id, item_fabricavel)`, e não há dependências transitivas, atendendo assim à 3ª Forma Normal.
 
 * **Forma Normal de Boyce-Codd**: A Forma Normal de Boyce-Codd exige que para cada dependência funcional, o lado esquerdo seja uma chave candidata. Na tabela `Fabricacao`, as dependências funcionais são compostas pela chave primária `(id, item_fabricavel)` e todos os atributos são diretamente dependentes desta chave, atendendo à FNBC.
 
@@ -388,13 +388,13 @@
 
 # Tabela Prisao
 
-> id, nome, descricao, motim
+> id ➡ nome, descricao, motim
 
-* **1ª Forma Normal**: A 1ª Forma Normal exige que todos os atributos sejam atômicos e monovalorados. A tabela `Prisao` atende a essa forma, pois `id`, `nome` e `descricao` são valores atômicos e não compostos.
+* **1ª Forma Normal**: A 1ª Forma Normal exige que todos os atributos sejam atômicos e monovalorados. A tabela `Prisao` atende a essa forma, pois `id`, `nome`, `descricao` e `motim` são valores atômicos e não compostos.
 
-* **2ª Forma Normal**: A 2ª Forma Normal requer que todos os atributos não-chave dependam da totalidade da chave primária. A tabela `Prisao` possui uma única chave primária (`id`), e os atributos `nome` e `descricao` dependem totalmente dessa chave primária. Portanto, a tabela está em conformidade com a 2ª Forma Normal.
+* **2ª Forma Normal**: A 2ª Forma Normal requer que todos os atributos não-chave dependam da totalidade da chave primária. A tabela `Prisao` possui uma única chave primária (`id`), e os atributos `nome`, `descricao` e `motim` dependem totalmente dessa chave primária. Portanto, a tabela está em conformidade com a 2ª Forma Normal.
 
-* **3ª Forma Normal**: A 3ª Forma Normal afirma que não deve haver dependências transitivas entre atributos não-chave e a chave primária. Na tabela `Prisao`, não há atributos não-chave adicionais, então não há dependências transitivas. Portanto, a tabela está em conformidade com a 3ª Forma Normal.
+* **3ª Forma Normal**: A 3ª Forma Normal afirma que não deve haver dependências transitivas entre atributos não-chave e a chave primária. Na tabela `Prisao`, todos os atributos dependem diretamente de `id`, sem dependência transitiva, garantindo que a tabela esteja na 3ª Forma Normal.
 
 * **Forma Normal de Boyce-Codd**: A Forma Normal de Boyce-Codd exige que, para cada dependência funcional, o lado esquerdo seja uma chave candidata. Na tabela `Prisao`, a chave primária `id` é uma chave candidata e todas as dependências funcionais são baseadas nela. Portanto, a tabela atende à Forma Normal de Boyce-Codd.
 
@@ -411,7 +411,7 @@
 
 * **2ª Forma Normal**: A 2ª Forma Normal exige que todos os atributos não-chave dependam completamente da chave primária. A tabela `Regiao` possui uma única chave primária (`id`), e os atributos `nome`, `descricao` e `prisao` dependem completamente dessa chave primária. Portanto, a tabela está em conformidade com a 2ª Forma Normal.
 
-* **3ª Forma Normal**: A 3ª Forma Normal afirma que não deve haver dependências transitivas entre atributos não-chave e a chave primária. Na tabela `Regiao`, não há atributos adicionais além da chave primária `id` e os atributos dependentes, então não há dependências transitivas. Portanto, a tabela está em conformidade com a 3ª Forma Normal.
+* **3ª Forma Normal**: A 3ª Forma Normal afirma que não deve haver dependências transitivas entre atributos não-chave e a chave primária. Na tabela `Regiao`, todos os atributos dependem diretamente de `id`, sem dependência transitiva, garantindo que a tabela esteja na 3ª Forma Normal.
 
 * **Forma Normal de Boyce-Codd**: A Forma Normal de Boyce-Codd exige que, para cada dependência funcional, o lado esquerdo seja uma chave candidata. Na tabela `Regiao`, a chave primária `id` é uma chave candidata e todas as dependências funcionais são baseadas nela. Portanto, a tabela atende à Forma Normal de Boyce-Codd.
 
@@ -423,9 +423,9 @@
 
 > (id, regiao) ➡ nome, descricao, rota_final_fuga
 
-* **1ª Forma Normal**: A 1ª Forma Normal requer que todos os atributos sejam atômicos e monovalorados. A tabela `Lugar` está em conformidade com esta forma, pois `id`, `nome`, `descricao` e `regiao` são valores atômicos e não compostos.
+* **1ª Forma Normal**: A 1ª Forma Normal requer que todos os atributos sejam atômicos e monovalorados. A tabela `Lugar` está em conformidade com esta forma, pois `id`, `nome`, `descricao`, `rota_final_fuga` e `regiao` são valores atômicos e não compostos.
 
-* **2ª Forma Normal**: A 2ª Forma Normal exige que todos os atributos não-chave dependam completamente da chave primária. A tabela `Lugar` possui uma chave composta `(id, regiao)`, e os atributos `nome` e `descricao` dependem completamente dessa chave composta. Portanto, a tabela está em conformidade com a 2ª Forma Normal.
+* **2ª Forma Normal**: A 2ª Forma Normal exige que todos os atributos não-chave dependam completamente da chave primária. A tabela `Lugar` possui uma chave composta `(id, regiao)`, e os atributos `nome`, `descricao` e `rota_final_fuga` dependem completamente dessa chave composta. Portanto, a tabela está em conformidade com a 2ª Forma Normal.
 
 * **3ª Forma Normal**: A 3ª Forma Normal afirma que não deve haver dependências transitivas entre atributos não-chave e a chave primária. Na tabela `Lugar`, todos os atributos dependem diretamente da chave composta `(id, regiao)`, e não há atributos adicionais que introduzam dependências transitivas. Portanto, a tabela está em conformidade com a 3ª Forma Normal.
 
@@ -438,23 +438,23 @@
 
 # Tabela Lugar_Origem_Destino
 
-> (lugar_origem, lugar_destino) ➡ (sem atributos adicionais dependentes)
+> (lugar_origem, regiao_origem, lugar_destino, regiao_destino) ➡ (sem atributos adicionais dependentes)
 
-* **1ª Forma Normal**: A 1ª Forma Normal exige que todos os atributos sejam atômicos e monovalorados. A tabela `Lugar_Origem_Destino` está em conformidade com esta forma, pois `lugar_origem` e `lugar_destino` são valores atômicos e não compostos. Cada célula da tabela contém apenas um valor único.
+* **1ª Forma Normal**: A 1ª Forma Normal exige que todos os atributos sejam atômicos e monovalorados. A tabela `Lugar_Origem_Destino` está em conformidade com esta forma, pois `lugar_origem`, `regiao_origem`, `lugar_destino` e `regiao_destino` são valores atômicos e não compostos. Cada célula da tabela contém apenas um valor único.
 
-* **2ª Forma Normal**: A 2ª Forma Normal requer que todos os atributos não-chave dependam completamente da chave primária. A tabela `Lugar_Origem_Destino` tem uma chave primária composta `(lugar_origem, lugar_destino)`, e não há atributos adicionais na tabela além dessa chave. Portanto, a tabela está em conformidade com a 2ª Forma Normal.
+* **2ª Forma Normal**: A 2ª Forma Normal requer que todos os atributos não-chave dependam completamente da chave primária. A tabela `Lugar_Origem_Destino` tem uma chave primária composta `(lugar_origem, regiao_origem, lugar_destino, regiao_destino)`, e não há atributos adicionais na tabela além dessa chave. Portanto, a tabela está em conformidade com a 2ª Forma Normal.
 
 * **3ª Forma Normal**: A 3ª Forma Normal afirma que não deve haver dependências transitivas entre atributos não-chave e a chave primária. Na tabela `Lugar_Origem_Destino`, não há atributos não-chave adicionais; todos os atributos são parte da chave primária composta. Assim, a tabela está em conformidade com a 3ª Forma Normal.
 
-* **Forma Normal de Boyce-Codd**: A Forma Normal de Boyce-Codd exige que, para cada dependência funcional, o lado esquerdo seja uma chave candidata. Na tabela `Lugar_Origem_Destino`, a chave primária composta `(lugar_origem, lugar_destino)` é uma chave candidata para todas as dependências funcionais, e não há outras dependências funcionais a considerar. Portanto, a tabela atende à Forma Normal de Boyce-Codd.
+* **Forma Normal de Boyce-Codd**: A Forma Normal de Boyce-Codd exige que, para cada dependência funcional, o lado esquerdo seja uma chave candidata. Na tabela `Lugar_Origem_Destino`, a chave primária composta `(lugar_origem, regiao_origem, lugar_destino, regiao_destino)` é uma chave candidata para todas as dependências funcionais, e não há outras dependências funcionais a considerar. Portanto, a tabela atende à Forma Normal de Boyce-Codd.
 
-* **4ª Forma Normal**: A 4ª Forma Normal trata de dependências multivaloradas. A tabela `Lugar_Origem_Destino` não possui atributos que possam ter múltiplos valores independentes; cada combinação de `lugar_origem` e `lugar_destino` é única. Portanto, a tabela está em conformidade com a 4ª Forma Normal.
+* **4ª Forma Normal**: A 4ª Forma Normal trata de dependências multivaloradas. A tabela `Lugar_Origem_Destino` não possui atributos que possam ter múltiplos valores independentes; cada combinação de `lugar_origem`, `regiao_origem`, `lugar_destino` e `regiao_destino` é única. Portanto, a tabela está em conformidade com a 4ª Forma Normal.
 
 ---
 
 # Tabela Pessoa
 
-> id, tipo
+> id ➡ tipo
 
 * **1ª Forma Normal**: Todos os atributos são atômicos e monovalorados. A tabela `Pessoa` está em conformidade com esta forma, pois `id` e `tipo` são valores atômicos e não compostos.
 
@@ -488,7 +488,7 @@
 
 # Tabela Prisioneiro
 
-> id, lugar, nome, habilidade_briga, vida, forca, gangue
+> id ➡ lugar, nome, habilidade_briga, vida, forca, gangue
 
 * **1ª Forma Normal**: Na 1FN, cada campo da tabela deve conter apenas um valor indivisível, e todos os registros devem ter uma estrutura uniforme, sem repetições de grupos de atributos. Na tabela `Prisioneiro`, todos os atributos (`id`, `lugar`, `nome`, `habilidade_briga`, `vida`, `forca`, `gangue`) são atômicos e monovalorados, garantindo que ela esteja na 1ª Forma Normal.
 
@@ -505,7 +505,7 @@
 
 # Tabela Policial
 
-> id, lugar, nome, corrupto
+> id ➡ lugar, nome, corrupto
 
 * **1ª Forma Normal**: Na 1FN, cada campo da tabela deve conter apenas um valor indivisível, e todos os registros devem ter uma estrutura uniforme, sem repetições de grupos de atributos. Na tabela `Policial`, todos os atributos (`id`, `lugar`, `nome`, `corrupto`) são atômicos e monovalorados, garantindo que ela esteja na 1ª Forma Normal.
 
@@ -522,7 +522,7 @@
 
 # Tabela Informante
 
-> id, lugar, nome, dano
+> id ➡ lugar, nome, dano
 
 * **1ª Forma Normal**: Na 1FN, cada campo da tabela deve conter apenas um valor indivisível, e todos os registros devem ter uma estrutura uniforme, sem repetições de grupos de atributos. Na tabela `Informante`, todos os atributos (`id`, `lugar`, `nome`, `dano`) são atômicos e monovalorados, garantindo que ela esteja na 1ª Forma Normal.
 
@@ -539,7 +539,7 @@
 
 # Tabela Jogador
 
-> id, lugar, missao, nome, habilidade_briga, vida, forca, tempo_vida, gangue, nivel
+> id ➡ lugar, missao, nome, habilidade_briga, vida, forca, tempo_vida, gangue, nivel
 
 * **1ª Forma Normal**: Na 1FN, cada campo da tabela deve conter apenas um valor indivisível, e todos os registros devem ter uma estrutura uniforme, sem repetições de grupos de atributos. Na tabela `Jogador`, todos os atributos (`id`, `lugar`, `missao`, `nome`, `habilidade_briga`, `vida`, `forca`, `tempo_vida`, `gangue`, `nivel`) são atômicos e monovalorados, garantindo que ela esteja na 1ª Forma Normal.
 
@@ -556,7 +556,7 @@
 
 # Tabela Missao
 
-> id, item_nao_fabricavel, lugar, nome, descricao
+> id ➡ item_nao_fabricavel, lugar, nome, descricao
 
 * **1ª Forma Normal**: Na 1FN, cada campo da tabela deve conter apenas um valor indivisível, e todos os registros devem ter uma estrutura uniforme, sem repetições de grupos de atributos. Na tabela `Missao`, todos os atributos (`id`, `item_nao_fabricavel`, `lugar`, `nome`, `descricao`) são atômicos e monovalorados, garantindo que ela esteja na 1ª Forma Normal.
 
@@ -583,5 +583,7 @@
 | 19/07/2024 | `1.0`  | Criação do documento.                         | [João Antonio G.](https://github.com/joaoseisei)                                                                                                 |
 | 20/07/2024 | `1.1`  | Normalização do projeto.                      | [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 | 11/08/2024 | `1.2`  | Adiciona informações extras para cada tabela. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                 |
-| 12/08/2024 | `1.3`  | Atualiza normalização                         | [Júlio Cesar](https://github.com/Julio1099)                                                                                                      |
+| 12/08/2024 | `1.3`  | Atualiza normalização.                        | [Júlio Cesar](https://github.com/Julio1099)                                                                                                      |
+| 18/08/2024 | `1.4`  | Atualiza normalização.                        | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                            |
+
 </div>
