@@ -76,12 +76,12 @@ Além disso, você também precisa estar atento aos guardas e às rotinas da pri
 
 <div style="margin: 0 auto; width: fit-content;">
 
-| Módulo   | Data de entrega do Módulo | Entrega                                                                                 |
-|----------|---------------------------|-----------------------------------------------------------------------------------------|
-| Módulo 1 | 21/07/2024                | [Modelagem do projeto](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/Modulo1) |
-| Modulo 2 | --/--/2024                | DDL + DML (parcial)                                                                     |
-| Módulo 3 | --/--/2024                | Triggers, stored procedures e transactions                                              |
-| Módulo 4 | --/--/2024                | Apresentação final                                                                      |
+| Módulo   | Data de entrega do Módulo | Entrega                                                                      |
+|----------|---------------------------|------------------------------------------------------------------------------|
+| Módulo 1 | 21/07/2024                | [Modelagem](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/Modulo1) |
+| Modulo 2 | 18/08/2024                | [SQL](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/Modulo2)       |
+| Módulo 3 | --/--/2024                | Transações, Triggers, SP e Views                                             |
+| Módulo 4 | --/--/2024                | Apresentação final                                                           |
 
 </div>
 
@@ -95,12 +95,33 @@ Além disso, você também precisa estar atento aos guardas e às rotinas da pri
 
 <div style="margin: 0 auto; width: fit-content;">
 
-| Módulo 1                                                                                        |
+| Módulo 1 - 21/07/2024                                                                           |
 |:------------------------------------------------------------------------------------------------|
 | [Diagrama Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/DER) |
 | [Modelo Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/MER)   |
 | [Modelo Relacional](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/MERL)               |
 | [Dicionário de Dados](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/DD)               |
 | [Normalização](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/NORM)                    |
+
+</div>
+
+
+<div style="margin: 0 auto; width: fit-content;">
+
+| Módulo 2 - 18/08/2024                                                                                      |
+|:-----------------------------------------------------------------------------------------------------------|
+| [Correção - Diagrama Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/DER) |
+| [Correção - Modelo Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/MER)   |
+| [Correção - Modelo Relacional](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/MERL)               |
+| [Correção - Dicionário de Dados](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/DD)               |
+| [Correção - Normalização](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/NORM)                    |
+| [Tabela de Dados](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/TDs)                             |
+| [Linguagem de Definição de Dados - DDL](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DDL)       |
+| [Linguagem de Manipulação de Dados - DML](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DML)     |
+| [Linguagem de Consulta de Dados - DQL](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DQL)        |
+| [Álgebra Relacional](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/AL-REL)                       |
+| [Roadmap](https://sbd1.github.io/2024.1-Prison-Trading/#/Jogo/Roadmap)                                     |
+| [Tutorial de Instalação](https://sbd1.github.io/2024.1-Prison-Trading/#/Jogo/Info)                         |
+| [Jogo demo](https://github.com/SBD1/2024.1-Prison-Trading/blob/main/src/main.py)                           |
 
 </div>

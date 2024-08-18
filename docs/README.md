@@ -79,7 +79,7 @@ Além disso, você também precisa estar atento aos guardas e às rotinas da pri
 | Módulo   | Data de entrega do Módulo | Entrega                                                                      |
 |----------|---------------------------|------------------------------------------------------------------------------|
 | Módulo 1 | 21/07/2024                | [Modelagem](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/Modulo1) |
-| Modulo 2 | -x/08/2024                | [SQL](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/Modulo2)       |
+| Modulo 2 | 18/08/2024                | [SQL](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/Modulo2)       |
 | Módulo 3 | --/--/2024                | Transações, Triggers, SP e Views                                             |
 | Módulo 4 | --/--/2024                | Apresentação final                                                           |
 
@@ -108,7 +108,7 @@ Além disso, você também precisa estar atento aos guardas e às rotinas da pri
 
 <div style="margin: 0 auto; width: fit-content;">
 
-| Módulo 2 - x/08/2024                                                                                       |
+| Módulo 2 - 18/08/2024                                                                                      |
 |:-----------------------------------------------------------------------------------------------------------|
 | [Correção - Diagrama Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/DER) |
 | [Correção - Modelo Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/MER)   |
@@ -121,6 +121,7 @@ Além disso, você também precisa estar atento aos guardas e às rotinas da pri
 | [Linguagem de Consulta de Dados - DQL](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DQL)        |
 | [Álgebra Relacional](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/AL-REL)                       |
 | [Roadmap](https://sbd1.github.io/2024.1-Prison-Trading/#/Jogo/Roadmap)                                     |
-| [Comandos básicos em Python](https://sbd1.github.io/2024.1-Prison-Trading/#/Jogo/Info)                     |
+| [Tutorial de Instalação](https://sbd1.github.io/2024.1-Prison-Trading/#/Jogo/Info)                         |
+| [Jogo demo](https://github.com/SBD1/2024.1-Prison-Trading/blob/main/src/main.py)                           |
 
 </div>
