@@ -108,7 +108,7 @@
   - [DDL](Modulo-2/DDL.md)
     * [Histórico de versão](Modulo-2/DDL.md#histórico-de-versão)
   - [DML](Modulo-2/DML.md)
-    * [Insets](Modulo-2/DML.md#inserts)
+    * [Inserts](Modulo-2/DML.md#inserts)
     * [Comandos Usados](Modulo-2/DML.md#comandos-usados)
     * [Histórico de versão](Modulo-2/DML.md#histórico-de-versão)
   - [DQL](Modulo-2/DQL.md)
