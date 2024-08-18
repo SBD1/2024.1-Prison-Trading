@@ -1,6 +1,6 @@
 <center>
 
-# Como jogar?
+# Instalação
 
 </center>
 
@@ -9,7 +9,7 @@
 ---
 <center>
 
-# 1º Passo - Criação do usuario padrão
+# Primeiro passo Criação do usuário padrão
 
 </center>
 
@@ -32,7 +32,7 @@ COMMENT ON ROLE prison_trading_user IS 'Usuário padrão para acesso ao banco de
 ---
 <center>
 
-# 2º Passo - Criação do server
+# Segundo passo Criação do server
 
 </center>
 
@@ -50,7 +50,7 @@ COMMENT ON ROLE prison_trading_user IS 'Usuário padrão para acesso ao banco de
 ---
 <center>
 
-# 3° Passo - Criação do database
+# Terceiro passo Criação do database
 
 </center>
 
@@ -79,7 +79,7 @@ Imagem:
 ---
 <center>
 
-# 4º Passo - Criação das tabelas
+# Quarto passo Criação das tabelas
 
 </center>
 
@@ -88,11 +88,40 @@ Imagem:
 ---
 <center>
 
-# 5º Passo - População das tabelas
+# Quinto passo População das tabelas
 
 </center>
 
 > Para população das tabelas basta utilizar o DML do projeto encontrado [aqui](https://github.com/SBD1/2024.1-Prison-Trading/blob/main/src/DML.sql).
+
+---
+<center>
+
+# Sexto passo Rodar clonar o repositório e abrir a branch main
+
+</center>
+
+> Repositório disponivel [aqui](https://github.com/SBD1/2024.1-Prison-Trading)
+
+---
+<center>
+
+# Sétimo passo Baixar as bibliotecas usadas.
+
+</center>
+
+> Digitar esse comando no terminal:
+
+````python
+pip install psycopg2
+````
+
+---
+<center>
+
+# Oitavo passo Rodar o jogo.
+
+</center>
 
 ---
 
