@@ -1,5 +1,6 @@
 import psycopg2
 import os
+import sys
 
 logo = """\033[91m
 
@@ -72,6 +73,7 @@ db = DatabaseConnection()
 
 class Game:
     def __init__(self):
+        self.id_jogador = ''
         self.lugar_atual = ''
         self.regiao_atual = ''
 
@@ -150,18 +152,73 @@ class Game:
 
 
     def login(self):
-        query = db.execute_fetchall("""
-            SELECT jog.lugar, jog.regiao
-            FROM jogador jog
-            WHERE jog.id = 1;
-        """)
-        if query:
-            self.lugar_atual = query[0][0]
-            self.regiao_atual = query[0][1]
-            return True
+        print("Bem-vindo ao menu, digite o que deseja fazer:"
+              
+            "\nENTRAR - Para entrar com um jogador específico."
+            "\nREGISTRAR - Para registrar um jogador novo."
+            "\nSAIR - Para sair.")
+
+        input_usuario = input('\033[92mDigite o comando: \033[0m').strip().upper()
+
+
+        if input_usuario == "ENTRAR":
+            query = db.execute_fetchall("""
+                SELECT jog.id, jog.nome, jog.nivel
+                FROM jogador jog
+                ORDER BY jog.id;
+            """)
+            if query:
+                print("Jogadores diponíveis")
+                for resultado in query:
+                    print(f'ID: {resultado[0]}\tNome: {resultado[1]}\tNível: {resultado[2]}')
+                self.id_jogador = input("\033[92mDigite o ID do jogador escolhido para seleciona-lo: \033[0m")
+                query = db.execute_fetchone("""
+                    SELECT jog.nome, jog.lugar, jog.regiao
+                    FROM jogador jog
+                    WHERE jog.id = %s;
+                """, (self.id_jogador,))
+                if query:
+                    nome, self.lugar_atual, self.regiao_atual = query
+                    print(f'\033[92mLogin realizado com sucesso. \nBem-vindo {nome}.\033[0m')
+                    return True
+                else:
+                    print("\033[91mId de jogador não encontrado.\033[0m")
+                    self.login()
+
+        elif input_usuario == "REGISTRAR":
+            nome = input("Digite o nome do jogador: ")
+
+            db.execute_commit(f"""
+                BEGIN;
+                    INSERT INTO pessoa (tipo)
+                    VALUES ('jogador')
+                    RETURNING id;
+                    
+                    DO $$ 
+                    DECLARE 
+                        novo_id INT;
+                    BEGIN
+                        SELECT MAX(id) INTO novo_id FROM pessoa;
+                        INSERT INTO jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue, nivel, missao, lugar, regiao)
+                        VALUES (novo_id, '{nome}', 2, 5, 3, 10, NULL, 0, NULL, 2, 1);
+                    END $$;
+                    
+                COMMIT;
+            """)
+            print("\033[92mJogador salvo com sucesso.\033[0m")
+            self.clear()
+            self.login()
+
+        elif input_usuario == "SAIR":
+            print("Digite ALT + f4")
+            sys.exit(0)
+
         else:
-            print("Nenhum jogador encontrado.")
-            return False
+            print("\033[94mComando desconhecido.\033[0m")
+            self.login()
+
+        return False
+
 
     def mover(self, input_usuario):
         _, lugar_id = input_usuario.split(maxsplit=1)
