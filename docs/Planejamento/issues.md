@@ -137,6 +137,14 @@
 
 ---
 
+## 17 Orientar o código
+
+> João
+> 
+> BUGFIX
+
+---
+
 <center>
 
 # Histórico de Versão

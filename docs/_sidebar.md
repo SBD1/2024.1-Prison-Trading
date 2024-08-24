@@ -7,6 +7,7 @@
 * Planejamento
   - [Heatmap](Planejamento/Heatmap.md)
   - [Ferramentas utilizadas](Planejamento/Ferramentas.md)
+  - [Issues](Planejamento/issues.md)
 
 * Módulo 1
   - [Diagrama Entidade-Relacionamento](Modulo-1/DER.md)
