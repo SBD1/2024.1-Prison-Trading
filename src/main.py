@@ -343,7 +343,7 @@ class Game:
             SELECT j.nome, j.habilidade_briga, j.vida, j.forca, j.tempo_vida, j.gangue, j.nivel, j.missao, j.lugar, j.regiao, i.tamanho, i.inventario_ocupado 
             FROM jogador j
             JOIN inventario i ON i.pessoa = j.id
-            WHERE j.id = %s
+            WHERE j.id = %s;
         """, (self.id_jogador,))
         if query:
             self.nome, self.habilidade_briga, self.vida, self.forca, self.tempo_vida, self.gangue, self.nivel, self.missao, self.lugar_atual, self.regiao_atual, tamanho, self.inventario_ocupado= query
