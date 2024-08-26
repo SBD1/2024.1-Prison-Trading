@@ -84,6 +84,8 @@ class Game:
               "\n'MAPA' - Para ver os possíveis lugares onde você pode ir."
               "\n'PESSOAS' - Para ver as pessoas que estão no mesmo lugar que você."
               "\n'ITENS' - Para ver os itens que estão no mesmo lugar que você."
+              "\n'INVENTARIO' - Para ver os itens que estão no seu inventário."
+              "\n'INFO' - Para ver as informações de um item."
               "\n'MOVER + ' ' + ID' - Para se movimentar de um lugar para outro."
               "\n'HELP' - Para ver os possíveis comandos."
               "\n'CLEAR' - Para limpar o terminal."
@@ -151,6 +153,84 @@ class Game:
         else:
             print("Nenhum item nessa sala.")
 
+    def inventario(self):
+        query = db.execute_fetchall("""
+            SELECT COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome, i.inventario_ocupado, i.tamanho
+            FROM inventario AS i
+            LEFT JOIN instancia_item AS t ON i.id = t.inventario
+            LEFT JOIN arma AS arm ON arm.id = t.item
+            LEFT JOIN ferramenta AS fer ON fer.id = t.item
+            LEFT JOIN comida AS com ON com.id = t.item
+            LEFT JOIN medicamento AS med ON med.id = t.item
+            LEFT JOIN utilizavel AS uti ON uti.id = t.item
+            WHERE i.pessoa = %s
+            ORDER BY nome;
+        """, (self.id_jogador,))
+
+        if query:
+            print("Inventário:")
+            print("Tamanho do Inventário: " + str(query[0][2]) + "\tTamanho Ocupado: " + str(query[0][1]))
+            for resultado in query:
+                if query[0][0] is not None:
+                    print(resultado[0])
+        if any(resultado[0] is None for resultado in query):
+            print("Nenhum item no inventário.")
+
+    def info(self):
+        nomeItem = str(input("Digite nome do item: "))
+
+        query = db.execute_fetchall("""
+            SELECT COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome,
+                   COALESCE(arm.tamanho, fer.tamanho, com.tamanho, med.tamanho, uti.tamanho) AS tamanho,
+                   COALESCE(arm.descricao, fer.descricao, com.descricao, med.descricao, uti.descricao) AS descricao,
+                   arm.dano AS dano,
+                   fer.utilidade AS utilidade,
+                   COALESCE(com.raridade, med.raridade, uti.raridade) AS raridade,
+                   COALESCE(com.quantidade, med.quantidade, uti.quantidade) AS quantidade,
+                   com.recuperacao_vida AS recuperacao_vida,
+                   med.cura AS cura,
+                   uti.durabilidade AS durabilidade,
+                   CASE
+                        WHEN arm.nome IS NOT NULL THEN 'arma'
+                        WHEN fer.nome IS NOT NULL THEN 'ferramenta'
+                        WHEN com.nome IS NOT NULL THEN 'comida'
+                        WHEN med.nome IS NOT NULL THEN 'medicamento'
+                        WHEN uti.nome IS NOT NULL THEN 'utilizavel'
+                   ELSE 'desconhecido'
+               END AS tipo
+            FROM inventario AS i
+            LEFT JOIN instancia_item AS t ON i.id = t.inventario
+            LEFT JOIN arma AS arm ON arm.id = t.item
+            LEFT JOIN ferramenta AS fer ON fer.id = t.item
+            LEFT JOIN comida AS com ON com.id = t.item
+            LEFT JOIN medicamento AS med ON med.id = t.item
+            LEFT JOIN utilizavel AS uti ON uti.id = t.item
+            WHERE i.pessoa = %s AND COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) = %s
+        """, (self.id_jogador, nomeItem,))
+
+        if query:
+            for resultado in query:
+                if resultado[0] is not None:
+                    if resultado[10] == "arma":
+                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[2] + "\nDano: " + str(
+                            resultado[3]))
+                    if resultado[10] == "ferramenta":
+                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[
+                            2] + "\nUtilidade: " + str(resultado[4]))
+                    if resultado[10] == "comida":
+                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[
+                            2] + "\nRaridade: " + str(resultado[5]) + "\nQuantidade: " + str(
+                            resultado[6]) + "\nRecuperacao de Vida: " + str(resultado[7]))
+                    if resultado[10] == "medicamento":
+                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[
+                            2] + "\nRaridade: " + str(resultado[5]) + "\nQuantidade: " + str(
+                            resultado[6]) + "\nCura: " + str(resultado[8]))
+                    if resultado[10] == "utilizavel":
+                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[
+                            2] + "\nRaridade: " + str(resultado[5]) + "\nQuantidade: " + str(
+                            resultado[6]) + "\nDurabilidade: " + str(resultado[9]))
+        else:
+            print("Nenhuma informação para ver.")
 
     def login(self):
         print("Bem-vindo ao menu, digite o que deseja fazer:"
@@ -268,7 +348,9 @@ class Game:
             "PESSOAS": self.pessoas,
             "ITENS": self.itens,
             "HELP": self.help,
-            "CLEAR": self.clear
+            "CLEAR": self.clear,
+            "INVENTARIO": self.inventario,
+            "INFO": self.info,
         }
 
         while True:
