@@ -1,14 +1,16 @@
 import psycopg2
 import os
+import sys
+import time
 
 logo = """\033[91m
 
-██████╗ ██████╗ ██╗███████╗ ██████╗ ███╗   ██╗    ████████╗██████╗  █████╗ ██████╗ ██╗███╗   ██╗ ██████╗ 
-██╔══██╗██╔══██╗██║██╔════╝██╔═══██╗████╗  ██║    ╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║██╔════╝ 
-██████╔╝██████╔╝██║███████╗██║   ██║██╔██╗ ██║       ██║   ██████╔╝███████║██║  ██║██║██╔██╗ ██║██║  ███╗
-██╔═══╝ ██╔══██╗██║╚════██║██║   ██║██║╚██╗██║       ██║   ██╔══██╗██╔══██║██║  ██║██║██║╚██╗██║██║   ██║
-██║     ██║  ██║██║███████║╚██████╔╝██║ ╚████║       ██║   ██║  ██║██║  ██║██████╔╝██║██║ ╚████║╚██████╔╝
-╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝       ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ 
+  ██████╗ ██████╗ ██╗███████╗ ██████╗ ███╗   ██╗    ████████╗██████╗  █████╗ ██████╗ ██╗███╗   ██╗ ██████╗ 
+  ██╔══██╗██╔══██╗██║██╔════╝██╔═══██╗████╗  ██║    ╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║██╔════╝ 
+  ██████╔╝██████╔╝██║███████╗██║   ██║██╔██╗ ██║       ██║   ██████╔╝███████║██║  ██║██║██╔██╗ ██║██║  ███╗
+  ██╔═══╝ ██╔══██╗██║╚════██║██║   ██║██║╚██╗██║       ██║   ██╔══██╗██╔══██║██║  ██║██║██║╚██╗██║██║   ██║
+  ██║     ██║  ██║██║███████║╚██████╔╝██║ ╚████║       ██║   ██║  ██║██║  ██║██████╔╝██║██║ ╚████║╚██████╔╝
+  ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝       ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ 
 
 \033[0m"""
 
@@ -72,9 +74,9 @@ db = DatabaseConnection()
 
 class Game:
     def __init__(self):
+        self.id_jogador = ''
         self.lugar_atual = ''
         self.regiao_atual = ''
-        self.id_jogador = ''
 
     def help(self):
         print("Bem-vindo, digite "
@@ -161,10 +163,10 @@ class Game:
             LEFT JOIN comida AS com ON com.id = t.item
             LEFT JOIN medicamento AS med ON med.id = t.item
             LEFT JOIN utilizavel AS uti ON uti.id = t.item
-            WHERE i.pessoa = 1
+            WHERE i.pessoa = %s
             ORDER BY nome;
-        """, (self.id_jogador))
-    
+        """, (self.id_jogador,))
+
         if query:
             print("Inventário:")
             print("Tamanho do Inventário: " + str(query[0][2]) + "\tTamanho Ocupado: " + str(query[0][1]))
@@ -203,39 +205,102 @@ class Game:
             LEFT JOIN comida AS com ON com.id = t.item
             LEFT JOIN medicamento AS med ON med.id = t.item
             LEFT JOIN utilizavel AS uti ON uti.id = t.item
-            WHERE i.pessoa = 1 AND COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) = %s
-        """, (nomeItem, ))
-        
+            WHERE i.pessoa = %s AND COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) = %s
+        """, (self.id_jogador, nomeItem,))
+
         if query:
             for resultado in query:
                 if resultado[0] is not None:
                     if resultado[10] == "arma":
-                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[2] + "\nDano: " + str(resultado[3]))
+                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[2] + "\nDano: " + str(
+                            resultado[3]))
                     if resultado[10] == "ferramenta":
-                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[2] + "\nUtilidade: " + str(resultado[4]))
+                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[
+                            2] + "\nUtilidade: " + str(resultado[4]))
                     if resultado[10] == "comida":
-                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[2] + "\nRaridade: " + str(resultado[5]) + "\nQuantidade: " + str(resultado[6]) + "\nRecuperacao de Vida: " + str(resultado[7]))
+                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[
+                            2] + "\nRaridade: " + str(resultado[5]) + "\nQuantidade: " + str(
+                            resultado[6]) + "\nRecuperacao de Vida: " + str(resultado[7]))
                     if resultado[10] == "medicamento":
-                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[2] + "\nRaridade: " + str(resultado[5]) + "\nQuantidade: "+ str(resultado[6]) + "\nCura: " + str(resultado[8]))
+                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[
+                            2] + "\nRaridade: " + str(resultado[5]) + "\nQuantidade: " + str(
+                            resultado[6]) + "\nCura: " + str(resultado[8]))
                     if resultado[10] == "utilizavel":
-                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[2] + "\nRaridade: " + str(resultado[5]) + "\nQuantidade: "+ str(resultado[6]) + "\nDurabilidade: " + str(resultado[9]))
+                        print(resultado[0] + "\nTamanho: " + str(resultado[1]) + "\n" + resultado[
+                            2] + "\nRaridade: " + str(resultado[5]) + "\nQuantidade: " + str(
+                            resultado[6]) + "\nDurabilidade: " + str(resultado[9]))
         else:
             print("Nenhuma informação para ver.")
-            
-    
+
     def login(self):
-        query = db.execute_fetchall("""
-            SELECT jog.lugar, jog.regiao
-            FROM jogador jog
-            WHERE jog.id = 1;
-        """)
-        if query:
-            self.lugar_atual = query[0][0]
-            self.regiao_atual = query[0][1]
-            return True
+        print("Bem-vindo ao menu, digite o que deseja fazer:"
+              
+            "\nENTRAR - Para entrar com um jogador específico."
+            "\nREGISTRAR - Para registrar um jogador novo."
+            "\nSAIR - Para sair.")
+
+        input_usuario = input('\033[92mDigite o comando: \033[0m').strip().upper()
+
+
+        if input_usuario == "ENTRAR":
+            query = db.execute_fetchall("""
+                SELECT jog.id, jog.nome, jog.nivel
+                FROM jogador jog
+                ORDER BY jog.id;
+            """)
+            if query:
+                print("Jogadores diponíveis")
+                for resultado in query:
+                    print(f'ID: {resultado[0]}\tNome: {resultado[1]}\tNível: {resultado[2]}')
+                self.id_jogador = input("\033[92mDigite o ID do jogador escolhido para seleciona-lo: \033[0m")
+                query = db.execute_fetchone("""
+                    SELECT jog.nome, jog.lugar, jog.regiao
+                    FROM jogador jog
+                    WHERE jog.id = %s;
+                """, (self.id_jogador,))
+                if query:
+                    nome, self.lugar_atual, self.regiao_atual = query
+                    print(f'\033[92mLogin realizado com sucesso. \nBem-vindo {nome}.\033[0m')
+                    return True
+                else:
+                    print("\033[91mId de jogador não encontrado.\033[0m")
+                    self.login()
+
+        elif input_usuario == "REGISTRAR":
+            nome = input("Digite o nome do jogador: ")
+
+            db.execute_commit(f"""
+                BEGIN;
+                    INSERT INTO pessoa (tipo)
+                    VALUES ('jogador')
+                    RETURNING id;
+                    
+                    DO $$ 
+                    DECLARE 
+                        novo_id INT;
+                    BEGIN
+                        SELECT MAX(id) INTO novo_id FROM pessoa;
+                        INSERT INTO jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue, nivel, missao, lugar, regiao)
+                        VALUES (novo_id, '{nome}', 2, 5, 3, 10, NULL, 0, NULL, 2, 1);
+                    END $$;
+                    
+                COMMIT;
+            """)
+            print("\033[92mJogador salvo com sucesso.\033[0m")
+            time.sleep(5)
+            self.clear()
+            self.login()
+
+        elif input_usuario == "SAIR":
+            print("Digite ALT + f4")
+            sys.exit(0)
+
         else:
-            print("Nenhum jogador encontrado.")
-            return False
+            print("\033[94mComando desconhecido.\033[0m")
+            self.login()
+
+        return False
+
 
     def mover(self, input_usuario):
         _, lugar_id = input_usuario.split(maxsplit=1)
@@ -282,10 +347,10 @@ class Game:
             "MAPA": self.mapa,
             "PESSOAS": self.pessoas,
             "ITENS": self.itens,
+            "HELP": self.help,
+            "CLEAR": self.clear,
             "INVENTARIO": self.inventario,
             "INFO": self.info,
-            "HELP": self.help,
-            "CLEAR": self.clear
         }
 
         while True:
@@ -300,6 +365,7 @@ class Game:
                 print("Opção inválida, digite 'HELP' para ver os comandos suportados.")
 
     def start(self):
+        self.clear()
         if self.login():
             self.gameLoop()
 
