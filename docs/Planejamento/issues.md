@@ -145,6 +145,14 @@
 
 ---
 
+## 18 Melhorar menus
+
+> João
+> 
+> BUGFIX
+
+---
+
 <center>
 
 # Histórico de Versão
