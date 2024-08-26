@@ -2,6 +2,7 @@ import psycopg2
 import os
 import sys
 import time
+import keyboard
 
 logo = """\033[91m
 
@@ -153,6 +154,29 @@ class Game:
         else:
             print("Nenhum item nessa sala.")
 
+    def criar_menu(self, opcoes):
+        opcao = 0
+        opcao_anterior = -1
+        tam = len(opcoes)
+        while True:
+            if opcao != opcao_anterior:
+                self.clear()
+                for i, opc in enumerate(opcoes):
+                    if i == opcao:
+                        print(f"\033[93m{opc}\033[0m")
+                    else:
+                        print(opc)
+                opcao_anterior = opcao
+            if keyboard.is_pressed('down') or keyboard.is_pressed('s'):
+                opcao = (opcao + 1) % tam
+                time.sleep(0.2)
+            elif keyboard.is_pressed('up') or keyboard.is_pressed('w'):
+                opcao = (opcao - 1) % tam
+                time.sleep(0.2)
+            elif keyboard.is_pressed('enter'):
+                input()
+                self.clear()
+                return opcao
     def inventario(self):
         query = db.execute_fetchall("""
             SELECT COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome, i.inventario_ocupado, i.tamanho
@@ -233,26 +257,22 @@ class Game:
             print("Nenhuma informação para ver.")
 
     def login(self):
-        print("Bem-vindo ao menu, digite o que deseja fazer:"
-              
-            "\nENTRAR - Para entrar com um jogador específico."
-            "\nREGISTRAR - Para registrar um jogador novo."
-            "\nSAIR - Para sair.")
+        opcoes = ["\tENTRAR", "\tREGISTRAR", "\tCRÉDITOS", "\tSAIR"]
+        opcao = self.criar_menu(opcoes)
 
-        input_usuario = input('\033[92mDigite o comando: \033[0m').strip().upper()
-
-
-        if input_usuario == "ENTRAR":
+        if opcao == 0:
+            print("\033[92mÁREA DE LOGIN\n\033[0m")
             query = db.execute_fetchall("""
                 SELECT jog.id, jog.nome, jog.nivel
                 FROM jogador jog
                 ORDER BY jog.id;
             """)
             if query:
-                print("Jogadores diponíveis")
+                print("+----------------+---------------+--------------------------------------------------------------------+")
                 for resultado in query:
-                    print(f'ID: {resultado[0]}\tNome: {resultado[1]}\tNível: {resultado[2]}')
-                self.id_jogador = input("\033[92mDigite o ID do jogador escolhido para seleciona-lo: \033[0m")
+                    print(f'| ID: {resultado[0]:02}\t | Nível: {resultado[2]:02}\t | Nome: {resultado[1]} |')
+                print("+----------------+---------------+--------------------------------------------------------------------+")
+                self.id_jogador = input("\033[92mDigite o ID do jogador escolhido para selecioná-lo: \033[0m")
                 query = db.execute_fetchone("""
                     SELECT jog.nome, jog.lugar, jog.regiao
                     FROM jogador jog
@@ -260,76 +280,84 @@ class Game:
                 """, (self.id_jogador,))
                 if query:
                     nome, self.lugar_atual, self.regiao_atual = query
-                    print(f'\033[92mLogin realizado com sucesso. \nBem-vindo {nome}.\033[0m')
-                    return True
+                    print(f'\033[92mLogin realizado com sucesso. \nBem-vindo {nome}\033[0m')
+                    time.sleep(3)
+                    self.clear()
+                    return
                 else:
-                    print("\033[91mId de jogador não encontrado.\033[0m")
-                    self.login()
+                    print("\033[91mID de jogador não encontrado.\033[0m")
+                    return self.login()
 
-        elif input_usuario == "REGISTRAR":
+        elif opcao == 1:
+            print("\033[92mÁREA DE REGISTRO\n\033[0m")
             nome = input("Digite o nome do jogador: ")
-
-            db.execute_commit(f"""
+            db.execute_commit("""
                 BEGIN;
-                    INSERT INTO pessoa (tipo)
-                    VALUES ('jogador')
-                    RETURNING id;
-                    
-                    DO $$ 
-                    DECLARE 
-                        novo_id INT;
-                    BEGIN
-                        SELECT MAX(id) INTO novo_id FROM pessoa;
-                        INSERT INTO jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue, nivel, missao, lugar, regiao)
-                        VALUES (novo_id, '{nome}', 2, 5, 3, 10, NULL, 0, NULL, 2, 1);
-                    END $$;
-                    
+                INSERT INTO pessoa (tipo)
+                VALUES ('jogador')
+                RETURNING id;
+
+                DO $$ 
+                DECLARE 
+                    novo_id INT;
+                BEGIN
+                    SELECT MAX(id) INTO novo_id FROM pessoa;
+                    INSERT INTO jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue, nivel, missao, lugar, regiao)
+                    VALUES (novo_id, %s, 2, 5, 3, 10, NULL, 0, NULL, 2, 1);
+                END $$;
                 COMMIT;
-            """)
+            """, (nome,))
             print("\033[92mJogador salvo com sucesso.\033[0m")
-            time.sleep(5)
+            time.sleep(3)
             self.clear()
-            self.login()
+            return self.login()
 
-        elif input_usuario == "SAIR":
-            print("Digite ALT + f4")
+        elif opcao == 2:
+            print("\033[92mCRÉDITOS\033[0m\n")
+            print("Prison Trading é um jogo de trocas baseado em 'The Escapists',"
+                  "\ncriado no semestre 2024-1 na disciplina Sistema de Banco de Dados 1 com professor Mauricio Serrano."
+                  "\n\n\033[97mFundadores do jogo:\033[0m\n"
+                  "\n Breno Alexandre Soares Garcia - 200035703"
+                  "\n Fernando Gabriel dos Santos Carrijo - 221008033"
+                  "\n João Antonio Ginuino Carvalho - 221008150"
+                  "\n Júlio Cesar Gomes de Souza Crispim - 221007591")
+            input("\n\033[93mPrecione qualquer tecla para sair\033[0m")
+            time.sleep(1)
+            self.clear()
+            return self.login()
+
+        elif opcao == 3:
+            print("\033[92mObrigado por jogar :)\033[0m")
             sys.exit(0)
-
-        else:
-            print("\033[94mComando desconhecido.\033[0m")
-            self.login()
-
-        return False
 
 
     def mover(self, input_usuario):
         _, lugar_id = input_usuario.split(maxsplit=1)
 
         query = db.execute_fetchall("""
-            SELECT lug.id
-            FROM lugar_origem_destino ori
-            JOIN lugar lug ON ori.lugar_destino = lug.id
-            JOIN regiao reg ON lug.regiao = reg.id
-            WHERE ori.lugar_origem = %s
-            ORDER BY lug.nome;
-        """, (self.lugar_atual,))
+                    SELECT lug.id
+                    FROM lugar_origem_destino ori
+                    JOIN lugar lug ON ori.lugar_destino = lug.id
+                    JOIN regiao reg ON lug.regiao = reg.id
+                    WHERE ori.lugar_origem = %s
+                    ORDER BY lug.nome;
+                """, (self.lugar_atual,))
 
         verifica = any(str(resultado[0]) == lugar_id for resultado in query)
 
         if verifica:
             query = db.execute_fetchall("""
-               SELECT regiao 
-               FROM lugar
-               WHERE id = %s;
-            """, (lugar_id,))
+                       SELECT regiao 
+                       FROM lugar
+                       WHERE id = %s;
+                    """, (lugar_id,))
             regiao = query[0][0]
 
             db.execute_commit("""
-                UPDATE Jogador 
-                SET lugar = %s, regiao = %s
-                WHERE id = 1;
-            """, (lugar_id, regiao))
-
+                        UPDATE Jogador 
+                        SET lugar = %s, regiao = %s
+                        WHERE id = 1;
+                    """, (lugar_id, regiao))
 
             self.lugar_atual = lugar_id
             self.regiao_atual = regiao
@@ -337,9 +365,11 @@ class Game:
         else:
             print("A sala atual não possui conexões com a que o jogador digitou.")
 
+
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(logo)
+
 
     def gameLoop(self):
         comandos = {
@@ -364,10 +394,11 @@ class Game:
             else:
                 print("Opção inválida, digite 'HELP' para ver os comandos suportados.")
 
+
     def start(self):
         self.clear()
-        if self.login():
-            self.gameLoop()
+        self.login()
+        self.gameLoop()
 
 
 Prison_Tradign = Game()
