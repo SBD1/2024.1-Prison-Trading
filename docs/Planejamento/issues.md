@@ -8,7 +8,7 @@
 
 ---
 
-## 01 Criar menu - (iniciar jogo) 
+## 01 Criar menu - (iniciar jogo) - DONE
 
 > João - Fernando
 > 
@@ -16,7 +16,7 @@
 
 ---
 
-## 02 Criar inventário
+## 02 Criar inventário - DONE
 
 > Bob - Júlio
 > 
@@ -26,7 +26,7 @@
 
 ## 03 Criar menu salas
 
-> (PRONTO)
+> João - Fernando - Júlio
 >
 > Abrir uma para mostrar o mapa em si (Bob)
 > 
@@ -34,15 +34,15 @@
 
 ---
 
-## 04 Criar menu itens da sala
+## 04 Criar menu itens da sala - DONE
 
-> (PRONTO)
+> João
 > 
 > FEATURE
 
 ---
 
-## 05 Pegar os itens da sala
+## 05 Pegar os itens da sala - DONE
 
 > Júlio - Bob
 > 
@@ -50,9 +50,9 @@
 
 ---
 
-## 06 Criar menu de pessoas na sala
+## 06 Criar menu de pessoas na sala - DONE
 
-> (PRONTO)
+> João
 > 
 > FEATURE
 
@@ -74,7 +74,7 @@
 
 ---
 
-## 09 Criar menu status jogador
+## 09 Criar menu status jogador - DONE
 
 > Bob - João
 > 
@@ -137,7 +137,7 @@
 
 ---
 
-## 17 Orientar o código
+## 17 Orientar o código - DONE
 
 > João
 > 
@@ -145,7 +145,7 @@
 
 ---
 
-## 18 Melhorar menus
+## 18 Melhorar menus - DONE
 
 > João
 > 
@@ -162,8 +162,9 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão |       Descrição       | Autores                                          |
-|:----------:|:------:|:---------------------:|--------------------------------------------------|
-| 23/08/2024 | `1.0`  | Criação do documento. | [João Antonio G.](https://github.com/joaoseisei) |
+|    Data    | Versão |        Descrição         | Autores                                          |
+|:----------:|:------:|:------------------------:|--------------------------------------------------|
+| 23/08/2024 | `1.0`  |  Criação do documento.   | [João Antonio G.](https://github.com/joaoseisei) |
+| 26/08/2024 | `1.1`  | Adiciona issues prontas. | [João Antonio G.](https://github.com/joaoseisei) |
 
 </div>
