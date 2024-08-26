@@ -156,7 +156,6 @@ class Game:
         opcao = 0
         opcao_anterior = -1
         tam = len(opcoes)
-
         while True:
             if opcao != opcao_anterior:
                 self.clear()
@@ -166,7 +165,6 @@ class Game:
                     else:
                         print(opc)
                 opcao_anterior = opcao
-
             if keyboard.is_pressed('down') or keyboard.is_pressed('s'):
                 opcao = (opcao + 1) % tam
                 time.sleep(0.2)
@@ -183,16 +181,17 @@ class Game:
         opcao = self.criar_menu(opcoes)
 
         if opcao == 0:
-            print("\033[92mLOGIN\n\033[0m")
+            print("\033[92mÁREA DE LOGIN\n\033[0m")
             query = db.execute_fetchall("""
                 SELECT jog.id, jog.nome, jog.nivel
                 FROM jogador jog
                 ORDER BY jog.id;
             """)
             if query:
-                print("Jogadores disponíveis:")
+                print("+----------------+---------------+--------------------------------------------------------------------+")
                 for resultado in query:
-                    print(f'ID: {resultado[0]}\tNome: {resultado[1]}\tNível: {resultado[2]}')
+                    print(f'| ID: {resultado[0]:02}\t | Nível: {resultado[2]:02}\t | Nome: {resultado[1]} |')
+                print("+----------------+---------------+--------------------------------------------------------------------+")
                 self.id_jogador = input("\033[92mDigite o ID do jogador escolhido para selecioná-lo: \033[0m")
                 query = db.execute_fetchone("""
                     SELECT jog.nome, jog.lugar, jog.regiao
@@ -210,10 +209,8 @@ class Game:
                     return self.login()
 
         elif opcao == 1:
-            print("\033[92mREGISTRO\n\033[0m")
-
+            print("\033[92mÁREA DE REGISTRO\n\033[0m")
             nome = input("Digite o nome do jogador: ")
-
             db.execute_commit("""
                 BEGIN;
                 INSERT INTO pessoa (tipo)
@@ -239,7 +236,7 @@ class Game:
             print("\033[92mCRÉDITOS\033[0m\n")
             print("Prison Trading é um jogo de trocas baseado em 'The Escapists',"
                   "\ncriado no semestre 2024-1 na disciplina Sistema de Banco de Dados 1 com professor Mauricio Serrano."
-                  "\n\n\033[94mFundadores do jogo:\033[0m\n"
+                  "\n\n\033[97mFundadores do jogo:\033[0m\n"
                   "\n Breno Alexandre Soares Garcia - 200035703"
                   "\n Fernando Gabriel dos Santos Carrijo - 221008033"
                   "\n João Antonio Ginuino Carvalho - 221008150"
