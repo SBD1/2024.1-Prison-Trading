@@ -78,10 +78,18 @@ class Game:
         self.id_jogador = ''
         self.lugar_atual = ''
         self.regiao_atual = ''
+        self.nome = ''
+        self.habilidade_briga = ''
+        self.vida = ''
+        self.forca = ''
+        self.tempo_vida = ''
+        self.gangue = ''
+        self.missao = ''
+        self.nivel = ''
+        self.inventario_ocupado = ''
 
     def help(self):
         print("Bem-vindo, digite "
-              "\n'ATUAL' - Para ver sua localização atual."
               "\n'MAPA' - Para ver os possíveis lugares onde você pode ir."
               "\n'PESSOAS' - Para ver as pessoas que estão no mesmo lugar que você."
               "\n'ITENS' - Para ver os itens que estão no mesmo lugar que você."
@@ -97,10 +105,10 @@ class Game:
             SELECT lug.id, lug.nome, lug.descricao
             FROM jogador jog
             LEFT JOIN lugar lug ON lug.id = jog.lugar
-            WHERE jog.id = 1;
-        """)
-        id, nome, descricao = query
-        print(f"ID: {id}\tLugar: {nome}\tDescrição: {descricao}")
+            WHERE jog.id = %s;
+        """, (self.id_jogador,))
+        if query:
+            return query
 
     def mapa(self):
         query = db.execute_fetchall("""
@@ -330,6 +338,26 @@ class Game:
             print("\033[92mObrigado por jogar :)\033[0m")
             sys.exit(0)
 
+    def status_jogador(self):
+        query = db.execute_fetchone("""
+            SELECT j.nome, j.habilidade_briga, j.vida, j.forca, j.tempo_vida, j.gangue, j.nivel, j.missao, j.lugar, j.regiao, i.tamanho, i.inventario_ocupado 
+            FROM jogador j
+            JOIN inventario i ON i.pessoa = j.id
+            WHERE j.id = %s;
+        """, (self.id_jogador,))
+        if query:
+            self.nome, self.habilidade_briga, self.vida, self.forca, self.tempo_vida, self.gangue, self.nivel, self.missao, self.lugar_atual, self.regiao_atual, tamanho, self.inventario_ocupado= query
+            id, nome, descricao = self.atual()
+
+            print("\033[93m" + "+-" * (110 // 2) + "+")
+            print(f'ID: {self.id_jogador}\t\t\tNível: {self.nivel} \t\tNome: {self.nome}')
+            print(f'Gangue: {self.gangue}\t\tMissão: {self.missao}\t\tTempo de vida: {self.tempo_vida}/10')
+            print(f'Vida: {self.vida}/10\t\tForça:{self.forca}/10\t\tHabilidade de briga: {self.habilidade_briga}/10\tInventário: {self.inventario_ocupado}/{tamanho}')
+            print("+-" * (110 // 2) + "+" + "\033[0m")
+            print("\033[36m" + "+-" * (110 // 2) + "+")
+            print(f'ID: {id}\t\t\tNome: {nome}')
+            print(f'Descrição: {descricao}')
+            print("+-" * (110 // 2) + "+" + "\033[0m")
 
     def mover(self, input_usuario):
         _, lugar_id = input_usuario.split(maxsplit=1)
@@ -369,11 +397,12 @@ class Game:
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(logo)
+        if self.id_jogador != '':
+            self.status_jogador()
 
 
     def gameLoop(self):
         comandos = {
-            "ATUAL": self.atual,
             "MAPA": self.mapa,
             "PESSOAS": self.pessoas,
             "ITENS": self.itens,
@@ -387,6 +416,7 @@ class Game:
             input_usuario = input('\033[91mDigite o comando: \033[0m').strip().upper()
             if input_usuario.startswith("MOVER "):
                 self.mover(input_usuario)
+                self.clear()
             elif input_usuario == "SAIR":
                 break
             elif input_usuario in comandos:
