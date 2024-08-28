@@ -5,6 +5,9 @@ import time
 import keyboard
 import textwrap
 
+
+os.system(f"mode con: cols=168 lines=40")
+
 logo = """\033[91m
 
   ██████╗ ██████╗ ██╗███████╗ ██████╗ ███╗   ██╗    ████████╗██████╗  █████╗ ██████╗ ██╗███╗   ██╗ ██████╗ 
@@ -13,7 +16,6 @@ logo = """\033[91m
   ██╔═══╝ ██╔══██╗██║╚════██║██║   ██║██║╚██╗██║       ██║   ██╔══██╗██╔══██║██║  ██║██║██║╚██╗██║██║   ██║
   ██║     ██║  ██║██║███████║╚██████╔╝██║ ╚████║       ██║   ██║  ██║██║  ██║██████╔╝██║██║ ╚████║╚██████╔╝
   ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝       ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ 
-
 \033[0m"""
 
 
@@ -374,6 +376,7 @@ class Game:
                 else:
                     print(f'\033[93m{resultado[2]:02} - {resultado[0].strip()}\033[0m')
                 linha_atual+=1
+            linha_atual += 1
             self.move_cursor_to(114, linha_atual)
             print("\033[91m======================================================\033[0m")
 
@@ -403,6 +406,35 @@ class Game:
             for resultado in mapa:
                 self.move_cursor_to(115, linha_atual)
                 print(f'{resultado[0]:02} - {resultado[1].strip()}')
+                linha_atual += 1
+            linha_atual += 1
+            self.move_cursor_to(114, linha_atual)
+            print("\033[91m======================================================\033[0m")
+
+            query = db.execute_fetchall("""
+                SELECT t.item, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
+                FROM inventario AS i
+                LEFT JOIN instancia_item AS t ON i.id = t.inventario
+                LEFT JOIN arma AS arm ON arm.id = t.item
+                LEFT JOIN ferramenta AS fer ON fer.id = t.item
+                LEFT JOIN comida AS com ON com.id = t.item
+                LEFT JOIN medicamento AS med ON med.id = t.item
+                LEFT JOIN utilizavel AS uti ON uti.id = t.item
+                WHERE i.pessoa = %s
+                ORDER BY nome;
+            """, (self.id_jogador,))
+            linha_atual += 1
+            self.move_cursor_to(115, linha_atual)
+            print("\t\tINVENTÁRIO:")
+            linha_atual += 2
+            if query[0][0] is not None:
+                for resultado in query:
+                    self.move_cursor_to(115, linha_atual)
+                    print(f'{resultado[0]:02} - {resultado[1].strip()}')
+                    linha_atual += 1
+            else:
+                self.move_cursor_to(115, linha_atual)
+                print(f'Inventário vazio.')
                 linha_atual += 1
             linha_atual += 1
             self.move_cursor_to(114, linha_atual)
