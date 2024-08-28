@@ -159,6 +159,8 @@
   - [Apresentação](Modulo-2/Modulo2.md)
     * [Observações](Modulo-2/Modulo2.md#observações)
     * [Histórico de versão](Modulo-2/Modulo2.md#histórico-de-versão)
+* Módulo 3
+  - [Triggers](Modulo-3/Triggers.md)
 
 [//]: # (* Módulo 3)
 * Jogo
