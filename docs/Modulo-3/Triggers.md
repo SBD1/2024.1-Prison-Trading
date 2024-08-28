@@ -92,10 +92,11 @@ FOR EACH ROW EXECUTE PROCEDURE update_instancia();
 
 # Histórico de versão
 
-</center>
 
 <div style="margin: 0 auto; width: fit-content;">
 
 | Data       | Versão |           Descrição            | Autores                                       |
 |------------|--------|:------------------------------:|-----------------------------------------------|
 | 26/07/2024 | `1.0`  |      Criação do documento.     | [Júlio Cesar](https://github.com/Julio1099)   |
+
+</center>
