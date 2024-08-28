@@ -493,3 +493,269 @@ $delete_instancia$ LANGUAGE plpgsql;
 CREATE TRIGGER instancia_item_delete
 BEFORE DELETE ON instancia_item
 FOR EACH ROW EXECUTE PROCEDURE delete_instancia();
+
+---------------------
+---
+---   FERRAMENTA
+---
+---------------------
+
+CREATE FUNCTION insert_ferramenta()
+RETURNS trigger AS $insert_ferramenta$
+DECLARE
+    ferramenta_id INTEGER;
+BEGIN
+    -- Inserir na tabela item_fabricavel e capturar o id gerado
+    INSERT INTO item_fabricavel (id, tipo)
+    VALUES (1, 'ferramenta')
+    RETURNING id INTO ferramenta_id;
+
+    -- Atribuir o id gerado ao NEW.id
+    NEW.id := ferramenta_id;
+	
+    -- Mensagens de confirmação
+    RAISE NOTICE 'Criação da ferramenta bem sucedida.';
+    RAISE NOTICE 'Id da ferramenta é: %', ferramenta_id;
+
+    RETURN NEW;
+END;
+$insert_ferramenta$ LANGUAGE plpgsql;
+
+CREATE TRIGGER ferramenta_insert
+BEFORE INSERT ON ferramenta
+FOR EACH ROW EXECUTE FUNCTION insert_ferramenta();
+
+---------------------
+---
+---   ARMA
+---
+---------------------
+
+CREATE FUNCTION insert_arma()
+RETURNS trigger AS $insert_arma$
+DECLARE
+    arma_id INTEGER;
+BEGIN
+    INSERT INTO item_fabricavel (id, tipo)
+    VALUES (1, 'arma')
+    RETURNING id INTO arma_id;
+
+    NEW.id := arma_id;
+
+    RAISE NOTICE 'Criação da arma bem sucedida.';
+    RAISE NOTICE 'Id da arma é: %', arma_id;
+
+    RETURN NEW;
+END;
+$insert_arma$ LANGUAGE plpgsql;
+
+CREATE TRIGGER arma_insert
+BEFORE INSERT ON arma
+FOR EACH ROW EXECUTE FUNCTION insert_arma();
+
+---------------------
+---
+---   COMIDA
+---
+---------------------
+
+CREATE FUNCTION insert_comida()
+RETURNS trigger AS $insert_comida$
+DECLARE
+    comida_id INTEGER;
+BEGIN
+    INSERT INTO item_nao_fabricavel (id, tipo)
+    VALUES (1, 'comida')
+    RETURNING id INTO comida_id;
+
+    NEW.id := comida_id;
+
+    RAISE NOTICE 'Criação da comida bem sucedida.';
+    RAISE NOTICE 'Id da comida é: %', comida_id;
+
+    RETURN NEW;
+END;
+$insert_comida$ LANGUAGE plpgsql;
+
+CREATE TRIGGER comida_insert
+BEFORE INSERT ON comida
+FOR EACH ROW EXECUTE FUNCTION insert_comida();
+
+---------------------
+---
+---   MEDICAMENTO
+---
+---------------------
+
+CREATE FUNCTION insert_medicamento()
+RETURNS trigger AS $insert_medicamento$
+DECLARE
+    medicamento_id INTEGER;
+BEGIN
+    INSERT INTO item_nao_fabricavel (id, tipo)
+    VALUES (1, 'medicamento')
+    RETURNING id INTO medicamento_id;
+
+    NEW.id := medicamento_id;
+	
+    RAISE NOTICE 'Criação da medicamento bem sucedida.';
+    RAISE NOTICE 'Id da medicamento é: %', medicamento_id;
+
+    RETURN NEW;
+END;
+$insert_medicamento$ LANGUAGE plpgsql;
+
+CREATE TRIGGER medicamento_insert
+BEFORE INSERT ON medicamento
+FOR EACH ROW EXECUTE FUNCTION insert_medicamento();
+
+---------------------
+---
+---   UTILIZAVEL
+---
+---------------------
+
+CREATE FUNCTION insert_utilizavel()
+RETURNS trigger AS $insert_utilizavel$
+DECLARE
+    utilizavel_id INTEGER;
+BEGIN
+    INSERT INTO item_nao_fabricavel (id, tipo)
+    VALUES (1, 'utilizavel')
+    RETURNING id INTO utilizavel_id;
+
+    NEW.id := utilizavel_id;
+	
+    RAISE NOTICE 'Criação da utilizavel bem sucedida.';
+    RAISE NOTICE 'Id da utilizavel é: %', utilizavel_id;
+
+    RETURN NEW;
+END;
+$insert_utilizavel$ LANGUAGE plpgsql;
+
+CREATE TRIGGER utilizavel_insert
+BEFORE INSERT ON utilizavel
+FOR EACH ROW EXECUTE FUNCTION insert_utilizavel();
+
+---------------------
+---
+---   ITEM_FABRICAVEL
+---
+---------------------
+
+CREATE FUNCTION insert_item_fabricavel()
+RETURNS trigger AS $insert_item_fabricavel$
+DECLARE
+	id_item_fabricavel INTEGER;
+	tipo_item_fabricavel TipoItemFabricavel;
+BEGIN
+	INSERT INTO item (tipo)
+	    VALUES ('fabricavel')
+	    RETURNING id INTO id_item_fabricavel;
+	tipo_item_fabricavel = NEW.tipo;
+	NEW.id = id_item_fabricavel;
+	
+	RAISE NOTICE 'Id do item_fabricavel é: % | Tipo do item_fabricavel é: %', id_item_fabricavel, tipo_item_fabricavel;
+
+	PERFORM 1 FROM ferramenta WHERE id = id_item_fabricavel;
+	IF FOUND THEN
+		RAISE EXCEPTION 'O item fabricavel com o id % e tipo % está na tabela ferramenta, ação negada.', id_item_fabricavel, tipo_item_fabricavel;
+	END IF;
+
+	PERFORM 1 FROM arma WHERE id = id_item_fabricavel;
+	IF FOUND THEN
+		RAISE EXCEPTION 'O item fabricavel com o id % e tipo % está na tabela arma, ação negada.', id_item_fabricavel, tipo_item_fabricavel;
+	END IF;
+
+	RAISE NOTICE 'O % não aparece em nenhuma outra tabela, a tupla é unica inserção em item_fabricavel concedida.', tipo_item_fabricavel;
+
+	RETURN NEW;
+END;
+$insert_item_fabricavel$ LANGUAGE plpgsql;
+
+CREATE TRIGGER item_fabricavel_insert
+BEFORE INSERT ON item_fabricavel
+FOR EACH ROW EXECUTE PROCEDURE insert_item_fabricavel();
+
+---------------------
+---
+---   ITEM_NAO_FABRICAVEL
+---
+---------------------
+
+CREATE FUNCTION insert_item_nao_fabricavel()
+RETURNS trigger AS $insert_item_nao_fabricavel$
+DECLARE
+	id_item_nao_fabricavel INTEGER;
+	tipo_item_nao_fabricavel TipoItemNaoFabricavel;
+BEGIN
+	 INSERT INTO item (tipo)
+		VALUES ('nao fabricavel')
+		RETURNING id INTO id_item_nao_fabricavel;
+	tipo_item_nao_fabricavel = NEW.tipo;
+	NEW.id = id_item_nao_fabricavel;
+	
+	RAISE NOTICE 'Id do item_nao_fabricavel é: % | Tipo do item_nao_fabricavel é: %', id_item_nao_fabricavel, tipo_item_nao_fabricavel;
+
+	PERFORM 1 FROM comida WHERE id = id_item_nao_fabricavel;
+	IF FOUND THEN
+		RAISE EXCEPTION 'O item nao fabricavel com o id % e tipo % está na tabela comida, ação negada.', id_item_nao_fabricavel, tipo_item_nao_fabricavel;
+	END IF;
+
+	PERFORM 1 FROM medicamento WHERE id = id_item_nao_fabricavel;
+	IF FOUND THEN
+		RAISE EXCEPTION 'O item nao fabricavel com o id % e tipo % está na tabela medicamento, ação negada.', id_item_nao_fabricavel, tipo_item_nao_fabricavel;
+	END IF;
+
+	PERFORM 1 FROM utilizavel WHERE id = id_item_nao_fabricavel;
+	IF FOUND THEN
+		RAISE EXCEPTION 'O item nao fabricavel com o id % e tipo % está na tabela utilizavel, ação negada.', id_item_nao_fabricavel, tipo_item_nao_fabricavel;
+	END IF;
+
+	RAISE NOTICE 'O % não aparece em nenhuma outra tabela, a tupla é unica inserção em item_nao_fabricavel concedida.', tipo_item_nao_fabricavel;
+
+	RETURN NEW;
+END;
+$insert_item_nao_fabricavel$ LANGUAGE plpgsql;
+
+CREATE TRIGGER item_nao_fabricavel_insert
+BEFORE INSERT ON item_nao_fabricavel
+FOR EACH ROW EXECUTE FUNCTION insert_item_nao_fabricavel();
+
+---------------------
+---
+---   ITEM
+---
+---------------------
+
+CREATE FUNCTION insert_item()
+RETURNS trigger AS $insert_item$
+DECLARE
+    id_item INTEGER;
+	tipo_item TipoItem;
+BEGIN
+	id_item = NEW.id;
+	tipo_item = NEW.tipo;
+	
+	RAISE NOTICE 'Id do item é: % | Tipo do item é: %', id_item, tipo_item;
+
+	PERFORM 1 FROM item_fabricavel WHERE id = id_item;
+	IF FOUND THEN
+		RAISE EXCEPTION 'O item com o id % e tipo % está na tabela item_fabricavel, ação negada.', id_item, tipo_item;
+	END IF;
+
+	PERFORM 1 FROM item_nao_fabricavel WHERE id = id_item;
+	IF FOUND THEN
+		RAISE EXCEPTION 'O item com o id % e tipo % está na tabela item_nao_fabricavel, ação negada.', id_item, tipo_item;
+	END IF;
+
+	RAISE NOTICE 'O % não aparece em nenhuma outra tabela, a tupla é unica inserção em item concedida.', tipo_item;
+	
+    RETURN NEW;
+END;
+$insert_item$ LANGUAGE plpgsql;
+
+CREATE TRIGGER item_insert
+BEFORE INSERT ON item
+FOR EACH ROW EXECUTE PROCEDURE insert_item();
+
