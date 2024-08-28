@@ -3,6 +3,7 @@ import os
 import sys
 import time
 import keyboard
+import textwrap
 
 logo = """\033[91m
 
@@ -90,9 +91,6 @@ class Game:
 
     def help(self):
         print("Bem-vindo, digite "
-              "\n'MAPA' - Para ver os possíveis lugares onde você pode ir."
-              "\n'PESSOAS' - Para ver as pessoas que estão no mesmo lugar que você."
-              "\n'ITENS' - Para ver os itens que estão no mesmo lugar que você."
               "\n'INVENTARIO' - Para ver os itens que estão no seu inventário."
               "\n'INFO' - Para ver as informações de um item."
               "\n'MOVER + ' ' + ID' - Para se movimentar de um lugar para outro."
@@ -112,16 +110,15 @@ class Game:
 
     def mapa(self):
         query = db.execute_fetchall("""
-            SELECT lug.id, lug.nome, reg.nome
+            SELECT lug.id, lug.nome
             FROM lugar_origem_destino ori
             JOIN lugar lug ON ori.lugar_destino = lug.id
             JOIN regiao reg ON lug.regiao = reg.id
             WHERE ori.lugar_origem = %s
             ORDER BY lug.nome;
         """, (self.lugar_atual,))
-        print("Lugares conectados com sua posição atual:")
-        for lugar in query:
-            print(f"ID do Lugar: {lugar[0]} \tLugar: {lugar[1]} \tRegião: {lugar[2]}")
+        if query:
+            return query
 
     def pessoas(self):
         query = db.execute_fetchall("""
@@ -134,18 +131,17 @@ class Game:
                 UNION ALL
                 SELECT id, nome, lugar FROM informante
             )
-            SELECT pes.nome, tip.tipo
+            SELECT pes.nome, tip.tipo, pes.id
             FROM pessoas pes, pessoa tip
             WHERE pes.id = tip.id AND pes.lugar = %s
-            ORDER BY tip.tipo, pes.nome;
+            ORDER BY tip.tipo, pes.id;
         """, (self.lugar_atual,))
-        print("Pessoas no lugar:")
-        for resultado in query:
-            print("Nome: " + resultado[0] + "\tTipo: " + resultado[1])
+        if query:
+            return query
 
     def itens(self):
         query = db.execute_fetchall("""
-            SELECT COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
+            SELECT ins.item, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
             FROM instancia_item ins
             LEFT JOIN arma arm ON arm.id = ins.item
             LEFT JOIN ferramenta fer ON fer.id = ins.item
@@ -156,11 +152,7 @@ class Game:
             ORDER BY nome;
         """, (self.lugar_atual,))
         if query:
-            print("Itens no lugar:")
-            for resultado in query:
-                print(resultado[0])
-        else:
-            print("Nenhum item nessa sala.")
+            return query
 
     def criar_menu(self, opcoes):
         opcao = 0
@@ -185,6 +177,7 @@ class Game:
                 input()
                 self.clear()
                 return opcao
+
     def inventario(self):
         query = db.execute_fetchall("""
             SELECT COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome, i.inventario_ocupado, i.tamanho
@@ -338,6 +331,9 @@ class Game:
             print("\033[92mObrigado por jogar :)\033[0m")
             sys.exit(0)
 
+    def move_cursor_to(self, x, y):
+        print(f"\033[{y};{x}H", end='')
+
     def status_jogador(self):
         query = db.execute_fetchone("""
             SELECT j.nome, j.habilidade_briga, j.vida, j.forca, j.tempo_vida, j.gangue, j.nivel, j.missao, j.lugar, j.regiao, i.tamanho, i.inventario_ocupado 
@@ -356,8 +352,63 @@ class Game:
             print("+-" * (110 // 2) + "+" + "\033[0m")
             print("\033[36m" + "+-" * (110 // 2) + "+")
             print(f'ID: {id}\t\t\tNome: {nome}')
-            print(f'Descrição: {descricao}')
+            descricao_formatada = textwrap.fill(descricao, width=100)
+            print(f'Descrição: {descricao_formatada}')
             print("+-" * (110 // 2) + "+" + "\033[0m")
+
+            linha_atual = 1
+            for i in range(40):
+                self.move_cursor_to(112, i)
+                print("\033[91m||\033[0m")
+            self.move_cursor_to(114, linha_atual)
+            print("\033[91m======================================================\033[0m")
+            linha_atual+=1
+            self.move_cursor_to(115, linha_atual)
+            print("\t\tPESSOAS NO LUGAR:")
+            linha_atual+=2
+            pessoas = self.pessoas()
+            for resultado in pessoas:
+                self.move_cursor_to(115, linha_atual)
+                if resultado[1] == "policial":
+                    print(f'\033[96m{resultado[2]:02} - {resultado[0].strip()}\033[0m')
+                else:
+                    print(f'\033[93m{resultado[2]:02} - {resultado[0].strip()}\033[0m')
+                linha_atual+=1
+            self.move_cursor_to(114, linha_atual)
+            print("\033[91m======================================================\033[0m")
+
+            linha_atual += 1
+            self.move_cursor_to(115, linha_atual)
+            print("\t\tITENS NO LUGAR:")
+            linha_atual += 2
+            itens = self.itens()
+            if itens:
+                for resultado in itens:
+                    self.move_cursor_to(115, linha_atual)
+                    print(f'{resultado[0]:02} - {resultado[1].strip()}')
+                    linha_atual += 1
+            else:
+                self.move_cursor_to(115, linha_atual)
+                print(f'Nenhum item nesse lugar.')
+                linha_atual += 1
+            linha_atual += 1
+            self.move_cursor_to(114, linha_atual)
+            print("\033[91m======================================================\033[0m")
+
+            linha_atual += 1
+            self.move_cursor_to(115, linha_atual)
+            print("\t\tLUGARES CONECTADOS:")
+            linha_atual += 2
+            mapa = self.mapa()
+            for resultado in mapa:
+                self.move_cursor_to(115, linha_atual)
+                print(f'{resultado[0]:02} - {resultado[1].strip()}')
+                linha_atual += 1
+            linha_atual += 1
+            self.move_cursor_to(114, linha_atual)
+            print("\033[91m======================================================\033[0m")
+
+            self.move_cursor_to(0, 20)
 
     def mover(self, input_usuario):
         _, lugar_id = input_usuario.split(maxsplit=1)
@@ -403,9 +454,6 @@ class Game:
 
     def gameLoop(self):
         comandos = {
-            "MAPA": self.mapa,
-            "PESSOAS": self.pessoas,
-            "ITENS": self.itens,
             "HELP": self.help,
             "CLEAR": self.clear,
             "INVENTARIO": self.inventario,
@@ -416,6 +464,7 @@ class Game:
             input_usuario = input('\033[91mDigite o comando: \033[0m').strip().upper()
             if input_usuario.startswith("MOVER "):
                 self.mover(input_usuario)
+                input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
                 self.clear()
             elif input_usuario == "SAIR":
                 break
