@@ -150,7 +150,7 @@ BEGIN
 
     RAISE NOTICE 'Criação do inventário do jogador bem sucedida.';
 
-	new.id = jogador_id;
+	NEW.id = jogador_id;
 
 	RAISE NOTICE 'Id do jogador é: %', jogador_id;
 
@@ -202,7 +202,7 @@ BEGIN
 
 	RAISE NOTICE 'Criação do inventário do prisioneiro bem sucedida.';
 
-	new.id = prisioneiro_id;
+	NEW.id = prisioneiro_id;
 
 	RAISE NOTICE 'Id do prisioneiro é: %', prisioneiro_id;
 
@@ -253,7 +253,7 @@ BEGIN
 
     RAISE NOTICE 'Criação do inventário do informante bem sucedida.';
 
-	new.id = informante_id;
+	NEW.id = informante_id;
 
     RAISE NOTICE 'Id do informante é: %', informante_id;
 
@@ -304,7 +304,7 @@ BEGIN
 
     RAISE NOTICE 'Criação do inventário do informante bem sucedida.';
 
-	new.id = policial_id;
+	NEW.id = policial_id;
 
 	RAISE NOTICE 'Id do policial é: %', policial_id;
 
