@@ -619,6 +619,154 @@ FOR EACH ROW EXECUTE PROCEDURE delete_instancia();
 
 ---------------------
 ---
+---   ITEM
+---
+---------------------
+
+CREATE FUNCTION insert_item()
+RETURNS trigger AS $insert_item$
+DECLARE
+    id_item INTEGER;
+    tipo_item TipoItem;
+BEGIN
+    id_item := NEW.id;
+    tipo_item := NEW.tipo;
+	
+    RAISE NOTICE 'Id do item é: % | Tipo do item é: %', id_item, tipo_item;
+
+    PERFORM 1 FROM item_fabricavel WHERE id = id_item;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item com o id % e tipo % está na tabela item_fabricavel, ação negada.', id_item, tipo_item;
+    END IF;
+
+    PERFORM 1 FROM item_nao_fabricavel WHERE id = id_item;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item com o id % e tipo % está na tabela item_nao_fabricavel, ação negada.', id_item, tipo_item;
+    END IF;
+
+    PERFORM 1 FROM ferramenta WHERE id = id_item;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item com o id % e tipo % está na tabela ferramenta, ação negada.', id_item, tipo_item;
+    END IF;
+
+    PERFORM 1 FROM arma WHERE id = id_item;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item com o id % e tipo % está na tabela arma, ação negada.', id_item, tipo_item;
+    END IF;
+
+    PERFORM 1 FROM comida WHERE id = id_item;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item com o id % e tipo % está na tabela comida, ação negada.', id_item, tipo_item;
+    END IF;
+
+    PERFORM 1 FROM medicamento WHERE id = id_item;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item com o id % e tipo % está na tabela medicamento, ação negada.', id_item, tipo_item;
+    END IF;
+
+    PERFORM 1 FROM utilizavel WHERE id = id_item;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item com o id % e tipo % está na tabela utilizavel, ação negada.', id_item, tipo_item;
+    END IF;
+
+    RAISE NOTICE 'O item % não aparece em nenhuma outra tabela, a tupla é unica inserção em item concedida.', tipo_item;
+	
+    RETURN NEW;
+END;
+$insert_item$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER insert_item
+BEFORE INSERT ON item
+FOR EACH ROW EXECUTE PROCEDURE insert_item();
+
+---------------------
+---
+---   ITEM_FABRICAVEL
+---
+---------------------
+
+CREATE FUNCTION insert_item_fabricavel()
+RETURNS trigger AS $insert_item_fabricavel$
+DECLARE
+	id_item_fabricavel INTEGER;
+	tipo_item_fabricavel TipoItemFabricavel;
+BEGIN
+    INSERT INTO item (tipo)
+	VALUES ('fabricavel')
+	RETURNING id INTO id_item_fabricavel;
+    tipo_item_fabricavel := NEW.tipo;
+    NEW.id := id_item_fabricavel;
+	
+    RAISE NOTICE 'Id do item_fabricavel é: % | Tipo do item_fabricavel é: %', id_item_fabricavel, tipo_item_fabricavel;
+
+    PERFORM 1 FROM ferramenta WHERE id = id_item_fabricavel;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item fabricavel com o id % e tipo % está na tabela ferramenta, ação negada.', id_item_fabricavel, tipo_item_fabricavel;
+    END IF;
+
+    PERFORM 1 FROM arma WHERE id = id_item_fabricavel;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item fabricavel com o id % e tipo % está na tabela arma, ação negada.', id_item_fabricavel, tipo_item_fabricavel;
+    END IF;
+
+    RAISE NOTICE 'O item % não aparece em nenhuma outra tabela, a tupla é unica inserção em item_fabricavel concedida.', tipo_item_fabricavel;
+
+    RETURN NEW;
+END;
+$insert_item_fabricavel$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER insert_item_fabricavel
+BEFORE INSERT ON item_fabricavel
+FOR EACH ROW EXECUTE PROCEDURE insert_item_fabricavel();
+
+---------------------
+---
+---   ITEM_NAO_FABRICAVEL
+---
+---------------------
+
+CREATE FUNCTION insert_item_nao_fabricavel()
+RETURNS trigger AS $insert_item_nao_fabricavel$
+DECLARE
+    id_item_nao_fabricavel INTEGER;
+    tipo_item_nao_fabricavel TipoItemNaoFabricavel;
+BEGIN
+    INSERT INTO item (tipo)
+    VALUES ('nao fabricavel')
+    RETURNING id INTO id_item_nao_fabricavel;
+
+    tipo_item_nao_fabricavel := NEW.tipo;
+    NEW.id := id_item_nao_fabricavel;
+	
+    RAISE NOTICE 'Id do item_nao_fabricavel é: % | Tipo do item_nao_fabricavel é: %', id_item_nao_fabricavel, tipo_item_nao_fabricavel;
+
+    PERFORM 1 FROM comida WHERE id = id_item_nao_fabricavel;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item nao fabricavel com o id % e tipo % está na tabela comida, ação negada.', id_item_nao_fabricavel, tipo_item_nao_fabricavel;
+    END IF;
+
+    PERFORM 1 FROM medicamento WHERE id = id_item_nao_fabricavel;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item nao fabricavel com o id % e tipo % está na tabela medicamento, ação negada.', id_item_nao_fabricavel, tipo_item_nao_fabricavel;
+    END IF;
+
+    PERFORM 1 FROM utilizavel WHERE id = id_item_nao_fabricavel;
+    IF FOUND THEN
+	RAISE EXCEPTION 'O item nao fabricavel com o id % e tipo % está na tabela utilizavel, ação negada.', id_item_nao_fabricavel, tipo_item_nao_fabricavel;
+    END IF;
+
+    RAISE NOTICE 'O item % não aparece em nenhuma outra tabela, a tupla é unica inserção em item_nao_fabricavel concedida.', tipo_item_nao_fabricavel;
+
+    RETURN NEW;
+END;
+$insert_item_nao_fabricavel$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER insert_item_nao_fabricavel
+BEFORE INSERT ON item_nao_fabricavel
+FOR EACH ROW EXECUTE FUNCTION insert_item_nao_fabricavel();
+
+---------------------
+---
 ---   FERRAMENTA
 ---
 ---------------------
