@@ -1,7 +1,6 @@
 BEGIN;
 -- RODAR ISSO AQUI COMO SUPER USUARIO (POSTGRESQL)
 
-
 ---------------------
 ---
 ---   PERMISSOES
