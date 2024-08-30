@@ -27,17 +27,17 @@ BEGIN;
 ---
 ---------------------
 
-CREATE ROLE prison_trading_user WITH
-    LOGIN
-    NOSUPERUSER
-    NOCREATEDB
-    NOCREATEROLE
-    INHERIT
-    NOREPLICATION
-    NOBYPASSRLS
-    CONNECTION LIMIT -1
-    PASSWORD '123';
-COMMENT ON ROLE prison_trading_user IS 'Usuário padrão para acesso ao banco de dados do jogo prison trading';
+-- CREATE ROLE prison_trading_user WITH
+--     LOGIN
+--     NOSUPERUSER
+--     NOCREATEDB
+--     NOCREATEROLE
+--     INHERIT
+--     NOREPLICATION
+--     NOBYPASSRLS
+--     CONNECTION LIMIT -1
+--     PASSWORD '123';
+-- COMMENT ON ROLE prison_trading_user IS 'Usuário padrão para acesso ao banco de dados do jogo prison trading';
 
 ---------------------
 ---
