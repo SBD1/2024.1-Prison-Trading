@@ -788,6 +788,22 @@ CREATE TRIGGER insert_ferramenta
 BEFORE INSERT ON ferramenta
 FOR EACH ROW EXECUTE PROCEDURE insert_ferramenta();
 
+CREATE FUNCTION update_ferramenta()
+RETURNS trigger AS $update_ferramenta$
+BEGIN
+	IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
+		RAISE EXCEPTION 'Não é possível alterar o id e pessoa da ferramenta.';
+	END IF;
+
+    RETURN NEW;
+
+END;
+$update_ferramenta$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_ferramenta
+BEFORE update ON ferramenta
+FOR EACH ROW EXECUTE PROCEDURE update_ferramenta();
+
 ---------------------
 ---
 ---   ARMA
@@ -817,6 +833,22 @@ $insert_arma$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE TRIGGER insert_arma
 BEFORE INSERT ON arma
 FOR EACH ROW EXECUTE PROCEDURE insert_arma();
+
+CREATE FUNCTION update_arma()
+RETURNS trigger AS $update_arma$
+BEGIN
+	IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
+		RAISE EXCEPTION 'Não é possível alterar o id e pessoa da arma.';
+	END IF;
+
+    RETURN NEW;
+
+END;
+$update_arma$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_arma
+BEFORE update ON arma
+FOR EACH ROW EXECUTE PROCEDURE update_arma();
 
 ---------------------
 ---
@@ -848,6 +880,24 @@ CREATE TRIGGER insert_comida
 BEFORE INSERT ON comida
 FOR EACH ROW EXECUTE PROCEDURE insert_comida();
 
+
+CREATE FUNCTION update_comida()
+RETURNS trigger AS $update_comida$
+BEGIN
+	IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
+		RAISE EXCEPTION 'Não é possível alterar o id e pessoa da comida.';
+	END IF;
+
+    RETURN NEW;
+
+END;
+$update_comida$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_comida
+BEFORE update ON comida
+FOR EACH ROW EXECUTE PROCEDURE update_comida();
+
+
 ---------------------
 ---
 ---   MEDICAMENTO
@@ -868,7 +918,7 @@ BEGIN
 
     NEW.id := medicamento_id;
 	
-    RAISE NOTICE 'Criação da medicamento bem sucedida, id da medicamento é: %', medicamento_id;
+    RAISE NOTICE 'Criação da medicamento bem sucedida, id do medicamento é: %', medicamento_id;
 
     RETURN NEW;
 END;
@@ -877,6 +927,22 @@ $insert_medicamento$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE TRIGGER insert_medicamento
 BEFORE INSERT ON medicamento
 FOR EACH ROW EXECUTE PROCEDURE insert_medicamento();
+
+CREATE FUNCTION update_medicamento()
+RETURNS trigger AS $update_medicamento$
+BEGIN
+	IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
+		RAISE EXCEPTION 'Não é possível alterar o id e pessoa do medicamento.';
+	END IF;
+
+    RETURN NEW;
+
+END;
+$update_medicamento$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_medicamento
+BEFORE update ON medicamento
+FOR EACH ROW EXECUTE PROCEDURE update_medicamento();
 
 ---------------------
 ---
@@ -898,7 +964,7 @@ BEGIN
 
     NEW.id := utilizavel_id;
 	
-    RAISE NOTICE 'Criação da utilizavel bem sucedida, id da utilizavel é: %', utilizavel_id;
+    RAISE NOTICE 'Criação da utilizavel bem sucedida, id do utilizavel é: %', utilizavel_id;
 
     RETURN NEW;
 END;
@@ -907,5 +973,21 @@ $insert_utilizavel$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE TRIGGER insert_utilizavel
 BEFORE INSERT ON utilizavel
 FOR EACH ROW EXECUTE PROCEDURE insert_utilizavel();
+
+CREATE FUNCTION update_utilizavel()
+RETURNS trigger AS $update_utilizavel$
+BEGIN
+	IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
+		RAISE EXCEPTION 'Não é possível alterar o id e pessoa do utilizavel.';
+	END IF;
+
+    RETURN NEW;
+
+END;
+$update_utilizavel$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_utilizavel
+BEFORE update ON utilizavel
+FOR EACH ROW EXECUTE PROCEDURE update_utilizavel();
 
 COMMIT;
