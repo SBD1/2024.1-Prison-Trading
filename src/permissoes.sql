@@ -688,14 +688,11 @@ FOR EACH ROW EXECUTE PROCEDURE insert_item();
 CREATE FUNCTION insert_item_fabricavel()
 RETURNS trigger AS $insert_item_fabricavel$
 DECLARE
-	id_item_fabricavel INTEGER;
-	tipo_item_fabricavel TipoItemFabricavel;
+    id_item_fabricavel INTEGER;
+    tipo_item_fabricavel TipoItemFabricavel;
 BEGIN
-    INSERT INTO item (tipo)
-	VALUES ('fabricavel')
-	RETURNING id INTO id_item_fabricavel;
     tipo_item_fabricavel := NEW.tipo;
-    NEW.id := id_item_fabricavel;
+    id_item_fabricavel := NEW.id;
 	
     RAISE NOTICE 'Id do item_fabricavel é: % | Tipo do item_fabricavel é: %', id_item_fabricavel, tipo_item_fabricavel;
 
@@ -731,12 +728,8 @@ DECLARE
     id_item_nao_fabricavel INTEGER;
     tipo_item_nao_fabricavel TipoItemNaoFabricavel;
 BEGIN
-    INSERT INTO item (tipo)
-    VALUES ('nao fabricavel')
-    RETURNING id INTO id_item_nao_fabricavel;
-
     tipo_item_nao_fabricavel := NEW.tipo;
-    NEW.id := id_item_nao_fabricavel;
+    id_item_nao_fabricavel := NEW.id;
 	
     RAISE NOTICE 'Id do item_nao_fabricavel é: % | Tipo do item_nao_fabricavel é: %', id_item_nao_fabricavel, tipo_item_nao_fabricavel;
 
