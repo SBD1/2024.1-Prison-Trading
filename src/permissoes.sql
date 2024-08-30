@@ -81,7 +81,7 @@ BEGIN
 
 	RETURN NEW;
 END;
-$insert_pessoa$ LANGUAGE plpgsql SECURITY DEFINER;
+$insert_pessoa$ LANGUAGE plpgsql;
 
 CREATE TRIGGER insert_pessoa
 BEFORE INSERT ON pessoa
@@ -673,7 +673,7 @@ BEGIN
 	
     RETURN NEW;
 END;
-$insert_item$ LANGUAGE plpgsql SECURITY DEFINER;
+$insert_item$ LANGUAGE plpgsql;
 
 CREATE TRIGGER insert_item
 BEFORE INSERT ON item
@@ -710,7 +710,7 @@ BEGIN
 
     RETURN NEW;
 END;
-$insert_item_fabricavel$ LANGUAGE plpgsql SECURITY DEFINER;
+$insert_item_fabricavel$ LANGUAGE plpgsql;
 
 CREATE TRIGGER insert_item_fabricavel
 BEFORE INSERT ON item_fabricavel
@@ -752,7 +752,7 @@ BEGIN
 
     RETURN NEW;
 END;
-$insert_item_nao_fabricavel$ LANGUAGE plpgsql SECURITY DEFINER;
+$insert_item_nao_fabricavel$ LANGUAGE plpgsql;
 
 CREATE TRIGGER insert_item_nao_fabricavel
 BEFORE INSERT ON item_nao_fabricavel
