@@ -17,6 +17,53 @@ REVOKE INSERT, DELETE ON fabricacao, inventario FROM prison_trading_user;
 
 ---------------------
 ---
+---   PESSOA
+---
+---------------------
+
+CREATE FUNCTION insert_pessoa()
+RETURNS trigger AS $insert_pessoa$
+DECLARE
+	id_pessoa INTEGER;
+	tipo_pessoa TipoPessoa;
+BEGIN
+	id_pessoa = NEW.id;
+	tipo_pessoa = NEW.tipo;
+
+	RAISE NOTICE 'Id da pessoa é: % | Tipo da pessoa é: %', id_pessoa, tipo_pessoa;
+
+	PERFORM 1 FROM prisioneiro WHERE id = id_pessoa;
+	IF FOUND THEN
+		RAISE EXCEPTION 'A pessoa com o id % e tipo % está na tabela prisioneiro, ação negada.', id_pessoa, tipo_pessoa;
+	END IF;
+
+	PERFORM 1 FROM policial WHERE id = id_pessoa;
+	IF FOUND THEN
+		RAISE EXCEPTION 'A pessoa com o id % e tipo % está na tabela policial, ação negada.', id_pessoa, tipo_pessoa;
+	END IF;
+
+	PERFORM 1 FROM informante WHERE id = id_pessoa;
+	IF FOUND THEN
+		RAISE EXCEPTION 'A pessoa com o id % e tipo % está na tabela informante, ação negada.', id_pessoa, tipo_pessoa;
+	END IF;
+
+	PERFORM 1 FROM jogador WHERE id = id_pessoa;
+	IF FOUND THEN
+		RAISE EXCEPTION 'A pessoa com o id % e tipo % está na tabela jogador, ação negada.', id_pessoa, tipo_pessoa;
+	END IF;
+
+	RAISE NOTICE 'O % não aparece em nenhuma outra tabela, a tupla é unica inserção em pessoa concedida.', tipo_pessoa;
+
+	RETURN NEW;
+END;
+$insert_pessoa$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER insert_pessoa
+BEFORE INSERT ON pessoa
+FOR EACH ROW EXECUTE PROCEDURE insert_pessoa();
+
+---------------------
+---
 ---   JOGADOR
 ---
 ---------------------
