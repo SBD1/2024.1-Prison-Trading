@@ -978,7 +978,11 @@ RETURNS trigger AS $delete_comida_before$
 BEGIN
     DELETE FROM instancia_item WHERE id = OLD.id;
 
-    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
+    UPDATE missao
+    SET item_nao_fabricavel = NULL
+    WHERE item_nao_fabricavel = OLD.id;
+
+    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
 
     RETURN OLD;
 
@@ -1058,7 +1062,11 @@ RETURNS trigger AS $delete_medicamento_before$
 BEGIN
     DELETE FROM instancia_item WHERE id = OLD.id;
 
-    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
+    UPDATE missao
+    SET item_nao_fabricavel = NULL
+    WHERE item_nao_fabricavel = OLD.id;
+
+    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
 
     RETURN OLD;
 
@@ -1138,7 +1146,11 @@ RETURNS trigger AS $delete_utilizavel_before$
 BEGIN
     DELETE FROM instancia_item WHERE id = OLD.id;
 
-    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
+    UPDATE missao
+    SET item_nao_fabricavel = NULL
+    WHERE item_nao_fabricavel = OLD.id;
+	
+    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
 
     RETURN OLD;
 
