@@ -52,8 +52,8 @@ DECLARE
 	id_pessoa INTEGER;
 	tipo_pessoa TipoPessoa;
 BEGIN
-	id_pessoa = NEW.id;
-	tipo_pessoa = NEW.tipo;
+	id_pessoa := NEW.id;
+	tipo_pessoa := NEW.tipo;
 
 	RAISE NOTICE 'Id da pessoa é: % | Tipo da pessoa é: %', id_pessoa, tipo_pessoa;
 
