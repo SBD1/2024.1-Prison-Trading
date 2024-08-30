@@ -1,9 +1,26 @@
 BEGIN;
--- RODAR ISSO AQUI COMO SUPER USUARIO (POSTGRESQL)
 
 ---------------------
 ---
----   PERMISSOES
+---   USUÁRIO PADRÃO
+---
+---------------------
+
+CREATE ROLE prison_trading_user WITH
+    LOGIN
+    NOSUPERUSER
+    NOCREATEDB
+    NOCREATEROLE
+    INHERIT
+    NOREPLICATION
+    NOBYPASSRLS
+    CONNECTION LIMIT -1
+    PASSWORD '123';
+COMMENT ON ROLE prison_trading_user IS 'Usuário padrão para acesso ao banco de dados do jogo prison trading';
+
+---------------------
+---
+---   PERMISSÕES
 ---
 ---------------------
 
@@ -419,8 +436,8 @@ FOR EACH ROW EXECUTE PROCEDURE delete_policial_after();
 CREATE FUNCTION update_inventario()
 RETURNS trigger AS $update_inventario$
 BEGIN
-	IF NEW.tamanho <> OLD.tamanho THEN
-	    RAISE NOTICE 'Tamanho alterado com sucesso.';
+	IF NEW.tamanho <> OLD.tamanho OR NEW.inventario_ocupado <> OLD.inventario_ocupado THEN
+	   	RAISE NOTICE 'Operação foi um sucesso.';
 		RETURN NEW;
 	ELSE
 	    RAISE EXCEPTION 'Só é possivel alterar o tamanho total do inventário.';
