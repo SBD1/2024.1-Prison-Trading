@@ -46,10 +46,6 @@ CREATE TRIGGER insert_jogador
 BEFORE INSERT ON jogador
 FOR EACH ROW EXECUTE PROCEDURE insert_jogador();
 
-CREATE TRIGGER jogador_insert
-BEFORE INSERT ON jogador
-FOR EACH ROW EXECUTE PROCEDURE insert_jogador();
-
 CREATE FUNCTION update_jogador()
 RETURNS trigger AS $update_jogador$
 BEGIN
