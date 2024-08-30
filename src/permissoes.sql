@@ -40,6 +40,8 @@ REVOKE INSERT, UPDATE, DELETE ON item, item_fabricavel, item_nao_fabricavel FROM
 
 REVOKE INSERT, DELETE ON fabricacao, inventario FROM prison_trading_user;
 
+REVOKE UPDATE ON livro_fabricacao FROM prison_trading_user;
+
 ---------------------
 ---
 ---   PESSOA
@@ -127,15 +129,67 @@ EXECUTE PROCEDURE insert_jogador();
 CREATE FUNCTION update_jogador()
     RETURNS trigger AS
 $update_jogador$
+DECLARE
+    ismotin BOOLEAN;
+    itens_inventario INTEGER[];
+    tem_todos_os_itens BOOLEAN;
+    itens_necessarios INTEGER[] := '{}';
 BEGIN
     IF NEW.id <> OLD.id THEN
-        -- Não deixa alterar id de jogador, se deixar tem q alterar pessoa, inventario e
-        -- Instancias de item referenciando o inventario e pessoa.
         RAISE EXCEPTION 'Não é possível alterar o id do jogador.';
     END IF;
 
-    RETURN NEW;
+    IF NEW.lugar <> OLD.lugar THEN
+        SELECT array_agg(item) INTO itens_inventario
+        FROM instancia_item
+        WHERE pessoa = NEW.id;
 
+        IF NEW.lugar = 31 THEN
+            itens_necessarios := ARRAY[2, 4, 26];  -- FUGA ESGOTO - itens: picareta, pá e lanterna
+
+        ELSIF NEW.lugar = 32 THEN
+            itens_necessarios := ARRAY[37];  -- FUGA DISFARÇADO ENTRADA - itens: crachá
+
+        ELSIF NEW.lugar = 33 THEN
+            itens_necessarios := ARRAY[26, 1, 3];  -- FUGA FLORESTA - itens: lanterna, chave de fenda e martelo
+
+        ELSIF NEW.lugar = 29 THEN
+            itens_necessarios := ARRAY[38];  -- OFICINA A - itens: chave oficina A
+
+        ELSIF NEW.lugar = 30 THEN
+            itens_necessarios := ARRAY[39];  -- OFICINA B - itens: chave oficina B
+
+        ELSIF NEW.lugar = 20 THEN
+            SELECT prisao.motim INTO ismotin
+            FROM prisao
+            JOIN regiao ON regiao.prisao = prisao.id
+            JOIN lugar ON lugar.regiao = regiao.id
+            WHERE lugar.id = NEW.lugar;
+
+            IF ismotin THEN
+				RAISE NOTICE 'Motim está ativo, o jogador conseguiu entrar na sala de controle.';
+                RETURN NEW;
+            END IF;
+
+        ELSIF NEW.lugar = 2 AND OLD.lugar = 1 THEN
+            itens_necessarios := ARRAY[4];  -- SAIR DA SOLITÁRIA - Itens: picareta
+
+        END IF;
+
+        IF array_length(itens_necessarios, 1) IS NOT NULL THEN
+            tem_todos_os_itens := itens_inventario @> itens_necessarios;
+
+            IF tem_todos_os_itens THEN
+                RAISE NOTICE 'O jogador possui todos os itens desejados ou o motim está ativo.';
+            ELSE
+                RAISE EXCEPTION 'O jogador não possui todos os itens desejados ou o motim não está ativo.';
+            END IF;
+        END IF;
+
+        RAISE NOTICE 'Movimentação concedida.';
+    END IF;
+
+    RETURN NEW;
 END;
 $update_jogador$ LANGUAGE plpgsql;
 
