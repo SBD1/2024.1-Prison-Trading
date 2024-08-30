@@ -893,7 +893,7 @@ CREATE FUNCTION delete_ferramenta_before()
     RETURNS trigger AS
 $delete_ferramenta_before$
 BEGIN
-    DELETE FROM instancia_item WHERE id = OLD.id;
+    DELETE FROM instancia_item WHERE item = OLD.id;
 
     DELETE FROM lista_fabricacao WHERE item_fabricavel = OLD.id;
 
@@ -989,7 +989,7 @@ CREATE FUNCTION delete_arma_before()
     RETURNS trigger AS
 $delete_arma_before$
 BEGIN
-    DELETE FROM instancia_item WHERE id = OLD.id;
+    DELETE FROM instancia_item WHERE item = OLD.id;
 
     DELETE FROM lista_fabricacao WHERE item_fabricavel = OLD.id;
 
@@ -1086,7 +1086,7 @@ CREATE FUNCTION delete_comida_before()
     RETURNS trigger AS
 $delete_comida_before$
 BEGIN
-    DELETE FROM instancia_item WHERE id = OLD.id;
+    DELETE FROM instancia_item WHERE item = OLD.id;
 
     UPDATE missao
     SET item_nao_fabricavel = NULL
@@ -1182,7 +1182,7 @@ CREATE FUNCTION delete_medicamento_before()
     RETURNS trigger AS
 $delete_medicamento_before$
 BEGIN
-    DELETE FROM instancia_item WHERE id = OLD.id;
+    DELETE FROM instancia_item WHERE item = OLD.id;
 
     UPDATE missao
     SET item_nao_fabricavel = NULL
@@ -1278,7 +1278,7 @@ CREATE FUNCTION delete_utilizavel_before()
     RETURNS trigger AS
 $delete_utilizavel_before$
 BEGIN
-    DELETE FROM instancia_item WHERE id = OLD.id;
+    DELETE FROM instancia_item WHERE item = OLD.id;
 
     UPDATE missao
     SET item_nao_fabricavel = NULL
