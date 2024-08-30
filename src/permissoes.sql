@@ -804,6 +804,44 @@ CREATE TRIGGER update_ferramenta
 BEFORE update ON ferramenta
 FOR EACH ROW EXECUTE PROCEDURE update_ferramenta();
 
+CREATE FUNCTION delete_ferramenta_before()
+RETURNS trigger AS $delete_ferramenta_before$
+BEGIN
+	DELETE FROM instancia_item WHERE id = OLD.id;
+
+	DELETE FROM lista_fabricacao WHERE item_fabricavel = OLD.id;
+
+	DELETE FROM fabricacao WHERE item_fabricavel = OLD.id;
+
+	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a fabricação do item foi deletada, jutamente com seu craft.';
+
+    RETURN OLD;
+
+END;
+$delete_ferramenta_before$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER delete_ferramenta_before
+BEFORE DELETE ON ferramenta
+FOR EACH ROW EXECUTE PROCEDURE delete_ferramenta_before();
+
+CREATE FUNCTION delete_ferramenta_after()
+RETURNS trigger AS $delete_ferramenta_after$
+BEGIN	
+	DELETE FROM item_fabricavel WHERE id = OLD.id;
+	
+	DELETE FROM item WHERE id = OLD.id;
+
+	RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item fabricavel da segunda tabela caracterizadora.';
+
+    RETURN OLD;
+
+END;
+$delete_ferramenta_after$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER delete_ferramenta_after
+AFTER DELETE ON ferramenta
+FOR EACH ROW EXECUTE PROCEDURE delete_ferramenta_after();
+
 ---------------------
 ---
 ---   ARMA
@@ -849,6 +887,44 @@ $update_arma$ LANGUAGE plpgsql;
 CREATE TRIGGER update_arma
 BEFORE update ON arma
 FOR EACH ROW EXECUTE PROCEDURE update_arma();
+
+CREATE FUNCTION delete_arma_before()
+RETURNS trigger AS $delete_arma_before$
+BEGIN
+	DELETE FROM instancia_item WHERE id = OLD.id;
+
+	DELETE FROM lista_fabricacao WHERE item_fabricavel = OLD.id;
+
+	DELETE FROM fabricacao WHERE item_fabricavel = OLD.id;
+
+	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a fabricação do item foi deletada, jutamente com seu craft.';
+
+    RETURN OLD;
+
+END;
+$delete_arma_before$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER delete_arma_before
+BEFORE DELETE ON arma
+FOR EACH ROW EXECUTE PROCEDURE delete_arma_before();
+
+CREATE FUNCTION delete_arma_after()
+RETURNS trigger AS $delete_arma_after$
+BEGIN	
+	DELETE FROM item_fabricavel WHERE id = OLD.id;
+	
+	DELETE FROM item WHERE id = OLD.id;
+
+	RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item fabricavel da segunda tabela caracterizadora.';
+
+    RETURN OLD;
+
+END;
+$delete_arma_after$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER delete_arma_after
+AFTER DELETE ON arma
+FOR EACH ROW EXECUTE PROCEDURE delete_arma_after();
 
 ---------------------
 ---
@@ -897,6 +973,39 @@ CREATE TRIGGER update_comida
 BEFORE update ON comida
 FOR EACH ROW EXECUTE PROCEDURE update_comida();
 
+CREATE FUNCTION delete_comida_before()
+RETURNS trigger AS $delete_comida_before$
+BEGIN
+	DELETE FROM instancia_item WHERE id = OLD.id;
+
+	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
+
+    RETURN OLD;
+
+END;
+$delete_comida_before$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER delete_comida_before
+BEFORE DELETE ON comida
+FOR EACH ROW EXECUTE PROCEDURE delete_comida_before();
+
+CREATE FUNCTION delete_comida_after()
+RETURNS trigger AS $delete_comida_after$
+BEGIN	
+	DELETE FROM item_nao_fabricavel WHERE id = OLD.id;
+	
+	DELETE FROM item WHERE id = OLD.id;
+
+	RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item não fabricavel da segunda tabela caracterizadora.';
+
+    RETURN OLD;
+
+END;
+$delete_comida_after$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER delete_comida_after
+AFTER DELETE ON comida
+FOR EACH ROW EXECUTE PROCEDURE delete_comida_after();
 
 ---------------------
 ---
@@ -944,6 +1053,40 @@ CREATE TRIGGER update_medicamento
 BEFORE update ON medicamento
 FOR EACH ROW EXECUTE PROCEDURE update_medicamento();
 
+CREATE FUNCTION delete_medicamento_before()
+RETURNS trigger AS $delete_medicamento_before$
+BEGIN
+	DELETE FROM instancia_item WHERE id = OLD.id;
+
+	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
+
+    RETURN OLD;
+
+END;
+$delete_medicamento_before$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER delete_medicamento_before
+BEFORE DELETE ON medicamento
+FOR EACH ROW EXECUTE PROCEDURE delete_medicamento_before();
+
+CREATE FUNCTION delete_medicamento_after()
+RETURNS trigger AS $delete_medicamento_after$
+BEGIN	
+	DELETE FROM item_nao_fabricavel WHERE id = OLD.id;
+	
+	DELETE FROM item WHERE id = OLD.id;
+
+	RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item não fabricavel da segunda tabela caracterizadora.';
+
+    RETURN OLD;
+
+END;
+$delete_medicamento_after$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER delete_medicamento_after
+AFTER DELETE ON medicamento
+FOR EACH ROW EXECUTE PROCEDURE delete_medicamento_after();
+
 ---------------------
 ---
 ---   UTILIZAVEL
@@ -989,5 +1132,39 @@ $update_utilizavel$ LANGUAGE plpgsql;
 CREATE TRIGGER update_utilizavel
 BEFORE update ON utilizavel
 FOR EACH ROW EXECUTE PROCEDURE update_utilizavel();
+
+CREATE FUNCTION delete_utilizavel_before()
+RETURNS trigger AS $delete_utilizavel_before$
+BEGIN
+	DELETE FROM instancia_item WHERE id = OLD.id;
+
+	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
+
+    RETURN OLD;
+
+END;
+$delete_utilizavel_before$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER delete_utilizavel_before
+BEFORE DELETE ON utilizavel
+FOR EACH ROW EXECUTE PROCEDURE delete_utilizavel_before();
+
+CREATE FUNCTION delete_utilizavel_after()
+RETURNS trigger AS $delete_utilizavel_after$
+BEGIN	
+	DELETE FROM item_nao_fabricavel WHERE id = OLD.id;
+	
+	DELETE FROM item WHERE id = OLD.id;
+
+	RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item não fabricavel da segunda tabela caracterizadora.';
+
+    RETURN OLD;
+
+END;
+$delete_utilizavel_after$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER delete_utilizavel_after
+AFTER DELETE ON utilizavel
+FOR EACH ROW EXECUTE PROCEDURE delete_utilizavel_after();
 
 COMMIT;
