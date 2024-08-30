@@ -645,7 +645,7 @@ $insert_ferramenta$ LANGUAGE plpgsql SECURITY DEFINER;
 
 CREATE TRIGGER insert_ferramenta
 BEFORE INSERT ON ferramenta
-FOR EACH ROW EXECUTE FUNCTION insert_ferramenta();
+FOR EACH ROW EXECUTE PROCEDURE insert_ferramenta();
 
 ---------------------
 ---
@@ -675,7 +675,7 @@ $insert_arma$ LANGUAGE plpgsql SECURITY DEFINER;
 
 CREATE TRIGGER insert_arma
 BEFORE INSERT ON arma
-FOR EACH ROW EXECUTE FUNCTION insert_arma();
+FOR EACH ROW EXECUTE PROCEDURE insert_arma();
 
 ---------------------
 ---
@@ -705,7 +705,7 @@ $insert_comida$ LANGUAGE plpgsql SECURITY DEFINER;
 
 CREATE TRIGGER insert_comida
 BEFORE INSERT ON comida
-FOR EACH ROW EXECUTE FUNCTION insert_comida();
+FOR EACH ROW EXECUTE PROCEDURE insert_comida();
 
 ---------------------
 ---
@@ -735,7 +735,7 @@ $insert_medicamento$ LANGUAGE plpgsql SECURITY DEFINER;
 
 CREATE TRIGGER insert_medicamento
 BEFORE INSERT ON medicamento
-FOR EACH ROW EXECUTE FUNCTION insert_medicamento();
+FOR EACH ROW EXECUTE PROCEDURE insert_medicamento();
 
 ---------------------
 ---
@@ -765,6 +765,6 @@ $insert_utilizavel$ LANGUAGE plpgsql SECURITY DEFINER;
 
 CREATE TRIGGER insert_utilizavel
 BEFORE INSERT ON utilizavel
-FOR EACH ROW EXECUTE FUNCTION insert_utilizavel();
+FOR EACH ROW EXECUTE PROCEDURE insert_utilizavel();
 
 COMMIT;
