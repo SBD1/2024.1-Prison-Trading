@@ -617,4 +617,154 @@ CREATE TRIGGER delete_instancia
 BEFORE DELETE ON instancia_item
 FOR EACH ROW EXECUTE PROCEDURE delete_instancia();
 
+---------------------
+---
+---   FERRAMENTA
+---
+---------------------
+
+CREATE FUNCTION insert_ferramenta()
+RETURNS trigger AS $insert_ferramenta$
+DECLARE
+    ferramenta_id INTEGER;
+BEGIN
+    INSERT INTO item (tipo)
+    VALUES ('fabricavel')
+    RETURNING id INTO ferramenta_id;
+
+    INSERT INTO item_fabricavel (id, tipo)
+    VALUES (ferramenta_id, 'ferramenta')
+
+    NEW.id := ferramenta_id;
+
+    RAISE NOTICE 'Criação da ferramenta bem sucedida, id da ferramenta é: %', ferramenta_id;
+
+    RETURN NEW;
+END;
+$insert_ferramenta$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER insert_ferramenta
+BEFORE INSERT ON ferramenta
+FOR EACH ROW EXECUTE FUNCTION insert_ferramenta();
+
+---------------------
+---
+---   ARMA
+---
+---------------------
+
+CREATE FUNCTION insert_arma()
+RETURNS trigger AS $insert_arma$
+DECLARE
+    arma_id INTEGER;
+BEGIN
+    INSERT INTO item (tipo)
+    VALUES ('fabricavel')
+    RETURNING id INTO arma_id; 
+	
+    INSERT INTO item_fabricavel (id, tipo)
+    VALUES (arma_id, 'arma')
+
+    NEW.id := arma_id;
+
+    RAISE NOTICE 'Criação da arma bem sucedida, id da arma é: %', arma_id;
+
+    RETURN NEW;
+END;
+$insert_arma$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER insert_arma
+BEFORE INSERT ON arma
+FOR EACH ROW EXECUTE FUNCTION insert_arma();
+
+---------------------
+---
+---   COMIDA
+---
+---------------------
+
+CREATE FUNCTION insert_comida()
+RETURNS trigger AS $insert_comida$
+DECLARE
+    comida_id INTEGER;
+BEGIN
+    INSERT INTO item (tipo)
+    VALUES ('nao fabricavel')
+    RETURNING id INTO comida_id; 
+	
+    INSERT INTO item_nao_fabricavel (id, tipo)
+    VALUES (comida_id, 'comida')
+
+    NEW.id := comida_id;
+
+    RAISE NOTICE 'Criação da comida bem sucedida, id da comida é: %', comida_id;
+
+    RETURN NEW;
+END;
+$insert_comida$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER insert_comida
+BEFORE INSERT ON comida
+FOR EACH ROW EXECUTE FUNCTION insert_comida();
+
+---------------------
+---
+---   MEDICAMENTO
+---
+---------------------
+
+CREATE FUNCTION insert_medicamento()
+RETURNS trigger AS $insert_medicamento$
+DECLARE
+    medicamento_id INTEGER;
+BEGIN
+    INSERT INTO item (tipo)
+    VALUES ('nao fabricavel')
+    RETURNING id INTO medicamento_id; 
+	
+    INSERT INTO item_nao_fabricavel (id, tipo)
+    VALUES (medicamento_id, 'medicamento')
+
+    NEW.id := medicamento_id;
+	
+    RAISE NOTICE 'Criação da medicamento bem sucedida, id da medicamento é: %', medicamento_id;
+
+    RETURN NEW;
+END;
+$insert_medicamento$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER insert_medicamento
+BEFORE INSERT ON medicamento
+FOR EACH ROW EXECUTE FUNCTION insert_medicamento();
+
+---------------------
+---
+---   UTILIZAVEL
+---
+---------------------
+
+CREATE FUNCTION insert_utilizavel()
+RETURNS trigger AS $insert_utilizavel$
+DECLARE
+    utilizavel_id INTEGER;
+BEGIN
+    INSERT INTO item (tipo)
+    VALUES ('nao fabricavel')
+    RETURNING id INTO utilizavel_id; 
+	
+    INSERT INTO item_nao_fabricavel (id, tipo)
+    VALUES (utilizavel_id, 'utilizavel')
+
+    NEW.id := utilizavel_id;
+	
+    RAISE NOTICE 'Criação da utilizavel bem sucedida, id da utilizavel é: %', utilizavel_id;
+
+    RETURN NEW;
+END;
+$insert_utilizavel$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER insert_utilizavel
+BEFORE INSERT ON utilizavel
+FOR EACH ROW EXECUTE FUNCTION insert_utilizavel();
+
 COMMIT;
