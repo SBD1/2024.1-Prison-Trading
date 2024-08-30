@@ -791,9 +791,9 @@ FOR EACH ROW EXECUTE PROCEDURE insert_ferramenta();
 CREATE FUNCTION update_ferramenta()
 RETURNS trigger AS $update_ferramenta$
 BEGIN
-	IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
-		RAISE EXCEPTION 'Não é possível alterar o id e pessoa da ferramenta.';
-	END IF;
+    IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
+	RAISE EXCEPTION 'Não é possível alterar o id e pessoa da ferramenta.';
+    END IF;
 
     RETURN NEW;
 
@@ -807,13 +807,13 @@ FOR EACH ROW EXECUTE PROCEDURE update_ferramenta();
 CREATE FUNCTION delete_ferramenta_before()
 RETURNS trigger AS $delete_ferramenta_before$
 BEGIN
-	DELETE FROM instancia_item WHERE id = OLD.id;
+    DELETE FROM instancia_item WHERE id = OLD.id;
 
-	DELETE FROM lista_fabricacao WHERE item_fabricavel = OLD.id;
+    DELETE FROM lista_fabricacao WHERE item_fabricavel = OLD.id;
 
-	DELETE FROM fabricacao WHERE item_fabricavel = OLD.id;
+    DELETE FROM fabricacao WHERE item_fabricavel = OLD.id;
 
-	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a fabricação do item foi deletada, jutamente com seu craft.';
+    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a fabricação do item foi deletada, jutamente com seu craft.';
 
     RETURN OLD;
 
@@ -827,11 +827,11 @@ FOR EACH ROW EXECUTE PROCEDURE delete_ferramenta_before();
 CREATE FUNCTION delete_ferramenta_after()
 RETURNS trigger AS $delete_ferramenta_after$
 BEGIN	
-	DELETE FROM item_fabricavel WHERE id = OLD.id;
+    DELETE FROM item_fabricavel WHERE id = OLD.id;
 	
-	DELETE FROM item WHERE id = OLD.id;
+    DELETE FROM item WHERE id = OLD.id;
 
-	RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item fabricavel da segunda tabela caracterizadora.';
+    RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item fabricavel da segunda tabela caracterizadora.';
 
     RETURN OLD;
 
@@ -875,9 +875,9 @@ FOR EACH ROW EXECUTE PROCEDURE insert_arma();
 CREATE FUNCTION update_arma()
 RETURNS trigger AS $update_arma$
 BEGIN
-	IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
-		RAISE EXCEPTION 'Não é possível alterar o id e pessoa da arma.';
-	END IF;
+    IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
+	RAISE EXCEPTION 'Não é possível alterar o id e pessoa da arma.';
+    END IF;
 
     RETURN NEW;
 
@@ -891,13 +891,13 @@ FOR EACH ROW EXECUTE PROCEDURE update_arma();
 CREATE FUNCTION delete_arma_before()
 RETURNS trigger AS $delete_arma_before$
 BEGIN
-	DELETE FROM instancia_item WHERE id = OLD.id;
+    DELETE FROM instancia_item WHERE id = OLD.id;
 
-	DELETE FROM lista_fabricacao WHERE item_fabricavel = OLD.id;
+    DELETE FROM lista_fabricacao WHERE item_fabricavel = OLD.id;
 
-	DELETE FROM fabricacao WHERE item_fabricavel = OLD.id;
+    DELETE FROM fabricacao WHERE item_fabricavel = OLD.id;
 
-	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a fabricação do item foi deletada, jutamente com seu craft.';
+    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a fabricação do item foi deletada, jutamente com seu craft.';
 
     RETURN OLD;
 
@@ -911,11 +911,11 @@ FOR EACH ROW EXECUTE PROCEDURE delete_arma_before();
 CREATE FUNCTION delete_arma_after()
 RETURNS trigger AS $delete_arma_after$
 BEGIN	
-	DELETE FROM item_fabricavel WHERE id = OLD.id;
+    DELETE FROM item_fabricavel WHERE id = OLD.id;
 	
-	DELETE FROM item WHERE id = OLD.id;
+    DELETE FROM item WHERE id = OLD.id;
 
-	RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item fabricavel da segunda tabela caracterizadora.';
+    RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item fabricavel da segunda tabela caracterizadora.';
 
     RETURN OLD;
 
@@ -960,9 +960,9 @@ FOR EACH ROW EXECUTE PROCEDURE insert_comida();
 CREATE FUNCTION update_comida()
 RETURNS trigger AS $update_comida$
 BEGIN
-	IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
-		RAISE EXCEPTION 'Não é possível alterar o id e pessoa da comida.';
-	END IF;
+    IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
+        RAISE EXCEPTION 'Não é possível alterar o id e pessoa da comida.';
+    END IF;
 
     RETURN NEW;
 
@@ -976,9 +976,9 @@ FOR EACH ROW EXECUTE PROCEDURE update_comida();
 CREATE FUNCTION delete_comida_before()
 RETURNS trigger AS $delete_comida_before$
 BEGIN
-	DELETE FROM instancia_item WHERE id = OLD.id;
+    DELETE FROM instancia_item WHERE id = OLD.id;
 
-	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
+    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
 
     RETURN OLD;
 
@@ -992,11 +992,11 @@ FOR EACH ROW EXECUTE PROCEDURE delete_comida_before();
 CREATE FUNCTION delete_comida_after()
 RETURNS trigger AS $delete_comida_after$
 BEGIN	
-	DELETE FROM item_nao_fabricavel WHERE id = OLD.id;
+    DELETE FROM item_nao_fabricavel WHERE id = OLD.id;
 	
-	DELETE FROM item WHERE id = OLD.id;
+    DELETE FROM item WHERE id = OLD.id;
 
-	RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item não fabricavel da segunda tabela caracterizadora.';
+    RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item não fabricavel da segunda tabela caracterizadora.';
 
     RETURN OLD;
 
@@ -1040,9 +1040,9 @@ FOR EACH ROW EXECUTE PROCEDURE insert_medicamento();
 CREATE FUNCTION update_medicamento()
 RETURNS trigger AS $update_medicamento$
 BEGIN
-	IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
-		RAISE EXCEPTION 'Não é possível alterar o id e pessoa do medicamento.';
-	END IF;
+    IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
+	RAISE EXCEPTION 'Não é possível alterar o id e pessoa do medicamento.';
+    END IF;
 
     RETURN NEW;
 
@@ -1056,9 +1056,9 @@ FOR EACH ROW EXECUTE PROCEDURE update_medicamento();
 CREATE FUNCTION delete_medicamento_before()
 RETURNS trigger AS $delete_medicamento_before$
 BEGIN
-	DELETE FROM instancia_item WHERE id = OLD.id;
+    DELETE FROM instancia_item WHERE id = OLD.id;
 
-	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
+    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
 
     RETURN OLD;
 
@@ -1072,11 +1072,11 @@ FOR EACH ROW EXECUTE PROCEDURE delete_medicamento_before();
 CREATE FUNCTION delete_medicamento_after()
 RETURNS trigger AS $delete_medicamento_after$
 BEGIN	
-	DELETE FROM item_nao_fabricavel WHERE id = OLD.id;
+    DELETE FROM item_nao_fabricavel WHERE id = OLD.id;
 	
-	DELETE FROM item WHERE id = OLD.id;
+    DELETE FROM item WHERE id = OLD.id;
 
-	RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item não fabricavel da segunda tabela caracterizadora.';
+    RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item não fabricavel da segunda tabela caracterizadora.';
 
     RETURN OLD;
 
@@ -1120,9 +1120,9 @@ FOR EACH ROW EXECUTE PROCEDURE insert_utilizavel();
 CREATE FUNCTION update_utilizavel()
 RETURNS trigger AS $update_utilizavel$
 BEGIN
-	IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
-		RAISE EXCEPTION 'Não é possível alterar o id e pessoa do utilizavel.';
-	END IF;
+    IF NEW.id <> OLD.id OR NEW.pessoa <> OLD.pessoa THEN
+	RAISE EXCEPTION 'Não é possível alterar o id e pessoa do utilizavel.';
+    END IF;
 
     RETURN NEW;
 
@@ -1136,9 +1136,9 @@ FOR EACH ROW EXECUTE PROCEDURE update_utilizavel();
 CREATE FUNCTION delete_utilizavel_before()
 RETURNS trigger AS $delete_utilizavel_before$
 BEGIN
-	DELETE FROM instancia_item WHERE id = OLD.id;
+    DELETE FROM instancia_item WHERE id = OLD.id;
 
-	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
+    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas.';
 
     RETURN OLD;
 
@@ -1152,11 +1152,11 @@ FOR EACH ROW EXECUTE PROCEDURE delete_utilizavel_before();
 CREATE FUNCTION delete_utilizavel_after()
 RETURNS trigger AS $delete_utilizavel_after$
 BEGIN	
-	DELETE FROM item_nao_fabricavel WHERE id = OLD.id;
+    DELETE FROM item_nao_fabricavel WHERE id = OLD.id;
 	
-	DELETE FROM item WHERE id = OLD.id;
+    DELETE FROM item WHERE id = OLD.id;
 
-	RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item não fabricavel da segunda tabela caracterizadora.';
+    RAISE NOTICE 'O item da tabela caracterizadora foi deletado, juntamente com o item não fabricavel da segunda tabela caracterizadora.';
 
     RETURN OLD;
 
