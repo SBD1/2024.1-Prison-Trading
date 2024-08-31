@@ -96,6 +96,8 @@ class Game:
               "\n'INVENTARIO' - Para ver os itens que estão no seu inventário."
               "\n'INFO' - Para ver as informações de um item."
               "\n'MOVER + ' ' + ID' - Para se movimentar de um lugar para outro."
+              "\n'PEGAR + ' ' + ID' - Para pegar um item no chão."
+              "\n'LARGAR + ' ' + ID' - Para largar um item do inventário no chão."
               "\n'HELP' - Para ver os possíveis comandos."
               "\n'CLEAR' - Para limpar o terminal."
               "\n'SAIR' - Para fechar o jogo.")
@@ -143,7 +145,7 @@ class Game:
 
     def itens(self):
         query = db.execute_fetchall("""
-            SELECT ins.item, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
+            SELECT ins.id, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
             FROM instancia_item ins
             LEFT JOIN arma arm ON arm.id = ins.item
             LEFT JOIN ferramenta fer ON fer.id = ins.item
@@ -412,7 +414,7 @@ class Game:
             print("\033[91m======================================================\033[0m")
 
             query = db.execute_fetchall("""
-                SELECT t.item, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
+                SELECT t.id, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
                 FROM inventario AS i
                 LEFT JOIN instancia_item AS t ON i.id = t.inventario
                 LEFT JOIN arma AS arm ON arm.id = t.item
@@ -446,29 +448,29 @@ class Game:
         _, lugar_id = input_usuario.split(maxsplit=1)
 
         query = db.execute_fetchall("""
-                    SELECT lug.id
-                    FROM lugar_origem_destino ori
-                    JOIN lugar lug ON ori.lugar_destino = lug.id
-                    JOIN regiao reg ON lug.regiao = reg.id
-                    WHERE ori.lugar_origem = %s
-                    ORDER BY lug.nome;
-                """, (self.lugar_atual,))
+            SELECT lug.id
+            FROM lugar_origem_destino ori
+            JOIN lugar lug ON ori.lugar_destino = lug.id
+            JOIN regiao reg ON lug.regiao = reg.id
+            WHERE ori.lugar_origem = %s
+            ORDER BY lug.nome;
+        """, (self.lugar_atual,))
 
         verifica = any(str(resultado[0]) == lugar_id for resultado in query)
 
         if verifica:
             query = db.execute_fetchall("""
-                       SELECT regiao 
-                       FROM lugar
-                       WHERE id = %s;
-                    """, (lugar_id,))
+               SELECT regiao 
+               FROM lugar
+               WHERE id = %s;
+            """, (lugar_id,))
             regiao = query[0][0]
 
             db.execute_commit("""
-                        UPDATE Jogador 
-                        SET lugar = %s, regiao = %s
-                        WHERE id = 1;
-                    """, (lugar_id, regiao))
+                UPDATE Jogador 
+                SET lugar = %s, regiao = %s
+                WHERE id = 1;
+            """, (lugar_id, regiao))
 
             self.lugar_atual = lugar_id
             self.regiao_atual = regiao
@@ -476,6 +478,40 @@ class Game:
         else:
             print("A sala atual não possui conexões com a que o jogador digitou.")
 
+    def pegar(self, input_usuario):
+        _, id_inst = input_usuario.split(maxsplit=1)
+        db.execute_commit("""
+            SELECT pegar_item_chao(%s, %s);
+        """, (self.id_jogador, id_inst))
+
+    def largar(self, input_usuario):
+        _, id_inst = input_usuario.split(maxsplit=1)
+        db.execute_commit("""
+            SELECT dropar_item_chao(%s, %s);
+        """, (self.id_jogador, id_inst))
+
+    def livro(self):
+        # TODO ADICIONAR AS VIEWS DE CRAFT
+        query = db.execute_fetchall("""
+           SELECT id, nome 
+           FROM livro_fabricacao
+        """, )
+        if query:
+            for resultado in query:
+                print(f'ID: {resultado[0]}\tNome: {resultado[1]}')
+
+        tipo_livro = input("Digite o id do livro: ")
+
+        query = db.execute_fetchall("""
+           SELECT id, nome 
+           FROM livro_fabricacao
+        """, )
+
+        id_item = input("Digite o id do item que deseja fabricar: ")
+
+        db.execute_commit("""
+            SELECT realizar_craft(%s, %s);
+        """, (self.id_jogador, id_item))
 
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -483,13 +519,13 @@ class Game:
         if self.id_jogador != '':
             self.status_jogador()
 
-
     def gameLoop(self):
         comandos = {
             "HELP": self.help,
             "CLEAR": self.clear,
             "INVENTARIO": self.inventario,
             "INFO": self.info,
+            "LIVRO": self.livro,
         }
 
         while True:
@@ -498,13 +534,20 @@ class Game:
                 self.mover(input_usuario)
                 input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
                 self.clear()
+            elif input_usuario.startswith("PEGAR "):
+                self.pegar(input_usuario)
+                input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                self.clear()
+            elif input_usuario.startswith("LARGAR "):
+                self.largar(input_usuario)
+                input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                self.clear()
             elif input_usuario == "SAIR":
                 break
             elif input_usuario in comandos:
                 comandos[input_usuario]()
             else:
                 print("Opção inválida, digite 'HELP' para ver os comandos suportados.")
-
 
     def start(self):
         self.clear()

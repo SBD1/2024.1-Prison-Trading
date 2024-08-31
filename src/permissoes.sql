@@ -169,6 +169,9 @@ BEGIN
             IF ismotin THEN
                 RAISE NOTICE 'Motim está ativo, o jogador conseguiu entrar na sala de controle.';
                 RETURN NEW;
+            ELSE
+                RAISE NOTICE 'Motim não está ativo, o jogador não conseguiu entrar na sala de controle.';
+                RETURN OLD;
             END IF;
 
         ELSIF NEW.lugar = 2 AND OLD.lugar = 1 THEN
@@ -575,6 +578,9 @@ EXECUTE PROCEDURE update_inventario();
 CREATE FUNCTION insert_instancia()
     RETURNS trigger AS
 $insert_instancia$
+DECLARE
+    tamanho_inventario INTEGER;
+    tamanho_item INTEGER;
 BEGIN
     IF NEW.lugar IS NULL AND NEW.inventario IS NULL THEN
         RAISE EXCEPTION 'Atualizando inventário e lugar como valores nulos.';
@@ -582,9 +588,31 @@ BEGIN
         RAISE EXCEPTION 'A instância não pode estar em um lugar e inventário ao mesmo tempo.';
     END IF;
 
+    IF NEW.pessoa IS NOT NULL AND NEW.inventario IS NOT NULL THEN
+
+        SELECT inventario_ocupado INTO tamanho_inventario
+        FROM inventario
+        WHERE id = NEW.inventario;
+
+        SELECT COALESCE(arm.tamanho, fer.tamanho, com.tamanho, med.tamanho, uti.tamanho)
+        INTO tamanho_item
+        FROM item ite
+                 LEFT JOIN arma arm ON arm.id = ite.id
+                 LEFT JOIN ferramenta fer ON fer.id = ite.id
+                 LEFT JOIN comida com ON com.id = ite.id
+                 LEFT JOIN medicamento med ON med.id = ite.id
+                 LEFT JOIN utilizavel uti ON uti.id = ite.id
+        WHERE ite.id = NEW.item;
+
+        UPDATE inventario
+        SET inventario_ocupado = tamanho_inventario + tamanho_item
+        WHERE id = NEW.inventario;
+
+    END IF;
+
     RETURN NEW;
 END;
-$insert_instancia$ LANGUAGE plpgsql;
+$insert_instancia$ LANGUAGE plpgsql SECURITY DEFINER;
 
 CREATE TRIGGER insert_instancia
     BEFORE INSERT
@@ -1609,15 +1637,44 @@ BEGIN
 END;
 $dropar_item_chao$ LANGUAGE plpgsql;
 
-CREATE FUNCTION realizar_craft(jogador_atb INTEGER, instancia INTEGER)
+CREATE FUNCTION realizar_craft(jogador_atb INTEGER, item_atb INTEGER)
     RETURNS VOID AS
 $realizar_craft$
 DECLARE
-
+    possui_itens BOOLEAN;
+    itens_jogador INTEGER[];
+    itens_craft INTEGER[];
+    inventario_atb INTEGER;
 BEGIN
+    SELECT id INTO inventario_atb
+    FROM inventario
+    WHERE pessoa = jogador_atb;
+
+    SELECT array_agg(item) INTO itens_jogador
+    FROM instancia_item
+    WHERE pessoa = jogador_atb;
+
+    SELECT array_agg(item) INTO itens_craft
+    FROM lista_fabricacao
+    WHERE fabricacao = item_atb;
+
+    possui_itens := itens_jogador @> itens_craft;
+
+    IF possui_itens THEN
+        DELETE FROM instancia_item
+        WHERE pessoa = jogador_atb
+        AND item = ANY(itens_craft);
+
+        INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
+        VALUES (item_atb, NULL, NULL, jogador_atb, inventario_atb);
+
+        RAISE NOTICE 'Craft realizado com sucesso.';
+    ELSE
+        RAISE NOTICE 'Jogador não possui todos os itens para realizar o craft.';
+    END IF;
 
 END;
-$realizar_craft$ LANGUAGE plpgsql;
+$realizar_craft$ LANGUAGE plpgsql SECURITY DEFINER;
 
 ---------------------
 ---
