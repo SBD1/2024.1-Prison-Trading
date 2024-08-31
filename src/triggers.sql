@@ -759,3 +759,27 @@ CREATE TRIGGER item_insert
 BEFORE INSERT ON item
 FOR EACH ROW EXECUTE PROCEDURE insert_item();
 
+---------------------
+---
+---   LIVRO_FABRICACAO
+---
+---------------------
+
+DROP TRIGGER IF EXISTS update_livro_fabricacao ON fabricacao;
+CREATE OR REPLACE FUNCTION update_livro_fabricacao()
+RETURNS trigger AS $update_livro_fabricacao$
+BEGIN
+    IF NEW.id <> OLD.id THEN
+        RAISE EXCEPTION 'Não é possível alterar o id e o nome do livro_fabricacao.';
+    END IF;
+
+    RETURN NEW;
+
+END;
+$update_livro_fabricacao$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_livro_fabricacao
+    BEFORE update
+    ON fabricacao
+    FOR EACH ROW
+EXECUTE PROCEDURE update_livro_fabricacao();
