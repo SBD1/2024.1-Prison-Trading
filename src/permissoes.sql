@@ -1569,6 +1569,56 @@ EXECUTE PROCEDURE update_fabricacao();
 ---------------------
 
 
+
+---------------------
+---
+---   ITEM - JOGADOR
+---
+---------------------
+
+CREATE FUNCTION pegar_item_chao(jogador INTEGER, instancia INTEGER)
+    RETURNS VOID AS
+$pegar_item_chao$
+DECLARE
+    inventario_atb INTEGER;
+BEGIN
+    SELECT id INTO inventario_atb
+    FROM inventario
+    WHERE pessoa = jogador;
+
+    UPDATE instancia_item
+    SET lugar = NULL, regiao = NULL, inventario = inventario_atb, pessoa =  jogador
+    WHERE id = instancia;
+END;
+$pegar_item_chao$ LANGUAGE plpgsql;
+
+CREATE FUNCTION dropar_item_chao(jogador_atb INTEGER, instancia INTEGER)
+    RETURNS VOID AS
+$dropar_item_chao$
+DECLARE
+    lugar_atb INTEGER;
+    regiao_atb INTEGER;
+BEGIN
+    SELECT lugar, regiao INTO lugar_atb, regiao_atb
+    FROM jogador
+    WHERE id = jogador_atb;
+
+    UPDATE instancia_item
+    SET lugar = lugar_atb, regiao = regiao_atb, inventario = NULL, pessoa =  NULL
+    WHERE id = instancia;
+END;
+$dropar_item_chao$ LANGUAGE plpgsql;
+
+CREATE FUNCTION realizar_craft(jogador_atb INTEGER, instancia INTEGER)
+    RETURNS VOID AS
+$realizar_craft$
+DECLARE
+
+BEGIN
+
+END;
+$realizar_craft$ LANGUAGE plpgsql;
+
 ---------------------
 ---
 ---   FUNÇÕES POR TEMPO
