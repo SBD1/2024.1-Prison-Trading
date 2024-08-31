@@ -1,6 +1,6 @@
 -- --------------------------------------------------------------------------------------
 -- Data de Criação ........: 30/08/2024                                                --
--- Autor(es) ..............: Fernando Gabriel, João A. e Julio Cesar                  --
+-- Autor(es) ..............: Fernando Gabriel, João A. e Julio Cesar                   --
 -- Versão .................: 1.0                                                       --
 -- Banco de Dados .........: PostgreSQL                                                --
 -- Descrição ..............: Adiciona Triggers e restrições                            --
@@ -39,8 +39,6 @@ REVOKE INSERT, UPDATE, DELETE ON pessoa FROM prison_trading_user;
 REVOKE INSERT, UPDATE, DELETE ON item, item_fabricavel, item_nao_fabricavel FROM prison_trading_user;
 
 REVOKE INSERT, DELETE ON fabricacao, inventario FROM prison_trading_user;
-
-REVOKE UPDATE ON livro_fabricacao FROM prison_trading_user;
 
 ---------------------
 ---
@@ -130,49 +128,51 @@ CREATE FUNCTION update_jogador()
     RETURNS trigger AS
 $update_jogador$
 DECLARE
-    ismotin BOOLEAN;
-    itens_inventario INTEGER[];
+    ismotin            BOOLEAN;
+    itens_inventario   INTEGER[];
     tem_todos_os_itens BOOLEAN;
-    itens_necessarios INTEGER[] := '{}';
+    itens_necessarios  INTEGER[] := '{}';
 BEGIN
     IF NEW.id <> OLD.id THEN
         RAISE EXCEPTION 'Não é possível alterar o id do jogador.';
     END IF;
 
     IF NEW.lugar <> OLD.lugar THEN
-        SELECT array_agg(item) INTO itens_inventario
+        SELECT array_agg(item)
+        INTO itens_inventario
         FROM instancia_item
         WHERE pessoa = NEW.id;
 
         IF NEW.lugar = 31 THEN
-            itens_necessarios := ARRAY[2, 4, 26];  -- FUGA ESGOTO - itens: picareta, pá e lanterna
+            itens_necessarios := ARRAY [2, 4, 26]; -- FUGA ESGOTO - itens: picareta, pá e lanterna
 
         ELSIF NEW.lugar = 32 THEN
-            itens_necessarios := ARRAY[37];  -- FUGA DISFARÇADO ENTRADA - itens: crachá
+            itens_necessarios := ARRAY [37]; -- FUGA DISFARÇADO ENTRADA - itens: crachá
 
         ELSIF NEW.lugar = 33 THEN
-            itens_necessarios := ARRAY[26, 1, 3];  -- FUGA FLORESTA - itens: lanterna, chave de fenda e martelo
+            itens_necessarios := ARRAY [26, 1, 3]; -- FUGA FLORESTA - itens: lanterna, chave de fenda e martelo
 
         ELSIF NEW.lugar = 29 THEN
-            itens_necessarios := ARRAY[38];  -- OFICINA A - itens: chave oficina A
+            itens_necessarios := ARRAY [38]; -- OFICINA A - itens: chave oficina A
 
         ELSIF NEW.lugar = 30 THEN
-            itens_necessarios := ARRAY[39];  -- OFICINA B - itens: chave oficina B
+            itens_necessarios := ARRAY [39]; -- OFICINA B - itens: chave oficina B
 
         ELSIF NEW.lugar = 20 THEN
-            SELECT prisao.motim INTO ismotin
+            SELECT prisao.motim
+            INTO ismotin
             FROM prisao
-            JOIN regiao ON regiao.prisao = prisao.id
-            JOIN lugar ON lugar.regiao = regiao.id
+                     JOIN regiao ON regiao.prisao = prisao.id
+                     JOIN lugar ON lugar.regiao = regiao.id
             WHERE lugar.id = NEW.lugar;
 
             IF ismotin THEN
-				RAISE NOTICE 'Motim está ativo, o jogador conseguiu entrar na sala de controle.';
+                RAISE NOTICE 'Motim está ativo, o jogador conseguiu entrar na sala de controle.';
                 RETURN NEW;
             END IF;
 
         ELSIF NEW.lugar = 2 AND OLD.lugar = 1 THEN
-            itens_necessarios := ARRAY[4];  -- SAIR DA SOLITÁRIA - Itens: picareta
+            itens_necessarios := ARRAY [4]; -- SAIR DA SOLITÁRIA - Itens: picareta
 
         END IF;
 
@@ -947,7 +947,7 @@ CREATE FUNCTION delete_ferramenta_before()
     RETURNS trigger AS
 $delete_ferramenta_before$
 DECLARE
-	rec_fabricacao lista_fabricacao%ROWTYPE;
+    rec_fabricacao lista_fabricacao%ROWTYPE;
 BEGIN
     DELETE FROM instancia_item WHERE item = OLD.id;
 
@@ -961,20 +961,22 @@ BEGIN
     SET item_nao_fabricavel = NULL
     WHERE item_nao_fabricavel = OLD.id;
 
-	FOR rec_fabricacao IN
-		SELECT *
-		FROM lista_fabricacao
-		WHERE item = OLD.id
-		LOOP
-			DELETE FROM lista_fabricacao
-			WHERE fabricacao = rec_fabricacao.fabricacao;
+    FOR rec_fabricacao IN
+        SELECT *
+        FROM lista_fabricacao
+        WHERE item = OLD.id
+        LOOP
+            DELETE
+            FROM lista_fabricacao
+            WHERE fabricacao = rec_fabricacao.fabricacao;
 
-			DELETE FROM fabricacao
-			WHERE id = rec_fabricacao.fabricacao;
+            DELETE
+            FROM fabricacao
+            WHERE id = rec_fabricacao.fabricacao;
 
-			RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
+            RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
 
-    END LOOP;
+        END LOOP;
 
     RETURN OLD;
 
@@ -1064,7 +1066,7 @@ CREATE FUNCTION delete_arma_before()
     RETURNS trigger AS
 $delete_arma_before$
 DECLARE
-	rec_fabricacao lista_fabricacao%ROWTYPE;
+    rec_fabricacao lista_fabricacao%ROWTYPE;
 BEGIN
     DELETE FROM instancia_item WHERE item = OLD.id;
 
@@ -1078,20 +1080,22 @@ BEGIN
     SET item_nao_fabricavel = NULL
     WHERE item_nao_fabricavel = OLD.id;
 
-	FOR rec_fabricacao IN
-		SELECT *
-		FROM lista_fabricacao
-		WHERE item = OLD.id
-		LOOP
-			DELETE FROM lista_fabricacao
-			WHERE fabricacao = rec_fabricacao.fabricacao;
+    FOR rec_fabricacao IN
+        SELECT *
+        FROM lista_fabricacao
+        WHERE item = OLD.id
+        LOOP
+            DELETE
+            FROM lista_fabricacao
+            WHERE fabricacao = rec_fabricacao.fabricacao;
 
-			DELETE FROM fabricacao
-			WHERE id = rec_fabricacao.fabricacao;
+            DELETE
+            FROM fabricacao
+            WHERE id = rec_fabricacao.fabricacao;
 
-			RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
+            RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
 
-    END LOOP;
+        END LOOP;
 
     RETURN OLD;
 
@@ -1182,30 +1186,32 @@ CREATE FUNCTION delete_comida_before()
     RETURNS trigger AS
 $delete_comida_before$
 DECLARE
-	rec_fabricacao lista_fabricacao%ROWTYPE;
+    rec_fabricacao lista_fabricacao%ROWTYPE;
 BEGIN
     DELETE FROM instancia_item WHERE item = OLD.id;
 
-	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
+    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
 
     UPDATE missao
     SET item_nao_fabricavel = NULL
     WHERE item_nao_fabricavel = OLD.id;
 
-	FOR rec_fabricacao IN
-		SELECT *
-		FROM lista_fabricacao
-		WHERE item = OLD.id
-		LOOP
-			DELETE FROM lista_fabricacao
-			WHERE fabricacao = rec_fabricacao.fabricacao;
+    FOR rec_fabricacao IN
+        SELECT *
+        FROM lista_fabricacao
+        WHERE item = OLD.id
+        LOOP
+            DELETE
+            FROM lista_fabricacao
+            WHERE fabricacao = rec_fabricacao.fabricacao;
 
-			DELETE FROM fabricacao
-			WHERE id = rec_fabricacao.fabricacao;
+            DELETE
+            FROM fabricacao
+            WHERE id = rec_fabricacao.fabricacao;
 
-			RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
+            RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
 
-    END LOOP;
+        END LOOP;
 
     RETURN OLD;
 
@@ -1295,30 +1301,32 @@ CREATE FUNCTION delete_medicamento_before()
     RETURNS trigger AS
 $delete_medicamento_before$
 DECLARE
-	rec_fabricacao lista_fabricacao%ROWTYPE;
+    rec_fabricacao lista_fabricacao%ROWTYPE;
 BEGIN
     DELETE FROM instancia_item WHERE item = OLD.id;
 
-	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
+    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
 
     UPDATE missao
     SET item_nao_fabricavel = NULL
     WHERE item_nao_fabricavel = OLD.id;
 
-	FOR rec_fabricacao IN
-		SELECT *
-		FROM lista_fabricacao
-		WHERE item = OLD.id
-		LOOP
-			DELETE FROM lista_fabricacao
-			WHERE fabricacao = rec_fabricacao.fabricacao;
+    FOR rec_fabricacao IN
+        SELECT *
+        FROM lista_fabricacao
+        WHERE item = OLD.id
+        LOOP
+            DELETE
+            FROM lista_fabricacao
+            WHERE fabricacao = rec_fabricacao.fabricacao;
 
-			DELETE FROM fabricacao
-			WHERE id = rec_fabricacao.fabricacao;
+            DELETE
+            FROM fabricacao
+            WHERE id = rec_fabricacao.fabricacao;
 
-			RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
+            RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
 
-    END LOOP;
+        END LOOP;
 
     RETURN OLD;
 
@@ -1408,30 +1416,32 @@ CREATE FUNCTION delete_utilizavel_before()
     RETURNS trigger AS
 $delete_utilizavel_before$
 DECLARE
-	rec_fabricacao lista_fabricacao%ROWTYPE;
+    rec_fabricacao lista_fabricacao%ROWTYPE;
 BEGIN
     DELETE FROM instancia_item WHERE item = OLD.id;
 
-	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
+    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
 
     UPDATE missao
     SET item_nao_fabricavel = NULL
     WHERE item_nao_fabricavel = OLD.id;
 
-	FOR rec_fabricacao IN
-		SELECT *
-		FROM lista_fabricacao
-		WHERE item = OLD.id
-		LOOP
-			DELETE FROM lista_fabricacao
-			WHERE fabricacao = rec_fabricacao.fabricacao;
+    FOR rec_fabricacao IN
+        SELECT *
+        FROM lista_fabricacao
+        WHERE item = OLD.id
+        LOOP
+            DELETE
+            FROM lista_fabricacao
+            WHERE fabricacao = rec_fabricacao.fabricacao;
 
-			DELETE FROM fabricacao
-			WHERE id = rec_fabricacao.fabricacao;
+            DELETE
+            FROM fabricacao
+            WHERE id = rec_fabricacao.fabricacao;
 
-			RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
+            RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
 
-    END LOOP;
+        END LOOP;
 
     RETURN OLD;
 
@@ -1464,5 +1474,106 @@ CREATE TRIGGER delete_utilizavel_after
     ON utilizavel
     FOR EACH ROW
 EXECUTE PROCEDURE delete_utilizavel_after();
+
+---------------------
+---
+---   LIVRO_FABRICACAO
+---
+---------------------
+
+CREATE FUNCTION update_livro_fabricacao()
+    RETURNS trigger AS
+$update_livro_fabricacao$
+BEGIN
+    IF NEW.id <> OLD.id THEN
+        RAISE EXCEPTION 'Não é possível alterar o id do livro de fabricação.';
+    END IF;
+
+    RETURN NEW;
+
+END;
+$update_livro_fabricacao$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_livro_fabricacao
+    BEFORE update
+    ON livro_fabricacao
+    FOR EACH ROW
+EXECUTE PROCEDURE update_livro_fabricacao();
+
+CREATE FUNCTION delete_livro_fabricacao()
+    RETURNS trigger AS
+$delete_livro_fabricacao$
+DECLARE
+    rec_fabricacao fabricacao%ROWTYPE;
+BEGIN
+
+    FOR rec_fabricacao IN
+        SELECT *
+        FROM fabricacao
+        WHERE livro_fabricacao = OLD.id
+        LOOP
+            DELETE
+            FROM lista_fabricacao
+            WHERE fabricacao = rec_fabricacao.id;
+
+            RAISE NOTICE 'Deletando o craft % da lista_fabricacao.', rec_fabricacao.id;
+
+        END LOOP;
+
+	DELETE
+	FROM fabricacao
+	WHERE livro_fabricacao = OLD.id;
+
+    RAISE NOTICE 'Todas as fabricações vinculadas a esse livro foram deletadas.';
+
+    RETURN OLD;
+
+END;
+$delete_livro_fabricacao$ LANGUAGE plpgsql SECURITY DEFINER;
+
+CREATE TRIGGER delete_livro_fabricacao
+    BEFORE DELETE
+    ON livro_fabricacao
+    FOR EACH ROW
+EXECUTE PROCEDURE delete_livro_fabricacao();
+
+---------------------
+---
+---   FABRICACAO
+---
+---------------------
+
+CREATE FUNCTION update_fabricacao()
+    RETURNS trigger AS
+$update_fabricacao$
+BEGIN
+    IF NEW.id <> OLD.id OR NEW.item_fabricavel <> OLD.item_fabricavel THEN
+        RAISE EXCEPTION 'Não é possível alterar o id e o item fabricavel.';
+    END IF;
+
+    RETURN NEW;
+
+END;
+$update_fabricacao$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_fabricacao
+    BEFORE update
+    ON fabricacao
+    FOR EACH ROW
+EXECUTE PROCEDURE update_fabricacao();
+
+---------------------
+---
+---   LISTA_FABRICACAO
+---
+---------------------
+
+
+---------------------
+---
+---   FUNÇÕES POR TEMPO
+---
+---------------------
+
 
 COMMIT;
