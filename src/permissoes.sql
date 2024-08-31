@@ -946,6 +946,8 @@ EXECUTE PROCEDURE update_ferramenta();
 CREATE FUNCTION delete_ferramenta_before()
     RETURNS trigger AS
 $delete_ferramenta_before$
+DECLARE
+	rec_fabricacao lista_fabricacao%ROWTYPE;
 BEGIN
     DELETE FROM instancia_item WHERE item = OLD.id;
 
@@ -954,6 +956,25 @@ BEGIN
     DELETE FROM fabricacao WHERE item_fabricavel = OLD.id;
 
     RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a fabricação do item foi deletada, jutamente com seu craft.';
+
+    UPDATE missao
+    SET item_nao_fabricavel = NULL
+    WHERE item_nao_fabricavel = OLD.id;
+
+	FOR rec_fabricacao IN
+		SELECT *
+		FROM lista_fabricacao
+		WHERE item = OLD.id
+		LOOP
+			DELETE FROM lista_fabricacao
+			WHERE fabricacao = rec_fabricacao.fabricacao;
+
+			DELETE FROM fabricacao
+			WHERE id = rec_fabricacao.fabricacao;
+
+			RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
+
+    END LOOP;
 
     RETURN OLD;
 
@@ -1042,6 +1063,8 @@ EXECUTE PROCEDURE update_arma();
 CREATE FUNCTION delete_arma_before()
     RETURNS trigger AS
 $delete_arma_before$
+DECLARE
+	rec_fabricacao lista_fabricacao%ROWTYPE;
 BEGIN
     DELETE FROM instancia_item WHERE item = OLD.id;
 
@@ -1050,6 +1073,25 @@ BEGIN
     DELETE FROM fabricacao WHERE item_fabricavel = OLD.id;
 
     RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a fabricação do item foi deletada, jutamente com seu craft.';
+
+    UPDATE missao
+    SET item_nao_fabricavel = NULL
+    WHERE item_nao_fabricavel = OLD.id;
+
+	FOR rec_fabricacao IN
+		SELECT *
+		FROM lista_fabricacao
+		WHERE item = OLD.id
+		LOOP
+			DELETE FROM lista_fabricacao
+			WHERE fabricacao = rec_fabricacao.fabricacao;
+
+			DELETE FROM fabricacao
+			WHERE id = rec_fabricacao.fabricacao;
+
+			RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
+
+    END LOOP;
 
     RETURN OLD;
 
@@ -1139,14 +1181,31 @@ EXECUTE PROCEDURE update_comida();
 CREATE FUNCTION delete_comida_before()
     RETURNS trigger AS
 $delete_comida_before$
+DECLARE
+	rec_fabricacao lista_fabricacao%ROWTYPE;
 BEGIN
     DELETE FROM instancia_item WHERE item = OLD.id;
+
+	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
 
     UPDATE missao
     SET item_nao_fabricavel = NULL
     WHERE item_nao_fabricavel = OLD.id;
 
-    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
+	FOR rec_fabricacao IN
+		SELECT *
+		FROM lista_fabricacao
+		WHERE item = OLD.id
+		LOOP
+			DELETE FROM lista_fabricacao
+			WHERE fabricacao = rec_fabricacao.fabricacao;
+
+			DELETE FROM fabricacao
+			WHERE id = rec_fabricacao.fabricacao;
+
+			RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
+
+    END LOOP;
 
     RETURN OLD;
 
@@ -1235,14 +1294,31 @@ EXECUTE PROCEDURE update_medicamento();
 CREATE FUNCTION delete_medicamento_before()
     RETURNS trigger AS
 $delete_medicamento_before$
+DECLARE
+	rec_fabricacao lista_fabricacao%ROWTYPE;
 BEGIN
     DELETE FROM instancia_item WHERE item = OLD.id;
+
+	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
 
     UPDATE missao
     SET item_nao_fabricavel = NULL
     WHERE item_nao_fabricavel = OLD.id;
 
-    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
+	FOR rec_fabricacao IN
+		SELECT *
+		FROM lista_fabricacao
+		WHERE item = OLD.id
+		LOOP
+			DELETE FROM lista_fabricacao
+			WHERE fabricacao = rec_fabricacao.fabricacao;
+
+			DELETE FROM fabricacao
+			WHERE id = rec_fabricacao.fabricacao;
+
+			RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
+
+    END LOOP;
 
     RETURN OLD;
 
@@ -1331,14 +1407,31 @@ EXECUTE PROCEDURE update_utilizavel();
 CREATE FUNCTION delete_utilizavel_before()
     RETURNS trigger AS
 $delete_utilizavel_before$
+DECLARE
+	rec_fabricacao lista_fabricacao%ROWTYPE;
 BEGIN
     DELETE FROM instancia_item WHERE item = OLD.id;
+
+	RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
 
     UPDATE missao
     SET item_nao_fabricavel = NULL
     WHERE item_nao_fabricavel = OLD.id;
 
-    RAISE NOTICE 'Todas as instâncias referenciando esse item foram deletadas, a missão que dropava esse item agora não possui drop';
+	FOR rec_fabricacao IN
+		SELECT *
+		FROM lista_fabricacao
+		WHERE item = OLD.id
+		LOOP
+			DELETE FROM lista_fabricacao
+			WHERE fabricacao = rec_fabricacao.fabricacao;
+
+			DELETE FROM fabricacao
+			WHERE id = rec_fabricacao.fabricacao;
+
+			RAISE NOTICE 'Deletando a fabricação % e seu craft', rec_fabricacao.fabricacao;
+
+    END LOOP;
 
     RETURN OLD;
 
