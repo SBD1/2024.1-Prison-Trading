@@ -24,11 +24,9 @@
 
 ---
 
-## 03 Criar menu salas
+## 03 Criar menu salas - DONE
 
 > João - Fernando - Júlio
->
-> Abrir uma para mostrar o mapa em si (Bob)
 > 
 > FEATURE
 
@@ -76,7 +74,7 @@
 
 ## 09 Criar menu status jogador - DONE
 
-> Bob - João
+> João
 > 
 > FEATURE
 
@@ -106,9 +104,9 @@
 
 ---
 
-## 13 Realizar um craft (GERAL)
+## 13 Realizar um craft (GERAL) - DOING
 
-> João - Bob
+> João 
 > 
 > FEATURE
 
@@ -122,7 +120,7 @@
 
 ---
 
-## 15 Fazer a movimentação de lugares especiais com item no inventário
+## 15 Fazer a movimentação de lugares especiais com item no inventário - DONE
 
 > João - Fernando
 > 
