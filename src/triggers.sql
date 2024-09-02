@@ -1,6 +1,6 @@
 -- --------------------------------------------------------------------------------------
 -- Data de Criação ........: 28/08/2024                                                --
--- Autor(es) ..............:  Fernando Gabriel, João A. e Julio Cesar                  --
+-- Autor(es) ..............:  Breno A., Fernando Gabriel, João A. e Julio Cesar        --
 -- Versão .................: 1.0                                                       --
 -- Banco de Dados .........: PostgreSQL                                                --
 -- Descrição ..............: Adiciona Triggers de pessoa.                              --
@@ -783,3 +783,210 @@ CREATE TRIGGER update_livro_fabricacao
     ON fabricacao
     FOR EACH ROW
 EXECUTE PROCEDURE update_livro_fabricacao();
+
+---------------------
+---
+---   PRISAO
+---
+---------------------
+
+-- Checa se o nome de prisão que será inserido ou atualizado já existe.
+CREATE OR REPLACE FUNCTION checa_prisao()
+RETURNS trigger AS $checa_prisao$
+BEGIN
+	PERFORM 1 FROM Prisao WHERE NEW.nome = nome;
+		IF FOUND THEN
+			RAISE EXCEPTION 'Este nome já existe.';
+		END IF;
+	RETURN NEW;
+END;
+$checa_prisao$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS insert_update_prisao ON Prisao;
+
+CREATE TRIGGER insert_update_prisao
+BEFORE INSERT OR UPDATE ON Prisao
+FOR EACH ROW EXECUTE PROCEDURE checa_prisao();
+
+-- Avisa a criação de cada prisão.
+CREATE OR REPLACE FUNCTION avisa_insert_prisao()
+RETURNS trigger AS $avisa_insert_prisao$
+BEGIN
+	RAISE NOTICE 'A prisão % foi criada.', NEW.nome;
+RETURN NULL;
+END;
+$avisa_insert_prisao$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS insert_prisao ON Prisao;
+
+CREATE TRIGGER insert_prisao
+AFTER INSERT ON Prisao
+FOR EACH ROW EXECUTE PROCEDURE avisa_insert_prisao();
+
+-- Avisa a atualização de cada prisão.
+CREATE OR REPLACE FUNCTION avisa_update_prisao()
+RETURNS trigger AS $avisa_update_prisao$
+BEGIN
+	RAISE NOTICE 'A prisão % foi atualizada.', OLD.nome;
+RETURN NULL;
+END;
+$avisa_update_prisao$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS update_prisao ON Prisao;
+
+CREATE TRIGGER update_prisao
+AFTER UPDATE ON Prisao
+FOR EACH ROW EXECUTE PROCEDURE avisa_update_prisao();
+
+-- Avisa a deleção de cada prisão.
+CREATE OR REPLACE FUNCTION avisa_delete_prisao()
+RETURNS trigger AS $avisa_delete_prisao$
+BEGIN
+	RAISE NOTICE 'A prisão % foi deletada.', OLD.nome;
+RETURN NULL;
+END;
+$avisa_delete_prisao$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS delete_prisao ON Prisao;
+
+CREATE TRIGGER delete_prisao
+AFTER DELETE ON Prisao
+FOR EACH ROW EXECUTE PROCEDURE avisa_delete_prisao();
+
+---------------------
+---
+---   REGIAO
+---
+---------------------
+
+-- Checa se o nome de região que será inserido ou atualizado já existe.
+CREATE OR REPLACE FUNCTION checa_região()
+RETURNS trigger AS $checa_região$
+BEGIN
+	PERFORM 1 FROM Regiao WHERE NEW.nome = nome;
+		IF FOUND THEN
+			RAISE EXCEPTION 'Este nome já existe.';
+		END IF;
+	RETURN NEW;
+END;
+$checa_região$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS insert_update_regiao ON Regiao;
+
+CREATE TRIGGER insert_update_regiao
+BEFORE INSERT OR UPDATE ON Regiao
+FOR EACH ROW EXECUTE PROCEDURE checa_região();
+
+-- Avisa a criação de cada região.
+CREATE OR REPLACE FUNCTION avisa_insert_regiao()
+RETURNS trigger AS $avisa_insert_regiao$
+BEGIN
+	RAISE NOTICE 'A região % foi criada.', NEW.nome;
+RETURN NULL;
+END;
+$avisa_insert_regiao$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS insert_regiao ON Regiao;
+
+CREATE TRIGGER insert_regiao
+AFTER INSERT ON Regiao
+FOR EACH ROW EXECUTE PROCEDURE avisa_insert_regiao();
+
+-- Avisa a atualização de cada região.
+CREATE OR REPLACE FUNCTION avisa_update_regiao()
+RETURNS trigger AS $avisa_update_regiao$
+BEGIN
+	RAISE NOTICE 'A região % foi atualizada.', OLD.nome;
+RETURN NULL;
+END;
+$avisa_update_regiao$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS update_regiao ON Regiao;
+
+CREATE TRIGGER update_regiao
+AFTER UPDATE ON Regiao
+FOR EACH ROW EXECUTE PROCEDURE avisa_update_regiao();
+
+-- Avisa a deleção de cada região.
+CREATE OR REPLACE FUNCTION avisa_delete_regiao()
+RETURNS trigger AS $avisa_delete_regiao$
+BEGIN
+	RAISE NOTICE 'A região % foi deletada.', OLD.nome;
+RETURN NULL;
+END;
+$avisa_delete_regiao$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS delete_regiao ON Regiao;
+
+CREATE TRIGGER delete_regiao
+AFTER DELETE ON Regiao
+FOR EACH ROW EXECUTE PROCEDURE avisa_delete_regiao();
+
+---------------------
+---
+---   LUGAR
+---
+---------------------
+
+-- Checa se o nome de lugar que será inserido ou atualizado já existe.
+CREATE OR REPLACE FUNCTION checa_lugar()
+RETURNS trigger AS $checa_lugar$
+BEGIN
+	PERFORM 1 FROM Lugar WHERE NEW.nome = nome;
+		IF FOUND THEN
+			RAISE EXCEPTION 'Este nome já existe.';
+		END IF;
+	RETURN NEW;
+END;
+$checa_lugar$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS insert_update_lugar ON Lugar;
+
+CREATE TRIGGER insert_update_lugar
+BEFORE INSERT OR UPDATE ON Lugar
+FOR EACH ROW EXECUTE PROCEDURE checa_lugar();
+
+-- Avisa a criação de cada lugar.
+CREATE OR REPLACE FUNCTION avisa_insert_lugar()
+RETURNS trigger AS $avisa_insert_lugar$
+BEGIN
+	RAISE NOTICE 'O lugar % foi criado.', NEW.nome;
+RETURN NULL;
+END;
+$avisa_insert_lugar$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS insert_lugar ON Lugar;
+
+CREATE TRIGGER insert_lugar
+AFTER INSERT ON Lugar
+FOR EACH ROW EXECUTE PROCEDURE avisa_insert_lugar();
+
+-- Avisa a atualização de cada lugar.
+CREATE OR REPLACE FUNCTION avisa_update_lugar()
+RETURNS trigger AS $avisa_update_lugar$
+BEGIN
+	RAISE NOTICE 'O lugar % foi atualizado.', OLD.nome;
+RETURN NULL;
+END;
+$avisa_update_lugar$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS update_lugar ON Lugar;
+
+CREATE TRIGGER update_lugar
+AFTER UPDATE ON Lugar
+FOR EACH ROW EXECUTE PROCEDURE avisa_update_lugar();
+
+-- Avisa a deleção de cada lugar.
+CREATE OR REPLACE FUNCTION avisa_delete_lugar()
+RETURNS trigger AS $avisa_delete_lugar$
+BEGIN
+	RAISE NOTICE 'O lugar % foi deletado.', OLD.nome;
+RETURN NULL;
+END;
+$avisa_delete_lugar$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS delete_lugar ON Lugar;
+
+CREATE TRIGGER delete_lugar
+AFTER DELETE ON Lugar
+FOR EACH ROW EXECUTE PROCEDURE avisa_delete_lugar();
