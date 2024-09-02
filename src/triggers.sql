@@ -790,23 +790,57 @@ EXECUTE PROCEDURE update_livro_fabricacao();
 ---
 ---------------------
 
--- Checa se o nome de prisão que será inserido ou atualizado já existe.
-CREATE OR REPLACE FUNCTION checa_prisao()
-RETURNS trigger AS $checa_prisao$
+-- Impede a atualização de id.
+CREATE OR REPLACE FUNCTION id_prisao()
+RETURNS trigger AS $id_prisao$
 BEGIN
-	PERFORM 1 FROM Prisao WHERE NEW.nome = nome;
-		IF FOUND THEN
-			RAISE EXCEPTION 'Este nome já existe.';
-		END IF;
-	RETURN NEW;
+	IF OLD.id <> NEW.id THEN
+		RAISE EXCEPTION 'Não pode alterar o id de Prisão.';
+	END IF;
+	RETURN NULL;
 END;
-$checa_prisao$ LANGUAGE plpgsql;
+$id_prisao$ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS insert_update_prisao ON Prisao;
+DROP TRIGGER IF EXISTS update_id_prisao ON Prisao;
 
-CREATE TRIGGER insert_update_prisao
-BEFORE INSERT OR UPDATE ON Prisao
-FOR EACH ROW EXECUTE PROCEDURE checa_prisao();
+CREATE TRIGGER update_id_prisao
+BEFORE UPDATE ON Prisao
+FOR EACH ROW EXECUTE PROCEDURE id_prisao();
+
+-- Ativa motim a cada 20 minutos.
+CREATE TABLE motim_status (
+    last_true TIMESTAMP
+);
+
+CREATE OR REPLACE FUNCTION update_motim_status()
+RETURNS void AS $$
+BEGIN
+    UPDATE prisao
+    SET motim = true
+    WHERE motim = false;
+    
+    INSERT INTO motim_status (last_true)
+    VALUES (NOW())
+    ON CONFLICT (true)
+    DO UPDATE SET last_true = EXCLUDED.last_true;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION deactivate_motim()
+RETURNS void AS $$
+BEGIN
+    IF (SELECT last_true FROM motim_status) IS DISTINCT FROM NULL
+       AND NOW() - (SELECT last_true FROM motim_status) >= INTERVAL '5 minutes' THEN
+        UPDATE prisao
+        SET motim = false
+        WHERE motim = true;
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+SELECT cron.schedule('update_motim', '*/20 * * * *', 'SELECT update_motim_status()');
+
+SELECT cron.schedule('deactivate_motim', '* * * * *', 'SELECT deactivate_motim()');
 
 -- Avisa a criação de cada prisão.
 CREATE OR REPLACE FUNCTION avisa_insert_prisao()
@@ -859,23 +893,22 @@ FOR EACH ROW EXECUTE PROCEDURE avisa_delete_prisao();
 ---
 ---------------------
 
--- Checa se o nome de região que será inserido ou atualizado já existe.
-CREATE OR REPLACE FUNCTION checa_região()
-RETURNS trigger AS $checa_região$
+-- Impede a atualização de id.
+CREATE OR REPLACE FUNCTION id_regiao()
+RETURNS trigger AS $id_regiao$
 BEGIN
-	PERFORM 1 FROM Regiao WHERE NEW.nome = nome;
-		IF FOUND THEN
-			RAISE EXCEPTION 'Este nome já existe.';
-		END IF;
-	RETURN NEW;
+	IF OLD.id <> NEW.id THEN
+		RAISE EXCEPTION 'Não pode alterar o id de Região.';
+	END IF;
+	RETURN NULL;
 END;
-$checa_região$ LANGUAGE plpgsql;
+$id_regiao$ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS insert_update_regiao ON Regiao;
+DROP TRIGGER IF EXISTS update_id_regiao ON Regiao;
 
-CREATE TRIGGER insert_update_regiao
-BEFORE INSERT OR UPDATE ON Regiao
-FOR EACH ROW EXECUTE PROCEDURE checa_região();
+CREATE TRIGGER update_id_regiao
+BEFORE UPDATE ON Regiao
+FOR EACH ROW EXECUTE PROCEDURE id_regiao();
 
 -- Avisa a criação de cada região.
 CREATE OR REPLACE FUNCTION avisa_insert_regiao()
@@ -928,23 +961,57 @@ FOR EACH ROW EXECUTE PROCEDURE avisa_delete_regiao();
 ---
 ---------------------
 
--- Checa se o nome de lugar que será inserido ou atualizado já existe.
-CREATE OR REPLACE FUNCTION checa_lugar()
-RETURNS trigger AS $checa_lugar$
+-- Impede a atualização de id.
+CREATE OR REPLACE FUNCTION id_lugar()
+RETURNS trigger AS $id_lugar$
 BEGIN
-	PERFORM 1 FROM Lugar WHERE NEW.nome = nome;
-		IF FOUND THEN
-			RAISE EXCEPTION 'Este nome já existe.';
-		END IF;
-	RETURN NEW;
+	IF OLD.id <> NEW.id THEN
+		RAISE EXCEPTION 'Não pode alterar o id de Lugar.';
+	END IF;
+	RETURN NULL;
 END;
-$checa_lugar$ LANGUAGE plpgsql;
+$id_lugar$ LANGUAGE plpgsql;
 
-DROP TRIGGER IF EXISTS insert_update_lugar ON Lugar;
+DROP TRIGGER IF EXISTS update_id_lugar ON Lugar;
 
-CREATE TRIGGER insert_update_lugar
-BEFORE INSERT OR UPDATE ON Lugar
-FOR EACH ROW EXECUTE PROCEDURE checa_lugar();
+CREATE TRIGGER update_id_lugar
+BEFORE UPDATE ON Lugar
+FOR EACH ROW EXECUTE PROCEDURE id_lugar();
+
+-- Impede a atualização de rota_final_fuga.
+CREATE OR REPLACE FUNCTION lugar_final()
+RETURNS trigger AS $lugar_final$
+BEGIN
+	IF OLD.rota_final_fuga <> NEW.rota_final_fuga THEN
+		RAISE EXCEPTION 'Não pode alterar a rota final de Lugar.';
+	END IF;
+	RETURN NULL;
+END;
+$lugar_final$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS update_lugar_final ON Lugar;
+
+CREATE TRIGGER update_lugar_final
+BEFORE UPDATE ON Lugar
+FOR EACH ROW EXECUTE PROCEDURE lugar_final();
+
+-- Troca para NULL o lugar em Missão, quando lugar for deletado.
+CREATE OR REPLACE FUNCTION lugar_missao()
+RETURNS trigger AS $lugar_missao$
+BEGIN
+	IF	nome = missao.lugar THEN
+		UPDATE missao
+		SET lugar = NULL
+		WHERE lugar = lugar.nome;
+	END IF;
+END;
+$lugar_missao$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS delete_lugar_missao ON Lugar;
+
+CREATE TRIGGER delete_lugar_missao
+BEFORE DELETE ON Lugar
+FOR EACH ROW EXECUTE PROCEDURE lugar_missao();
 
 -- Avisa a criação de cada lugar.
 CREATE OR REPLACE FUNCTION avisa_insert_lugar()
