@@ -1742,4 +1742,43 @@ CREATE TRIGGER update_lugar
     FOR EACH ROW
 EXECUTE PROCEDURE update_lugar();
 
+---------------------
+---
+---   MOVIMENTAÇÃO DE JOGADOR
+---
+---------------------
+
+CREATE OR REPLACE FUNCTION movimenta_jogador(jogador_id INTEGER, lugar_destino_atb INTEGER)
+    RETURNS VOID AS
+$movimenta_jogador$
+DECLARE
+    jogador_lugar_atual INTEGER;
+    jogador_regiao_atual INTEGER;
+BEGIN
+    SELECT lugar, regiao INTO jogador_lugar_atual, jogador_regiao_atual
+    FROM Jogador
+    WHERE id = jogador_id;
+
+    PERFORM 1
+    FROM lugar_origem_destino ori
+    JOIN lugar lug ON ori.lugar_destino = lug.id
+    WHERE ori.lugar_origem = jogador_lugar_atual AND lug.id = lugar_destino_atb;
+
+    IF NOT FOUND THEN
+        RAISE EXCEPTION 'O lugar digitado não está conectado com o atual.';
+    END IF;
+
+    SELECT id, regiao INTO jogador_lugar_atual, jogador_regiao_atual
+    FROM lugar
+    WHERE id = lugar_destino_atb;
+
+    UPDATE Jogador
+    SET lugar = jogador_lugar_atual, regiao = jogador_regiao_atual
+    WHERE id = jogador_id;
+
+    RAISE NOTICE 'Posição movida com sucesso para lugar % e regiao %.', jogador_lugar_atual, jogador_regiao_atual;
+
+END;
+$movimenta_jogador$ LANGUAGE plpgsql;
+
 COMMIT;
