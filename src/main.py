@@ -10,12 +10,12 @@ os.system(f"mode con: cols=168 lines=40")
 
 logo = """\033[91m
 
-  ██████╗ ██████╗ ██╗███████╗ ██████╗ ███╗   ██╗    ████████╗██████╗  █████╗ ██████╗ ██╗███╗   ██╗ ██████╗ 
-  ██╔══██╗██╔══██╗██║██╔════╝██╔═══██╗████╗  ██║    ╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║██╔════╝ 
+  ██████╗ ██████╗ ██╗███████╗ ██████╗ ███╗   ██╗    ████████╗██████╗  █████╗ ██████╗ ██╗███╗   ██╗ ██████╗
+  ██╔══██╗██╔══██╗██║██╔════╝██╔═══██╗████╗  ██║    ╚══██╔══╝██╔══██╗██╔══██╗██╔══██╗██║████╗  ██║██╔════╝
   ██████╔╝██████╔╝██║███████╗██║   ██║██╔██╗ ██║       ██║   ██████╔╝███████║██║  ██║██║██╔██╗ ██║██║  ███╗
   ██╔═══╝ ██╔══██╗██║╚════██║██║   ██║██║╚██╗██║       ██║   ██╔══██╗██╔══██║██║  ██║██║██║╚██╗██║██║   ██║
   ██║     ██║  ██║██║███████║╚██████╔╝██║ ╚████║       ██║   ██║  ██║██║  ██║██████╔╝██║██║ ╚████║╚██████╔╝
-  ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝       ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ 
+  ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝       ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝
 \033[0m"""
 
 
@@ -297,20 +297,8 @@ class Game:
             print("\033[92mÁREA DE REGISTRO\n\033[0m")
             nome = input("Digite o nome do jogador: ")
             db.execute_commit("""
-                BEGIN;
-                INSERT INTO pessoa (tipo)
-                VALUES ('jogador')
-                RETURNING id;
-
-                DO $$ 
-                DECLARE 
-                    novo_id INT;
-                BEGIN
-                    SELECT MAX(id) INTO novo_id FROM pessoa;
-                    INSERT INTO jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue, nivel, missao, lugar, regiao)
-                    VALUES (novo_id, %s, 2, 5, 3, 10, NULL, 0, NULL, 2, 1);
-                END $$;
-                COMMIT;
+                INSERT INTO jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue, nivel, missao, lugar, regiao)
+                VALUES (1, %s, 2, 5, 3, 10, NULL, 0, NULL, 2, 1);
             """, (nome,))
             print("\033[92mJogador salvo com sucesso.\033[0m")
             time.sleep(3)
@@ -340,7 +328,7 @@ class Game:
 
     def status_jogador(self):
         query = db.execute_fetchone("""
-            SELECT j.nome, j.habilidade_briga, j.vida, j.forca, j.tempo_vida, j.gangue, j.nivel, j.missao, j.lugar, j.regiao, i.tamanho, i.inventario_ocupado 
+            SELECT j.nome, j.habilidade_briga, j.vida, j.forca, j.tempo_vida, j.gangue, j.nivel, j.missao, j.lugar, j.regiao, i.tamanho, i.inventario_ocupado
             FROM jogador j
             JOIN inventario i ON i.pessoa = j.id
             WHERE j.id = %s;
@@ -460,17 +448,17 @@ class Game:
 
         if verifica:
             query = db.execute_fetchall("""
-               SELECT regiao 
+               SELECT regiao
                FROM lugar
                WHERE id = %s;
             """, (lugar_id,))
             regiao = query[0][0]
 
             db.execute_commit("""
-                UPDATE Jogador 
+                UPDATE Jogador
                 SET lugar = %s, regiao = %s
-                WHERE id = 1;
-            """, (lugar_id, regiao))
+                WHERE id = %s;
+            """, (lugar_id, regiao, self.id_jogador))
 
             self.lugar_atual = lugar_id
             self.regiao_atual = regiao
@@ -480,38 +468,34 @@ class Game:
 
     def pegar(self, input_usuario):
         _, id_inst = input_usuario.split(maxsplit=1)
-        db.execute_commit("""
-            SELECT pegar_item_chao(%s, %s);
-        """, (self.id_jogador, id_inst))
+        db.execute_commit("SELECT pegar_item_chao(%s, %s);", (self.id_jogador, id_inst))
 
     def largar(self, input_usuario):
         _, id_inst = input_usuario.split(maxsplit=1)
-        db.execute_commit("""
-            SELECT dropar_item_chao(%s, %s);
-        """, (self.id_jogador, id_inst))
+        db.execute_commit("SELECT dropar_item_chao(%s, %s);", (self.id_jogador, id_inst))
 
     def livro(self):
-        # TODO ADICIONAR AS VIEWS DE CRAFT
-        query = db.execute_fetchall("""
-           SELECT id, nome 
-           FROM livro_fabricacao
-        """, )
+        query = db.execute_fetchall("SELECT id, nome FROM livro_fabricacao", )
         if query:
             for resultado in query:
                 print(f'ID: {resultado[0]}\tNome: {resultado[1]}')
 
-        tipo_livro = input("Digite o id do livro: ")
+        tipo_livro = input("\033[93mDigite o id do livro: \033[0m")
+        query = db.execute_fetchall("SELECT * FROM itens_livro_fabricacao WHERE livro_fabricacao = %s;", (tipo_livro,))
+        if query:
+            for resultado in query:
+                print(f'ID: {resultado[1]}\tNome: {resultado[2]}')
 
-        query = db.execute_fetchall("""
-           SELECT id, nome 
-           FROM livro_fabricacao
-        """, )
+        id_item = input("\033[93mDigite o id do item que deseja visualizar a receita de fabricação: \033[0m")
+        query = db.execute_fetchall("SELECT * FROM craft_item WHERE item_fabricavel = %s;", (id_item,))
+        if query:
+            print("\033[92m\nItens necessários:\033[93m")
+            for resultado in query:
+                print(f'\033[92m • {resultado[1]}\033[93m')
 
-        id_item = input("Digite o id do item que deseja fabricar: ")
-
-        db.execute_commit("""
-            SELECT realizar_craft(%s, %s);
-        """, (self.id_jogador, id_item))
+    def craft(self, input_usuario):
+        _, id_item = input_usuario.split(maxsplit=1)
+        db.execute_commit("SELECT realizar_craft(%s, %s);",(self.id_jogador, id_item))
 
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -540,6 +524,10 @@ class Game:
                 self.clear()
             elif input_usuario.startswith("LARGAR "):
                 self.largar(input_usuario)
+                input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                self.clear()
+            elif input_usuario.startswith("CRAFT "):
+                self.craft(input_usuario)
                 input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
                 self.clear()
             elif input_usuario == "SAIR":
