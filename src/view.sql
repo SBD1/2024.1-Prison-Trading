@@ -133,6 +133,38 @@ CREATE VIEW info_item AS
 	LEFT JOIN medicamento AS med ON med.id = i.id
 	LEFT JOIN utilizavel AS uti ON uti.id = i.id;
 
+---------------------
+---
+---   ITENS PARA FAZER UM CRAFT
+---
+---------------------
+
+CREATE VIEW craft_item AS
+	SELECT inst.item_fabricavel, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
+	FROM lista_fabricacao AS inst
+	LEFT JOIN arma AS arm ON arm.id = inst.item
+	LEFT JOIN ferramenta AS fer ON fer.id = inst.item
+	LEFT JOIN comida AS com ON com.id = inst.item
+	LEFT JOIN medicamento AS med ON med.id = inst.item
+	LEFT JOIN utilizavel AS uti ON uti.id = inst.item
+	ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
+
+---------------------
+---
+---   CRAFTS DE UM LIVRO
+---
+---------------------
+
+CREATE VIEW itens_livro_fabricacao AS
+	SELECT fabricacao.livro_fabricacao, fabricacao.id, COALESCE(arma.nome, ferr.nome) AS nome
+	FROM fabricacao
+	LEFT JOIN arma arma ON fabricacao.item_fabricavel = arma.id
+	LEFT JOIN ferramenta ferr ON fabricacao.item_fabricavel = ferr.id
+	ORDER BY fabricacao.id;
+
+
+GRANT SELECT ON itens_livro_fabricacao TO prison_trading_user;
+GRANT SELECT ON craft_item TO prison_trading_user;
 GRANT SELECT ON detalhes_lugar TO prison_trading_user;
 GRANT SELECT ON detalhes_regiao TO prison_trading_user;
 GRANT SELECT ON lugares_ori_des_detalhado TO prison_trading_user;
