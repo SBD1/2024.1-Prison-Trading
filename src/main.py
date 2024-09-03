@@ -434,37 +434,7 @@ class Game:
 
     def mover(self, input_usuario):
         _, lugar_id = input_usuario.split(maxsplit=1)
-
-        query = db.execute_fetchall("""
-            SELECT lug.id
-            FROM lugar_origem_destino ori
-            JOIN lugar lug ON ori.lugar_destino = lug.id
-            JOIN regiao reg ON lug.regiao = reg.id
-            WHERE ori.lugar_origem = %s
-            ORDER BY lug.nome;
-        """, (self.lugar_atual,))
-
-        verifica = any(str(resultado[0]) == lugar_id for resultado in query)
-
-        if verifica:
-            query = db.execute_fetchall("""
-               SELECT regiao
-               FROM lugar
-               WHERE id = %s;
-            """, (lugar_id,))
-            regiao = query[0][0]
-
-            db.execute_commit("""
-                UPDATE Jogador
-                SET lugar = %s, regiao = %s
-                WHERE id = %s;
-            """, (lugar_id, regiao, self.id_jogador))
-
-            self.lugar_atual = lugar_id
-            self.regiao_atual = regiao
-            print("Posição movida com sucesso.")
-        else:
-            print("A sala atual não possui conexões com a que o jogador digitou.")
+        db.execute_commit("SELECT movimenta_jogador(%s, %s);", (self.id_jogador, lugar_id))
 
     def pegar(self, input_usuario):
         _, id_inst = input_usuario.split(maxsplit=1)
