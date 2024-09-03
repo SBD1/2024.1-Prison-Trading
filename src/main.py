@@ -457,8 +457,8 @@ class Game:
             db.execute_commit("""
                 UPDATE Jogador
                 SET lugar = %s, regiao = %s
-                WHERE id = 1;
-            """, (lugar_id, regiao))
+                WHERE id = %s;
+            """, (lugar_id, regiao, self.id_jogador))
 
             self.lugar_atual = lugar_id
             self.regiao_atual = regiao
@@ -468,66 +468,37 @@ class Game:
 
     def pegar(self, input_usuario):
         _, id_inst = input_usuario.split(maxsplit=1)
-        db.execute_commit("""
-            SELECT pegar_item_chao(%s, %s);
-        """, (self.id_jogador, id_inst))
+        db.execute_commit("SELECT pegar_item_chao(%s, %s);", (self.id_jogador, id_inst))
 
     def largar(self, input_usuario):
         _, id_inst = input_usuario.split(maxsplit=1)
-        db.execute_commit("""
-            SELECT dropar_item_chao(%s, %s);
-        """, (self.id_jogador, id_inst))
+        db.execute_commit("SELECT dropar_item_chao(%s, %s);", (self.id_jogador, id_inst))
 
     def livro(self):
-        # TODO ADICIONAR AS VIEWS DE CRAFT
-        query = db.execute_fetchall("""
-           SELECT id, nome
-           FROM livro_fabricacao
-        """, )
+        query = db.execute_fetchall("SELECT id, nome FROM livro_fabricacao", )
         if query:
             for resultado in query:
                 print(f'ID: {resultado[0]}\tNome: {resultado[1]}')
 
-        tipo_livro = input("Digite o id do livro: ")
-
-        query = db.execute_fetchall("""
-            SELECT fabricacao.id, COALESCE(arma.nome, ferr.nome) AS nome
-            FROM fabricacao
-            LEFT JOIN arma arma ON fabricacao.item_fabricavel = arma.id
-            LEFT JOIN ferramenta ferr ON fabricacao.item_fabricavel = ferr.id
-            WHERE fabricacao.livro_fabricacao = %s
-            ORDER BY fabricacao.id;
-        """, (tipo_livro,))
+        tipo_livro = input("\033[93mDigite o id do livro: \033[0m")
+        query = db.execute_fetchall("SELECT * FROM itens_livro_fabricacao WHERE livro_fabricacao = %s;", (tipo_livro,))
         if query:
             for resultado in query:
-                print(f'ID: {resultado[0]}\tNome: {resultado[1]}')
+                print(f'ID: {resultado[1]}\tNome: {resultado[2]}')
 
-        id_item = input("Digite o id do item que deseja visualizar a receita de fabricação: ")
-
-        query = db.execute_fetchall("""
-            SELECT COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
-            FROM lista_fabricacao AS t
-            LEFT JOIN arma AS arm ON arm.id = t.item
-            LEFT JOIN ferramenta AS fer ON fer.id = t.item
-            LEFT JOIN comida AS com ON com.id = t.item
-            LEFT JOIN medicamento AS med ON med.id = t.item
-            LEFT JOIN utilizavel AS uti ON uti.id = t.item
-            WHERE t.item_fabricavel = %s;
-        """, (id_item,))
+        id_item = input("\033[93mDigite o id do item que deseja visualizar a receita de fabricação: \033[0m")
+        query = db.execute_fetchall("SELECT * FROM craft_item WHERE item_fabricavel = %s;", (id_item,))
         if query:
+            print("\033[92m\nItens necessários:\033[93m")
             for resultado in query:
-                print(f'Nome: {resultado[0]}')
+                print(f'\033[92m • {resultado[1]}\033[93m')
 
-    def craft(self):
-        id_item = input("Digite o id da fabricação: ")
-        db.execute_commit("""
-            SELECT realizar_craft(%s, %s);
-        """, (self.id_jogador, id_item))
+    def craft(self, input_usuario):
+        _, id_item = input_usuario.split(maxsplit=1)
+        db.execute_commit("SELECT realizar_craft(%s, %s);",(self.id_jogador, id_item))
 
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
-        if self.id_jogador != '':
-            print("\n\n")
         print(logo)
         if self.id_jogador != '':
             self.status_jogador()
@@ -539,7 +510,6 @@ class Game:
             "INVENTARIO": self.inventario,
             "INFO": self.info,
             "LIVRO": self.livro,
-            "CRAFT": self.craft,
         }
 
         while True:
@@ -554,6 +524,10 @@ class Game:
                 self.clear()
             elif input_usuario.startswith("LARGAR "):
                 self.largar(input_usuario)
+                input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                self.clear()
+            elif input_usuario.startswith("CRAFT "):
+                self.craft(input_usuario)
                 input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
                 self.clear()
             elif input_usuario == "SAIR":
