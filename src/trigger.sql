@@ -14,17 +14,17 @@ BEGIN;
 ---
 ---------------------
 
--- CREATE ROLE prison_trading_user WITH
---     LOGIN
---     NOSUPERUSER
---     NOCREATEDB
---     NOCREATEROLE
---     INHERIT
---     NOREPLICATION
---     NOBYPASSRLS
---     CONNECTION LIMIT -1
---     PASSWORD '123';
--- COMMENT ON ROLE prison_trading_user IS 'Usuário padrão para acesso ao banco de dados do jogo prison trading';
+CREATE ROLE prison_trading_user WITH
+    LOGIN
+    NOSUPERUSER
+    NOCREATEDB
+    NOCREATEROLE
+    INHERIT
+    NOREPLICATION
+    NOBYPASSRLS
+    CONNECTION LIMIT -1
+    PASSWORD '123';
+COMMENT ON ROLE prison_trading_user IS 'Usuário padrão para acesso ao banco de dados do jogo prison trading';
 
 ---------------------
 ---
@@ -1678,9 +1678,68 @@ $realizar_craft$ LANGUAGE plpgsql SECURITY DEFINER;
 
 ---------------------
 ---
----   FUNÇÕES POR TEMPO
+---   PRISÃO
 ---
 ---------------------
 
+CREATE FUNCTION update_prisao()
+RETURNS trigger AS $update_prisao$
+BEGIN
+	IF OLD.id <> NEW.id THEN
+		RAISE EXCEPTION 'Não pode alterar o id de uma região.';
+	END IF;
+	RETURN NEW;
+END;
+$update_prisao$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_prisao
+    BEFORE update
+    ON prisao
+    FOR EACH ROW
+EXECUTE PROCEDURE update_prisao();
+
+---------------------
+---
+---   REGIÃO
+---
+---------------------
+
+CREATE FUNCTION update_regiao()
+RETURNS trigger AS $update_regiao$
+BEGIN
+	IF OLD.id <> NEW.id  THEN
+		RAISE EXCEPTION 'Não pode alterar o id de uma região.';
+	END IF;
+	RETURN NEW;
+END;
+$update_regiao$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_regiao
+    BEFORE update
+    ON regiao
+    FOR EACH ROW
+EXECUTE PROCEDURE update_regiao();
+
+---------------------
+---
+---   LUGAR
+---
+---------------------
+
+CREATE FUNCTION update_lugar()
+RETURNS trigger AS $update_lugar$
+BEGIN
+	IF OLD.id <> NEW.id OR NEW.rota_final_fuga <> OLD.rota_final_fuga THEN
+		RAISE EXCEPTION 'Não pode alterar o id de nem a rota de fuga de um lugar.';
+	END IF;
+	RETURN NEW;
+END;
+$update_lugar$ LANGUAGE plpgsql;
+
+CREATE TRIGGER update_lugar
+    BEFORE update
+    ON lugar
+    FOR EACH ROW
+EXECUTE PROCEDURE update_lugar();
 
 COMMIT;
