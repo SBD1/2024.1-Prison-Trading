@@ -229,28 +229,6 @@ class Game:
     def move_cursor_to(self, x, y):
         print(f"\033[{y};{x}H", end='')
 
-    def print_section(header, items, line_offset, color="\033[93m"):
-        self.move_cursor_to(115, linha_atual)
-        print(header)
-        linha_atual += 2
-        if items:
-            for resultado in items:
-                self.move_cursor_to(115, linha_atual)
-                if color == "\033[96m" and resultado[1] == "policial":
-                    color = "\033[96m"
-                else:
-                    color = "\033[93m"
-                print(f'{color}{resultado[2]:02} - {resultado[0].strip()}\033[0m')
-                linha_atual += 1
-        else:
-            self.move_cursor_to(115, linha_atual)
-            print(f'Nenhum item nesse lugar.')
-            linha_atual += 1
-        linha_atual += 1
-        self.move_cursor_to(114, linha_atual)
-        print("\033[91m======================================================\033[0m")
-        return linha_atual
-
     def status_jogador(self):
         query = db.execute_fetchone("SELECT * FROM status_jogador WHERE id = %s;", (self.id_jogador,))
         if query:
