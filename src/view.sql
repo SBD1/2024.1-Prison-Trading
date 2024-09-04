@@ -15,7 +15,7 @@ BEGIN;
 ---------------------
 
 CREATE VIEW detalhes_lugar AS
-	SELECT lug.id, lug.nome, lug.descricao
+	SELECT lug.id, lug.nome, lug.descricao, jog.id AS id_jogador
 	FROM jogador jog
 	LEFT JOIN lugar lug ON lug.id = jog.lugar;
 
@@ -26,7 +26,7 @@ CREATE VIEW detalhes_lugar AS
 ---------------------
 
 CREATE VIEW detalhes_regiao AS
-	SELECT reg.id, reg.nome, reg.descricao
+	SELECT reg.id, reg.nome, reg.descricao, jog.id AS id_jogador
 	FROM jogador jog
 	LEFT JOIN regiao reg ON reg.id = jog.regiao;
 
@@ -37,11 +37,11 @@ CREATE VIEW detalhes_regiao AS
 ---------------------
 
 CREATE VIEW lugares_ori_des_detalhado AS
-	SELECT lug.id, lug.nome
+	SELECT lug.id, lug.nome, ori.lugar_origem
 	FROM lugar_origem_destino ori
 	JOIN lugar lug ON ori.lugar_destino = lug.id
 	JOIN regiao reg ON lug.regiao = reg.id
-	ORDER BY lug.nome;
+	ORDER BY lug.id;
 
 ---------------------
 ---
@@ -59,7 +59,7 @@ CREATE VIEW pessoas_lugar AS
 		UNION ALL
 		SELECT id, nome, lugar FROM informante
 	)
-	SELECT pes.id, pes.nome, tip.tipo
+	SELECT pes.nome, tip.tipo, pes.id, pes.lugar
 	FROM pessoas pes, pessoa tip
 	WHERE pes.id = tip.id
 	ORDER BY tip.tipo, pes.id;
@@ -73,7 +73,8 @@ CREATE VIEW pessoas_lugar AS
 CREATE VIEW instancias_detalhadas AS
 	SELECT ins.item,
 			COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome,
-			COALESCE(arm.tamanho, fer.tamanho, com.tamanho, med.tamanho, uti.tamanho) AS tamanho
+			COALESCE(arm.tamanho, fer.tamanho, com.tamanho, med.tamanho, uti.tamanho) AS tamanho,
+			ins.lugar
 	FROM instancia_item ins
 	LEFT JOIN arma arm ON arm.id = ins.item
 	LEFT JOIN ferramenta fer ON fer.id = ins.item
@@ -81,24 +82,6 @@ CREATE VIEW instancias_detalhadas AS
 	LEFT JOIN medicamento med ON med.id = ins.item
 	LEFT JOIN utilizavel uti ON uti.id = ins.item
 	ORDER BY nome;
-
----------------------
----
----   ITENS NO INVENTÁRIO DA PESSOA
----
----------------------
-
-CREATE VIEW itens_inventario AS
-	SELECT inst.id, inv.id, inv.inventario_ocupado, inv.tamanho,
-		COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
-	FROM inventario AS inv
-	JOIN instancia_item AS inst ON inv.id = inst.inventario
-	LEFT JOIN arma AS arm ON arm.id = inst.item
-	LEFT JOIN ferramenta AS fer ON fer.id = inst.item
-	LEFT JOIN comida AS com ON com.id = inst.item
-	LEFT JOIN medicamento AS med ON med.id = inst.item
-	LEFT JOIN utilizavel AS uti ON uti.id = inst.item
-	ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
 
 ---------------------
 ---
@@ -135,42 +118,40 @@ CREATE VIEW info_item AS
 
 ---------------------
 ---
----   ITENS PARA FAZER UM CRAFT
+---   ITENS NO INVENTARIO
 ---
 ---------------------
 
-CREATE VIEW craft_item AS
-	SELECT inst.item_fabricavel, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
-	FROM lista_fabricacao AS inst
-	LEFT JOIN arma AS arm ON arm.id = inst.item
-	LEFT JOIN ferramenta AS fer ON fer.id = inst.item
-	LEFT JOIN comida AS com ON com.id = inst.item
-	LEFT JOIN medicamento AS med ON med.id = inst.item
-	LEFT JOIN utilizavel AS uti ON uti.id = inst.item
-	ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
+CREATE VIEW itens_inventario AS
+    SELECT t.id, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome, i.pessoa
+    FROM inventario AS i
+    LEFT JOIN instancia_item AS t ON i.id = t.inventario
+    LEFT JOIN arma AS arm ON arm.id = t.item
+    LEFT JOIN ferramenta AS fer ON fer.id = t.item
+    LEFT JOIN comida AS com ON com.id = t.item
+    LEFT JOIN medicamento AS med ON med.id = t.item
+    LEFT JOIN utilizavel AS uti ON uti.id = t.item
+    ORDER BY nome;
 
 ---------------------
 ---
----   CRAFTS DE UM LIVRO
+---   STATUS JOGADOR
 ---
 ---------------------
 
-CREATE VIEW itens_livro_fabricacao AS
-	SELECT fabricacao.livro_fabricacao, fabricacao.id, COALESCE(arma.nome, ferr.nome) AS nome
-	FROM fabricacao
-	LEFT JOIN arma arma ON fabricacao.item_fabricavel = arma.id
-	LEFT JOIN ferramenta ferr ON fabricacao.item_fabricavel = ferr.id
-	ORDER BY fabricacao.id;
+CREATE VIEW status_jogador AS
+    SELECT j.id, j.nome, j.habilidade_briga, j.vida, j.forca, j.tempo_vida, j.gangue, j.nivel,
+           j.missao, j.lugar, j.regiao, i.tamanho, i.inventario_ocupado
+    FROM jogador j
+    JOIN inventario i ON i.pessoa = j.id;
 
-
-GRANT SELECT ON itens_livro_fabricacao TO prison_trading_user;
-GRANT SELECT ON craft_item TO prison_trading_user;
 GRANT SELECT ON detalhes_lugar TO prison_trading_user;
 GRANT SELECT ON detalhes_regiao TO prison_trading_user;
 GRANT SELECT ON lugares_ori_des_detalhado TO prison_trading_user;
 GRANT SELECT ON pessoas_lugar TO prison_trading_user;
 GRANT SELECT ON instancias_detalhadas TO prison_trading_user;
-GRANT SELECT ON itens_inventario TO prison_trading_user;
 GRANT SELECT ON info_item TO prison_trading_user;
+GRANT SELECT ON itens_inventario TO prison_trading_user;
+GRANT SELECT ON status_jogador TO prison_trading_user;
 
 COMMIT;
