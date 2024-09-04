@@ -5,7 +5,6 @@ import time
 import keyboard
 import textwrap
 
-
 os.system(f"mode con: cols=168 lines=40")
 
 logo = """\033[91m
@@ -17,7 +16,6 @@ logo = """\033[91m
   ██║     ██║  ██║██║███████║╚██████╔╝██║ ╚████║       ██║   ██║  ██║██║  ██║██████╔╝██║██║ ╚████║╚██████╔╝
   ╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝ ╚═════╝ ╚═╝  ╚═══╝       ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝╚═╝  ╚═══╝ ╚═════╝ 
 \033[0m"""
-
 
 class DatabaseConnection:
     def __init__(self):

@@ -71,7 +71,7 @@ CREATE VIEW pessoas_lugar AS
 ---------------------
 
 CREATE VIEW instancias_detalhadas AS
-	SELECT ins.item,
+	SELECT ins.id,
 			COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome,
 			COALESCE(arm.tamanho, fer.tamanho, com.tamanho, med.tamanho, uti.tamanho) AS tamanho,
 			ins.lugar

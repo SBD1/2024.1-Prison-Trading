@@ -14,17 +14,17 @@ BEGIN;
 ---
 ---------------------
 
-CREATE ROLE prison_trading_user WITH
-    LOGIN
-    NOSUPERUSER
-    NOCREATEDB
-    NOCREATEROLE
-    INHERIT
-    NOREPLICATION
-    NOBYPASSRLS
-    CONNECTION LIMIT -1
-    PASSWORD '123';
-COMMENT ON ROLE prison_trading_user IS 'Usuário padrão para acesso ao banco de dados do jogo prison trading';
+-- CREATE ROLE prison_trading_user WITH
+--     LOGIN
+--     NOSUPERUSER
+--     NOCREATEDB
+--     NOCREATEROLE
+--     INHERIT
+--     NOREPLICATION
+--     NOBYPASSRLS
+--     CONNECTION LIMIT -1
+--     PASSWORD '123';
+-- COMMENT ON ROLE prison_trading_user IS 'Usuário padrão para acesso ao banco de dados do jogo prison trading';
 
 ---------------------
 ---
@@ -38,7 +38,7 @@ REVOKE INSERT, UPDATE, DELETE ON pessoa FROM prison_trading_user;
 
 REVOKE INSERT, UPDATE, DELETE ON item, item_fabricavel, item_nao_fabricavel FROM prison_trading_user;
 
-REVOKE INSERT, DELETE ON fabricacao, inventario FROM prison_trading_user;
+REVOKE INSERT, DELETE ON fabricacao, inventario, lista_fabricacao FROM prison_trading_user;
 
 ---------------------
 ---
@@ -1596,7 +1596,48 @@ EXECUTE PROCEDURE update_fabricacao();
 ---
 ---------------------
 
+CREATE FUNCTION inserir_novo_craft(
+    novo_item_fabricavel INTEGER,
+    novos_itens INTEGER[],
+    livro_fabricacao_atb INTEGER
+)
+RETURNS VOID AS $$
+DECLARE
+    nova_fabricacao INTEGER;
+    item_existente BOOLEAN;
+    i INTEGER;
+BEGIN
+    PERFORM 1
+    FROM fabricacao
+    WHERE item_fabricavel = novo_item_fabricavel;
+    IF FOUND THEN
+        RAISE EXCEPTION 'item já tem craft.';
+    END IF;
+    INSERT INTO fabricacao (item_fabricavel, livro_fabricacao)
+    VALUES (novo_item_fabricavel, livro_fabricacao_atb)
+    RETURNING id INTO nova_fabricacao;
 
+    SELECT EXISTS (
+        SELECT 1
+        FROM (
+            SELECT item_fabricavel, ARRAY_AGG(item ORDER BY item) AS itens
+            FROM lista_fabricacao
+            GROUP BY item_fabricavel
+        ) sub
+        WHERE item_fabricavel <> novo_item_fabricavel
+          AND itens = ARRAY(SELECT * FROM unnest(novos_itens) ORDER BY 1)
+    ) INTO item_existente;
+
+    IF item_existente THEN
+        RAISE EXCEPTION 'Um craft com esses itens já existe para outro item fabricável.';
+    END IF;
+
+    FOREACH i IN ARRAY novos_itens LOOP
+        INSERT INTO lista_fabricacao (item_fabricavel, fabricacao, item)
+        VALUES (novo_item_fabricavel, nova_fabricacao, i);
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
 ---------------------
 ---
@@ -1780,5 +1821,208 @@ BEGIN
 
 END;
 $movimenta_jogador$ LANGUAGE plpgsql;
+
+---------------------
+---
+---   REDUZIR TEMPO DE VIDA
+---
+---------------------
+
+CREATE FUNCTION reduzir_tempo_vida()
+RETURNS void AS $$
+BEGIN
+    UPDATE jogador
+    SET tempo_vida = tempo_vida - 1;
+END;
+$$ LANGUAGE plpgsql;
+
+---------------------
+---
+---   MOTIM
+---
+---------------------
+
+CREATE FUNCTION inicia_motim()
+RETURNS void AS $$
+DECLARE
+    lugar_motim INTEGER;
+	regiao_motim INTEGER;
+    valores INTEGER[] := ARRAY[10, 15, 19, 23, 28];
+BEGIN
+    lugar_motim := valores[1 + (random() * (array_length(valores, 1) - 1))::INT];
+
+	SELECT regiao INTO regiao_motim
+	FROM lugar
+	WHERE id = lugar_motim;
+
+	CREATE TEMP TABLE lugar_pessoas_original AS
+    (
+        SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
+        FROM prisioneiro
+        UNION ALL
+        SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
+        FROM policial
+        UNION ALL
+        SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
+        FROM informante
+    );
+
+	UPDATE prisao
+	SET motim = true;
+
+	UPDATE prisioneiro
+	SET lugar = lugar_motim, regiao = regiao_motim;
+
+	UPDATE policial
+	SET lugar = lugar_motim, regiao = regiao_motim;
+
+	UPDATE informante
+	SET lugar = lugar_motim, regiao = regiao_motim;
+
+    RAISE NOTICE 'Lugar do motim escolhido: %, com a região: %', lugar_motim, regiao_motim;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION finaliza_motim()
+RETURNS void AS $$
+BEGIN
+    UPDATE prisioneiro
+    SET lugar = l.lugar_original, regiao = l.regiao_original
+    FROM lugar_pessoas_original l
+    WHERE prisioneiro.id = l.pessoa_id;
+
+    UPDATE policial
+    SET lugar = l.lugar_original, regiao = l.regiao_original
+    FROM lugar_pessoas_original l
+    WHERE policial.id = l.pessoa_id;
+
+    UPDATE informante
+    SET lugar = l.lugar_original, regiao = l.regiao_original
+    FROM lugar_pessoas_original l
+    WHERE informante.id = l.pessoa_id;
+
+    UPDATE prisao
+    SET motim = false;
+
+	DROP TABLE IF EXISTS lugar_pessoas_original;
+
+	RAISE NOTICE 'Todas as pessoas voltaram para o lugar de origem';
+END;
+$$ LANGUAGE plpgsql;
+
+---------------------
+---
+---   MOVIMENTAÇÃO DE PRISIONEIROS
+---
+---------------------
+
+CREATE FUNCTION movimenta_prisioneiros()
+RETURNS void AS $$
+DECLARE
+    prisioneiro_record RECORD;
+	proximo_lugar INTEGER;
+	proxima_regiao INTEGER;
+BEGIN
+    FOR prisioneiro_record IN
+        SELECT id, lugar
+        FROM prisioneiro
+    LOOP
+		SELECT lugar_destino, regiao_destino INTO proximo_lugar, proxima_regiao
+		FROM lugar_origem_destino
+		WHERE regiao_destino <> 4 AND regiao_destino <> 8 AND lugar_origem = prisioneiro_record.lugar
+		ORDER BY RANDOM() LIMIT 1;
+
+		UPDATE prisioneiro
+		SET regiao = proxima_regiao, lugar = proximo_lugar
+		WHERE id = prisioneiro_record.id;
+
+		RAISE NOTICE 'MOVENDO - Prisioneiro: % PARA Lugar: %, Regiao: %', prisioneiro_record.id, proximo_lugar, proxima_regiao;
+    END LOOP;
+END;
+$$ LANGUAGE plpgsql;
+
+---------------------
+---
+---   POPULA ITENS
+---
+---------------------
+
+CREATE FUNCTION popula_itens()
+RETURNS void AS $$
+DECLARE
+    comida_count INTEGER;
+BEGIN
+    -- INSERIR CRACHÁ
+    PERFORM 1 FROM instancia_item WHERE regiao = 4 AND item = 37;
+    IF NOT FOUND THEN
+        INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+        VALUES (37, 20, 4, NULL, NULL);
+    END IF;
+
+    -- INSERIR MATERIAS PRIMAS
+    INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+    VALUES
+        -- RANDOMIZAR UM LUGAR ENTRE 24 E 28 E COLOCAR O ITEM LA
+        (18, FLOOR(random() * (28 - 24 + 1)) + 24, 6, NULL, NULL),
+        (20, FLOOR(random() * (28 - 24 + 1)) + 24, 6, NULL, NULL),
+        (22, FLOOR(random() * (28 - 24 + 1)) + 24, 6, NULL, NULL),
+        (16, FLOOR(random() * (28 - 24 + 1)) + 24, 6, NULL, NULL),
+        (15, FLOOR(random() * (28 - 24 + 1)) + 24, 6, NULL, NULL);
+
+    -- COMIDA NA MESA DIREITA REFEITORIO
+    SELECT COUNT(*) INTO comida_count
+    FROM instancia_item
+    WHERE lugar = 22 AND item > 30 AND item < 37;
+
+    IF comida_count = 3 THEN
+        -- Não insere nada
+        NULL;
+    ELSIF comida_count = 2 THEN
+        INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+        VALUES (FLOOR(random() * (36 - 31 + 1)) + 31, 22, 5, NULL, NULL);
+    ELSIF comida_count = 1 THEN
+        INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+        VALUES
+            (FLOOR(random() * (36 - 31 + 1)) + 31, 22, 5, NULL, NULL),
+            (FLOOR(random() * (36 - 31 + 1)) + 31, 22, 5, NULL, NULL);
+    ELSE
+        INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+        VALUES
+            (FLOOR(random() * (36 - 31 + 1)) + 31, 22, 5, NULL, NULL),
+            (FLOOR(random() * (36 - 31 + 1)) + 31, 22, 5, NULL, NULL),
+            (FLOOR(random() * (36 - 31 + 1)) + 31, 22, 5, NULL, NULL);
+    END IF;
+
+    -- COMIDA NA MESA ESQUERDA REFEITORIO
+    SELECT COUNT(*) INTO comida_count
+    FROM instancia_item
+    WHERE lugar = 21 AND item > 30 AND item < 37;
+
+    IF comida_count = 3 THEN
+        -- Não insere nada
+        NULL;
+    ELSIF comida_count = 2 THEN
+        INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+        VALUES (FLOOR(random() * (36 - 31 + 1)) + 31, 21, 5, NULL, NULL);
+    ELSIF comida_count = 1 THEN
+        INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+        VALUES
+            (FLOOR(random() * (36 - 31 + 1)) + 31, 21, 5, NULL, NULL),
+            (FLOOR(random() * (36 - 31 + 1)) + 31, 21, 5, NULL, NULL);
+    ELSE
+        INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
+        VALUES
+            (FLOOR(random() * (36 - 31 + 1)) + 31, 21, 5, NULL, NULL),
+            (FLOOR(random() * (36 - 31 + 1)) + 31, 21, 5, NULL, NULL),
+            (FLOOR(random() * (36 - 31 + 1)) + 31, 21, 5, NULL, NULL);
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+---------------------
+---
+---   PG_AGENT
+---
+---------------------
 
 COMMIT;
