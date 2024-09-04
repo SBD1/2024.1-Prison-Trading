@@ -154,4 +154,16 @@ GRANT SELECT ON info_item TO prison_trading_user;
 GRANT SELECT ON itens_inventario TO prison_trading_user;
 GRANT SELECT ON status_jogador TO prison_trading_user;
 
+---------------------
+---
+---   STATUS PRISIONEIRO
+---
+---------------------
+
+CREATE VIEW status_prisioneiro AS
+	SELECT id, nome, habilidade_briga, vida, forca
+	FROM Prisioneiro;
+
+GRANT SELECT ON status_prisioneiro TO prison_trading_user;
+
 COMMIT;

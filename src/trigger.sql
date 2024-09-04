@@ -2021,8 +2021,119 @@ $$ LANGUAGE plpgsql;
 
 ---------------------
 ---
----   PG_AGENT
+---   briga
 ---
 ---------------------
+
+CREATE OR REPLACE FUNCTION combate(
+    jogador_id INTEGER,
+    prisioneiro_id INTEGER
+) RETURNS VOID AS $$
+DECLARE
+    jogador_vida INTEGER;
+    jogador_forca INTEGER;
+    jogador_habilidade INTEGER;
+    jogador_hp INTEGER;
+    jogador_dano INTEGER;
+
+    prisioneiro_vida INTEGER;
+    prisioneiro_forca INTEGER;
+    prisioneiro_habilidade INTEGER;
+    prisioneiro_hp INTEGER;
+    prisioneiro_dano INTEGER;
+
+    turno INTEGER;
+	lugar_prisioneiro INTEGER;
+	lugar_jogador INTEGER;
+	tipo_pessoa TipoPessoa;
+BEGIN
+	SELECT tipo INTO tipo_pessoa
+	FROM pessoa
+	WHERE id = prisioneiro_id;
+	IF tipo_pessoa <> 'prisioneiro' THEN
+		RAISE NOTICE 'Brigou com quem nao devia e morreu.';
+		UPDATE jogador
+        SET vida = 5, lugar = 16, regiao = 3, tempo_vida = 1
+        WHERE id = jogador_id;
+		RETURN;
+	END IF;	
+	
+	SELECT lugar INTO lugar_prisioneiro
+	FROM prisioneiro
+	WHERE id = prisioneiro_id;
+	
+	SELECT lugar INTO lugar_jogador
+	FROM jogador
+	WHERE id = jogador_id;
+	
+	IF lugar_jogador <> lugar_prisioneiro THEN
+	    RAISE EXCEPTION 'Jogador e prisioneiro estão em lugares direfentes.';
+	END IF;
+    -- Consultar os status do jogador
+    SELECT vida, forca, habilidade_briga INTO jogador_vida, jogador_forca, jogador_habilidade
+    FROM jogador
+    WHERE id = jogador_id;
+
+    -- Consultar os status do prisioneiro
+    SELECT vida, forca, habilidade_briga INTO prisioneiro_vida, prisioneiro_forca, prisioneiro_habilidade
+    FROM prisioneiro
+    WHERE id = prisioneiro_id;
+
+    -- Calcular os HP e danos iniciais
+    jogador_hp := jogador_vida * 10;
+    jogador_dano := jogador_forca * jogador_habilidade;
+
+    prisioneiro_hp := prisioneiro_vida * 10;
+    prisioneiro_dano := prisioneiro_forca * prisioneiro_habilidade;
+
+    -- Loop do combate até que um dos dois tenha vida = 0
+    WHILE jogador_hp > 0 AND prisioneiro_hp > 0 LOOP
+        -- Determinar aleatoriamente quem ataca primeiro
+        turno := (RANDOM() * 2)::INTEGER + 1;
+
+        IF turno = 1 THEN
+            -- Jogador ataca primeiro
+            prisioneiro_hp := prisioneiro_hp - jogador_dano;
+            IF prisioneiro_hp > 0 THEN
+                -- Prisioneiro ataca de volta
+                jogador_hp := jogador_hp - prisioneiro_dano;
+            END IF;
+        ELSE
+            -- Prisioneiro ataca primeiro
+            jogador_hp := jogador_hp - prisioneiro_dano;
+            IF jogador_hp > 0 THEN
+                -- Jogador ataca de volta
+                prisioneiro_hp := prisioneiro_hp - jogador_dano;
+            END IF;
+        END IF;
+    END LOOP;
+
+    -- Verificar o resultado do combate
+    IF jogador_hp <= 0 THEN
+        -- Jogador perde a luta
+        UPDATE jogador
+        SET vida = 5, lugar = 16, regiao = 3, tempo_vida = tempo_vida - 1
+        WHERE id = jogador_id;
+		RETURN ;
+    ELSE
+        -- Prisioneiro perde a luta
+        UPDATE prisioneiro
+        SET vida = 5, lugar = 16, regiao = 3
+        WHERE id = prisioneiro_id;
+		RETURN ;
+    END IF;
+
+    -- Atualizar a vida final do jogador, garantindo que o valor seja válido
+    UPDATE jogador
+    SET vida = GREATEST(1, jogador_hp / 10)  -- Garante que a vida seja pelo menos 1
+    WHERE id = jogador_id;
+
+    -- Atualizar a vida final do prisioneiro, garantindo que o valor seja válido
+    UPDATE prisioneiro
+    SET vida = GREATEST(1, prisioneiro_hp / 10)  -- Garante que a vida seja pelo menos 1
+    WHERE id = prisioneiro_id;
+
+END;
+$$ LANGUAGE plpgsql;
 
 COMMIT;
