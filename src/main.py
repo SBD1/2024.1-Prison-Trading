@@ -236,6 +236,7 @@ class Game:
         if query:
             id, self.nome, self.habilidade_briga, self.vida, self.forca, self.tempo_vida, self.gangue, self.nivel, self.missao, self.lugar_atual, self.regiao_atual, tamanho, self.inventario_ocupado= query
             id, nome, descricao = self.lugar_at()
+            id_reg, nome_reg, descricao_reg, a = self.regiao_at()
 
             print("\033[93m" + "+-" * (110 // 2) + "+")
             print(f'ID: {self.id_jogador}\t\t\tNível: {self.nivel} \t\tNome: {self.nome}')
@@ -245,6 +246,11 @@ class Game:
             print("\033[36m" + "+-" * (110 // 2) + "+")
             print(f'ID: {id}\t\t\tNome: {nome}')
             descricao_formatada = textwrap.fill(descricao, width=100)
+            print(f'Descrição: {descricao_formatada}')
+            print("+-" * (110 // 2) + "+" + "\033[0m")
+            print("\033[35m" + "+-" * (110 // 2) + "+")
+            print(f'ID: {id_reg}\t\t\tNome: {nome_reg}')
+            descricao_formatada = textwrap.fill(descricao_reg, width=100)
             print(f'Descrição: {descricao_formatada}')
             print("+-" * (110 // 2) + "+" + "\033[0m")
 
@@ -319,7 +325,7 @@ class Game:
             self.move_cursor_to(114, linha_atual)
             print("\033[91m======================================================\033[0m")
 
-            self.move_cursor_to(0, 20)
+            self.move_cursor_to(0, 23)
 
     def mover(self, input_usuario):
         _, lugar_id = input_usuario.split(maxsplit=1)
