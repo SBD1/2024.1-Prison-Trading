@@ -1824,7 +1824,7 @@ $movimenta_jogador$ LANGUAGE plpgsql;
 
 ---------------------
 ---
----   REDUZIR TEMPO DE VIDA
+---   REDUZIR TEMPO DE VIDA - 10 min
 ---
 ---------------------
 
@@ -1838,7 +1838,7 @@ $$ LANGUAGE plpgsql;
 
 ---------------------
 ---
----   MOTIM
+---   MOTIM - 30 min, 3 min de duração
 ---
 ---------------------
 
@@ -1912,7 +1912,7 @@ $$ LANGUAGE plpgsql;
 
 ---------------------
 ---
----   MOVIMENTAÇÃO DE PRISIONEIROS
+---   MOVIMENTAÇÃO DE PRISIONEIROS - 5 min
 ---
 ---------------------
 
@@ -1943,7 +1943,7 @@ $$ LANGUAGE plpgsql;
 
 ---------------------
 ---
----   POPULA ITENS
+---   POPULA ITENS - 10 min
 ---
 ---------------------
 
@@ -2024,5 +2024,7 @@ $$ LANGUAGE plpgsql;
 ---   PG_AGENT
 ---
 ---------------------
+
+
 
 COMMIT;
