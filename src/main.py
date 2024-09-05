@@ -97,7 +97,8 @@ class Game:
               "\n'LARGAR + ' ' + ID' - Para largar um item do inventário no chão."
               "\n'LIVRO' - Para ver as fabricações."
               "\n'BRIGAR' - Para brigar contra um prisioneiro na prisão."
-              "\n'CONSUMIR + ' ' + ID' - Para brigar contra um prisioneiro na prisão."
+              "\n'CONSUMIR + ' ' + ID' - Para consumir um item."
+              "\n'MALHAR' - Para malhar e ganhar força."
               "\n'HELP' - Para ver os possíveis comandos."
               "\n'CLEAR' - Para limpar o terminal."
               "\n'SAIR' - Para fechar o jogo.")
@@ -368,6 +369,14 @@ class Game:
         _, id_item = input_usuario.split(maxsplit=1)
         db.execute_commit("SELECT realizar_craft(%s, %s);",(self.id_jogador, id_item))
 
+    def consumir(self, input_usuario):
+        _, id_item = input_usuario.split(maxsplit=1)
+        db.execute_commit("SELECT consumir_item(%s, %s);",(self.id_jogador, id_item))
+
+    def malhar(self):
+        db.execute_commit("SELECT malhar_jogador(%s);", (self.id_jogador,))
+        self.clear()
+
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(logo)
@@ -381,6 +390,7 @@ class Game:
             "INFO": self.info,
             "LIVRO": self.livro,
             "BRIGAR": self.brigar,
+            "MALHAR": self.malhar,
         }
 
         while True:
@@ -405,6 +415,10 @@ class Game:
                     self.clear()
                 elif input_usuario.startswith("CRAFT "):
                     self.craft(input_usuario)
+                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    self.clear()
+                elif input_usuario.startswith("CONSUMIR "):
+                    self.consumir(input_usuario)
                     input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
                     self.clear()
                 elif input_usuario == "SAIR":

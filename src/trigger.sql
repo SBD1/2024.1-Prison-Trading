@@ -1966,16 +1966,6 @@ BEGIN
         VALUES (37, 20, 4, NULL, NULL);
     END IF;
 
-    -- INSERIR MATERIAS PRIMAS
-    INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
-    VALUES
-        -- RANDOMIZAR UM LUGAR ENTRE 24 E 28 E COLOCAR O ITEM LA
-        (18, FLOOR(random() * (28 - 24 + 1)) + 24, 6, NULL, NULL),
-        (20, FLOOR(random() * (28 - 24 + 1)) + 24, 6, NULL, NULL),
-        (22, FLOOR(random() * (28 - 24 + 1)) + 24, 6, NULL, NULL),
-        (16, FLOOR(random() * (28 - 24 + 1)) + 24, 6, NULL, NULL),
-        (15, FLOOR(random() * (28 - 24 + 1)) + 24, 6, NULL, NULL);
-
     -- COMIDA NA MESA DIREITA REFEITORIO
     SELECT COUNT(*) INTO comida_count
     FROM instancia_item
@@ -2053,6 +2043,7 @@ DECLARE
 	lugar_prisioneiro INTEGER;
 	lugar_jogador INTEGER;
 	tipo_pessoa TipoPessoa;
+    habilidade_briga_atb INTEGER;
 BEGIN
 	SELECT tipo INTO tipo_pessoa
 	FROM pessoa
@@ -2115,8 +2106,6 @@ BEGIN
         UPDATE prisioneiro
         SET vida = GREATEST(1, prisioneiro_hp / 10)
         WHERE id = prisioneiro_id;
-
-		RETURN ;
     ELSE
         UPDATE jogador
         SET vida = GREATEST(1, jogador_hp / 10)
@@ -2125,7 +2114,18 @@ BEGIN
         UPDATE prisioneiro
         SET vida = 5, lugar = 16, regiao = 3
         WHERE id = prisioneiro_id;
-		RETURN ;
+    END IF;
+
+	SELECT jogador.habilidade_briga INTO habilidade_briga_atb
+    FROM jogador
+    WHERE id = jogador_id;
+
+	habilidade_briga_atb := habilidade_briga_atb + 1;
+
+	IF habilidade_briga_atb <= 10 THEN
+	    UPDATE jogador
+        SET habilidade_briga = habilidade_briga_atb
+        WHERE id = jogador_id;
     END IF;
 
 END;
