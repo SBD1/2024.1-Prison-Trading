@@ -161,7 +161,11 @@
     * [Histórico de versão](Modulo-2/Modulo2.md#histórico-de-versão)
 * Módulo 3
   - [Triggers](Modulo-3/Triggers.md)
+    - [O que é?](Modulo-3/Triggers.md#o-que-é)
+    - [Histórico de versão](Modulo-3/Triggers.md#histórico-de-versão)
   - [Views](Modulo-3/views.md)
+    - [O que é?](Modulo-3/views.md#o-que-é) 
+    - [Histórico de versão](Modulo-3/views.md#histórico-de-versão)
   - [pgAgent](Modulo-3/pgagent.md)
     - [O que é?](Modulo-3/pgagent.md#o-que-é) 
     - [Funções](Modulo-3/pgagent.md#funções)
@@ -175,6 +179,8 @@
     - [Observações](Modulo-3/pgagent.md#observações)
     - [Resultado](Modulo-3/pgagent.md#resultado)
     - [Histórico de versão](Modulo-3/pgagent.md#histórico-de-versão)
+  - [Apresentação](Modulo-3/Modulo3.md)
+    - [Histórico de versão](Modulo-3/Modulo3.md#histórico-de-versão)
 
 [//]: # (* Módulo 3)
 * Jogo

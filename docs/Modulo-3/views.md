@@ -12,11 +12,13 @@
 
 </CENTER>
 
-> *Triggers* são um recurso do SQL (Structured Query Language) que permite a execução automática de uma ação definida (como uma instrução `INSERT`, `UPDATE` ou `DELETE`) quando um evento específico ocorre em uma tabela ou visão. Elas são usadas para garantir a integridade dos dados, automatizar processos, e implementar regras de negócios diretamente no banco de dados, sem a necessidade de intervenção manual.
-
+> Views são tabelas virtuais em um banco de dados que exibem dados de uma ou mais tabelas. Elas são criadas a partir de consultas SQL e permitem acessar dados de forma simplificada, sem armazená-los fisicamente. As views ajudam a organizar, proteger e reutilizar consultas, facilitando o acesso a informações complexas.
 
 ---
 
+`````sql
+
+`````
 
 ---
 <center>
