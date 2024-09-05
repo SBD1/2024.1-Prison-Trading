@@ -9,48 +9,7 @@
 ---
 <center>
 
-# Primeiro passo Criação do usuário padrão
-
-</center>
-
-> Rodar o script de criação de usuário a baixo:
-
-````sql
-CREATE ROLE prison_trading_user WITH
-	LOGIN
-	NOSUPERUSER
-	CREATEDB
-	NOCREATEROLE
-	INHERIT
-	NOREPLICATION
-	NOBYPASSRLS
-	CONNECTION LIMIT -1
-	PASSWORD '123';
-COMMENT ON ROLE prison_trading_user IS 'Usuário padrão para acesso ao banco de dados do jogo prison trading';
-````
-
----
-<center>
-
-# Segundo passo Criação do server
-
-</center>
-
-> Criar o servidor passando como referência o:
-
-* Host name/address : localhost
-* Port : 5432
-* Username : prison_trading_user
-* Password : 123
-
-<div align="center">
-<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/p2.png?raw=true"/></div>
-</div>
-
----
-<center>
-
-# Terceiro passo Criação do database
+# Primeiro passo Criação do Database
 
 </center>
 
@@ -79,25 +38,52 @@ Imagem:
 ---
 <center>
 
-# Quarto passo Criação das tabelas
+# Segundo passo Criação das tabelas
 
 </center>
 
-> Para criação das tabelas basta utilizar o DDL do projeto encontrado [aqui](https://github.com/SBD1/2024.1-Prison-Trading/blob/main/src/DDL.sql).
+> Para criação das tabelas basta utilizar o DDL do projeto encontrado [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DDL).
 
 ---
 <center>
 
-# Quinto passo População das tabelas
+# Terceiro passo População das tabelas
 
 </center>
 
-> Para população das tabelas basta utilizar o DML do projeto encontrado [aqui](https://github.com/SBD1/2024.1-Prison-Trading/blob/main/src/DML.sql).
+> Para população das tabelas basta utilizar o DML do projeto encontrado [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/DML?id=inserts).
 
 ---
 <center>
 
-# Sexto passo Rodar clonar o repositório e abrir a branch main
+# Quarto passo Criação dos Triggers
+
+</center>
+
+> Para criação dos triggers basta utilizar os triggers do projeto encontrado [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/Triggers).
+
+---
+<center>
+
+# Quinto passo Criação dos Views
+
+</center>
+
+> Para criação dos triggers basta utilizar a view do projeto encontrado [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/views).
+
+---
+<center>
+
+# Sexto passo Configuração do pgAgent
+
+</center>
+
+> Para criação configuração do pgAgent basta seguir as intruções do pgAgent encontradas [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/pgagent).
+
+---
+<center>
+
+# Sétimo passo Clonar o repositório e abrir a branch main
 
 </center>
 
@@ -106,20 +92,20 @@ Imagem:
 ---
 <center>
 
-# Sétimo passo Baixar as bibliotecas usadas.
+# Oitavo passo Baixar as bibliotecas usadas.
 
 </center>
 
 > Digitar esse comando no terminal:
 
 ````python
-pip install psycopg2
+pip install psycopg2-binary os-sys time keyboard textwrap psycopg2
 ````
 
 ---
 <center>
 
-# Oitavo passo Rodar o jogo.
+# Nono passo Rodar o jogo.
 
 </center>
 
@@ -136,6 +122,7 @@ pip install psycopg2
 |    Data    | Versão |        Descrição         | Autores                                          |
 |:----------:|:------:|:------------------------:|--------------------------------------------------|
 | 11/08/2024 | `1.0`  |  Criação do documento.   | [João Antonio G.](https://github.com/joaoseisei) |
-| 17/08/2024 | `1.1`  | Criação do tutorial SQL. | [João Antonio G.](https://github.com/joaoseisei)                                                 |
+| 17/08/2024 | `1.1`  | Criação do tutorial SQL. | [João Antonio G.](https://github.com/joaoseisei) |
+| 05/09/2024 | `1.2`  |    Atualiza tutorial.    | [João Antonio G.](https://github.com/joaoseisei) |
 
 </div>
