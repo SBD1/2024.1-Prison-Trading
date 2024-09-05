@@ -381,6 +381,7 @@ class Game:
 
     def malhar(self):
         db.execute_commit("SELECT malhar_jogador(%s);", (self.id_jogador,))
+        time.sleep(2)
         self.clear()
 
     def clear(self):
