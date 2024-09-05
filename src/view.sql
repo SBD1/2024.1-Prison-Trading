@@ -145,15 +145,6 @@ CREATE VIEW status_jogador AS
     FROM jogador j
     JOIN inventario i ON i.pessoa = j.id;
 
-GRANT SELECT ON detalhes_lugar TO prison_trading_user;
-GRANT SELECT ON detalhes_regiao TO prison_trading_user;
-GRANT SELECT ON lugares_ori_des_detalhado TO prison_trading_user;
-GRANT SELECT ON pessoas_lugar TO prison_trading_user;
-GRANT SELECT ON instancias_detalhadas TO prison_trading_user;
-GRANT SELECT ON info_item TO prison_trading_user;
-GRANT SELECT ON itens_inventario TO prison_trading_user;
-GRANT SELECT ON status_jogador TO prison_trading_user;
-
 ---------------------
 ---
 ---   STATUS PRISIONEIRO
@@ -162,8 +153,56 @@ GRANT SELECT ON status_jogador TO prison_trading_user;
 
 CREATE VIEW status_prisioneiro AS
 	SELECT id, nome, habilidade_briga, vida, forca
-	FROM Prisioneiro;
+	FROM Prisioneiro
+    ORDER BY id;
 
+---------------------
+---
+---   ITENS DE UM LIVRO
+---
+---------------------
+
+CREATE VIEW itens_livro_fabricacao AS
+	SELECT fab.id, COALESCE(arm.nome, fer.nome) AS nome, fab.livro_fabricacao
+    FROM fabricacao fab
+    LEFT JOIN arma arm
+    ON arm.id = fab.item_fabricavel
+    LEFT JOIN ferramenta fer
+    ON fer.id = fab.item_fabricavel
+    ORDER BY COALESCE(arm.nome, fer.nome);
+
+---------------------
+---
+---   FABRICACAO DE UM ITEM
+---
+---------------------
+
+CREATE VIEW craft_item AS
+    SELECT lis.fabricacao, COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome) AS nome
+    FROM lista_fabricacao lis
+    LEFT JOIN arma arm
+    ON arm.id = lis.item
+    LEFT JOIN ferramenta fer
+    ON fer.id = lis.item
+    LEFT JOIN comida com
+    ON com.id = lis.item
+    LEFT JOIN medicamento med
+    ON med.id = lis.item
+    LEFT JOIN utilizavel uti
+    ON uti.id = lis.item
+    ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
+
+GRANT SELECT ON detalhes_lugar TO prison_trading_user;
+GRANT SELECT ON detalhes_regiao TO prison_trading_user;
+GRANT SELECT ON lugares_ori_des_detalhado TO prison_trading_user;
+GRANT SELECT ON pessoas_lugar TO prison_trading_user;
+GRANT SELECT ON instancias_detalhadas TO prison_trading_user;
+GRANT SELECT ON info_item TO prison_trading_user;
+GRANT SELECT ON itens_inventario TO prison_trading_user;
+GRANT SELECT ON status_jogador TO prison_trading_user;
 GRANT SELECT ON status_prisioneiro TO prison_trading_user;
+GRANT SELECT ON itens_livro_fabricacao TO prison_trading_user;
+GRANT SELECT ON craft_item TO prison_trading_user;
+
 
 COMMIT;

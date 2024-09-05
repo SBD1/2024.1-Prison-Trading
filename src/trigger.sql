@@ -1838,9 +1838,9 @@ BEGIN
             UPDATE jogador
             SET tempo_vida = tempo_vida - 1
             WHERE id = rec.id;
-            RAISE NOTICE 'A vida do jogador com ID % foi reduzida para %.', rec.id, rec.tempo_vida - 1;
         ELSE
-            RAISE NOTICE 'A vida do jogador com ID % é menor que 1, não será subtraída.', rec.id;
+            DELETE FROM jogador
+            WHERE id = rec.id;
         END IF;
     END LOOP;
 END;
@@ -2236,23 +2236,20 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
-CREATE OR REPLACE FUNCTION remover_gangue(id_jogador INT) 
+CREATE FUNCTION remover_gangue(id_jogador INT)
 RETURNS VOID AS $$
 DECLARE 
     gangue_atual TipoGangue;
 BEGIN
-    -- Verifica se o jogador pertence a uma gangue
     SELECT gangue INTO gangue_atual
     FROM jogador
     WHERE id = id_jogador;
 
-    -- Se o jogador não estiver em uma gangue, não faz nada
     IF gangue_atual IS NULL THEN
         RAISE NOTICE 'O jogador % não está em nenhuma gangue.', id_jogador;
         RETURN;
     END IF;
 
-    -- Remove a gangue do jogador
     UPDATE jogador
     SET gangue = NULL
     WHERE id = id_jogador;

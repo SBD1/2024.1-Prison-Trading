@@ -95,6 +95,7 @@ class Game:
               "\n'MOVER + ' ' + ID' - Para se movimentar de um lugar para outro."
               "\n'PEGAR + ' ' + ID' - Para pegar um item no chão."
               "\n'LARGAR + ' ' + ID' - Para largar um item do inventário no chão."
+              "\n'LIVRO' - Para ver as fabricações."
               "\n'BRIGAR' - Para brigar contra um prisioneiro na prisão."
               "\n'CONSUMIR + ' ' + ID' - Para brigar contra um prisioneiro na prisão."
               "\n'HELP' - Para ver os possíveis comandos."
@@ -340,8 +341,9 @@ class Game:
                 print(f'| ID: {resultado[0]:02}\tHabilidade: {resultado[2]:02}\t\tVida: {resultado[3]:02}\tForça: {resultado[4]:02}    |')
                 print("======================================================================")
 
-        id_prisioneiro = input("\033[93mDigite o ID do prisioneiro: \033[0m");        
-        db.execute_commit("SELECT combate(%s, %s)", (self.id_jogador, id_prisioneiro))        
+        id_prisioneiro = input("\033[93mDigite o ID do prisioneiro: \033[0m");
+        db.execute_commit("SELECT combate(%s, %s)", (self.id_jogador, id_prisioneiro))
+        self.clear()
 
     def livro(self):
         query = db.execute_fetchall("SELECT id, nome FROM livro_fabricacao", )
@@ -353,10 +355,10 @@ class Game:
         query = db.execute_fetchall("SELECT * FROM itens_livro_fabricacao WHERE livro_fabricacao = %s;", (tipo_livro,))
         if query:
             for resultado in query:
-                print(f'ID: {resultado[1]}\tNome: {resultado[2]}')
+                print(f'ID: {resultado[0]}\tNome: {resultado[1]}')
 
         id_item = input("\033[93mDigite o id do item que deseja visualizar a receita de fabricação: \033[0m")
-        query = db.execute_fetchall("SELECT * FROM craft_item WHERE item_fabricavel = %s;", (id_item,))
+        query = db.execute_fetchall("SELECT * FROM craft_item WHERE fabricacao = %s;", (id_item,))
         if query:
             print("\033[92m\nItens necessários:\033[93m")
             for resultado in query:
@@ -382,29 +384,35 @@ class Game:
         }
 
         while True:
-            input_usuario = input('\033[91mDigite o comando: \033[0m').strip().upper()
-            if input_usuario.startswith("MOVER "):
-                self.mover(input_usuario)
-                input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
-                self.clear()
-            elif input_usuario.startswith("PEGAR "):
-                self.pegar(input_usuario)
-                input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
-                self.clear()
-            elif input_usuario.startswith("LARGAR "):
-                self.largar(input_usuario)
-                input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
-                self.clear()
-            elif input_usuario.startswith("CRAFT "):
-                self.craft(input_usuario)
-                input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
-                self.clear()
-            elif input_usuario == "SAIR":
+            if self.tempo_vida == 1:
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print(logo)
+                print('Você perdeu\n')
                 break
-            elif input_usuario in comandos:
-                comandos[input_usuario]()
             else:
-                print("Opção inválida, digite 'HELP' para ver os comandos suportados.")
+                input_usuario = input('\033[91mDigite o comando: \033[0m').strip().upper()
+                if input_usuario.startswith("MOVER "):
+                    self.mover(input_usuario)
+                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    self.clear()
+                elif input_usuario.startswith("PEGAR "):
+                    self.pegar(input_usuario)
+                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    self.clear()
+                elif input_usuario.startswith("LARGAR "):
+                    self.largar(input_usuario)
+                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    self.clear()
+                elif input_usuario.startswith("CRAFT "):
+                    self.craft(input_usuario)
+                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    self.clear()
+                elif input_usuario == "SAIR":
+                    break
+                elif input_usuario in comandos:
+                    comandos[input_usuario]()
+                else:
+                    print("Opção inválida, digite 'HELP' para ver os comandos suportados.")
 
     def start(self):
         self.clear()
