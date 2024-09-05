@@ -2136,4 +2136,115 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+---------------------
+---
+---   Usar itens
+---
+---------------------
+
+CREATE OR REPLACE FUNCTION consumir_item(jogador_id INT, item_instancia_id INT) RETURNS VOID AS $$
+DECLARE
+    tipo_item TipoItemNaoFabricavel;
+    incremento_vida INTEGER;
+    inventario_id INTEGER;
+    vida_jogador INTEGER;
+    item_id INTEGER;
+BEGIN
+    -- Verifica se o item está no inventário do jogador e obtém o item_id
+    SELECT ii.inventario, ii.item
+    INTO inventario_id, item_id
+    FROM instancia_item ii
+    WHERE ii.id = item_instancia_id;
+
+    IF inventario_id IS NULL THEN
+        RAISE EXCEPTION 'Item não encontrado no inventário do jogador.';
+    END IF;
+
+    -- Verifica o tipo do item (medicamento ou comida)
+    SELECT CASE 
+        WHEN EXISTS (SELECT 1 FROM medicamento med WHERE med.id = item_id) THEN 'medicamento'
+        WHEN EXISTS (SELECT 1 FROM comida com WHERE com.id = item_id) THEN 'comida'
+        ELSE NULL
+    END INTO tipo_item;
+
+    IF tipo_item IS NULL THEN
+        RAISE EXCEPTION 'O item informado não pode ser consumido.';
+    END IF;
+
+    -- Obtém o valor de cura ou recuperação de vida, dependendo do tipo do item
+    IF tipo_item = 'medicamento' THEN
+        SELECT m.cura
+        INTO incremento_vida
+        FROM medicamento m
+        WHERE m.id = item_id;
+    ELSIF tipo_item = 'comida' THEN
+        SELECT c.recuperacao_vida
+        INTO incremento_vida
+        FROM comida c
+        WHERE c.id = item_id;
+    END IF;
+
+    -- Obtém a vida atual do jogador
+    SELECT vida INTO vida_jogador
+    FROM jogador
+    WHERE id = jogador_id;
+
+    -- Atualiza a vida do jogador, garantindo que não exceda o máximo de 10
+    UPDATE jogador
+    SET vida = LEAST(vida_jogador + incremento_vida, 10)
+    WHERE id = jogador_id;
+
+    -- Remove a instância do item do inventário
+    DELETE FROM instancia_item
+    WHERE id = item_instancia_id;
+
+    RAISE NOTICE 'Item consumido com sucesso e vida do jogador atualizada.';
+END;
+$$ LANGUAGE plpgsql;
+
+---------------------
+---
+---  Malhar na academia
+---
+---------------------
+
+CREATE OR REPLACE FUNCTION malhar_jogador(id_jogador INT) 
+RETURNS VOID AS $$
+DECLARE 
+    forca_atual INTEGER;
+    lugar_atual INTEGER;
+    regiao_atual INTEGER;
+BEGIN
+    -- Verifica a localização atual do jogador
+    SELECT lugar, regiao 
+    INTO lugar_atual, regiao_atual
+    FROM jogador
+    WHERE id = id_jogador;
+
+    -- Verifica se o jogador está na academia específica (lugar 24 e região 6)
+    IF lugar_atual = 24 AND regiao_atual = 6 THEN
+        -- Obtém a força atual do jogador
+        SELECT forca INTO forca_atual
+        FROM jogador
+        WHERE id = id_jogador;
+
+        -- Verifica se a força atingiu o limite de 10
+        IF forca_atual >= 10 THEN
+            RAISE NOTICE 'A força do jogador % já está no limite de 10. Não pode malhar mais.', id_jogador;
+            RETURN;
+        END IF;
+        
+        -- Incrementa o atributo 'forca' do jogador
+        UPDATE jogador
+        SET forca = forca_atual + 1
+        WHERE id = id_jogador;
+        
+        RAISE NOTICE 'O jogador % malhou com sucesso! Força incrementada para %.', id_jogador, forca_atual + 1;
+    ELSE
+        RAISE EXCEPTION 'O jogador só pode malhar na Academia Simples (lugar 24, regiao 6).';
+    END IF;
+END;
+$$ LANGUAGE plpgsql;
+
+
 COMMIT;

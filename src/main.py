@@ -96,6 +96,7 @@ class Game:
               "\n'PEGAR + ' ' + ID' - Para pegar um item no chão."
               "\n'LARGAR + ' ' + ID' - Para largar um item do inventário no chão."
               "\n'BRIGAR' - Para brigar contra um prisioneiro na prisão."
+              "\n'CONSUMIR + ' ' + ID' - Para brigar contra um prisioneiro na prisão."
               "\n'HELP' - Para ver os possíveis comandos."
               "\n'CLEAR' - Para limpar o terminal."
               "\n'SAIR' - Para fechar o jogo.")
