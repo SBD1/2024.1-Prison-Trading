@@ -95,6 +95,8 @@ class Game:
               "\n'MOVER + ' ' + ID' - Para se movimentar de um lugar para outro."
               "\n'PEGAR + ' ' + ID' - Para pegar um item no chão."
               "\n'LARGAR + ' ' + ID' - Para largar um item do inventário no chão."
+              "\n'BRIGAR' - Para brigar contra um prisioneiro na prisão."
+              "\n'CONSUMIR + ' ' + ID' - Para brigar contra um prisioneiro na prisão."
               "\n'HELP' - Para ver os possíveis comandos."
               "\n'CLEAR' - Para limpar o terminal."
               "\n'SAIR' - Para fechar o jogo.")
@@ -329,6 +331,18 @@ class Game:
         _, id_inst = input_usuario.split(maxsplit=1)
         db.execute_commit("SELECT dropar_item_chao(%s, %s);", (self.id_jogador, id_inst))
 
+    def brigar(self):
+        query = db.execute_fetchall("SELECT * FROM status_prisioneiro;")
+        if query:
+            print("======================================================================")
+            for resultado in query:
+                print(f'| Nome: {resultado[1]} |')
+                print(f'| ID: {resultado[0]:02}\tHabilidade: {resultado[2]:02}\t\tVida: {resultado[3]:02}\tForça: {resultado[4]:02}    |')
+                print("======================================================================")
+
+        id_prisioneiro = input("\033[93mDigite o ID do prisioneiro: \033[0m");        
+        db.execute_commit("SELECT combate(%s, %s)", (self.id_jogador, id_prisioneiro))        
+
     def livro(self):
         query = db.execute_fetchall("SELECT id, nome FROM livro_fabricacao", )
         if query:
@@ -364,6 +378,7 @@ class Game:
             "CLEAR": self.clear,
             "INFO": self.info,
             "LIVRO": self.livro,
+            "BRIGAR": self.brigar,
         }
 
         while True:

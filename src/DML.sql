@@ -542,7 +542,7 @@ VALUES
 
 
 INSERT INTO Jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue, lugar, missao, nivel, regiao) VALUES
-(1, 'Carimbo', 2, 5, 3, 10, null, 2, null, 0, 1);
+(1, 'Carimbo', 5, 5, 3, 10, null, 2, null, 0, 1);
 
 
 COMMIT;
