@@ -49,22 +49,12 @@ COMMIT;
 
 ---
 
-## Inicia motim
+## Gerencia motim
 
 > Essa função deve ser acionada a acada 30 minutos.
 
 ````sql
-SELECT inicia_motim();
-````
-
----
-
-## Finaliza motim
-
-> Essa função deve ser acionada a acada 33 minutos.
-
-````sql
-SELECT finaliza_motim();
+SELECT gerencia_motim();
 ````
 
 ---
@@ -185,7 +175,7 @@ $$;
 
 ---
 
-## Inicia motim
+## Gerencia motim
 
 > Na criação do job de iniciar motim é obrigatorio obter o sequinte sql no final.
 
@@ -211,7 +201,7 @@ INSERT INTO pgagent.pga_jobstep (
 ) VALUES (
              jid, 'codigo'::text, true, 's'::character(1),
              ''::text, 'Prison-Trading'::name, 'f'::character(1),
-             'SELECT incia_motim();'::text, ''::text
+             'SELECT gerencia_motim();'::text, ''::text
          ) ;
 
 -- Schedules
@@ -221,9 +211,9 @@ INSERT INTO pgagent.pga_schedule(
     jscstart,     jscminutes, jschours, jscweekdays, jscmonthdays, jscmonths
 ) VALUES (
              jid, 'timer'::text, ''::text, true,
-             '2024-09-05 00:00:00 -03:00'::timestamp with time zone,
+             '2024-09-05 00:00:00-03'::timestamp with time zone,
              -- Minutes
-             '{t,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f}'::bool[]::boolean[],
+             '{f,t,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f}'::bool[]::boolean[],
              -- Hours
              '{t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t}'::bool[]::boolean[],
              -- Week days
@@ -237,59 +227,6 @@ END
 $$;
 ````
 
----
-
-## Finaliza motim
-
-> Na criação do job de finalizar motim é obrigatorio obter o sequinte sql no final.
-
-````sql
-DO $$
-DECLARE
-jid integer;
-    scid integer;
-BEGIN
--- Creating a new job
-INSERT INTO pgagent.pga_job(
-    jobjclid, jobname, jobdesc, jobhostagent, jobenabled
-) VALUES (
-             1::integer, '33 min'::text, ''::text, ''::text, true
-         ) RETURNING jobid INTO jid;
-
--- Steps
--- Inserting a step (jobid: NULL)
-INSERT INTO pgagent.pga_jobstep (
-    jstjobid, jstname, jstenabled, jstkind,
-    jstconnstr, jstdbname, jstonerror,
-    jstcode, jstdesc
-) VALUES (
-             jid, 'codigo'::text, true, 's'::character(1),
-             ''::text, 'Prison-Trading'::name, 'f'::character(1),
-             'SELECT finaliza_motim();'::text, ''::text
-         ) ;
-
--- Schedules
--- Inserting a schedule
-INSERT INTO pgagent.pga_schedule(
-    jscjobid, jscname, jscdesc, jscenabled,
-    jscstart,     jscminutes, jschours, jscweekdays, jscmonthdays, jscmonths
-) VALUES (
-             jid, 'timer'::text, ''::text, true,
-             '2024-09-05 00:00:00 -03:00'::timestamp with time zone,
-             -- Minutes
-             '{f,f,f,t,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,t,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f,f}'::bool[]::boolean[],
-             -- Hours
-             '{t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t}'::bool[]::boolean[],
-             -- Week days
-             '{t,t,t,t,t,t,t}'::bool[]::boolean[],
-             -- Month days
-             '{t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t,t}'::bool[]::boolean[],
-             -- Months
-             '{t,t,t,t,t,t,t,t,t,t,t,t}'::bool[]::boolean[]
-         ) RETURNING jscid INTO scid;
-END
-$$;
-````
 ---
 <center>
 
