@@ -2032,7 +2032,7 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
-CREATE OR REPLACE FUNCTION combate(
+CREATE FUNCTION combate(
     jogador_id INTEGER,
     prisioneiro_id INTEGER
 ) RETURNS VOID AS $$
@@ -2076,69 +2076,57 @@ BEGIN
 	IF lugar_jogador <> lugar_prisioneiro THEN
 	    RAISE EXCEPTION 'Jogador e prisioneiro estão em lugares direfentes.';
 	END IF;
-    -- Consultar os status do jogador
     SELECT vida, forca, habilidade_briga INTO jogador_vida, jogador_forca, jogador_habilidade
     FROM jogador
     WHERE id = jogador_id;
 
-    -- Consultar os status do prisioneiro
     SELECT vida, forca, habilidade_briga INTO prisioneiro_vida, prisioneiro_forca, prisioneiro_habilidade
     FROM prisioneiro
     WHERE id = prisioneiro_id;
 
-    -- Calcular os HP e danos iniciais
     jogador_hp := jogador_vida * 10;
     jogador_dano := jogador_forca * jogador_habilidade;
 
     prisioneiro_hp := prisioneiro_vida * 10;
     prisioneiro_dano := prisioneiro_forca * prisioneiro_habilidade;
 
-    -- Loop do combate até que um dos dois tenha vida = 0
     WHILE jogador_hp > 0 AND prisioneiro_hp > 0 LOOP
-        -- Determinar aleatoriamente quem ataca primeiro
         turno := (RANDOM() * 2)::INTEGER + 1;
 
         IF turno = 1 THEN
-            -- Jogador ataca primeiro
             prisioneiro_hp := prisioneiro_hp - jogador_dano;
             IF prisioneiro_hp > 0 THEN
-                -- Prisioneiro ataca de volta
                 jogador_hp := jogador_hp - prisioneiro_dano;
             END IF;
         ELSE
-            -- Prisioneiro ataca primeiro
             jogador_hp := jogador_hp - prisioneiro_dano;
             IF jogador_hp > 0 THEN
-                -- Jogador ataca de volta
                 prisioneiro_hp := prisioneiro_hp - jogador_dano;
             END IF;
         END IF;
     END LOOP;
 
-    -- Verificar o resultado do combate
+
     IF jogador_hp <= 0 THEN
-        -- Jogador perde a luta
         UPDATE jogador
         SET vida = 5, lugar = 16, regiao = 3, tempo_vida = tempo_vida - 1
         WHERE id = jogador_id;
+
+        UPDATE prisioneiro
+        SET vida = GREATEST(1, prisioneiro_hp / 10)
+        WHERE id = prisioneiro_id;
+
 		RETURN ;
     ELSE
-        -- Prisioneiro perde a luta
+        UPDATE jogador
+        SET vida = GREATEST(1, jogador_hp / 10)
+        WHERE id = jogador_id;
+
         UPDATE prisioneiro
         SET vida = 5, lugar = 16, regiao = 3
         WHERE id = prisioneiro_id;
 		RETURN ;
     END IF;
-
-    -- Atualizar a vida final do jogador, garantindo que o valor seja válido
-    UPDATE jogador
-    SET vida = GREATEST(1, jogador_hp / 10)  -- Garante que a vida seja pelo menos 1
-    WHERE id = jogador_id;
-
-    -- Atualizar a vida final do prisioneiro, garantindo que o valor seja válido
-    UPDATE prisioneiro
-    SET vida = GREATEST(1, prisioneiro_hp / 10)  -- Garante que a vida seja pelo menos 1
-    WHERE id = prisioneiro_id;
 
 END;
 $$ LANGUAGE plpgsql;
@@ -2149,7 +2137,7 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
-CREATE OR REPLACE FUNCTION consumir_item(jogador_id INT, item_instancia_id INT) RETURNS VOID AS $$
+CREATE FUNCTION consumir_item(jogador_id INT, item_instancia_id INT) RETURNS VOID AS $$
 DECLARE
     tipo_item TipoItemNaoFabricavel;
     incremento_vida INTEGER;
@@ -2157,7 +2145,6 @@ DECLARE
     vida_jogador INTEGER;
     item_id INTEGER;
 BEGIN
-    -- Verifica se o item está no inventário do jogador e obtém o item_id
     SELECT ii.inventario, ii.item
     INTO inventario_id, item_id
     FROM instancia_item ii
@@ -2167,7 +2154,6 @@ BEGIN
         RAISE EXCEPTION 'Item não encontrado no inventário do jogador.';
     END IF;
 
-    -- Verifica o tipo do item (medicamento ou comida)
     SELECT CASE
         WHEN EXISTS (SELECT 1 FROM medicamento med WHERE med.id = item_id) THEN 'medicamento'
         WHEN EXISTS (SELECT 1 FROM comida com WHERE com.id = item_id) THEN 'comida'
@@ -2178,7 +2164,6 @@ BEGIN
         RAISE EXCEPTION 'O item informado não pode ser consumido.';
     END IF;
 
-    -- Obtém o valor de cura ou recuperação de vida, dependendo do tipo do item
     IF tipo_item = 'medicamento' THEN
         SELECT m.cura
         INTO incremento_vida
@@ -2191,17 +2176,14 @@ BEGIN
         WHERE c.id = item_id;
     END IF;
 
-    -- Obtém a vida atual do jogador
     SELECT vida INTO vida_jogador
     FROM jogador
     WHERE id = jogador_id;
 
-    -- Atualiza a vida do jogador, garantindo que não exceda o máximo de 10
     UPDATE jogador
     SET vida = LEAST(vida_jogador + incremento_vida, 10)
     WHERE id = jogador_id;
 
-    -- Remove a instância do item do inventário
     DELETE FROM instancia_item
     WHERE id = item_instancia_id;
 
@@ -2215,33 +2197,28 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
-CREATE OR REPLACE FUNCTION malhar_jogador(id_jogador INT)
+CREATE FUNCTION malhar_jogador(id_jogador INT)
 RETURNS VOID AS $$
 DECLARE
     forca_atual INTEGER;
     lugar_atual INTEGER;
     regiao_atual INTEGER;
 BEGIN
-    -- Verifica a localização atual do jogador
     SELECT lugar, regiao
     INTO lugar_atual, regiao_atual
     FROM jogador
     WHERE id = id_jogador;
 
-    -- Verifica se o jogador está na academia específica (lugar 24 e região 6)
     IF lugar_atual = 24 AND regiao_atual = 6 THEN
-        -- Obtém a força atual do jogador
         SELECT forca INTO forca_atual
         FROM jogador
         WHERE id = id_jogador;
 
-        -- Verifica se a força atingiu o limite de 10
         IF forca_atual >= 10 THEN
             RAISE NOTICE 'A força do jogador % já está no limite de 10. Não pode malhar mais.', id_jogador;
             RETURN;
         END IF;
 
-        -- Incrementa o atributo 'forca' do jogador
         UPDATE jogador
         SET forca = forca_atual + 1
         WHERE id = id_jogador;
