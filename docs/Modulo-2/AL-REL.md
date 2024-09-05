@@ -5,6 +5,11 @@
 </center>
 
 ---
+<Center>
+
+# O que é?
+
+</center>
 
 > Álgebra relacional é um conjunto de operações matemáticas que manipulam e consultam dados em bancos de dados relacionais, servindo como base teórica para operações em tabelas e extração sistemática de informações.
 

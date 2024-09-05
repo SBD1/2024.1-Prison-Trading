@@ -161,6 +161,22 @@
     * [Histórico de versão](Modulo-2/Modulo2.md#histórico-de-versão)
 * Módulo 3
   - [Triggers](Modulo-3/Triggers.md)
+  - [Views](Modulo-3/views.md)
+  - [pgAgent](Modulo-3/pgagent.md)
+    - [O que é?](Modulo-3/pgagent.md#o-que-é) 
+    - [Funções](Modulo-3/pgagent.md#funções)
+      - [Movimenta prisioneiros](Modulo-3/pgagent.md#movimenta-prisioneiros)
+      - [Reduzir tempo de vida e Popula itens](Modulo-3/pgagent.md#reduzir-tempo-de-vida-e-popula-itens)
+      - [Inicia motim](Modulo-3/pgagent.md#inicia-motim)
+      - [Finaliza motim](Modulo-3/pgagent.md#finaliza-motim)
+    - [Jobs](Modulo-3/pgagent.md#jobs)
+      - [Movimenta prisioneiros](Modulo-3/pgagent.md#movimenta-prisioneiros-1)
+      - [Reduzir tempo de vida e Popula itens](Modulo-3/pgagent.md#reduzir-tempo-de-vida-e-popula-itens-1)
+      - [Inicia motim](Modulo-3/pgagent.md#inicia-motim-1)
+      - [Finaliza motim](Modulo-3/pgagent.md#finaliza-motim-1)
+    - [Observações](Modulo-3/pgagent.md#observações)
+    - [Resultado](Modulo-3/pgagent.md#resultado)
+    - [Histórico de versão](Modulo-3/pgagent.md#histórico-de-versão)
 
 [//]: # (* Módulo 3)
 * Jogo
