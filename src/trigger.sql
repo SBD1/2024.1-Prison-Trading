@@ -2230,5 +2230,36 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+---------------------
+---
+---  Escolher gangue
+---
+---------------------
+
+CREATE OR REPLACE FUNCTION remover_gangue(id_jogador INT) 
+RETURNS VOID AS $$
+DECLARE 
+    gangue_atual TipoGangue;
+BEGIN
+    -- Verifica se o jogador pertence a uma gangue
+    SELECT gangue INTO gangue_atual
+    FROM jogador
+    WHERE id = id_jogador;
+
+    -- Se o jogador não estiver em uma gangue, não faz nada
+    IF gangue_atual IS NULL THEN
+        RAISE NOTICE 'O jogador % não está em nenhuma gangue.', id_jogador;
+        RETURN;
+    END IF;
+
+    -- Remove a gangue do jogador
+    UPDATE jogador
+    SET gangue = NULL
+    WHERE id = id_jogador;
+
+    RAISE NOTICE 'A gangue do jogador % foi removida.', id_jogador;
+END;
+$$ LANGUAGE plpgsql;
+
 
 COMMIT;
