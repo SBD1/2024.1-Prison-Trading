@@ -2232,7 +2232,7 @@ $$ LANGUAGE plpgsql;
 
 ---------------------
 ---
----  Escolher gangue
+---  ESCOLHER GANGUE
 ---
 ---------------------
 
@@ -2280,6 +2280,106 @@ BEGIN
     WHERE id = id_jogador;
 
     RAISE NOTICE 'A gangue do jogador % foi removida.', id_jogador;
+END;
+$$ LANGUAGE plpgsql;
+
+---------------------
+---
+---  TROCA
+---
+---------------------
+
+CREATE FUNCTION realizar_troca(
+    jogador_id INT,
+    pessoa_id INT,
+    item_jogador_id INT,
+    item_pessoa_id INT
+) RETURNS VOID AS $$
+DECLARE
+	tamanho_item_jogador SMALLINT;
+	tamanho_item_pessoa SMALLINT;
+	inventario_pessoa INTEGER;
+	inventario_jogador INTEGER;
+	is_corrupto_atb BOOLEAN;
+	pessoa_tipo TipoPessoa;
+BEGIN
+	SELECT tipo INTO pessoa_tipo
+    FROM pessoa
+    WHERE id = pessoa_id;
+
+    IF pessoa_tipo = 'informante' THEN
+        UPDATE jogador
+		SET tempo_vida = 1
+		WHERE id = jogador_id;
+		RETURN;
+    END IF;
+
+	IF pessoa_tipo = 'policial' THEN
+
+        SELECT corrupto INTO is_corrupto_atb
+		FROM policial
+		WHERE id = pessoa_id;
+
+		IF NOT is_corrupto_atb THEN
+
+			UPDATE jogador
+			SET tempo_vida = 1
+			WHERE id = jogador_id;
+
+			RETURN;
+
+		END IF;
+
+    END IF;
+
+
+	SELECT COALESCE(arm.tamanho, fer.tamanho, com.tamanho, med.tamanho, uti.tamanho) INTO tamanho_item_jogador
+	FROM instancia_item ins
+	LEFT JOIN arma arm ON arm.id = ins.item
+	LEFT JOIN ferramenta fer ON fer.id = ins.item
+	LEFT JOIN comida com ON com.id = ins.item
+	LEFT JOIN medicamento med ON med.id = ins.item
+	LEFT JOIN utilizavel uti ON uti.id = ins.item
+	WHERE ins.id = item_jogador_id;
+
+	SELECT COALESCE(arm.tamanho, fer.tamanho, com.tamanho, med.tamanho, uti.tamanho) INTO tamanho_item_pessoa
+	FROM instancia_item ins
+	LEFT JOIN arma arm ON arm.id = ins.item
+	LEFT JOIN ferramenta fer ON fer.id = ins.item
+	LEFT JOIN comida com ON com.id = ins.item
+	LEFT JOIN medicamento med ON med.id = ins.item
+	LEFT JOIN utilizavel uti ON uti.id = ins.item
+	WHERE ins.id = item_pessoa_id;
+
+	IF tamanho_item_jogador = tamanho_item_pessoa THEN
+		SELECT id INTO inventario_jogador
+		FROM inventario
+		WHERE pessoa = jogador_id;
+
+		SELECT id INTO inventario_pessoa
+		FROM inventario
+		WHERE pessoa = pessoa_id;
+
+		UPDATE instancia_item
+		SET pessoa = pessoa_id, inventario = inventario_pessoa
+		WHERE id = item_jogador_id;
+
+		UPDATE instancia_item
+		SET pessoa = jogador_id, inventario = inventario_jogador
+		WHERE id = item_pessoa_id;
+
+		UPDATE inventario
+		SET inventario_ocupado = inventario_ocupado - tamanho_item_pessoa
+		WHERE id = pessoa_id;
+
+		UPDATE inventario
+		SET inventario_ocupado = inventario_ocupado - tamanho_item_pessoa
+		WHERE id = jogador_id;
+
+	ELSE
+		RAISE EXCEPTION 'Itens com tamanho diferente, troca negada.';
+	END IF;
+
 END;
 $$ LANGUAGE plpgsql;
 

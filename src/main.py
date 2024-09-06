@@ -403,6 +403,7 @@ class Game:
         id_inst_pessoa = input("\033[93mDigite o ID do item que deseja: \033[0m")
         id_inst_jogador = input("\033[93mDigite o ID do item dará em troca: \033[0m")
         db.execute_commit("SELECT troca(%s, %s, %s, %s);", (self.id_jogador, id_pessoa, id_inst_jogador, id_inst_pessoa,))
+        time.sleep(2)
         self.clear()
 
     def entrar_gangue(self):
