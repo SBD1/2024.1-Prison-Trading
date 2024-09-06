@@ -192,6 +192,22 @@ CREATE VIEW craft_item AS
     ON uti.id = lis.item
     ORDER BY COALESCE(arm.nome, fer.nome, com.nome, med.nome, uti.nome);
 
+---------------------
+---
+---   CRAFTS RELACIONADOS A UM ITEM
+---
+---------------------
+
+CREATE VIEW crafts_relacionados AS
+	SELECT lis.fabricacao, COALESCE(arm.nome, fer.nome) AS nome, inst.id
+	FROM instancia_item inst
+	JOIN lista_fabricacao lis ON inst.item = lis.item
+	LEFT JOIN arma arm
+	ON arm.id = lis.fabricacao
+	LEFT JOIN ferramenta fer
+	ON fer.id = lis.fabricacao
+	ORDER BY COALESCE(arm.nome, fer.nome);
+
 GRANT SELECT ON detalhes_lugar TO prison_trading_user;
 GRANT SELECT ON detalhes_regiao TO prison_trading_user;
 GRANT SELECT ON lugares_ori_des_detalhado TO prison_trading_user;
@@ -203,6 +219,7 @@ GRANT SELECT ON status_jogador TO prison_trading_user;
 GRANT SELECT ON status_prisioneiro TO prison_trading_user;
 GRANT SELECT ON itens_livro_fabricacao TO prison_trading_user;
 GRANT SELECT ON craft_item TO prison_trading_user;
+GRANT SELECT ON crafts_relacionados TO prison_trading_user;
 
 
 COMMIT;

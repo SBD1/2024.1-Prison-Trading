@@ -103,6 +103,8 @@ class Game:
               "\n'TROCA' + ' ' + ID - Para abrir a interface de troca com uma pessoa."
               "\n'GANGUE' - Para entrar em uma gangue."
               "\n'RGANGUE' - Para sair de uma gangue."
+              "\n'CRAFT' + ' ' + ID - Para realizar uma fabricação."
+              "\n'VCRAFT' + ' ' + ID - Para ver todos os crafts com um item especifico."
               "\n'CLEAR' - Para limpar o terminal."
               "\n'SAIR' - Para fechar o jogo.")
 
@@ -406,11 +408,22 @@ class Game:
     def entrar_gangue(self):
         gangue = input("\033[93mDigite o nome do gangue [palhaco ou polvo]: \033[0m")
         db.execute_commit("SELECT selecionar_gangue(%s, %s);",(self.id_jogador, gangue,))
-        print("Entrou na gangue.")
+        self.clear()
 
     def sair_gangue(self):
         db.execute_commit("SELECT remover_gangue(%s);",(self.id_jogador,))
-        print("Saiu da gangue.")
+        self.clear()
+
+    def ver_craft(self, input_usuario):
+        _, id_inst = input_usuario.split(maxsplit=1)
+        query = db.execute_fetchall("SELECT * FROM crafts_relacionados WHERE id = %s;", (id_inst,))
+        if query[0][0] is not None:
+            print('+---------------------------------------+')
+            for resultado in query:
+                print(f'| ID: {resultado[0]}\tNome: {resultado[1]} |')
+                print('+---------------------------------------+')
+        else:
+            print(f'\nO item {id_inst} não está em nenhuma fabricação.')
 
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -452,6 +465,10 @@ class Game:
                     self.clear()
                 elif input_usuario.startswith("CRAFT "):
                     self.craft(input_usuario)
+                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    self.clear()
+                elif input_usuario.startswith("VCRAFT "):
+                    self.ver_craft(input_usuario)
                     input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
                     self.clear()
                 elif input_usuario.startswith("TROCA "):
