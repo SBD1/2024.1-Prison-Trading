@@ -92,14 +92,17 @@ class Game:
     def help(self):
         print("Bem-vindo, digite "
               "\n'INFO' - Para ver as informações de um item."
-              "\n'MOVER + ' ' + ID' - Para se movimentar de um lugar para outro."
-              "\n'PEGAR + ' ' + ID' - Para pegar um item no chão."
-              "\n'LARGAR + ' ' + ID' - Para largar um item do inventário no chão."
+              "\n'MOVER' + ' ' + ID - Para se movimentar de um lugar para outro."
+              "\n'PEGAR' + ' ' + ID - Para pegar um item no chão."
+              "\n'LARGAR' + ' ' + ID - Para largar um item do inventário no chão."
               "\n'LIVRO' - Para ver as fabricações."
               "\n'BRIGAR' - Para brigar contra um prisioneiro na prisão."
-              "\n'CONSUMIR + ' ' + ID' - Para consumir um item."
+              "\n'CONSUMIR' + ' ' + ID - Para consumir um item."
               "\n'MALHAR' - Para malhar e ganhar força."
               "\n'HELP' - Para ver os possíveis comandos."
+              "\n'TROCA' + ' ' + ID - Para abrir a interface de troca com uma pessoa."
+              "\n'GANGUE' - Para entrar em uma gangue."
+              "\n'RGANGUE' - Para sair de uma gangue."
               "\n'CLEAR' - Para limpar o terminal."
               "\n'SAIR' - Para fechar o jogo.")
 
@@ -348,7 +351,7 @@ class Game:
                 print(f'| ID: {resultado[0]:02}\tHabilidade: {resultado[2]:02}\t\tVida: {resultado[3]:02}\tForça: {resultado[4]:02}    |')
                 print("======================================================================")
 
-        id_prisioneiro = input("\033[93mDigite o ID do prisioneiro: \033[0m");
+        id_prisioneiro = input("\033[93mDigite o ID do prisioneiro: \033[0m")
         db.execute_commit("SELECT combate(%s, %s)", (self.id_jogador, id_prisioneiro))
         self.clear()
 
@@ -384,6 +387,31 @@ class Game:
         time.sleep(2)
         self.clear()
 
+    def troca(self, input_usuario):
+        _, id_pessoa = input_usuario.split(maxsplit=1)
+        query = db.execute_fetchall("SELECT id, nome FROM itens_inventario WHERE pessoa = %s;",(id_pessoa,) )
+        if query[0][0] is not None:
+            print('+-----------------------------------------------+')
+            for resultado in query:
+                print(f'| ID: {resultado[0]}\tNome: {resultado[1]} |')
+                print('+-----------------------------------------------+')
+        else:
+            print(f'\nA pessoa {id_pessoa} não possui itens no inventário.')
+            return
+        id_inst_pessoa = input("\033[93mDigite o ID do item que deseja: \033[0m")
+        id_inst_jogador = input("\033[93mDigite o ID do item dará em troca: \033[0m")
+        db.execute_commit("SELECT troca(%s, %s, %s, %s);", (self.id_jogador, id_pessoa, id_inst_jogador, id_inst_pessoa,))
+        self.clear()
+
+    def entrar_gangue(self):
+        gangue = input("\033[93mDigite o nome do gangue [palhaco ou polvo]: \033[0m")
+        db.execute_commit("SELECT selecionar_gangue(%s, %s);",(self.id_jogador, gangue,))
+        print("Entrou na gangue.")
+
+    def sair_gangue(self):
+        db.execute_commit("SELECT remover_gangue(%s);",(self.id_jogador,))
+        print("Saiu da gangue.")
+
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(logo)
@@ -398,6 +426,8 @@ class Game:
             "LIVRO": self.livro,
             "BRIGAR": self.brigar,
             "MALHAR": self.malhar,
+            "GANGUE": self.entrar_gangue,
+            "RGANGUE": self.sair_gangue,
         }
 
         while True:
@@ -422,6 +452,10 @@ class Game:
                     self.clear()
                 elif input_usuario.startswith("CRAFT "):
                     self.craft(input_usuario)
+                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    self.clear()
+                elif input_usuario.startswith("TROCA "):
+                    self.troca(input_usuario)
                     input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
                     self.clear()
                 elif input_usuario.startswith("CONSUMIR "):

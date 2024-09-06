@@ -2236,6 +2236,31 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
+CREATE FUNCTION selecionar_gangue(id_jogador INT, nova_gangue TipoGangue)
+RETURNS VOID AS $$
+DECLARE
+    gangue_atual TipoGangue;
+BEGIN
+    SELECT gangue INTO gangue_atual
+    FROM jogador
+    WHERE id = id_jogador;
+
+    IF gangue_atual IS NOT NULL THEN
+        RAISE EXCEPTION 'O jogador % já está em uma gangue e não pode trocar de gangue.', id_jogador;
+    END IF;
+
+    IF nova_gangue NOT IN ('palhaco', 'polvo') THEN
+        RAISE EXCEPTION 'O valor % para a gangue não é válido. Os valores permitidos são ''palhaco'' e ''polvo''.', nova_gangue;
+    END IF;
+
+    UPDATE jogador
+    SET gangue = nova_gangue
+    WHERE id = id_jogador;
+
+    RAISE NOTICE 'Jogador % agora faz parte da gangue %.', id_jogador, nova_gangue;
+END;
+$$ LANGUAGE plpgsql;
+
 CREATE FUNCTION remover_gangue(id_jogador INT)
 RETURNS VOID AS $$
 DECLARE 
