@@ -2391,23 +2391,26 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
-CREATE OR REPLACE FUNCTION gerencia_missao(id_jogador INT, id_prisao INT)
+CREATE OR REPLACE FUNCTION gerencia_missao(id_jogador INT)
 RETURNS void AS $$
 DECLARE
 	tempoVida INTEGER;
 	missaoAtual INTEGER;
+    id_inventario INTEGER;
 	linhas INTEGER;
-	missaoFeita BOOLEAN;
-	itemAchado INTEGER;
-    contador INTEGER;
 	fuga1 BOOLEAN;
 	fuga2 BOOLEAN;
 	fuga3 BOOLEAN;
 BEGIN
+    -- Guarda tempo de vida e a missão atual
 	SELECT missao, tempo_vida
 	INTO missaoAtual, tempoVida
 	FROM Jogador
 	WHERE id = id_jogador;
+
+    SELECT id INTO id_inventario
+    FROM inventario
+    WHERE pessoa = jogador_id;
 	
 	-- No primeiro dia o jogador terá as missões 5, 3 e 4
 	IF tempoVida = 10 THEN
@@ -2444,13 +2447,11 @@ BEGIN
 
 			-- Recompensa o jogador com uma bandagem
 			INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
-        	VALUES (30, NULL, NULL, id_jogador, id_jogador);
+        	VALUES (30, NULL, NULL, id_jogador, id_inventario);
 			RAISE NOTICE 'Você ganhou uma bandagem!';
-			
-			missaoFeita = true;
 		END IF;
 			
-		IF missaoFeita IS TRUE OR linhas > 55 THEN
+		IF linhas > 55 THEN
 			-- Missão 4 (Escolher gangue)
 			UPDATE Jogador
 			SET missao = 4
@@ -2464,7 +2465,7 @@ BEGIN
                 
                 -- Recompensa o jogador com um cigarro
                 INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
-                VALUES (27, NULL, NULL, id_jogador, id_jogador);
+                VALUES (27, NULL, NULL, id_jogador, id_inventario);
                 RAISE NOTICE 'Você ganhou um cigarro!';
                 -- Ficar sem missão
                 UPDATE Jogador
@@ -2477,10 +2478,7 @@ BEGIN
 	-- Outros dias
 	IF tempoVida < 10 THEN
 		-- Checa se o jogador está sem missão para resetar o quanto ele andou
-		PERFORM 1
-		FROM Jogador
-		WHERE id = id_jogador AND missao = NULL;
-		IF FOUND THEN
+		IF missaoAtual IS NULL THEN
 			SELECT pg_stat_statements_reset();
 		END IF;
 
@@ -2489,11 +2487,7 @@ BEGIN
 		FROM pg_stat_statements
 		WHERE query ILIKE 'SELECT movimenta_jogador($' || id_jogador || '%';
 		
-        -- Verifica se o jogador já tem a recompensa da missão 9
-		SELECT item INTO itemAchado
-		FROM Instancia_item 
-		WHERE pessoa = id_jogador AND item = 20;
-		IF itemAchado <> 20 AND linhas <= 52 THEN
+		IF linhas <= 52 THEN
 			-- Missão 9 (Encontre o informante)
 			UPDATE Jogador
 			SET missao = 9
@@ -2507,16 +2501,12 @@ BEGIN
 				RAISE NOTICE 'Missão "Encontre o informante" completa com sucesso!';
 				-- Recompensa o jogador com um pedaço grande metal
 				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
-		        VALUES (20, NULL, NULL, id_jogador, id_jogador);
+		        VALUES (20, NULL, NULL, id_jogador, id_inventario);
 				RAISE NOTICE 'Você ganhou um pedaço grande metal!';
 			END IF;
         END IF;
         
-		-- Verifica se o jogador já tem a recompensa da missão 10
-		SELECT item INTO itemAchado
-		FROM Instancia_item 
-		WHERE pessoa = id_jogador AND item = 25;
-		IF linhas > 52 AND itemAchado <> 25 THEN
+		IF linhas > 52 THEN
 			-- Missão 10 (Vença um jogo de basquete)
 			UPDATE Jogador
 			SET missao = 10
@@ -2530,16 +2520,12 @@ BEGIN
 				RAISE NOTICE 'Missão "Vença um jogo de basquete" completa com sucesso!';
 				-- Recompensa o jogador com um isqueiro
 				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
-		        VALUES (25, NULL, NULL, id_jogador, id_jogador);
+		        VALUES (25, NULL, NULL, id_jogador, id_inventario);
 				RAISE NOTICE 'Você ganhou um isqueiro!';
 			END IF;
 		END IF;
 
-		-- Verifica se o jogador já tem a recompensa da missão 11
-		SELECT item INTO itemAchado
-		FROM Instancia_item 
-		WHERE pessoa = id_jogador AND item = 34;
-		IF linhas > 60 AND itemAchado <> 34 THEN
+		IF linhas > 60 THEN
 			-- Missão 11 (Fique maromba)
 			UPDATE Jogador
 			SET missao = 11
@@ -2558,7 +2544,7 @@ BEGIN
 					RAISE NOTICE 'Missão "Fique maromba" completa com sucesso!';
 					-- Recompensa o jogador com uma carne
 					INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
-			        VALUES (34, NULL, NULL, id_jogador, id_jogador);
+			        VALUES (34, NULL, NULL, id_jogador, id_inventario);
 					RAISE NOTICE 'Você ganhou uma carne!';
 				END IF;
 			END IF;
@@ -2576,16 +2562,12 @@ BEGIN
 				RAISE NOTICE 'Missão "Brigue com alguém" completa com sucesso!';
 				-- Recompensa o jogador com uma carne
 				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
-		        VALUES (34, NULL, NULL, id_jogador, id_jogador);
+		        VALUES (34, NULL, NULL, id_jogador, id_inventario);
 				RAISE NOTICE 'Você ganhou uma carne!';
 			END IF;
 		END IF;
 
-		-- Verifica se o jogador já tem a recompensa da missão 7
-		SELECT item INTO itemAchado
-		FROM Instancia_item 
-		WHERE pessoa = id_jogador AND itemAchado = 29;
-		IF linhas > 70 AND itemAchado <> 29 THEN
+		IF linhas > 70 THEN
 			-- Missão 7 (Vença uma briga)
 			UPDATE Jogador
 			SET missao = 7
@@ -2599,71 +2581,53 @@ BEGIN
 				RAISE NOTICE 'Missão "Vença uma briga" completa com sucesso!';
 				-- Recompensa o jogador com uma morfina
 				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
-		        VALUES (29, NULL, NULL, id_jogador, id_jogador);
+		        VALUES (29, NULL, NULL, id_jogador, id_inventario);
 				RAISE NOTICE 'Você ganhou uma morfina!';
 			END IF;
 		END IF;
 
-		-- Verifica se o jogador já tem a recompensa da missão 1
-		SELECT item INTO itemAchado
-		FROM Instancia_item 
-		WHERE pessoa = id_jogador AND itemAchado = 38;
+        -- Checa se o jogador está na solitária oeste
 		PERFORM 1
 		FROM Jogador
 		WHERE id = id_jogador AND lugar = 1;
-		IF FOUND AND itemAchado <> 38 THEN
+		IF FOUND THEN
 			-- Missão 1 (Fuja da solitária oeste)
 			UPDATE Jogador
 			SET missao = 1
 			WHERE id = id_jogador;
         END IF;
-		-- Verifica se o jogador tem a missão 1
+		-- Verifica se o jogador tem a missão 1 e está no corredor das celas
         PERFORM 1
 		FROM Jogador
 		WHERE id = id_jogador AND lugar = 2 AND missao = 1;
 		IF FOUND THEN
-			-- Verifica se o jogador tinha uma picareta
-			SELECT item INTO itemAchado
-			FROM Instancia_item 
-			WHERE pessoa = id_jogador AND item = 4;
-			IF itemAchado = 4 THEN
-				RAISE NOTICE 'Missão "Fuja da solitária oeste" completa com sucesso!';
-				-- Recompensa o jogador com a Chave da Oficina A
-				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
-			       VALUES (38, NULL, NULL, id_jogador, id_jogador);
-				RAISE NOTICE 'Você ganhou a Chave da Oficina A!';
-			END IF;
+			RAISE NOTICE 'Missão "Fuja da solitária oeste" completa com sucesso!';
+			-- Recompensa o jogador com a Chave da Oficina A
+			INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
+			VALUES (38, NULL, NULL, id_jogador, id_inventario);
+			RAISE NOTICE 'Você ganhou a Chave da Oficina A!';
 		END IF;
 
-		-- Verifica se o jogador já tem a recompensa da missão 2
-		SELECT item INTO itemAchado
-		FROM Instancia_item 
-		WHERE pessoa = id_jogador AND itemAchado = 39;
+        -- Checa se o jogador está na solitária leste
 		PERFORM 1
 		FROM Jogador
 		WHERE id = id_jogador AND lugar = 9;
-		IF FOUND AND itemAchado <> 39 THEN
+		IF FOUND THEN
 			-- Missão 2 (Fuja da solitária leste)
 			UPDATE Jogador
 			SET missao = 2
 			WHERE id = id_jogador;
 		END IF;
-		-- Verifica se o jogador tem a missão 2
+		-- Verifica se o jogador tem a missão 2 e está no corredor das celas
         PERFORM 1
 		FROM Jogador
 		WHERE id = id_jogador AND lugar = 2 AND missao = 2;
 		IF FOUND THEN
-			-- Verifica se o jogador tinha uma picareta
-			SELECT item INTO itemAchado
-			FROM Instancia_item 
-			WHERE pessoa = id_jogador AND item = 4;
-			IF itemAchado = 4 THEN
-				RAISE NOTICE 'Missão "Fuja da solitária leste" completa com sucesso!';
-				-- Recompensa o jogador com a Chave da Oficina B
-				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
-			       VALUES (39, NULL, NULL, id_jogador, id_jogador);
-				RAISE NOTICE 'Você ganhou a Chave da Oficina B!';
-			END IF;
+			RAISE NOTICE 'Missão "Fuja da solitária leste" completa com sucesso!';
+			-- Recompensa o jogador com a Chave da Oficina B
+			INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
+			VALUES (39, NULL, NULL, id_jogador, id_inventario);
+			RAISE NOTICE 'Você ganhou a Chave da Oficina B!';
 		END IF;
 
 		IF linhas > 100 THEN
@@ -2699,21 +2663,13 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION fuga_prisao_esgoto(id_jogador INT)
 RETURNS BOOLEAN AS $$
-DECLARE
-	contador INTEGER;
 BEGIN
-	-- Confere se jogador tem chave de fenda, martelo e lanterna
-	SELECT COUNT(*) INTO contador
-	FROM Instancia_item
-	WHERE pessoa = id_jogador AND id IN (1, 3, 26);
-	IF contador = 3 THEN
-		-- Confere se o jogador está no Banheiro C
-		PERFORM 1
-		FROM Jogador
-		WHERE id = id_jogador AND lugar = 13;
-		IF FOUND THEN
-			RETURN true;
-		END IF;
+	-- Confere se o jogador está no esgoto
+	PERFORM 1
+	FROM Jogador
+	WHERE id = id_jogador AND lugar = 31;
+	IF FOUND THEN
+		RETURN true;
 	END IF;
 	RETURN false;
 END;
@@ -2721,49 +2677,27 @@ $$ LANGUAGE plpgsql;
 
 CREATE OR REPLACE FUNCTION fuga_prisao_floresta(id_jogador INT)
 RETURNS BOOLEAN AS $$
-DECLARE
-	contador INTEGER;
 BEGIN
-	-- Confere se o jogador tem pa, picareta e lanterna
-	SELECT COUNT(*) INTO contador
-	FROM Instancia_item
-	WHERE pessoa = id_jogador AND id IN (2, 4, 26);
-	IF contador = 3 THEN
-		-- Confere se o jogador está na área de lazer
-		PERFORM 1
-		FROM Jogador
-		WHERE id = id_jogador AND lugar = 27;
-		IF FOUND THEN
-			RETURN true;
-		END IF;
+	-- Confere se o jogador está na floresta
+	PERFORM 1
+	FROM Jogador
+	WHERE id = id_jogador AND lugar = 33;
+	IF FOUND THEN
+		RETURN true;
 	END IF;
 	RETURN false;
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION fuga_prisao_disfarcado(id_jogador INT, id_prisao INT)
+CREATE OR REPLACE FUNCTION fuga_prisao_disfarcado(id_jogador INT)
 RETURNS BOOLEAN AS $$
-DECLARE
-	contador INTEGER;
 BEGIN
-	-- Confere se o jogador tem chave de fenda e lock pick
-	SELECT COUNT(*) INTO contador
-	FROM Instancia_item
-	WHERE pessoa = id_jogador AND id IN (1, 5);
-	IF contador = 2 THEN
-		-- Confere se o motim está ativado
-		PERFORM 1
-		FROM Prisao
-		WHERE id = id_prisao AND motim = true;
-		IF FOUND THEN
-			-- Confere se o jogador está na corredor do pátio
-			PERFORM 1
-			FROM Jogador
-			WHERE id = id_jogador AND lugar = 28;
-			IF FOUND THEN
-				RETURN true;
-			END IF;
-		END IF;
+	-- Confere se o jogador está na entrada
+	PERFORM 1
+	FROM Jogador
+	WHERE id = id_jogador AND lugar = 32;
+	IF FOUND THEN
+		RETURN true;
 	END IF;
 	RETURN false;
 END;

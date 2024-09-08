@@ -446,8 +446,7 @@ class Game:
             print(f'\nO item {id_inst} não está em nenhuma fabricação.')
 
     def gerenciar_missao(self):
-        id_prisao = 1
-        db.execute_commit("SELECT gerencia_missao(%s, %s);",(self.id_jogador, id_prisao,))
+        db.execute_commit("SELECT gerencia_missao(%s);",(self.id_jogador,))
         self.clear()
 
     def clear(self):
@@ -467,6 +466,8 @@ class Game:
             "GANGUE": self.entrar_gangue,
             "RGANGUE": self.sair_gangue,
         }
+
+        self.gerenciar_missao() #Tenta rodar a função de missão ----------------------------------------------------------
 
         while True:
             if self.tempo_vida == 1:
