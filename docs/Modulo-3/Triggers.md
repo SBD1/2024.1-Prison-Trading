@@ -1,6 +1,6 @@
 <center>
 
-# Triggers
+# Triggers e Stored Procedure
 
 </center>
 
@@ -30,12 +30,18 @@
 ---
 <center>
 
-# Triggers Security Definer
+# Security Definer
 
 </center>
 
-> Triggers que alteram tabelas que o `prison_trading_user` não possui acesso, como inserir um novo jogador, que precisa
+> Triggers e funções que alteram tabelas que o `prison_trading_user` não possui acesso, como inserir um novo jogador, que precisa
 > inserir uma pessoa na tabela pessoa primeiro, essas funções são de suma importancia para manter a integridade no banco.
+
+[//]: # (> Obs: linha 1 e 2 envolvem a funções que necessitam de privilégio de superusuario, pois inserir novo craft referente a)
+
+[//]: # (> inserir um item fabricavel e criar um craft dele precisa inserir na tabela fabricação que o `prison_trading_user` não possui)
+
+[//]: # (> acesso, ademais a função realizar craft é assim para o jogador poder criar um craft de forma justa e não simplesmente inserir uma instância.)
 
 <div align="center">
 <div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/SecurityDefiner.png?raw=true"/></div>
@@ -52,6 +58,23 @@
 
 <div align="center">
 <div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/triggers.png?raw=true"/></div>
+</div>
+
+---
+<center>
+
+# Permissões do prison_trading_user
+
+</center>
+
+> Permissões que o usuário pode ou não fazer
+> 
+> Vermelho: Não pode alterar diretamente.
+> 
+> Azul: Não possui direito de update nesses campos.
+
+<div align="center">
+<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/permissoes.png?raw=true"/></div>
 </div>
 
 ---
