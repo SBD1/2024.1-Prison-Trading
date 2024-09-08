@@ -42,7 +42,7 @@
 
 ## 05 Pegar os itens da sala - DONE
 
-> Júlio - Bob
+> Júlio - Fernando - João
 > 
 > FEATURE
 
@@ -56,17 +56,17 @@
 
 ---
 
-## 07 Criar interface de briga
+## 07 Criar interface de briga - DONE
 
-> Fernando - Bob
+> Fernando - Júlio - Bob
 > 
 > FEATURE
 
 ---
 
-## 08 Criar interface de trocas
+## 08 Criar interface de trocas - DONE
 
-> Júlio - João
+> Júlio - João - Fernando
 > 
 > FEATURE
 
@@ -80,31 +80,31 @@
 
 ---
 
-## 10 Realizar Missão (toda a parte de gerenciamento ligada a missão)
+## 10 Realizar Missão (toda a parte de gerenciamento ligada a missão) - DONE
 
-> Fernando - Julio
+> BOB 
 > 
 > FEATURE
 
 ---
 
-## 11 Malhar na academia
+## 11 Malhar na academia - DONE
 
-> Júlio - João
+> Júlio - Fernando
 > 
 > FEATURE
 
 ---
 
-## 12 Usar remedio ou comer comida
+## 12 Usar remedio ou comer comida - DONE
 
-> Fernando - Bob
+> Fernando - Júlio
 > 
 > FEATURE
 
 ---
 
-## 13 Realizar um craft (GERAL) - DOING
+## 13 Realizar um craft - DONE
 
 > João 
 > 
@@ -112,9 +112,9 @@
 
 ---
 
-## 14 Motim
+## 14 Motim - DONE
 
-> Júlio - Bob
+> Bob - João
 > 
 > FEATURE
 
@@ -122,16 +122,18 @@
 
 ## 15 Fazer a movimentação de lugares especiais com item no inventário - DONE
 
-> João - Fernando
+> João
 > 
 > BUGFIX
 
 
 ---
 
-## 16 Entrar em Gangue
+## 16 Entrar em Gangue - DONE
 
-> João - Bob
+> Júlio - Fernando
+> 
+> FEATURE
 
 ---
 
@@ -148,6 +150,22 @@
 > João
 > 
 > BUGFIX
+ 
+---
+
+## 19 Adiconar view no python - DONE
+
+> João
+>
+> BUGFIX
+
+---
+
+## 20 Corrige movimentação - DONE
+
+> João
+>
+> BUGFIX
 
 ---
 
@@ -160,9 +178,10 @@
 
 <div style="margin: 0 auto; width: fit-content;">
 
-|    Data    | Versão |        Descrição         | Autores                                          |
-|:----------:|:------:|:------------------------:|--------------------------------------------------|
-| 23/08/2024 | `1.0`  |  Criação do documento.   | [João Antonio G.](https://github.com/joaoseisei) |
-| 26/08/2024 | `1.1`  | Adiciona issues prontas. | [João Antonio G.](https://github.com/joaoseisei) |
+|    Data    | Versão |        Descrição         | Autores                                                                                                                                          |
+|:----------:|:------:|:------------------------:|--------------------------------------------------------------------------------------------------------------------------------------------------|
+| 23/08/2024 | `1.0`  |  Criação do documento.   | [João Antonio G.](https://github.com/joaoseisei)                                                                                                 |
+| 26/08/2024 | `1.1`  | Adiciona issues prontas. | [João Antonio G.](https://github.com/joaoseisei)                                                                                                 |
+| 08/09/2024 | `1.2`  |     Corrige issues.      | [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
 
 </div>
