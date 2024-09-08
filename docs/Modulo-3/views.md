@@ -297,5 +297,6 @@ COMMIT;
 |    Data    | Versão |       Descrição       | Autores                                          |
 |:----------:|:------:|:---------------------:|--------------------------------------------------|
 | 05/09/2024 | `1.0`  | Criação do documento. | [João Antonio G.](https://github.com/joaoseisei) |
+| 08/09/2024 | `1.1`  |    Adiciona Views.    | [João Antonio G.](https://github.com/joaoseisei) |
 
 </div>

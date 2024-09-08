@@ -165,6 +165,8 @@
     - [Histórico de versão](Modulo-3/Triggers.md#histórico-de-versão)
   - [Views](Modulo-3/views.md)
     - [O que é?](Modulo-3/views.md#o-que-é) 
+    - [Visão Geral](Modulo-3/views.md#visão-geral)
+    - [Código](Modulo-3/views.md#código)
     - [Histórico de versão](Modulo-3/views.md#histórico-de-versão)
   - [pgAgent](Modulo-3/pgagent.md)
     - [O que é?](Modulo-3/pgagent.md#o-que-é) 
