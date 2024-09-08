@@ -1791,7 +1791,7 @@ EXECUTE PROCEDURE update_lugar();
 ---
 ---------------------
 
-CREATE OR REPLACE FUNCTION movimenta_jogador(jogador_id INTEGER, lugar_destino_atb INTEGER)
+CREATE FUNCTION movimenta_jogador(jogador_id INTEGER, lugar_destino_atb INTEGER)
     RETURNS VOID AS
 $movimenta_jogador$
 DECLARE
@@ -1854,7 +1854,8 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
-CREATE TEMP TABLE lugar_pessoas_original AS
+-- Mude a tabela temporária para uma tabela normal
+CREATE TABLE lugar_pessoas_original AS
     (
         SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
         FROM prisioneiro
@@ -1866,7 +1867,7 @@ CREATE TEMP TABLE lugar_pessoas_original AS
         FROM informante
     );
 
-CREATE OR REPLACE FUNCTION inicia_motim()
+CREATE FUNCTION inicia_motim()
 RETURNS void AS $$
 DECLARE
     lugar_motim INTEGER;
@@ -1895,8 +1896,6 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-SELECT finaliza_motim();
-
 CREATE FUNCTION finaliza_motim()
 RETURNS void AS $$
 BEGIN
@@ -1918,11 +1917,13 @@ BEGIN
     UPDATE prisao
     SET motim = false;
 
-	DROP TABLE IF EXISTS lugar_pessoas_original;
+	-- Opcional: deletar a tabela ao finalizar o motim
+	-- DROP TABLE IF EXISTS lugar_pessoas_original;
 
 	RAISE NOTICE 'Todas as pessoas voltaram para o lugar de origem';
 END;
 $$ LANGUAGE plpgsql;
+
 
 ---------------------
 ---
