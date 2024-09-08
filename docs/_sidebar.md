@@ -213,7 +213,7 @@
       * [3° Passo - População das tabelas](Jogo/Info.md#terceiro-passo-população-das-tabelas)
       * [4° Passo - Criação dos Triggers](Jogo/Info.md#quarto-passo-criação-dos-triggers)
       * [5° Passo - Criação dos Views](Jogo/Info.md#quinto-passo-criação-dos-views)
-      * [6° Passo - Configuração do pgAgent](Jogo/Info.md#sexto-passo-configuração-do-pgagent)
+      * [6° Passo - pgAgent e pg_stat_statements](Jogo/Info.md#sexto-passo-configuração-do-pgagent-e-pg_stat_stements)
       * [7° Passo - Clonar o repositório e abrir a branch main](Jogo/Info.md#sétimo-passo-clonar-o-repositório-e-abrir-a-branch-main)
       * [8° Passo - Rodar o jogo](Jogo/Info.md#oitavo-passo-baixar-as-bibliotecas-usadas)
       * [9° Passo - Baixar as bibliotecas usadas.](Jogo/Info.md#nono-passo-rodar-o-jogo)

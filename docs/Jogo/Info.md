@@ -60,7 +60,7 @@ Imagem:
 
 </center>
 
-> Para criação dos triggers basta utilizar os triggers do projeto encontrado [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/Triggers).
+> Para criação dos triggers basta utilizar os triggers do projeto encontrado [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/Triggers#código).
 
 ---
 <center>
@@ -69,16 +69,18 @@ Imagem:
 
 </center>
 
-> Para criação dos triggers basta utilizar a view do projeto encontrado [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/views).
+> Para criação dos triggers basta utilizar a view do projeto encontrado [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/views#código).
 
 ---
 <center>
 
-# Sexto passo Configuração do pgAgent
+# Sexto passo Configuração do pgAgent e pg_stat_stements
 
 </center>
 
-> Para criação configuração do pgAgent basta seguir as intruções do pgAgent encontradas [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/pgagent).
+> Para configuração do pgAgent basta seguir as intruções do pgAgent encontradas [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/pgagent).
+> 
+> Para configuração do pg_stat_stements basta seguir as instruções do pg_stat_statements encontradas [aqui](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/pgstatstatements).
 
 ---
 <center>
