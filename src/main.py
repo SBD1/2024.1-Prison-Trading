@@ -105,6 +105,7 @@ class Game:
               "\n'RGANGUE' - Para sair de uma gangue."
               "\n'CRAFT' + ' ' + ID - Para realizar uma fabricação."
               "\n'VCRAFT' + ' ' + ID - Para ver todos os crafts com um item especifico."
+              "\n'MISSAO' - Para atualizar a missão."
               "\n'CLEAR' - Para limpar o terminal."
               "\n'SAIR' - Para fechar o jogo.")
         input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
@@ -467,11 +468,10 @@ class Game:
             "MALHAR": self.malhar,
             "GANGUE": self.entrar_gangue,
             "RGANGUE": self.sair_gangue,
+            "MISSAO": self.gerenciar_missao(),
         }
 
         while True:
-            self.gerenciar_missao()
-
             if self.tempo_vida == 1:
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(logo)
@@ -523,6 +523,7 @@ class Game:
         self.clear()
         self.login()
         self.gameLoop()
+
 
 
 Prison_Trading = Game()
