@@ -2653,7 +2653,7 @@ BEGIN
 	END IF;
 	RETURN;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
 ---------------------
 ---

@@ -352,7 +352,7 @@ class Game:
             self.move_cursor_to(114, linha_atual)
             print("\033[91m======================================================\033[0m")
 
-            self.move_cursor_to(0, 23)
+            self.move_cursor_to(0, 24)
 
     def mover(self, input_usuario):
         _, lugar_id = input_usuario.split(maxsplit=1)
@@ -450,7 +450,6 @@ class Game:
 
     def gerenciar_missao(self):
         db.execute_commit("SELECT gerencia_missao(%s);",(self.id_jogador,))
-        self.clear()
 
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
@@ -468,7 +467,7 @@ class Game:
             "MALHAR": self.malhar,
             "GANGUE": self.entrar_gangue,
             "RGANGUE": self.sair_gangue,
-            "MISSAO": self.gerenciar_missao(),
+            "MISSAO": self.gerenciar_missao,
         }
 
         while True:
@@ -486,31 +485,31 @@ class Game:
                 input_usuario = input('\033[91mDigite o comando: \033[0m').strip().upper()
                 if input_usuario.startswith("MOVER "):
                     self.mover(input_usuario)
-                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    input("\n\033[93mPrecione qualquer tecla para atualizar\033[0m")
                     self.clear()
                 elif input_usuario.startswith("PEGAR "):
                     self.pegar(input_usuario)
-                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    input("\n\033[93mPrecione qualquer tecla para atualizar\033[0m")
                     self.clear()
                 elif input_usuario.startswith("LARGAR "):
                     self.largar(input_usuario)
-                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    input("\n\033[93mPrecione qualquer tecla para atualizar\033[0m")
                     self.clear()
                 elif input_usuario.startswith("CRAFT "):
                     self.craft(input_usuario)
-                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    input("\n\033[93mPrecione qualquer tecla para atualizar\033[0m")
                     self.clear()
                 elif input_usuario.startswith("VCRAFT "):
                     self.ver_craft(input_usuario)
-                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    input("\n\033[93mPrecione qualquer tecla para atualizar\033[0m")
                     self.clear()
                 elif input_usuario.startswith("TROCA "):
                     self.troca(input_usuario)
-                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    input("\n\033[93mPrecione qualquer tecla para atualizar\033[0m")
                     self.clear()
                 elif input_usuario.startswith("CONSUMIR "):
                     self.consumir(input_usuario)
-                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    input("\n\033[93mPrecione qualquer tecla para atualizar\033[0m")
                     self.clear()
                 elif input_usuario == "SAIR":
                     break
@@ -518,6 +517,7 @@ class Game:
                     comandos[input_usuario]()
                 else:
                     print("Opção inválida, digite 'HELP' para ver os comandos suportados.")
+
 
     def start(self):
         self.clear()
