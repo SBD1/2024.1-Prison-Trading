@@ -79,12 +79,12 @@
 
 **Prisao _Possui_ Regiao**
 
-- Prisao possui uma ou várias regiões (1,N)
+- Prisao possui nenhuma ou várias regiões (0,N)
 - Regiao pertence a apenas uma única prisão (1,1)
 
 **Regiao _Possui_ Lugar**
 
-- Regiao possui um ou vários lugares (1,N)
+- Regiao possui nenhum ou vários lugares (0,N)
 - Lugar pertence a apenas uma única região (1,1)
 
 **Lugar _Conecta_ Lugar**
@@ -110,7 +110,7 @@
 **Pessoa _Possui_ Inventario**
 
 - Pessoa possui apenas um único inventário (1,1)
-- Inventário pertence a uma ou várias pessoas (1,N)
+- Inventário pertence a uma pessoas (1,1)
 
 **Inventario _Possui_ Instancia_Item**
 
@@ -119,7 +119,7 @@
 
 **Item _Possui_ Instancia_Item**
 
-- Item possui uma ou várias instâncias de itens (1,N)
+- Item possui nenhuma ou várias instâncias de itens (0,N)
 - Instância de Item petence a apenas um único item (1,1)
 
 **Fabricacao _É feita_ Item**
@@ -130,7 +130,7 @@
 **Fabricacao _Resulta_ Item_Fabricavel**
 
 - Fabricação resulta em apenas um item fabricado (1,1)
-- Item Fabricável é resultado por apenas uma única fabricação (1,1)
+- Item Fabricável é resultado por nenhuma(caso não possua craft ainda) ou uma única fabricação (0,1)
 
 **Livro_Fabricacao _Possui_ Fabricao**
 
@@ -166,5 +166,6 @@
 | 18/07/2024 | `1.5`  |            Quinta Versão.             | [Julio Cesar](https://github.com/julio1099)                                                                                                                                                             |
 | 06/08/2024 | `1.6`  |  Corrige as alterações do professor.  | [Fernando Gabriel](https://github.com/show-dawn),  [João Antonio G.](https://github.com/joaoseisei)                                                                                                     |
 | 10/08/2024 | `1.7`  | Finaliza alterações de rotas de fuga. | [Breno Alexandre](https://github.com/brenoalexandre0), [Fernando Gabriel](https://github.com/show-dawn), [João Antonio G.](https://github.com/joaoseisei),  [Julio Cesar](https://github.com/julio1099) |
+| 08/09/2024 | `2.8`  |        Corrige cardinalidade.         | [João Antonio G.](https://github.com/joaoseisei)                                                                                                                                                        |
 
 </div>
