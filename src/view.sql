@@ -227,4 +227,24 @@ GRANT SELECT ON itens_livro_fabricacao TO prison_trading_user;
 GRANT SELECT ON craft_item TO prison_trading_user;
 GRANT SELECT ON crafts_relacionados TO prison_trading_user;
 
+---------------------
+---
+---   DOCUMENTAÇÃO
+---
+---------------------
+
+COMMENT ON VIEW detalhes_lugar IS 'Exibe informações detalhadas sobre o lugar atual de cada jogador, incluindo o ID, nome e descrição do lugar.';
+COMMENT ON VIEW detalhes_regiao IS 'Mostra os detalhes da região em que o jogador está localizado, como o ID, nome e descrição da região.';
+COMMENT ON VIEW lugares_ori_des_detalhado IS 'Exibe os detalhes das rotas de origem e destino entre os lugares, incluindo o nome do destino e a região associada.';
+COMMENT ON VIEW pessoas_lugar IS 'Mostra todas as pessoas presentes em um determinado lugar, incluindo jogadores, policiais, prisioneiros e informantes, com o tipo de pessoa associado.';
+COMMENT ON VIEW instancias_detalhadas IS 'Exibe instâncias detalhadas de itens, incluindo armas, ferramentas, comida, medicamentos e utilizáveis, com informações como nome, tamanho e local em que estão.';
+COMMENT ON VIEW info_item IS 'Fornece uma visão detalhada sobre os itens no jogo, exibindo suas características, como dano, utilidade, raridade, quantidade e tipo de item.';
+COMMENT ON VIEW itens_inventario IS 'Exibe os itens presentes no inventário das pessoas, incluindo armas, ferramentas, comida, medicamentos e utilizáveis, com detalhes de nome e dono.';
+COMMENT ON VIEW status_jogador IS 'Mostra o status atual dos jogadores, incluindo informações como vida, força, habilidades, gangue e o espaço ocupado em seu inventário.';
+COMMENT ON VIEW status_prisioneiro IS 'Exibe o status básico dos prisioneiros, incluindo seu nome, habilidades de briga, vida e força.';
+COMMENT ON VIEW itens_livro_fabricacao IS 'Mostra os itens fabricáveis em um livro de fabricação, incluindo armas e ferramentas, com o nome do item e a referência ao livro de fabricação.';
+COMMENT ON VIEW craft_item IS 'Exibe os itens necessários para a fabricação de um item específico, com informações detalhadas de cada componente envolvido no processo de fabricação.';
+COMMENT ON VIEW crafts_relacionados IS 'Exibe os itens relacionados a um processo de fabricação, associando instâncias de itens com o processo de fabricação correspondente.';
+
+
 COMMIT;
