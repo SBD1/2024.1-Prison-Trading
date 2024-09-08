@@ -49,7 +49,7 @@ COMMIT;
 
 ---
 
-## Iniciar motim
+## Inicia motim
 
 > Essa função deve ser acionada a acada 30 minutos.
 
@@ -57,7 +57,7 @@ COMMIT;
 SELECT inicia_motim();
 ````
 
-## Iniciar motim
+## Finaliza motim
 
 > Essa função deve ser acionada a acada 33 minutos.
 
