@@ -1,7 +1,7 @@
 -- --------------------------------------------------------------------------------------
--- Data de Criação ........: 30/08/2024                                                --
--- Autor(es) ..............: Fernando Gabriel, João A. e Julio Cesar                   --
--- Versão .................: 1.0                                                       --
+-- Data de Criação ........: 08/09/2024                                                --
+-- Autor(es) ..............: Breno A., Fernando Gabriel, João A. e Julio Cesar         --
+-- Versão .................: 4.1                                                       --
 -- Banco de Dados .........: PostgreSQL                                                --
 -- Descrição ..............: Adiciona Triggers e restrições                            --
 -- --------------------------------------------------------------------------------------
@@ -2391,7 +2391,7 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
-CREATE OR REPLACE FUNCTION gerencia_missao(id_jogador INT)
+CREATE FUNCTION gerencia_missao(id_jogador INT)
 RETURNS void AS $$
 DECLARE
 	tempoVida INTEGER;
@@ -2661,10 +2661,9 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
-CREATE OR REPLACE FUNCTION fuga_prisao_esgoto(id_jogador INT)
+CREATE FUNCTION fuga_prisao_esgoto(id_jogador INT)
 RETURNS BOOLEAN AS $$
 BEGIN
-	-- Confere se o jogador está no esgoto
 	PERFORM 1
 	FROM Jogador
 	WHERE id = id_jogador AND lugar = 31;
@@ -2675,10 +2674,9 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION fuga_prisao_floresta(id_jogador INT)
+CREATE FUNCTION fuga_prisao_floresta(id_jogador INT)
 RETURNS BOOLEAN AS $$
 BEGIN
-	-- Confere se o jogador está na floresta
 	PERFORM 1
 	FROM Jogador
 	WHERE id = id_jogador AND lugar = 33;
@@ -2689,10 +2687,9 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-CREATE OR REPLACE FUNCTION fuga_prisao_disfarcado(id_jogador INT)
+CREATE FUNCTION fuga_prisao_disfarcado(id_jogador INT)
 RETURNS BOOLEAN AS $$
 BEGIN
-	-- Confere se o jogador está na entrada
 	PERFORM 1
 	FROM Jogador
 	WHERE id = id_jogador AND lugar = 32;
