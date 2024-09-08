@@ -2410,7 +2410,7 @@ BEGIN
 
     SELECT id INTO id_inventario
     FROM inventario
-    WHERE pessoa = jogador_id;
+    WHERE pessoa = id_jogador;
 	
 	-- No primeiro dia o jogador terá as missões 5, 3 e 4
 	IF tempoVida = 10 THEN
@@ -2639,7 +2639,7 @@ BEGIN
 		
 		SELECT fuga_prisao_esgoto(id_jogador) INTO fuga1;
 		SELECT fuga_prisao_floresta(id_jogador) INTO fuga2;
-		SELECT fuga_prisao_disfarcado(id_jogador, id_prisao) INTO fuga3;
+		SELECT fuga_prisao_disfarcado(id_jogador) INTO fuga3;
 		IF fuga1 IS TRUE THEN
 			RAISE NOTICE 'Você fugiu pelo esgoto! Parabéns!';
 			RETURN;

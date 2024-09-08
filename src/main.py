@@ -467,9 +467,9 @@ class Game:
             "RGANGUE": self.sair_gangue,
         }
 
-        self.gerenciar_missao() #Tenta rodar a função de missão ----------------------------------------------------------
-
         while True:
+            self.gerenciar_missao()
+
             if self.tempo_vida == 1:
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(logo)
