@@ -176,6 +176,8 @@ class Game:
                     elif tipo == "utilizavel":
                         detalhes += f"\nRaridade: {resultado[5]}\nQuantidade: {resultado[6]}\nDurabilidade: {resultado[9]}"
                     print(detalhes)
+                    input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+                    self.clear()
         else:
             print("Nenhuma informação para ver.")
 
