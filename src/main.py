@@ -475,6 +475,11 @@ class Game:
                 print(logo)
                 print('Você perdeu\n')
                 break
+            elif self.regiao_atual == 8:
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print(logo)
+                print('Você ganhou\n')
+                break
             else:
                 input_usuario = input('\033[91mDigite o comando: \033[0m').strip().upper()
                 if input_usuario.startswith("MOVER "):
