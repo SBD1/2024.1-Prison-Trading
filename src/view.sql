@@ -208,6 +208,17 @@ CREATE VIEW crafts_relacionados AS
 	ON fer.id = lis.fabricacao
 	ORDER BY COALESCE(arm.nome, fer.nome);
 
+---------------------
+---
+---   DETALHES DA MISSAO ATUAL
+---
+---------------------
+
+CREATE VIEW detalhes_missao AS
+	SELECT miss.id, miss.nome, miss.descricao, miss.lugar
+	FROM Jogador jog
+	LEFT JOIN Missao miss ON miss.id = jog.missao;
+
 GRANT SELECT ON detalhes_lugar TO prison_trading_user;
 GRANT SELECT ON detalhes_regiao TO prison_trading_user;
 GRANT SELECT ON lugares_ori_des_detalhado TO prison_trading_user;
@@ -220,6 +231,6 @@ GRANT SELECT ON status_prisioneiro TO prison_trading_user;
 GRANT SELECT ON itens_livro_fabricacao TO prison_trading_user;
 GRANT SELECT ON craft_item TO prison_trading_user;
 GRANT SELECT ON crafts_relacionados TO prison_trading_user;
-
+GRANT SELECT ON detalhes_missao TO prison_trading_user;
 
 COMMIT;
