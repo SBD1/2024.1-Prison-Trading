@@ -2389,7 +2389,7 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
-CREATE OR REPLACE FUNCTION gerencia_missao(id_jogador INT, opcao TEXT, id_prisao INT)
+CREATE OR REPLACE FUNCTION gerencia_missao(id_jogador INT, id_prisao INT)
 RETURNS void AS $$
 DECLARE
 	tempoVida INTEGER;
@@ -2454,23 +2454,21 @@ BEGIN
 			SET missao = 4
 			WHERE id = id_jogador;
 
-			RAISE NOTICE 'Escoha uma gangue: 1 - palhaco, 2 - polvo.';
-			IF opcao = '1' THEN
-				SELECT selecionar_gangue(id_jogador, 'palhaco');
-			ELSIF opcao = '2' THEN
-				SELECT selecionar_gangue(id_jogador, 'polvo');
-			END IF;
-			
-			RAISE NOTICE 'Missão "Escolher gangue" completa com sucesso!';
-			
-			-- Recompensa o jogador com um cigarro
-			INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
-        	VALUES (27, NULL, NULL, id_jogador, id_jogador);
-			RAISE NOTICE 'Você ganhou um cigarro!';
-			-- Ficar sem missão
-			UPDATE Jogador
-			SET missao = NULL
-			WHERE id = id_jogador;
+            PERFORM 1
+            FROM Jogador
+            WHERE id = id_jogador AND  gangue IN ('palhaco', 'polvo');
+            IF FOUND THEN			
+                RAISE NOTICE 'Missão "Escolher gangue" completa com sucesso!';
+                
+                -- Recompensa o jogador com um cigarro
+                INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
+                VALUES (27, NULL, NULL, id_jogador, id_jogador);
+                RAISE NOTICE 'Você ganhou um cigarro!';
+                -- Ficar sem missão
+                UPDATE Jogador
+                SET missao = NULL
+                WHERE id = id_jogador;
+            END IF;
 		END IF;
 	END IF;
 

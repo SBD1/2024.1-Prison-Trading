@@ -445,6 +445,11 @@ class Game:
         else:
             print(f'\nO item {id_inst} não está em nenhuma fabricação.')
 
+    def gerenciar_missao(self):
+        id_prisao = 1
+        db.execute_commit("SELECT gerencia_missao(%s, %s);",(self.id_jogador, id_prisao,))
+        self.clear()
+
     def clear(self):
         os.system('cls' if os.name == 'nt' else 'clear')
         print(logo)
@@ -512,7 +517,7 @@ class Game:
         self.gameLoop()
 
 
-Prison_Tradign = Game()
+Prison_Trading = Game()
 db.connect()
-Prison_Tradign.start()
+Prison_Trading.start()
 db.close()
