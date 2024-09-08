@@ -2390,7 +2390,7 @@ $$ LANGUAGE plpgsql;
 ---------------------
 
 CREATE OR REPLACE FUNCTION gerencia_missao(id_jogador INT, opcao TEXT, id_prisao INT)
-RETURNS trigger AS $gerencia_missao$
+RETURNS void AS $$
 DECLARE
 	tempoVida INTEGER;
 	missaoAtual INTEGER;
@@ -2456,13 +2456,9 @@ BEGIN
 
 			RAISE NOTICE 'Escoha uma gangue: 1 - palhaco, 2 - polvo.';
 			IF opcao = '1' THEN
-				UPDATE Jogador
-				SET gangue = 'palhaco'
-				WHERE id = id_jogador;
+				SELECT selecionar_gangue(id_jogador, 'palhaco');
 			ELSIF opcao = '2' THEN
-				UPDATE Jogador
-				SET gangue = 'polvo'
-				WHERE id = id_jogador;
+				SELECT selecionar_gangue(id_jogador, 'polvo');
 			END IF;
 			
 			RAISE NOTICE 'Missão "Escolher gangue" completa com sucesso!';
@@ -2470,7 +2466,7 @@ BEGIN
 			-- Recompensa o jogador com um cigarro
 			INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
         	VALUES (27, NULL, NULL, id_jogador, id_jogador);
-			RAISE NOTICE 'Você ganhou um cigarro!'
+			RAISE NOTICE 'Você ganhou um cigarro!';
 			-- Ficar sem missão
 			UPDATE Jogador
 			SET missao = NULL
@@ -2512,9 +2508,10 @@ BEGIN
 				-- Recompensa o jogador com um pedaço grande metal
 				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
 		        VALUES (20, NULL, NULL, id_jogador, id_jogador);
-				RAISE NOTICE 'Você ganhou um pedaço grande metal!'
+				RAISE NOTICE 'Você ganhou um pedaço grande metal!';
 			END IF;
-
+        END IF;
+        
 		-- Verifica se o jogador já tem a recompensa da missão 10
 		SELECT item INTO itemAchado
 		FROM Instancia_item 
@@ -2534,7 +2531,7 @@ BEGIN
 				-- Recompensa o jogador com um isqueiro
 				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
 		        VALUES (25, NULL, NULL, id_jogador, id_jogador);
-				RAISE NOTICE 'Você ganhou um isqueiro!'
+				RAISE NOTICE 'Você ganhou um isqueiro!';
 			END IF;
 		END IF;
 
@@ -2562,7 +2559,7 @@ BEGIN
 					-- Recompensa o jogador com uma carne
 					INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
 			        VALUES (34, NULL, NULL, id_jogador, id_jogador);
-					RAISE NOTICE 'Você ganhou uma carne!'
+					RAISE NOTICE 'Você ganhou uma carne!';
 				END IF;
 			END IF;
 		ELSIF linhas > 65 THEN
@@ -2580,7 +2577,7 @@ BEGIN
 				-- Recompensa o jogador com uma carne
 				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
 		        VALUES (34, NULL, NULL, id_jogador, id_jogador);
-				RAISE NOTICE 'Você ganhou uma carne!'
+				RAISE NOTICE 'Você ganhou uma carne!';
 			END IF;
 		END IF;
 
@@ -2603,7 +2600,7 @@ BEGIN
 				-- Recompensa o jogador com uma morfina
 				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
 		        VALUES (29, NULL, NULL, id_jogador, id_jogador);
-				RAISE NOTICE 'Você ganhou uma morfina!'
+				RAISE NOTICE 'Você ganhou uma morfina!';
 			END IF;
 		END IF;
 
@@ -2619,8 +2616,12 @@ BEGIN
 			UPDATE Jogador
 			SET missao = 1
 			WHERE id = id_jogador;
-		-- Verifica se o jogador estava na solitária oeste
-		ELSEIF OLD.lugar = 1 AND NEW.lugar = 2
+        END IF;
+		-- Verifica se o jogador tem a missão 1
+        PERFORM 1
+		FROM Jogador
+		WHERE id = id_jogador AND lugar = 2 AND missao = 1;
+		IF FOUND THEN
 			-- Verifica se o jogador tinha uma picareta
 			SELECT item INTO itemAchado
 			FROM Instancia_item 
@@ -2630,7 +2631,7 @@ BEGIN
 				-- Recompensa o jogador com a Chave da Oficina A
 				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
 			       VALUES (38, NULL, NULL, id_jogador, id_jogador);
-				RAISE NOTICE 'Você ganhou a Chave da Oficina A!'
+				RAISE NOTICE 'Você ganhou a Chave da Oficina A!';
 			END IF;
 		END IF;
 
@@ -2646,8 +2647,12 @@ BEGIN
 			UPDATE Jogador
 			SET missao = 2
 			WHERE id = id_jogador;
-		-- Verifica se o jogador estava na solitária leste
-		ELSEIF OLD.lugar = 9 AND NEW.lugar = 2
+		END IF;
+		-- Verifica se o jogador tem a missão 2
+        PERFORM 1
+		FROM Jogador
+		WHERE id = id_jogador AND lugar = 2 AND missao = 2;
+		IF FOUND THEN
 			-- Verifica se o jogador tinha uma picareta
 			SELECT item INTO itemAchado
 			FROM Instancia_item 
@@ -2657,7 +2662,7 @@ BEGIN
 				-- Recompensa o jogador com a Chave da Oficina B
 				INSERT INTO instancia_item (item, lugar, regiao, pessoa, inventario)
 			       VALUES (39, NULL, NULL, id_jogador, id_jogador);
-				RAISE NOTICE 'Você ganhou a Chave da Oficina B!'
+				RAISE NOTICE 'Você ganhou a Chave da Oficina B!';
 			END IF;
 		END IF;
 
@@ -2686,16 +2691,9 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
-DROP TRIGGER gerencia_missao ON Jogador;
-
-CREATE TRIGGER gerencia_missao
-AFTER INSERT OR UPDATE ON Jogador
-FOR EACH ROW
-EXECUTE FUNCTION gerencia_missao();
-
 ---------------------
 ---
----  FUGAS
+---  FUGAS PRISAO
 ---
 ---------------------
 

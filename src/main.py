@@ -330,6 +330,25 @@ class Game:
             self.move_cursor_to(114, linha_atual)
             print("\033[91m======================================================\033[0m")
 
+            query = db.execute_fetchone("SELECT id, nome, descricao, lugar FROM missao WHERE id = %s;", (self.missao,))
+            linha_atual += 1
+            self.move_cursor_to(115, linha_atual)
+            print("\t\tMISSÃO:")
+            linha_atual += 2
+            if query and len(query) > 0:
+                for resultado in query:
+                    if len(resultado) >= 4:
+                        self.move_cursor_to(115, linha_atual)
+                        print(f'{resultado[0]:02} - {resultado[1].strip()} - {resultado[2].strip()} - {resultado[3].strip()}')
+                        linha_atual += 1
+            else:
+                self.move_cursor_to(115, linha_atual)
+                print(f'Sem missão atual.')
+                linha_atual += 1
+            linha_atual += 1
+            self.move_cursor_to(114, linha_atual)
+            print("\033[91m======================================================\033[0m")
+
             self.move_cursor_to(0, 23)
 
     def mover(self, input_usuario):
