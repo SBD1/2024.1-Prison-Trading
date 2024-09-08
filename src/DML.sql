@@ -1,28 +1,14 @@
-<center>
+-- --------------------------------------------------------------------------------------
+-- Data de Criação ........: 14/08/20224                                               --
+-- Autor(es) ..............: Breno Alexandre, Fernando Gabriel, João A. e Julio Cesar  --
+-- Versão .................: 1.8                                                       --
+-- Banco de Dados .........: PostgreSQL                                                --
+-- Descrição ..............: Popula as tabelas para o jogo Prison Trading.             --
+-- --------------------------------------------------------------------------------------
 
-# Linguagem de Manipulação de Dados - DML
 
-</center>
-
----
-<Center>
-
-# O que é?
-
-</center>
-
-> É um subconjunto da SQL (Structured Query Language) usado para manipular e interagir com os dados armazenados em um banco de dados.
-
----
-
-<Center>
-
-# Inserts
-
-</center>
-
-```
 BEGIN TRANSACTION;
+
 
 INSERT INTO prisao(nome, descricao, motim)
 VALUES
@@ -63,8 +49,8 @@ VALUES
 ('Sala C', 3, 'Sala com uma maca e armário com remédios e kits de primeiro-socorro.', false),
 ('Corredor Enfermaria', 3, 'Corredor para se deslocar entre as salas da enfermaria e a sala de controle.', false),
 ('Sala De Controle', 4, 'Sala onde tem o controle da prisão, no final do corredor da enfermaria. Há um uniforme policial do lado da mesa.', false),
-('Mesa Esquerda', 5, 'Mesa onde a gangue Palhaço faz suas refeições.', false),
-('Mesa Direita', 5, 'Mesa onde a gangue Polvo faz suas refeições.', false),
+('Mesa Esquerda', 5, 'Mesa onde a gangue 1 faz suas refeições.', false),
+('Mesa Direita', 5, 'Mesa onde a gangue 2 faz suas refeições.', false),
 ('Corredor Refeitorio', 5, 'Corredor para se deslocar entre as mesas do refeitório e os corredores dos banheiros e do pátio.', false),
 ('Academia Simples', 6, 'Uma área com equipamentos simples de exercício.', false),
 ('Quadra De Basquete', 6, 'Quadra onde os prisioneiros jogam basquete para se distrair e se exercitar.', false),
@@ -313,7 +299,7 @@ VALUES
 ('Livro de Crafts HARD');
 
 
-INSERT INTO fabricacao (item_fabricavel, livro_fabricacao) 
+INSERT INTO fabricacao (item_fabricavel, livro_fabricacao)
 VALUES
 (1, 1),
 (2, 1),
@@ -330,7 +316,7 @@ VALUES
 (13, 2);
 
 
-INSERT INTO lista_fabricacao (item_fabricavel, fabricacao, item) 
+INSERT INTO lista_fabricacao (item_fabricavel, fabricacao, item)
 VALUES
 (1, 1, 18),
 (1, 1, 24),
@@ -360,7 +346,7 @@ VALUES
 (13, 13, 23);
 
 
-INSERT INTO Pessoa (tipo) 
+INSERT INTO Pessoa (tipo)
 VALUES
 ('jogador'),
 ('prisioneiro'),
@@ -383,7 +369,7 @@ VALUES
 ('informante'),
 ('informante');
 
-INSERT INTO Inventario (pessoa, inventario_ocupado, tamanho) 
+INSERT INTO Inventario (pessoa, inventario_ocupado, tamanho)
 VALUES
 (1, 0, 5),
 (2, 4, 5),
@@ -407,7 +393,7 @@ VALUES
 (20, 2, 5);
 
 
-INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa) 
+INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
 VALUES
 (1, 29, 7, NULL, NULL),
 (2, 29, 7, NULL, NULL),
@@ -524,7 +510,7 @@ VALUES
 (34, 24, 6, 'Fique maromba', 'Vá na academia.');
 
 
-INSERT INTO Prisioneiro (id, nome, habilidade_briga, vida, forca, gangue, lugar, regiao) 
+INSERT INTO Prisioneiro (id, nome, habilidade_briga, vida, forca, gangue, lugar, regiao)
 VALUES
 (2, 'Rivas', 4, 9, 7, 'palhaco', 25, 6),
 (3, 'Filomano', 6, 7, 4, 'polvo', 3, 1),
@@ -540,7 +526,7 @@ VALUES
 (13, 'Silvio Serra', 6, 8, 5, 'polvo', 6, 1);
 
 
-INSERT INTO Policial (id, nome, lugar, regiao, corrupto) 
+INSERT INTO Policial (id, nome, lugar, regiao, corrupto)
 VALUES
 (14, 'Italo Dimetrio', 20, 4, true),
 (15, 'Sargento Nascimento', 22, 5, false),
@@ -549,175 +535,15 @@ VALUES
 (18, 'Lil Chico', 26, 6, true);
 
 
-INSERT INTO Informante (id, nome, dano, lugar, regiao) 
+INSERT INTO Informante (id, nome, dano, lugar, regiao)
 VALUES
 (19, 'Cubano', 200, 13, 2),
 (20, 'Chileno', 200, 16, 3);
 
 
 INSERT INTO Jogador (id, nome, habilidade_briga, vida, forca, tempo_vida, gangue, lugar, missao, nivel, regiao) VALUES
-(1, 'Carimbo', 2, 5, 3, 10, null, 2, null, 0, 1);
+(1, 'Carimbo', 5, 5, 3, 10, null, 2, null, 0, 1);
 
 
 COMMIT;
 
-```
----
-
-<Center>
-
-# Comandos usados
-
-</center>
-
-````sql
---- Atualiza posição de um Jogador
-
-UPDATE Jogador 
-SET lugar = 2, regiao = 1
-WHERE id = 1;
-
---- Atualizar vida de um Jogador.
-
-UPDATE jogador 
-SET vida = 5
-WHERE id = 1;
-
---- Subir o nivel de um jogador.
-
-UPDATE jogador 
-SET nivel = 0
-WHERE id = 1;
-
---- Escolher gangue de um Jogador.
-
-UPDATE jogador 
-SET gangue = 'palhaco'
-WHERE id = 1;
-
---- Atualiza o tempo de vida de um Jogador
-
-UPDATE jogador 
-SET tempo_vida = 10
-WHERE id = 1;
-
---- Atualizar missao de um Jogador
-
-UPDATE jogador 
-SET missao = 0
-WHERE id = 1;
-
---- Atualizar força de um Jogador
-
-UPDATE jogador 
-SET forca = 3
-WHERE lugar = 24
-AND regiao = 6
-AND id = 1;
-
---- Atualiza posição de um Prisioneiro
-
-UPDATE Prisioneiro 
-SET lugar = 3, regiao = 1
-WHERE id = 3;
-
---- Atualiza posição de um Policial
-
-UPDATE Policial 
-SET lugar = 4, regiao = 1
-WHERE id = 18;
-
---- Atualiza posição de um Informante
-
-UPDATE Informante 
-SET lugar = 8, regiao = 1
-WHERE id = 20;
-
---- Criar uma instancia de Item (lugar)
-
-INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
-VALUES
-(5, 7, 7, NULL, NULL);
-
-
---- Criar uma instancia de Item (inventario)
-
-INSERT INTO instancia_item (item, lugar, regiao, inventario, pessoa)
-VALUES
-(5, NULL, NULL, 7, 7);
-
-
---- Deletar uma instancia de Item (lugar)
-
-DELETE FROM Instancia_Item
-WHERE id = 14;
-
---- Deletar uma instancia de Item (inventario)
-
-DELETE FROM Instancia_Item
-WHERE id = 27;
-
---- Atualizar um inventario ocupado de uma Pessoa
-
-UPDATE Inventario 
-SET inventario_ocupado = 5
-WHERE id = 14
-AND pessoa = 14;
-
---- Atualizar vida de um Prisioneiro.
-
-UPDATE prisioneiro
-SET vida = 9
-WHERE id = 2;
-
---- Atualizar o motim de uma Prisao.
-
-UPDATE Prisao 
-SET motim = true
-WHERE id = 1;
-
---- Atualizar quantidade de Comida
-
-UPDATE Comida 
-SET quantidade = 2
-WHERE id = 31;
-
---- Atualizar quantidade de Medicamento
-
-UPDATE Medicamento 
-SET quantidade = 3
-WHERE id = 29;
-
---- Atualizar a quantidade de Utilizavel
-
-UPDATE Utilizavel 
-SET quantidade = 4
-WHERE id = 16;
-
-````
-
----
-
-<center>
-
-# Histórico de versão
-
-</center>
-
-<div style="margin: 0 auto; width: fit-content;">
-
-|    Data    | Versão | Descrição                | Autores                                                                                                                                       |
-| :--------: | :----: | ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| 28/07/2024 | `1.0`  | Criação do documento.    | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
-| 07/08/2024 | `1.1`  | Adiciona fabricacao.     | [João Antonio G.](https://github.com/joaoseisei)                                                                                              |
-| 07/08/2024 | `1.2`  | adição parte do fernando | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
-| 07/08/2024 | `1.3`  | Adiciona parte do Júlio. | [Júlio Cesar](https://github.com/Julio1099)                                                                                                   |
-| 10/08/2024 | `1.4`  | corrige dml              | [Júlio Cesar](https://github.com/Julio1099),[Fernando Gabriel](https://github.com/show-dawn),[João Antonio G.](https://github.com/joaoseisei) |
-| 12/08/2024 | `1.5`  | Adiciona parte do bob.   | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
-| 13/08/2024 | `1.6`  | Edita parte do bob.      | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
-| 14/08/2024 | `1.7`  | corrige dml              | [João Antonio G.](https://github.com/joaoseisei),[Fernando Gabriel](https://github.com/show-dawn)                                             |
-| 14/08/2024 | `1.8`  | corrige dml              | [Julio Cesar](https://github.com/Julio1099)                                                                                                   |
-| 15/08/2024 | `1.9`  | adição parte do fernando | [Fernando Gabriel](https://github.com/show-dawn)                                                                                              |
-| 15/08/2024 | `2.0`  | Adiciona parte do bob.   | [Breno Alexandre](https://github.com/brenoalexandre0)                                                                                         |
-
-</div>
