@@ -208,6 +208,12 @@ CREATE VIEW crafts_relacionados AS
 	ON fer.id = lis.fabricacao
 	ORDER BY COALESCE(arm.nome, fer.nome);
 
+---------------------
+---
+---   PERMISSÕES
+---
+---------------------
+
 GRANT SELECT ON detalhes_lugar TO prison_trading_user;
 GRANT SELECT ON detalhes_regiao TO prison_trading_user;
 GRANT SELECT ON lugares_ori_des_detalhado TO prison_trading_user;
