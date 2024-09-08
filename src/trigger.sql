@@ -38,7 +38,9 @@ REVOKE INSERT, UPDATE, DELETE ON pessoa FROM prison_trading_user;
 
 REVOKE INSERT, UPDATE, DELETE ON item, item_fabricavel, item_nao_fabricavel FROM prison_trading_user;
 
-REVOKE INSERT, DELETE ON fabricacao, inventario, lista_fabricacao FROM prison_trading_user;
+REVOKE INSERT, UPDATE, DELETE ON lista_fabricacao FROM prison_trading_user;
+
+REVOKE INSERT, DELETE ON fabricacao, inventario FROM prison_trading_user;
 
 ---------------------
 ---
