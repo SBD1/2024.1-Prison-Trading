@@ -107,6 +107,8 @@ class Game:
               "\n'VCRAFT' + ' ' + ID - Para ver todos os crafts com um item especifico."
               "\n'CLEAR' - Para limpar o terminal."
               "\n'SAIR' - Para fechar o jogo.")
+        input("\n\033[93mPrecione qualquer tecla atualizar\033[0m")
+        self.clear()
 
     def lugar_at(self):
         query = db.execute_fetchone("SELECT id, nome, descricao FROM detalhes_lugar WHERE id_jogador = %s;", (self.id_jogador,))
