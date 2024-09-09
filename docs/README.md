@@ -80,9 +80,7 @@ Além disso, você também precisa estar atento aos guardas e às rotinas da pri
 |----------|---------------------------|------------------------------------------------------------------------------|
 | Módulo 1 | 21/07/2024                | [Modelagem](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/Modulo1) |
 | Modulo 2 | 18/08/2024                | [SQL](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-2/Modulo2)       |
-| Módulo 3 | --/--/2024                | Transações, Triggers, SP e Views                                             |
-| Módulo 4 | --/--/2024                | Apresentação final                                                           |
-
+| Módulo 3 | 09/09/2024                | [Transações, Triggers, SP e Views](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/Modulo3)                                         |
 </div>
 
 ---
