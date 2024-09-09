@@ -2819,8 +2819,7 @@ COMMIT;
 
 | Data       | Versão |                Descrição                 | Autores                                          |
 |------------|--------|:----------------------------------------:|--------------------------------------------------|
-| 26/07/2024 | `1.0`  |          Criação do documento.           | [Júlio Cesar](https://github.com/Julio1099)      |
-| 05/09/2024 | `1.1`  |            Atualiza triggers.            | [João Antonio G.](https://github.com/joaoseisei) |
-| 08/09/2024 | `1.2`  | Finaliza os triggers e adiciona imagens. | [João Antonio G.](https://github.com/joaoseisei)                                                 |
+| 05/09/2024 | `1.0`  |            Atualiza triggers.            | [João Antonio G.](https://github.com/joaoseisei) |
+| 08/09/2024 | `1.1`  | Finaliza os triggers e adiciona imagens. | [João Antonio G.](https://github.com/joaoseisei)                                                 |
 
 </div>
