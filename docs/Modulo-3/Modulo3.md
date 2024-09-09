@@ -28,6 +28,6 @@ Caso não consiga ver o vídeo, clique neste [link](https://youtu.be/eznAvpr68WU
 |    Data    | Versão |       Descrição       | Autores                                          |
 |:----------:|:------:|:---------------------:|--------------------------------------------------|
 | 20/07/2024 | `1.0`  | Criação do documento. | [João Antonio G.](https://github.com/joaoseisei) |
-                                                                                                                                            |
+                                                                                                                                            
 
 </div>
