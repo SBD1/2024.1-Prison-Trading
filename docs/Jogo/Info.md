@@ -13,27 +13,8 @@
 
 </center>
 
-> Rodar o script a baixo ou seguir as configurações da imagem (dentro do server criado):
+> É somente a criação de um database com um superusuario, é obrigatorio ter o nome **Prison-Trading**.
 
-Código:
-
-````sql
-CREATE DATABASE "Prison-Trading"
-    WITH
-    OWNER = prison_trading_user
-    ENCODING = 'UTF8'
-    LOCALE_PROVIDER = 'libc'
-    CONNECTION LIMIT = -1
-    IS_TEMPLATE = False;
-
-COMMENT ON DATABASE "Prison-Trading"
-    IS 'Banco de dados referente ao jogo Prison Trading';
-````
-Imagem:
-
-<div align="center">
-<div align="center"><img src= "https://raw.githubusercontent.com/SBD1/2024.1-Prison-Trading/Pages/docs/assets/p3.png?raw=true"/></div>
-</div>
 
 ---
 <center>

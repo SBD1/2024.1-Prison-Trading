@@ -1878,7 +1878,7 @@ EXECUTE PROCEDURE update_lugar();
 ---
 ---------------------
 
-CREATE OR REPLACE FUNCTION movimenta_jogador(jogador_id INTEGER, lugar_destino_atb INTEGER)
+CREATE FUNCTION movimenta_jogador(jogador_id INTEGER, lugar_destino_atb INTEGER)
     RETURNS VOID AS
 $movimenta_jogador$
 DECLARE
@@ -1941,20 +1941,7 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
-CREATE FUNCTION gerencia_motim()
-RETURNS void AS $$
-DECLARE
-    lugar_motim INTEGER;
-    regiao_motim INTEGER;
-    valores INTEGER[] := ARRAY[10, 15, 19, 23, 28];
-BEGIN
-    lugar_motim := valores[1 + (random() * (array_length(valores, 1) - 1))::INT];
-
-    SELECT regiao INTO regiao_motim
-    FROM lugar
-    WHERE id = lugar_motim;
-
-    CREATE TEMP TABLE lugar_pessoas_original AS
+CREATE TABLE lugar_pessoas_original AS
     (
         SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
         FROM prisioneiro
@@ -1966,22 +1953,50 @@ BEGIN
         FROM informante
     );
 
-    UPDATE prisao
-    SET motim = true;
+CREATE FUNCTION inicia_motim()
+RETURNS void AS $$
+DECLARE
+    lugar_motim INTEGER;
+	regiao_motim INTEGER;
+    valores INTEGER[] := ARRAY[10, 15, 19, 23, 28];
+BEGIN
+    lugar_motim := valores[1 + (random() * (array_length(valores, 1) - 1))::INT];
 
-    UPDATE prisioneiro
-    SET lugar = lugar_motim, regiao = regiao_motim;
+    DELETE FROM lugar_pessoas_original;
 
-    UPDATE policial
-    SET lugar = lugar_motim, regiao = regiao_motim;
+    INSERT INTO lugar_pessoas_original (pessoa_id, lugar_original, regiao_original)
+    SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
+    FROM prisioneiro
+    UNION ALL
+    SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
+    FROM policial
+    UNION ALL
+    SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
+    FROM informante;
 
-    UPDATE informante
-    SET lugar = lugar_motim, regiao = regiao_motim;
+	SELECT regiao INTO regiao_motim
+	FROM lugar
+	WHERE id = lugar_motim;
 
-    RAISE NOTICE 'Motim iniciado no lugar: %, com a região: %', lugar_motim, regiao_motim;
+	UPDATE prisao
+	SET motim = true;
 
-    PERFORM pg_sleep(180); -- 180 segundos = 3 minutos
+	UPDATE prisioneiro
+	SET lugar = lugar_motim, regiao = regiao_motim;
 
+	UPDATE policial
+	SET lugar = lugar_motim, regiao = regiao_motim;
+
+	UPDATE informante
+	SET lugar = lugar_motim, regiao = regiao_motim;
+
+    RAISE NOTICE 'Lugar do motim escolhido: %, com a região: %', lugar_motim, regiao_motim;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE FUNCTION finaliza_motim()
+RETURNS void AS $$
+BEGIN
     UPDATE prisioneiro
     SET lugar = l.lugar_original, regiao = l.regiao_original
     FROM lugar_pessoas_original l
@@ -2000,11 +2015,13 @@ BEGIN
     UPDATE prisao
     SET motim = false;
 
-    DROP TABLE IF EXISTS lugar_pessoas_original;
+	-- Opcional: deletar a tabela ao finalizar o motim
+	-- DROP TABLE IF EXISTS lugar_pessoas_original;
 
-    RAISE NOTICE 'Motim finalizado, todas as pessoas voltaram para seus lugares de origem';
+	RAISE NOTICE 'Todas as pessoas voltaram para o lugar de origem';
 END;
 $$ LANGUAGE plpgsql;
+
 
 ---------------------
 ---
@@ -2740,7 +2757,7 @@ BEGIN
 	END IF;
 	RETURN;
 END;
-$$ LANGUAGE plpgsql;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
 
 ---------------------
 ---
