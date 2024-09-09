@@ -1941,7 +1941,6 @@ $$ LANGUAGE plpgsql;
 ---
 ---------------------
 
--- Mude a tabela temporária para uma tabela normal
 CREATE TABLE lugar_pessoas_original AS
     (
         SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
@@ -1962,6 +1961,18 @@ DECLARE
     valores INTEGER[] := ARRAY[10, 15, 19, 23, 28];
 BEGIN
     lugar_motim := valores[1 + (random() * (array_length(valores, 1) - 1))::INT];
+
+    DELETE FROM lugar_pessoas_original;
+
+    INSERT INTO lugar_pessoas_original (pessoa_id, lugar_original, regiao_original)
+    SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
+    FROM prisioneiro
+    UNION ALL
+    SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
+    FROM policial
+    UNION ALL
+    SELECT id AS pessoa_id, lugar AS lugar_original, regiao AS regiao_original
+    FROM informante;
 
 	SELECT regiao INTO regiao_motim
 	FROM lugar

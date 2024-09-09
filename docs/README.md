@@ -125,3 +125,18 @@ Além disso, você também precisa estar atento aos guardas e às rotinas da pri
 | [Jogo demo](https://github.com/SBD1/2024.1-Prison-Trading/blob/main/src/main.py)                           |
 
 </div>
+
+<div style="margin: 0 auto; width: fit-content;">
+
+| Módulo 3 - 09/09/2024                                                                                      |
+|:-----------------------------------------------------------------------------------------------------------|
+| [Correção - Diagrama Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/DER) |
+| [Correção - Modelo Entidade-Relacionamento](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-1/MER)   |
+| [Triggers e Stored Procedure](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/Triggers)                |
+| [Views](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/views)                                        |
+| [pgAgent](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/pgagent)                                    |
+| [pg_stat_statements](https://sbd1.github.io/2024.1-Prison-Trading/#/Modulo-3/pgstatstatements)                          |
+| [Atualização da Instalação](https://sbd1.github.io/2024.1-Prison-Trading/#/Jogo/Info)                   |
+| [Jogo final](https://github.com/SBD1/2024.1-Prison-Trading/blob/main/src/main.py)                          |
+
+</div>
